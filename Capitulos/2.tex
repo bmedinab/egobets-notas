@@ -16,7 +16,7 @@
 \tikzstyle{level 3}=[level distance=3.5cm, sibling distance=2cm]
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{tikzpicture}[grow=right, sloped]
 \node[text width=4em, text centered] {$\square$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,7 +88,7 @@ child {
  node[above] {$\delta_L$}
     };  
 \end{tikzpicture}
-\caption{Árbol de probabilidad 1}
+\caption{Decidir por quién apostar}
 \end{figure}
 
   $E_p[U(\delta_i)]=p_i\mu_i;\quad i=L,Z,V$\\
@@ -97,7 +97,7 @@ child {
   
   \item Se quiere decidir si apostar o no en la ocurrencia de un evento: Sea $p=p(E)$ y $f_p$ densidad de $p$. Sea $\mu$ el momio en el caso de ocurrencia. El problema de decisión asociado es el siguiente:\\
  
-\begin{figure}[h!]
+\begin{figure}[!ht]
  \begin{tikzpicture}[grow=right, sloped]
 \node[text width=4em, text centered] {$\square$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,7 +133,7 @@ child {
  node[above] {$\delta_A$}
     };
 \end{tikzpicture}  
-\caption{Árbol de probabilidad 2}
+\caption{Decidir si apostar o no apostar}
 \end{figure}
  
 \newpage
@@ -147,7 +147,7 @@ child {
   \item Mismo problema que el caso anterior, sólo que la utilidad depende de $p$ y $\mu$: $U: \Re\times[0,1]\rightarrow\Re$\\
   $(U(0,p)=0\quad\forall p)$.\\
  
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{tikzpicture}[grow=right, sloped]
 \node[text width=4em, text centered] {$\square$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,7 +183,7 @@ child {
  node[above] {$\delta_A$}
     };
 \end{tikzpicture}
-\caption{Árbol de probabilidad 3}
+\caption{Decidir si apostar en función de una utilidad}
 \end{figure}
 
   
@@ -250,7 +250,7 @@ Se harán las siguientes supuestos:
 \end{enumerate}
 El problema de decisión asociado a  determinar la cantidad óptima a postar es:(con $0<p<1$ fija y $\mu$ momio)\\
 
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
 \begin{tikzpicture}[grow=right, sloped]
 \node[text width=4em, text centered] {$\square$}

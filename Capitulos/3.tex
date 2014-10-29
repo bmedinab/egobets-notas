@@ -1,6 +1,8 @@
 \chapter{Back Office}
+\section{Descripción General}
+
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
-El ecosistema de Egobets consiste en cuatro piezas de software Ver la figura~\ref{Fig:Sistemas}. En este capítulo se describirán los sistemas que el usuario adminstrativo debe usar para poder a echar a andar toda la maquinaria detrás del sistema.
+El ecosistema de Egobets consiste principalmente de cuatro piezas de software. Ver la figura~\ref{Fig:Sistemas}. En este capítulo se describirán las tres piezas que el usuario adminstrativo debe usar para poder a echar a andar toda la maquinaria detrás del sistema. A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -9,7 +11,36 @@ El ecosistema de Egobets consiste en cuatro piezas de software Ver la figura~\re
    \end{minipage}
 \end{figure}
 
+El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal. 
+
+Grosso modo el proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
+\begin{enumerate}
+	\item A través del \emph{Sistema de recopilación} los administradores descargan de la página de Internet de ESPN los resultados de todos los partidos de la temporada junto con la información de los próximos partidos por jugar  de cada una de las ligas Europeas.
+	\item Los datos recopilados permiten a los administradores generar un conjunto de archivos de texto con toda la información de los resultados de los últimos partidos y las fechas de los próximos partidos.
+	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
+	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
+	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
+	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones peronalizadas de apuestas.
+\end{enumerate}
+
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \frame{\includegraphics[width=\linewidth]{flujo}}
+     \caption{Diagrama de flujo de información}\label{Fig:flujo}
+   \end{minipage}
+\end{figure}
+
+
 \section{Sistema de recopilación de información y estadísticas de los partidos}
+A grandes rasgos el sistema de recopilación recupera todos los partidos que se juegan por temporada en cada una de las ligas\footnote{Egobets se enfoca en las ligas: alemana, españona, francesa, inglesa e italiana}. Para esto se dividirá este Sistema en los siguientes módulos:
+
+\begin{enumerate}
+	\item Recuperación de equipos.
+	\item Recuperación de fechas de partidos próximos.
+	\item Recuperación de información de partidos jugados.
+	\item Generación de archivos con resultados.
+\end{enumerate}
+
 \section{Sistema de estimación de probabilidades}
 \section{Portal administrativo}
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/admin/}}

@@ -17,11 +17,13 @@
 \usepackage{mathrsfs}
 \usepackage{verbatim}
 \usepackage{enumerate}
+\usepackage{cleveref}
+\usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{trees}
 \usepackage{textcomp}
 \usepackage{placeins}
-\usepackage[backend=bibtex]{biblatex}
+\usepackage[sorting=nyt]{biblatex}
 \addbibresource{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/Decidido.bib}
 
 
@@ -57,19 +59,42 @@
 %\date{}                                           % Activate to display a given date or no date
 
 \begin{document}
-
-
-
+%----------------------------------------------------------------------------------------
+%	Portada, declaración, dedicatoria, agradecimientos, índices
+%----------------------------------------------------------------------------------------	
 \include{./Capitulos/encabezados}
+%----------------------------------------------------------------------------------------
+%	Capítulos
+%----------------------------------------------------------------------------------------
 \mainmatter
 \include{./Capitulos/1}
+\include{./Capitulos/1-b}
 \include{./Capitulos/2}
 \include{./Capitulos/3}
-
 \include{./Capitulos/4}
 \include{./Capitulos/5}
+%----------------------------------------------------------------------------------------
+%	APÉNDICES
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Agrega espacios en la toc
+
+\appendix % Los siguientes capítulos son apéndices
+
+%  Incluye los apéndices en el folder de apéndices
+
+\include{Apendices/A}
+
+\thispagestyle{empty}
+
+\addtocontents{toc}{\vspace{2em}} % Agrega espacio en la toc
+
+%----------------------------------------------------------------------------------------
+%	Bibliografía
+%----------------------------------------------------------------------------------------
 
 
+\backmatter
 \printbibliography
 
 \end{document}  

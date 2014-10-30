@@ -48,7 +48,17 @@
   \g@addto@macro\@afterheading{\@fb@afterHHook}%
   \gdef\@fb@afterHHook{}%
 }
+% \makeatother
+% %%% ESte codiguito hace los quotes de los famosos
+% \makeatletter
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
 \makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%% Centrar así sin espacio

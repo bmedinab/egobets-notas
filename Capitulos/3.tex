@@ -2,7 +2,8 @@
 \section{Descripción General}
 
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
-El ecosistema de Egobets consiste principalmente de cuatro piezas de software. Ver la figura~\ref{Fig:Sistemas}. En este capítulo se describirán las tres piezas que el usuario adminstrativo debe usar para poder a echar a andar toda la maquinaria detrás del sistema. A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
+El ecosistema de Egobets consiste principalmente de cuatro piezas de software. Ver la figura~\ref{Fig:Sistemas}. En este capítulo se describirán las tres piezas que el usuario adminstrativo debe usar para poder a echar a andar toda la maquinaria detrás del sistema. A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.\cite{alfredo2005ingenieria}
+
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -11,7 +12,7 @@ El ecosistema de Egobets consiste principalmente de cuatro piezas de software. V
    \end{minipage}
 \end{figure}
 
-El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal. 
+El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal.
 
 Grosso modo el proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
 \begin{enumerate}
@@ -32,14 +33,51 @@ Grosso modo el proceso que se lleva a cabo en el \emph{Back Office} para aliment
 
 
 \section{Sistema de recopilación de información y estadísticas de los partidos}
+\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
+
 A grandes rasgos el sistema de recopilación recupera todos los partidos que se juegan por temporada en cada una de las ligas\footnote{Egobets se enfoca en las ligas: alemana, españona, francesa, inglesa e italiana}. Para esto se dividirá este Sistema en los siguientes módulos:
 
 \begin{enumerate}
-	\item Recuperación de equipos.
 	\item Recuperación de fechas de partidos próximos.
 	\item Recuperación de información de partidos jugados.
 	\item Generación de archivos con resultados.
 \end{enumerate}
+
+Para poder comenzar la recuperación de información, es importante contar con los equipos que estén jugando esta temporada. Dependiendo de los resultados de la temporada anterior, los equipos que hayan quedado hasta abajo en la tabla de posición descienden a ligas menores y a su vez suben los mejores de estas ligas. Ver figura~\ref{Fig:los-equipos}
+
+Al ingresar al \emph{Sistema de recopilación} se tienen 
+
+
+
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \frame{\includegraphics[width=\linewidth]{los-equipos}}
+     \caption[Ejemplo de equipos de la liga española]{Ejemplo de equipos de la liga española\footnotemark }\label{Fig:los-equipos}
+   \end{minipage}
+\end{figure}
+
+\footnotetext{Es importante mencionar que se usan aproximadamente los últimos quinientos partidos para la generación de los archivos, esto implica que se deben tener en base de datos los equipos que participaron en las pasadas dos temporadas de juegos. Por este motivo de pueden encontrar equipos que se encuentran en el sistema con la bandera de inactivos.}
+
+\subsection{Recuperación de fechas de partidos próximos.}
+
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \frame{\includegraphics[width=\linewidth]{proximos-partidos}}
+     \caption{Recuperación de próximos partidos}\label{Fig:proximos-partidos}
+   \end{minipage}
+\end{figure}
+
+\subsection{Recuperación de información de partidos jugados.}
+
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \frame{\includegraphics[width=\linewidth]{pasados-partidos}}
+     \caption{Recuperación de resultados de partidos ya jugados}\label{Fig:pasados-partidos}
+   \end{minipage}
+\end{figure}
+
+\subsection{Generación de archivos con resultados.}
+
 
 \section{Sistema de estimación de probabilidades}
 \section{Portal administrativo}

@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish,mexico]{babel}
 \usepackage{epstopdf}
 \usepackage{bbding}
@@ -20,6 +21,9 @@
 \usetikzlibrary{trees}
 \usepackage{textcomp}
 \usepackage{placeins}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/Decidido.bib}
+
 
 %%% ESte codiguito hace que las imágenes se queden dentro de la subsección
 \makeatletter
@@ -50,33 +54,22 @@
 %\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 
-\title{Egobets, un sistema computacional de asesoría en apuestas de futbol}
-\author{Bruno Medina Bolaños Cacho}
 %\date{}                                           % Activate to display a given date or no date
 
 \begin{document}
-\maketitle
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%	INDICE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5 
- \newpage
- \tableofcontents
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%    LISTA FIGURAS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\cleardoublepage
-\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
-\listoffigures
 
 
+
+\include{./Capitulos/encabezados}
+\mainmatter
 \include{./Capitulos/1}
 \include{./Capitulos/2}
 \include{./Capitulos/3}
+
 \include{./Capitulos/4}
 \include{./Capitulos/5}
 
 
-
+\printbibliography
 
 \end{document}  

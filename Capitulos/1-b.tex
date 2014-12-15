@@ -32,23 +32,44 @@ Específicamente en Estados Unidos, Goldman Sachs valoró en 2009 que el mercado
 	``No hay proposición más cierta en matemáticas que la siguiente: Entre más boletos [de lotería] compre, más probabilidades tiene de ser un perdedor. Compre todos los boletos de la lotería y pierda con certeza; cuanto más boletos compre, más cerca estará de esta certeza''
 \end{chapquote}
 
-El principio básico detrás de un casino es muy sencillo: \emph{la ventaja de la casa}. Cada uno de los juegos que ofrece el casino tiene detrás un robusto sustento matemático que, a pesar de hacerlos aparentar como juegos justos, le confiere a la casa una ventaja porcentual sobre el conjunto de jugadores. Al final del día, esta ventaja y la ley de los grandes números, le garantizan a los casinos que a largo plazo tendrán suficientes ganancias para subsistir, mantener su operación y gozar de utilidades sorprendentes. Sin embargo, no hay que olvidar que los fenomenos estudiados siguen siendo producto del azar, por lo que una buena racha de algunos ``Grandes Apostadores'' podría llegar a asustar a los dueños de los casinos más racionales.\cite{hannum2005practical}.
+El principio básico detrás de un casino es muy sencillo: \emph{la ventaja de la casa}. Cada uno de los juegos que ofrece el casino tiene detrás un robusto sustento matemático que, a pesar de hacerlos aparentar como juegos justos, le confiere a la casa una ventaja porcentual sobre el conjunto de jugadores. Al final del día, esta ventaja y la ley de los grandes números, le garantizan a los casinos que a largo plazo tendrán suficientes ganancias para subsistir, mantener su operación y gozar de utilidades sorprendentes. Sin embargo, no hay que olvidar que los fenomenos estudiados siguen siendo producto del azar, por lo que una buena racha de algunos ``Grandes Apostadores'' podría llegar a asustar aun a los dueños  más racionales de casinos\cite{hannum2005practical}.
 
 
 Según Hannum\cite{hannum2005practical} hay dos grandes razones por las que la gente apuesta:
 
 \begin{enumerate}
-	\item \textbf{Entretenimiento.} Un individuo podría utilizar mil pesos para ir a un casino o a un concierto. Si la ventaja de la casa es muy grande y la persona pierde su dinero rápidamente, entonces la experiencia del entreteniminto del casino no sería apreciada por el jugador. Por el otro lado, si el casino logra entretener a la persona por una tarde mientras le regala bebidas y comidas, entonces puede que este individuo repita la experiencia y nunca más vuelva a un concierto.
-	\item \textbf{Cambio de Vida.} Si una persona ahorrara cien pesos semanalmente, al final del un año tendría cinco mil doscientos pesos. Pero si ese dinero lo gastara para comprar boletos de lotería, tendría la posibilidad de ganarse cuarenta millones de pesos. Claramente la probabilidad es muy cercana a cero, sin embargo esta podría ser la única oportunidad de esta persona de subir a una mejor clase social.
+	\item \textbf{Entretenimiento.} Un individuo podría utilizar mil pesos para ir a un casino o a un concierto. Si la ventaja de la casa es muy grande y la persona pierde su dinero rápidamente, entonces la experiencia del entreteniminto del casino no sería apreciada por el jugador. Por el otro lado, si el casino logra entretener a la persona por una tarde mientras le regala bebidas y comida, entonces puede que este individuo repita la experiencia y nunca más asista a un concierto.
+	\item \textbf{Cambio de Vida.} Si una persona ahorrara cien pesos semanalmente, al final del un año tendría cinco mil doscientos pesos. Pero si ese dinero lo gastara para comprar boletos de lotería, tendría la posibilidad de ganarse cuarenta millones de pesos. Claramente la probabilidad es muy cercana a cero; sin embargo, este gasto podría ser visto por esta persona como una única oportunidad para cambiar su vida.
 
 \end{enumerate}
 
-La ventaja que tiene la casa sobre el jugador se puede entender con las probabilidades de ganar que tiene la casa en cada uno de los juegos sobre el jugador. Tómese el caso de la ruleta:\footnote{El juego de la ruleta consiste en 18 casillas rojas, 18 casillas negra y 2 casillas sin color sobre las cuales, al girar de manera aleatoria, puede caer una pelotita. Los jugadores apuestan sobre la posición de la pelotita en diferentes combinaciones.}
-Al tener $38$ casillas, si un jugador apuesta sobre el color negro (i.e. que la pelotilla caiga sobre una de las casillas negras) entonces tenemos que la probabilidad de exito del usuario es de:\\
-$P[ \text{La pelotita caiga sobre la casilla negra} ] = \frac{ text{\# casillas negras}}{ text{\# casillas totales}}  = 18/38 \approx 0.4737$, sin embargo la casa asume 
+\emph{La ventaja de la casa}, se puede entender mejor analizando cada uno de los juegos que ofrece el casino y las probabilidades de ganar que tienen los jugadores. Tómese el juego de la ruleta americana:\footnote{El juego de la ruleta americana consiste en 18 casillas rojas, 18 casillas negras y 2 casillas sin color sobre las cuales, al girar de manera aleatoria, cae una pelotita. Los jugadores apuestan sobre la posición final de la pelotita.}
+Al tener $38$ casillas, si un jugador apuesta sobre el color negro (i.e. que la pelotita caiga sobre alguna de las casillas negras) entonces tenemos que la probabilidad de que el jugador gane la apuesta es de:\\
+\[p\{\text{La pelotita caiga en casilla negra}\} = \frac{\text{\# casillas negras}}{ \text{\# casillas totales}}  = \frac{18}{38}\]\\
+
+Afortunadamente para la casa, hay $2$ casillas que no son color negro ni rojo, por lo que de las $38$ sólo $36$ casillas tienen estos colores. Entonces, la probabilidaad de que la pelotita evite estos colores es la siguiente:
+
+\[p\{\text{La pelotita no caiga ni en casillas rojas ni en negra}\} =\] 
+\[\frac{\text{\# casillas totales - (\# casillas rojas + \# casillas negras)}}{ \text{\# casillas totales}}  =\]
+\[\frac{38-18-18}{38} = \frac{2}{38}  \]
+
+Estos $\frac{2}{38}$ son la ventaja de la casa, ya que cuando un jugador apuesta al color negro en la ruleta y acierta, recibe la misma cantidad de dinero que podría perder. Sin embargo, apostó a ganar con una probabilidad de $\frac{18}{38}$, pero la probabilidad de perder la apuesta es igual a $1 - \frac{18}{38} = \frac{20}{38}$. Este detalle hace importante ver el valor esperado que tiene esta apuesta para el jugador:
+\[E[\text{Apostar }k\text{ pesos al color negro}] = k  \cdot   p\{\text{La pelotita caiga en casilla negras}\} \]
+\[- k  \cdot   p\{\text{La pelotita no caiga en casilla negra}\} = k \cdot \frac{18-20}{38}= - k \cdot \frac{2}{38}\]
+
+Dado que siempre que se apuesta $k>0$, esto implica que:
+\[E[\text{Apostar }k\text{ pesos al color negro}] = - k \cdot \frac{2}{38} < 0; \forall k \in \mathbb{N} \]
+Este resultado quiere decir que a la larga el jugador \textbf{siempre} va a terminar perdiendo dinero.
+En un principio, $\frac{2}{38}$ de probabilidad pareciera poco, pero al multiplicarlo por la gran cantidad de jugadores y apuestas que se realizan en los casinos el monto final se vuelve exorbitante.
+
+Este sencillo ejercicio ejemplifica como todos los juegos que se tienen en los casinos ofrecen una ventaja para la casa. Es interesante mencionar, que aparte de los juegos de azar como la ruleta, hay juegos que obligan al jugador a tener cierta habilidad para no perder su dinero tan rápidamente, este es el caso de juegos como el Blackjack que le dan a la casa ventajas más pequeñas al enfrentarse a jugadores expertos. La ventaja de la casa sustenta las ganancias del casino, sin embargo calcular esta ventaja puede llegar a ser  complicado y requerir un análisis matemático mucho más sofisticado e incluso se puede llegar a necesitar programar el juego para correr simulaciones y estimar estas probabilidades.
+
+\subsection{Apuestas Deportivas}
+
+A diferencia de las apuestas en los juegos de mesa de los casinos y de los tragamonedas 
+
 \subsubsection{Inferencia Estadística}
 \subsubsection{Teoría de la Información}
-\subsection{La fascinación por predecir eventos aleatorios}
 \subsubsection{Sistemas de Predicción}
 
 Las apuestas han sido por siempre favorecidas en el estudio de las Matemáticas especialmente en áreas tan relacionadas como la probabilidad y la estadística.

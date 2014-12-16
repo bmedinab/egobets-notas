@@ -91,18 +91,18 @@ Keno (promedio)                           & 27.0\%                      \\ \hlin
 \label{ventaja-casa}
 \end{table}
 
-Finalmente, aun sin la ventaja de la casa se deber recordar que existe un famoso problema y su corolario que garantizan que la casa siempre gane: \emph{La ruina del Jugador} \cite[p.~95-99]{ross2006first}. Este problema enfrentado por varios famosos matemáticos\footnote{Se dice que Blaise Pascal se lo planteó a Pierre Fermat en 1656. Después fue replanteado a Christian Huygens y finalmente James Bernoulli resolvió en su forma general como el problema de la ``Duración de Juego''} deja la siguiente lección: La probabilidad de un jugador perder todo su dinero es igual al cociente entre la cantidad de dinero de su oponente sobre la suma de la cantidad de dinero de ambos: $p_1 = \frac{n_2}{n_1 + n_2}$ donde $p_1$ es la probabildad de ganar del jugador $1$ y $n_i$ es la cantidad de dinero que va a apostar el jugador $i$. Desafortunadamente, usualmente  la casa tendrá más dinero para apostar que el jugador.
+Finalmente, aun sin la ventaja de la casa se deber recordar que existe un famoso problema y su corolario que garantizan que la casa siempre gane: \emph{La ruina del Jugador} \cite[p.~95-99]{ross2006first}. Este problema enfrentado por varios famosos matemáticos\footnote{Se dice que Blaise Pascal se lo planteó a Pierre Fermat en 1656. Después fue replanteado a Christian Huygens y finalmente James Bernoulli resolvió en su forma general como el problema de la ``Duración de Juego''} deja la siguiente lección: La probabilidad de un jugador perder todo su dinero es igual a  $p_1 = \frac{n_2}{n_1 + n_2}$ donde $p_1$ es la probabildad de ganar del jugador $1$ y $n_i$ es la cantidad de dinero que va a apostar el jugador $i$. Desafortunadamente, usualmente  la casa tendrá más dinero para apostar que cualquier jugador.
 
 
 \subsection{Apuestas deportivas}
 
-\subsection{La gran ventaja}
+\subsection{La gran ventaja sobre los juegos de azar}
 
 A diferencia de las máquinas tragamonedas y los juegos de mesa de los casinos, las apuestas deportivas tienen una gran ventaja: \textbf{los resultados no son completamente aleatorios}. Hannum menciona en su libro: \emph{``La ventaja de la casa existe para casi todas las apuestas en un casino (ignorando las salas de Poker y las apuestas deportivas donde algunos pocos profesionales pueden vivir de de las apuestas)''} \cite{hannum2005practical} 
 
 Existen dos grandes mercados en esta rama de las apuestas \cite{chung2010empirical}:
 \begin{itemize} 
-	\item \emph{Bookies.} El corredor publica los momios de cada apuesta y cobra una comisión por cada una que recibe. A los jugadores se les promete un pago fijo que va en función de los momios publicados al momentos de hacer sus apuestas.
+	\item \emph{Bookies.} El corredor de apuestas publica los momios que tiene cada apuesta y cobra una comisión por cada operación recibida. A los jugadores se les promete un pago fijo que va en función de los momios publicados al momentos de hacer sus apuestas.
 	\item \emph{Sistema parimutual.} En este mercado no existen los corredores, ni los momios. El pago que reciben los jugadores depende de la cantidad de dinero recopilada por todas las apuestas recibidas. Por lo tanto, las ganancias de los jugadores no están determinadas hasta que todas las apuestas se reciben.
 	\end{itemize}
 
@@ -110,9 +110,64 @@ El mercado de estudio de este trabajo es el de los ``bookies'' o corredores de a
 
 Los momios de los bookies han sido cuestionados en eficiencia\footnote{La eficiencia de mercado no es un tema que se profundize en este documento sin embargo se pueden revisar a Sauer \cite{sauer1998economics} y Williams \cite{williams1999information} donde se explica más de anomalías como el ``sesgo favorite-longshot'' que implica que las apuestas a los favoritos generan un mayor retorno que las ``apuestas a longshots'' (apuestas arriesgadas).  } e incluso se han realizado varios estudios proponiendo un nuevo mercado de tipo ``doble subasta''\footnote{Consiste en tener compradores y vendedores fijando los precios, cuando dos de ellos coinciden, se lleva acabo la transacción. Referirse a Ozgit\cite{ozgit2005posted} }
 
-Sin importar el mercado, es importante que se recuerde el hecho de que nadie conoce las probabilidades reales que tienen los distintos resultados de los partidos. Este hecho hace que los ``bookies'' tengan que confiar en sus propios libros e investigaciones para estimar las probabilidades de los partidos. Este punto es básico en la creación de Egobets, ya que el hecho de que las probabilidades sean desconocidas da lugar a que Egobets estime probabilidades mucho más cercanas a las reales, consiguiendo con esto valiosos puntos porcentuales que se podrían traducir en ganacias.
+Sin importar el mercado, es importante que se recuerde el hecho de que nadie conoce las probabilidades reales que tienen los distintos resultados de los partidos. Este hecho hace que los ``bookies'' tengan que confiar en sus propios libros e investigaciones para proponer los momios de los partidos. Este punto es básico en la creación de Egobets, ya que el hecho de que las probabilidades sean desconocidas da lugar a que Egobets busque estimar probabilidades mucho más cercanas a las reales, consiguiendo con esto valiosos puntos porcentuales que se podrían traducir en ganacias\footnote{La idea detrás de este argumento es el de minimizar el error de estimación que tienen los bookies e utilizar esta información para generar las predicciones de los partidos}. Es decir, entre mayor sea el error de estimación de la probabilidad del resultado de un partido, mayor podría ser el valor esperado de la apuesta a realizar. Finalmente, la gran diferencia contra las apuestas de casino, es que si los bookies proponen mal sus momios, pueden perder dinero incluso a largo plazo.
 
 
+
+\subsection{Bookies y momios}
+Obsérvese el deporte del futbol y su apuesta más conocida: \emph{¿Qué equipo gana el partido?}
+Este evento tiene $3$ posibilidades:
+\begin{enumerate}
+	\item El partido lo gana el equipo de casa.
+	\item Es un empate.
+	\item El partido lo gana el equipo visitante.
+\end{enumerate}
+En un principio se puede pensar que los tres eventos son equiprobables, pero como se mencionó en la sección anterior esto resulta imposible por muchísimas razones, como por ejemplo: ser el equipo visitante, ser el equipo más fuerte del torneo, tener jugadores lesionados, tener diferentes condiciones climáticas a las acostumbradas (altitud, tipo de pasto, lluvia), entre otras\footnote{Piénsese incluso el escenario donde ambos equipos fueran igual buenos en todos los aspectos. En este escenario, la probabilidad de empate sería mayor que cualquiera de las otras dos posibilidades}. Sin embargo, estas razones no son (tampoco) suficientes para calcular los resultados de los partidos de manera determinística.
+
+
+El bookie presenta sus momios para los tres posibles resultados del partido, estos momios pueden llegar a tener ajustes tipicamente pequeños y relativamente infrecuentes. Sin embargo, si los corredores de apuestas llegaran a fijar un momio muy alejado del precio de equilibro del mercado, entonces el riesgo al que se exponen podría ser sustancialmente grande\footnote{Levitt \cite{levitt2004gambling} cuenta el ejemplo del Epson Derby de 1946, donde los momios fueron errados y la mitad de todas las casas de apuestas británicas se fueron a bancarrota} Si los jugadores pudieran reconocer estos errores y explotarlos, los bookies podrían llegar a sufrir grandes pérdidas.
+
+
+
+Es por estos motivos que los bookies realizan estudios minuciosos (o contratan agencias que los hagan) del comportamiento  de cada juego y a través de estos estudios proponen modelos que les proveen las probabilidades estimadas para cada escenario probable.
+
+
+
+
+
+ 
+ 
+ Sea $m_i$ el momio que propone el bookie para que los jugadores apuesten a que se cumpla el evento $i$. Entonces, se define el momio de la siguiente manera:
+\[m_i = \frac{1}{\hat{p_i}}\]
+Donde $\hat{p_i}$ es la probabilidad estimada que tiene el bookie de que suceda el evento $i$\footnote{Otros deportes tienen diferentes tipos de momios y su definición varía dependiendo del tipo de apuesta, se puede leer más de ellos en: \cite{ignatin1984sports}}
+
+Ahora, tómese de ejemplo el siguiente partido con los siguientes momios:
+\begin{itemize}
+
+\item \textbf{Cagliari Vs Juventus.}
+	\begin{itemize}
+		\item \textbf{9.290} Gana local (Cagliari)
+		\item \textbf{1.423} Empate.
+		\item \textbf{4.760} Gana visitante (Juventus)
+	\end{itemize}
+\end{itemize}
+
+Con esto podemos calcular las probabilidades estimadas por el bookie:
+\[\hat{p_L} = 1 - \frac{1}{9.290} \approx 0.107643...\]
+\[\hat{p_E} = 1 - \frac{1}{1.423} \approx 0.702741...\]
+\[\hat{p_V} = 1 - \frac{1}{4.760} \approx 0.210084...\]
+
+Estas probabilidades estimadas proponen que el escenario más probable es un empate, después la victoria del Juventus y finalmente la victoria del Cagliari. Curiosamente en este ejemplo, se puede ver que aunque el equipo Cagliari es local, se enfrenta a un adversario que puede contra la desventaja de ser visitante.
+
+Uno de los teoremas básicos de la probabilidad, dicen que la suma de las probabilidades de todos los resultados del evento debe sumar uno \cite{ross2006first}. Sin embargo, en el caso de los bookies, las probabilidades estimadas suman más. Este sobrante es la ya conocida ``Ventaja de la Casa''.
+
+Sea $\mathcal{O}$ el conjunto de todas las opciones a las que un jugador puede apostar sobre un evento\footnote{Para el caso de las apuestas sobre los resultados de los partidos, se tiene que: $\mathcal{O} = \{\text{Apostar a que gane local}, \text{Apostar al empate}, \text{Apostar a que gane visitante}\}$}.
+\[\text{Ventaja de la casa} =  \sum_{i \in \mathcal{O}}\frac{1}{\text{Momio de la opción } i} - 1\] 
+
+Siguiendo con el ejemplo, se tiene que la ventaja de la casa de este bookie para esta apuesta en particular es:
+\[\text{Ventaja de la casa} = \hat{p_L} + \hat{p_E} + \hat{p_V} - 1 \approx 0.020467\]
+
+Afortunadamente para los jugadores, este $2.046\%$ dependerá siempre del error de estimación que tengan sus 
 % \subsubsection{Inferencia Estadística}
 % \subsubsection{Teoría de la Información}
 % \subsubsection{Sistemas de Predicción}

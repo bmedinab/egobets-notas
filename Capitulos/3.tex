@@ -1,419 +1,582 @@
-\chapter{Back Office}
-\section{Descripción General}
+\chapter{Tejiendo la teoría Matemática}
 
-\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
-El ecosistema de Egobets consiste principalmente de cuatro piezas de software. Ver la figura~\ref{Fig:Sistemas}. En este capítulo se describirán las tres piezas que el usuario adminstrativo debe usar para poder a echar a andar toda la maquinaria detrás del sistema. A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
+\section{Decidir a favor de quien apuestas}
+
+\begin{enumerate}[(a)]
+ \item Sean $p_L$, $p_z$, $p_v$ las probabilidades de que gane local, empaten o gane visitante, respectivamente. Sean $\mu_L$, $\mu_z$ y $\mu_v$ los momios respectivos. El problema de decisión de apostar \$\,1 en esta situación es:\\
+ 
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=2.5cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+\tikzstyle{level 3}=[level distance=3.5cm, sibling distance=2cm]
 
 
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{sistemas}
-     \caption{Diagrama de sistemas y usuarios}\label{Fig:Sistemas}
-   \end{minipage}
+\begin{figure}[ht]
+\begin{tikzpicture}[grow=right, sloped]
+\node[text width=4em, text centered] {$\square$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%cuarto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+child {       
+    node[text width=4em, text centered] {1}
+             edge from parent         
+ node[above] {$\delta_{NA}$}
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%tercero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+child {       
+    node[text width=4em, text centered] {\textbigcircle}
+    child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$0$}] {}
+                edge from parent
+                node[above] {$1-p_v$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$\mu_v$}] {}
+                edge from parent
+                node[above] {$p_v$}              
+            }
+             edge from parent         
+ node[above] {$\delta_v$}
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%segundo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    child {       
+    node[text width=4em, text centered] {\textbigcircle}
+    child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$0$}] {}
+                edge from parent
+                node[above] {$1-p_z$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$\mu_z$}] {}
+                edge from parent
+                node[above] {$p_z$}              
+            }
+             edge from parent         
+ node[above] {$\delta_E$}
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%primero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    child{
+    node[text width=4em, text centered] {\textbigcircle}        
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$0$}] {}
+                edge from parent
+                node[above] {$1-p_L$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$\mu_L$}] {}
+                edge from parent
+                node[above] {$p_L$}              
+            }    
+ edge from parent         
+ node[above] {$\delta_L$}
+    };  
+\end{tikzpicture}
+\caption{Decidir por quién apostar}
 \end{figure}
 
-El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal.
-
-Grosso modo el proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
-\begin{enumerate}
-	\item A través del \emph{Sistema de recopilación} los administradores descargan de la página de Internet de ESPN los resultados de todos los partidos de la temporada junto con la información de los próximos partidos por jugar  de cada una de las ligas Europeas.
-	\item Los datos recopilados permiten a los administradores generar un conjunto de archivos de texto con toda la información de los resultados de los últimos partidos y las fechas de los próximos partidos.
-	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
-	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
-	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
-	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones peronalizadas de apuestas.
-\end{enumerate}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{flujo}
-     \caption{Diagrama de flujo de información}\label{Fig:flujo}
-   \end{minipage}
-\end{figure}
-
-
-\section{Sistema de recopilación de información y estadísticas de los partidos}
-\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
-
-A grandes rasgos el sistema de recopilación recupera todos los partidos que se juegan por temporada en cada una de las ligas\footnote{Egobets se enfoca en las ligas: alemana, españona, francesa, inglesa e italiana}. Para esto se dividirá este Sistema en los siguientes módulos:
-
-\begin{enumerate}
-	\item Recuperación de fechas de partidos próximos.
-	\item Recuperación de información de partidos jugados.
-	\item Generación de archivos con resultados.
-\end{enumerate}
-
-
-Adicionalmente en esta sección se describirá el funcionamiento del Sistema de Estimación. Sin embargo, al ser un conjunto de programas en \emph{Fortran} que son ajenos al autor, no se profundizará en los detalles del desarrollo del mismo.
-
-Para poder comenzar la recuperación de información, es importante contar con los equipos que estén jugando esta temporada. Dependiendo de los resultados de la temporada anterior, los equipos que hayan quedado hasta abajo en la tabla de posición descienden a ligas menores y a su vez suben los mejores de estas ligas. Ver figura~\ref{Fig:los-equipos}
-
-Al ingresar al \emph{Sistema de recopilación} se tienen 
-\subsection{Diseño de la solución}
- \cite{alfredo2005ingenieria}
-
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{los-equipos}}
-     \caption[Ejemplo de equipos de la liga española]{Ejemplo de equipos de la liga española\footnotemark }\label{Fig:los-equipos}
-   \end{minipage}
-\end{figure}
-
-\footnotetext{Es importante mencionar que se usan aproximadamente los últimos quinientos partidos para la generación de los archivos, esto implica que se deben tener en base de datos los equipos que participaron en las pasadas dos temporadas de juegos. Por este motivo de pueden encontrar equipos que se encuentran en el sistema con la bandera de inactivos.}
-
-\subsection{Recuperación de fechas de partidos próximos.}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{proximos-partidos}}
-     \caption{Recuperación de próximos partidos}\label{Fig:proximos-partidos}
-   \end{minipage}
-\end{figure}
-
-\subsection{Recuperación de información de partidos jugados.}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{pasados-partidos}}
-     \caption{Recuperación de resultados de partidos ya jugados}\label{Fig:pasados-partidos}
-   \end{minipage}
-\end{figure}
-
-\subsection{Generación de archivos con resultados.}
-
-
-\subsection{Sistema de estimación de probabilidades}
-\section{Portal administrativo}
-\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/admin/}}
-
-\subsection{Inicio de Sesión}
-Se ingresa al sistema a través la dirección de internet: 
-\begin{tightcenter}
-	\textbf{https://admin.egobets.com}
-\end{tightcenter}Se presenta la pantalla de inicio de sesión donde se introcue el nombre de usuario y contraseña. Véase las figuras~\ref{Fig:Login1} y~\ref{Fig:Login2}
-\pagebreak
-\begin{figure}[!htb]\centering
-   \begin{minipage}{0.49\textwidth}
-     \frame{\includegraphics[width=\linewidth]{login}}
-     \caption{Login}\label{Fig:Login1}
-   \end{minipage}
-   \begin {minipage}{0.49\textwidth}
-     \frame{\includegraphics[width=\linewidth]{login-lleno}}
-     \caption{Ingreso de datos}\label{Fig:Login2}
-   \end{minipage}
-\end{figure}
-
-Al dar click en el botón de \underline{Entrar}, se habrá iniciado sesión, y se está habilitado para comenzar a trabajar.
-
-Una vez que se haya terminado de usar el sistema, se debe cerrar la sesión, lo cual se puede hacer dando click sobre el botón de Salir. Véase figura~\ref{Fig:Logout}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.49\textwidth}
-     \frame{\includegraphics[width=\linewidth]{logout}}
-     \caption[Cerrar Sesión]{Cerrar Sesión}\label{Fig:Logout}
-   \end{minipage}
-\end{figure}
-
-Al hacerlo, se terminará de manera segura la sesión .
-\subsection{Ingesta}
-A través de este módulo se alimenta el sistema con la información necesaria para que la aplicación trabaje correctamente.
-
-Lo elementos que se ingresan en este módulo son:
-
-\begin{itemize}
-\item Próximos partidos
-\item Resultados de partidos anteriores
-\item Estadísticas de los equipos en la temporada
-\end{itemize}
-
-Al entrar a esta sección, se encuentra un campo para seleccionar el tipo de ingesta que se quiere realizar, en este caso hay dos opciones:
-
-\begin{itemize}
-\item Partidos  
-\item Equipos
-\end{itemize}
-Véase figura~\ref{Fig:ingesta}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.8\textwidth}
-     \frame{\includegraphics[width=\linewidth]{ingesta}}
-     \caption[Subir y procesar archivos]{Subir archivos y procesarlos\footnotemark}
-	 \label{Fig:ingesta}
-   \end{minipage}
-\end{figure}
-\footnotetext{Toda la información referente a los archivos que se deben subir se encuentra en el~\cref{chap:archivos} }
-
-
-
-
-\subsubsection{Partidos}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{partidos}}
-     \caption{Partidos procesados por el sistema}
-	 \label{Fig:partidos}
-   \end{minipage}
-\end{figure}
-
-Para subir la información de los partidos de la jornada que comienza, se selecciona del menú la opción de \textbf{Partidos}, y se presiona el botón \underline{Seleccionar archivo} donde se elige el archivo correspondiente.
-Una vez seleccionado el archivo a ingestar y el tipo de datos que contiene, se oprime el botón de \underline{Procesar}, lo cual comienza el proceso de ingesta.\footnote{Una vez que comenzado el proceso de ingesta (ya sea de equipos ó partidos), se tienen sólo 10 minutos para verificar que los datos sean correctos. De no hacerlo, el sistema no procesará el archivo hasta que se suba nuevamente}
-
-Con el archivo ya procesado, se puede verificar la interpretación que el sistema realizó del archivo. Se pueden observar en pantalla los siguientes datos:
-\begin{itemize}
-\item Identificador único y nombre del equipo local
-\item Identificador único y nombre del equipo visitante
-\item Marcadores de equipo local y visitante
-\item Probabilidades de local, empate y visitante
-\item Fecha en la que se llevará a cabo el partido
-\end{itemize}
-
-Si hay algún error en la información se puede presionar \underline{Cancelar} e intentarlo nuevamente, si la información es la correcta se oprime el botón de \underline{Aceptar}.
-
-
-\subsubsection{Equipos}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{equipos}}
-     \caption{Actualizando datos de los equipos}
-	 \label{Fig:equipos}
-   \end{minipage}
-\end{figure}
-
-Para la ingesta de datos de los equipos se selecciona la pestaña de \underline{Equipos} en la pestaña y luego se presiona el botón \textbf{Seleccionar archivo}.
-Una vez que se seleccione el archivo a ingestar y el tipo de datos que contiene, se oprime el botón de \underline{Procesar}, para comenzar el proceso de ingesta.
-Cuando el archivo termina de ser procesado el sistema presentará la interpretación del archivo, donde se podrán verificar los siguientes datos:
-\begin{itemize}
-\item Nombre del equipo
-\item Indicadores de ataque y promedio de ataques:
-	\begin{itemize}
-		\item Medio Centro
-		\item Delanteros
-		\item Definición
-	\end{itemize}
-\item Indicadores de defensa y promedio de defensas:
-	\begin{itemize}
-		\item Medio centro,
-		\item Defensa
-		\item Portero
-		\item Posesión
-	\end{itemize}
-\end{itemize}
-
-Si hay algún error en la información se puede presionar \underline{Cancelar} e intentarlo nuevamente, si la información es la correcta se oprime el botón de \underline{Aceptar}.
-
-
-\subsubsection{Resultados Anteriores}
-
-Al dar clic en el botón de \underline{Resultados Anteriores} se pueden ver y modificar los resultados de los partidos de la semana pasada. En esta pantalla se actualizan los marcadores, al terminar se da click en \underline{Guardar Resultados}.
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.64\textwidth}
-     \frame{\includegraphics[width=\linewidth]{resultados-anteriores}}
-     \caption[Actualizar resultados Anteriores]{Actualizando marcadores de la liga italiana}
-	 \label{Fig:Resultados-anteriores}
-   \end{minipage}
-\end{figure}
-
-Si el marcador de un partido que ya tenía resultado se deja en blanco no será modificado al guardar y se mostrará el resultado que tenía previamente.
-
-\subsection{Usuarios}
-
-Se muestran de quince en quince todos los usuarios inscritos a Egobets, para ver los siguientes quince usuarios se da click en el botón \underline{Siguiente}. Cada usuario tiene un botón de \underline{Detalles} y \underline{Eliminar}.
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{usuarios}}
-     \caption{Listado de Usuarios}
-	 \label{Fig:usuarios}
-   \end{minipage}
-\end{figure}
-
-\subsubsection{Detalles de Usuario}
-
-El botón Detalles en el listado presenta la información más detallada del usuario. Aquí se puede ver su información y preferencias:
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{detalle-usuario}}
-     \caption{Vista del detalle de usuario}
-	 \label{Fig:Detalle-usuario}
-   \end{minipage}
-\end{figure}
-
-\begin{itemize}
-	\item \textbf{Historial.} Indica las últimas ganancias y pérdidas por jornada
-	\item \textbf{Perfil de riesgo.} Despendiendo de la encuesta realizada por usuario se tiene su adversidad al riesgo.
-	\item \textbf{Casas de apuesta.} En el sistema se tienen varias Casas que proporcionan distintos momios para los partidos.
-	\item \textbf{Favoritos.} Los equipos favoritos del usuario
-	\item \textbf{Transacciones realizadas.} Los últimos pagos realizados.
-	\item \textbf{Usuario desde.} Tiempo que lleva como usuario de Egobets.
-	\item \textbf{Estatus de actividad.} Al ser un sistema de paga los usuarios pagan por jornada para recibir la asesoría de apuestas.
-		\begin{itemize}
-			\item Activo: el usuarios está recibiendo recomendaciones.
-			\item Inactivo: el usuario no está recibiendo recomendaciones.
-		\end{itemize}
-	\item \textbf{Jornadas restantes.} La cantidad de Jornadas que el usuario va seguir recibiendo asesorías.
-	\item \textbf{Idioma.} En que lenguaje lee el portal el usuario (Inglés o Español)
-\end{itemize}
-
-\textbf{Acciones Administrativas}
-\begin{itemize}
-\item \textbf{Aumentar/Restar una Jornada.}
-Una jornada le permite al usuario recibir la asesoría de los siguientes partidos.
-Los administradores del sistema le pueden otorgar o quitar a los usuarios jornadas con tan solo click en el botón.
-
-\item \textbf{Contactar.}
-Permite al administrador enviar un correo desde su progama predeterminado de correo al usuario.
-
-\item \textbf{Eliminar.} Todos los datos del usuario son eliminados del sistema.
-\end{itemize}
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.5\textwidth}
-     \frame{\includegraphics[width=\linewidth]{eliminar-usuario}}
-     \caption[Confirmar la eliminación de un usuario]{Confirmar la eliminación de un usuario\footnotemark}
-	 \label{Fig:Eliminar-usuario}
-   \end{minipage}
-\end{figure}
-
-\footnotetext{La información de los usuarios eliminados no podrá ser rescatada.}
-
-\subsection{Pagos}
-Los pagos de los usuarios se cambian por la sugerencia de apuestas de una jornada. En esta sección se muestra un listado de las transacciones monetarias más recientes y su información general.
-
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{Transacciones}}
-     \caption{Listado con los últimos pagos realizados}
-	 \label{Fig:Transacciones}
-   \end{minipage}
-\end{figure}
-
-Los detalles de las transacciones son:
-\begin{itemize}
-	\item Fecha en la que la transacción se inicio.
-	\item Número de transacción en la cuenta de PayPal de Egobets.
-	\item Nombre y el correo del usuario que realiza la transacción, al dar clic sobre su nombre serán dirigidos a la información detallada de dicho usuario
-	\item Cantidad de jornadas por las que se realiza la transacción
-	\item Cantidad monetaria por la que se realiza la transacción
-	\item Estatus de la transacción:
-	\begin{itemize}
-		\item Pendiente: se ha iniciado la transacción para la compra de jornadas, sin embargo aun no ha concluido.
-		\item Pagada: se realizó exitosamente y las jornadas han sido agregadas al usuario.
-	\end{itemize}
-\end{itemize}
-
-\subsection{Estadísticas}
-
-Esta sección muestra las estadísticas y gráficas a los usuarios administrativos con información relevante de: ganancias y pérdidas de los usuarios, resultados de las predicciones, preferencias de los usuarios, pagos y partidos.
-
-\subsubsection{Resultados Netos}
-
-Indica el promedio de las ganancias y pérdidas de todos los usuarios en las últimas cinco jornadas, esta información se puede ver de manera porcentual o en cantidad neta.
-Véase figura~\ref{Fig:mayor-ganancia}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.4\textwidth}
-     \frame{\includegraphics[width=\linewidth]{mayor-ganancia}}
-     \caption{Ganancias y pérdidas de los usuarios}
-	 \label{Fig:mayor-ganancia}
-   \end{minipage}
-\end{figure}
-
-
-\textbf{Mayor Pérdida.}
-Indica la mayor pérdida porcentual que se ha dado en la última jornada y al dar click presenta el perfil de dicho usuario.
-
-\textbf{Mayor Ganancia.}
-Indica la ganancia porcentual mayor que se ha dado en la última jornada y al dar click presenta el perfil de dicho usuario.
-
-
-\subsubsection{Usuarios y sus Datos}
-
-\textbf{Total.} Número total de usuarios registrados y al dar click presenta la sección de \underline{Usuarios}.
-
-\textbf{Nuevos.} Número de usuarios registrados recientemente y al dar click presenta la sección de \underline{Usuarios}.
-
-Véase figura~\ref{Fig:nuevos-usuarios}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.4\textwidth}
-     \frame{\includegraphics[width=\linewidth]{nuevos-usuarios}}
-     \caption{Usuarios recién inscritos}
-	 \label{Fig:nuevos-usuarios}
-   \end{minipage}
-\end{figure}
-
-Además, el sistema muestra la siguiente información general, porcentaje de usuarios que:
-\begin{itemize}
-	\item Usan Facebook para conectarse a Egobets
-	\item Usan apuestas dobles
-	\item Usan reserva
-	\item Ven Egobets en inglés
-	\item Se encuentran activos.
-\end{itemize}
-Véase figura~\ref{Fig:graficas-usuarios}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \frame{\includegraphics[width=\linewidth]{graficas-usuarios}}
-     \caption{Datos estadísticos de los usuarios}
-	 \label{Fig:graficas-usuarios}
-   \end{minipage}
+  $E_p[U(\delta_i)]=p_i\mu_i;\quad i=L,Z,V$\\
+  
+  Sol: Se escoge $\rho_i \,\, \cdot \ni \cdot \,\, E_p[U(\delta_i)]=max\{p_L\mu_L,p_z\mu_z,p_v\mu_v,1\}$
+  
+  \item Se quiere decidir si apostar o no en la ocurrencia de un evento: Sea $p=p(E)$ y $f_p$ densidad de $p$. Sea $\mu$ el momio en el caso de ocurrencia. El problema de decisión asociado es el siguiente:\\
+ 
+\begin{figure}[!ht]
+ \begin{tikzpicture}[grow=right, sloped]
+\node[text width=4em, text centered] {$\square$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%segundo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+child {       
+    node[text width=4em, text centered] {0}
+             edge from parent         
+ node[above] {$\delta_{NA}$}
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%primero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    child{
+    node[text width=4em, text centered]{\textbigcircle}
+   	    child {
+   	        node[]{\textbigcircle}   	                 
+                %node[above] {$f_p$}
+                child{node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$-1$}] {}                    
+                edge from parent
+                node[above] {$1-p$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$\mu-1$}] {}
+                edge from parent
+                node[above] {$p$}              
+            }
+            edge from parent
+            node[above] {$f_p$}}    
+ edge from parent         
+ node[above] {$\delta_A$}
+    };
+\end{tikzpicture}  
+\caption{Decidir si apostar o no apostar}
 \end{figure}
  
-\subsubsection{Pagos Recibidos}
+\newpage
+  
+  $\rightarrow E_p[U(\delta_A)]=E_{f_p}[p(\mu-1)-(1-p)]\\
+  =E_{f_p}[p(\mu)-1]\\
+  =E_{f_p}(p)\mu-1$\\
 
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.5\textwidth}
-     \frame{\includegraphics[width=\linewidth]{ultimos-pagos}}
-     \caption{Pagos más recientes}
-	 \label{Fig:ultimos-pagos}
-   \end{minipage}
+  Apuestas si $E_{f_p}(P)\cdot \mu \ge 1$
+  
+  \item Mismo problema que el caso anterior, sólo que la utilidad depende de $p$ y $\mu$: $U: \Re\times[0,1]\rightarrow\Re$\\
+  $(U(0,p)=0\quad\forall p)$.\\
+ 
+\begin{figure}[ht]
+\begin{tikzpicture}[grow=right, sloped]
+\node[text width=4em, text centered] {$\square$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%segundo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+child {       
+    node[text width=4em, text centered] {0}
+             edge from parent         
+ node[above] {$\delta_{NA}$}
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%primero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    child{
+    node[text width=4em, text centered]{\textbigcircle}
+   	    child {
+   	        node[]{\textbigcircle}   	                 
+                %node[above] {$f_p$}
+                child{node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$U(-1,p)$}] {}                    
+                edge from parent
+                node[above] {$1-p$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$U(\mu-1,p)$}] {}
+                edge from parent
+                node[above] {$p$}              
+            }
+            edge from parent
+            node[above] {$f_p$}}    
+ edge from parent         
+ node[above] {$\delta_A$}
+    };
+\end{tikzpicture}
+\caption{Decidir si apostar en función de una utilidad}
 \end{figure}
 
-\textbf{Última Semana.}
-Se representan las ganancias monetarias que obtenidas durante la última semana. Al dar click se muestra la sección de \textbf{Pagos}.
+  
+  
+  Se apuesta si: \\
+  $E_p(U(\delta_A))=E_p[p\,U(\mu-1,p)+(1-p)U(-1,p)]\ge0$
+\end{enumerate}
 
-\textbf{Transacciones en total.}
-Indica el número de transacciones que se han realizado durante todo el tiempo del sistema.
+Algunas funciones de utilidad posibles:
+\begin{itemize}
+ \item $U_\mu(x,p)=x(\frac{1}{\mu}-p)^2$\\
+ 
+ Notese que: $p\,U_\mu(\mu-1,p)+(1-p)U_\mu(-1,p)$\\
+ 
+ $(\hat p=\frac{1}{\mu})=(\hat p-p)^2(p\mu-1)$\\
+ 
+ Me duele más mientras más alejado esté de un trato beneficioso y me produce mayor placer mientras mayor sea el beneficio del trato.
+ 
+ \item $U_{\mu,a}(x,p)= \left\{ \begin{array}{lcc}
+             ax(\hat p-p)^2 &   si  & p \le \hat p \\
+             & &\\
+             x (\hat p-p)^2 &  si & p>\hat p\\             
+             \end{array}
+ \right.$
+ 
+ Notese que: \\
+ \[U_\mu=U_{\mu,1}\]\\
+ \[p\,U_{\mu,a}(\mu-1,p)+(1-p)U_\mu(-1,p)= \left\{ \begin{array}{lcc}
+             a(\hat p-p)^2 (p\mu-1)&   si  & p \le \hat p \\
+             & &\\
+             (\hat p-p)^2(p\mu-1) &  si & p>\hat p\\             
+             \end{array}
+ \right.\]
 
-\subsubsection{Partidos y Predicciones}
+ Me duele ``a'' veces más un trato perjudicial  que un trato beneficioso si me encuentro a la mis ma distancia que $\hat p$.
+ 
+ \item $U_{\mu,a,b}=U_{\frac{\mu}{1+\mu b},a}$\\
+ 
+ y considerar el problema de decisión con $\mu'=\frac{\mu}{1+\mu b}$.\\
+ 
+ Si $\mu'=\frac{\mu}{1+\mu b}\rightarrow \hat p'=\hat p+b$.\\
+ 
+ Los tratos empiezan a ser beneficiosos hasta que el menos sea $b\%$ más probable que ocurra el evento de lo que sería justo.\\
+ 
+ {\bf Nota:} En un problema de decisión sin aversión a la distribución de probabilidades (o con probabilidades fijas) si se desea apostar en apuestas con un mínimo de ganancias esperadas igual a $b\%$ se debe comparar $\mu_p$ con $1+b$ (i.e. apostar $\leftrightarrow \mu_p \ge 1+b$).
+ 
+\end{itemize}
 
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.5\textwidth}
-     \frame{\includegraphics[width=\linewidth]{partidos-acertados}}
-     \caption{Partidos acertados}
-	 \label{Fig:partidos-acertados}
-   \end{minipage}
+\section{Decidir la cantidad de dinero a apostar}
+
+Supongamos que $\mu_p \ge 1$ y que existen 2 funciones de utilidad:
+\[U_1:\Re^+ \rightarrow \Re^+\]
+\[U_2:\Re^+ \rightarrow \Re^+\]
+
+La primera es la función de utilidad del dinero para las ganancias y la segunda es la utilidad del dinero para las pérdidas monetarias.\\
+
+Se harán las siguientes supuestos:
+
+\begin{enumerate}[(i)]
+ \item $U_1(0)=U_2(0)=0$. $U_1$, $U_2$ no decrecientes, una vez cont. dif.
+ \item $U'_1(0)>U'_2(0)$ (por lo tanto convendrá apostar).
+ \item $\forall M>0$ fija $\displaystyle \lim_{x\rightarrow \infty} \frac{U_1(\mu x)}{U_2(x)}=0$.\\
+ (Perder duele muchisimo más que ganar).
+\end{enumerate}
+El problema de decisión asociado a  determinar la cantidad óptima a postar es:(con $0<p<1$ fija y $\mu$ momio)\\
+
+\begin{figure}[ht]
+ \begin{center}
+\begin{tikzpicture}[grow=right, sloped]
+\node[text width=4em, text centered] {$\square$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%primero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+child{
+    node[text width=4em, text centered] {\textbigcircle}        
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$-U_2(x)$}] {}
+                edge from parent
+                node[above] {$1-p$}             
+            }
+            child {
+                node[circle, minimum width=1pt,fill, inner sep=0pt, label=right:
+                    {$U_1((\mu-1)x)$}] {}
+                edge from parent
+                node[above] {$p$}              
+            }    
+ edge from parent         
+ node[above] {$\delta_x$}
+    };
+\end{tikzpicture} 
+\end{center}
+\caption{Árbol de probabilidad 4}
 \end{figure}
 
-\textbf{Aciertos}
-Presenta la cantidad de partidos de esta semana y al dar clic nos lleva a la sección de \underline{Ingesta}.
 
-\textbf{Aciertos}
-Representan con una gráfica la cantidad de aciertos obtenidos en las predicciones hechas en partidos pasados. Al presionarla se dirige el navegador a los \underline{Resultados Anteriores} dentro de la sección de \underline{Ingesta}.
 
-\subsection{Correos}
+$\rightarrow E_p[U(\delta x)]=pU_1((\mu-1)x)-(1-p)U_2(x)$\\
 
-En esta sección se puede enviar correos a un subconjunto de usuarios registrados en Egobets. Los mensajes deberán ser escritos en Español y en Inglés para que el correo recibido dependa del lenguaje elegido por el usuario al crear su cuenta. Los grupos de usuarios con los que nos se puede comunicar son:
+Sea $f(x)=E_p[U(\delta x)]$\\
+
+Encontrar el óptimo es encontrar $x \ge 0$ que resuelva el problema: $\displaystyle \max_{x\ge0}f(x)$\\
+
+\[f'(x)=p(\mu-1)U'_1((\mu-1)x)-(1-p)U'_2(x)=0\]
+\[\frac{p(\mu-1)}{(1-p)}=\frac{U'_2(x)}{U'_1((\mu-1)x)}\]
+P.d.$$\exists \quad x^* \quad \cdot \ni \cdot \quad \frac{p(\mu-1)}{1-p}=\frac{U'_2(x)}{U'_1(\mu x)}$$
+
+\begin{enumerate}[(i)]
+
+ \item $f'(0)=p(\mu-1)U'_1(0)-(1-p)U'_2(0)>p(\mu-1)U'_2(0)-(1-p)U'_2(0)$\\
+ 
+ $\,\,\,\quad\quad=U'_2(0)(p\,\mu-1)\ge 0$\\
+ 
+ Con $U_2'(0)\ge 0$ y $p\mu\ge0$\\
+ Por tanto $f'(0)>0$
+ 
+ \item $f(0)=0$
+ \item $\displaystyle\frac{f(x)}{U_2(x)}=p\displaystyle\frac{U_1((\mu-1)x)}{U_2(x)}-(1-p)$\\
+ $\rightarrow \displaystyle \lim_{x\rightarrow\infty}\frac{f(x)}{U_2(x)}=-(1-p)$\\
+ 
+ $\rightarrow \exists \, x\,\,\cdot \ni \cdot \,\, \displaystyle\frac{f(x)}{U_2(x)}=-(1+p)+\varepsilon<0$\\
+ 
+ $\rightarrow \exists\,x\,\,\cdot \ni \cdot \,\,f(x)<0$
+ \begin{itemize}
+  \item Por $T.V.M.\,\,\,\exists\,\, x'\in(0,x)\,\,\cdot \ni \cdot \,\,xf'(x')=f(x)-f(0)=f(x)<0$\\
+  $\rightarrow f'(x')<0$
+  \item T.V.I. $\exists\,\, x^*\in(0,x')\,\,\cdot \ni \cdot \,\,f'(x^*)=0$. i.e. $\displaystyle\frac{p(\mu-1)}{1-p}=\displaystyle\frac{U'_2(x)}{U'_1(\mu x)}$\\
+  
+  Como $f$ es primero creciente y en algún punto decreciente:\\
+  $\rightarrow x\,\,\cdot \ni\cdot\,\,f'(x)=0$ es un maximizador.
+ \end{itemize}
+\end{enumerate}
+
+Algunas funciones a considerar:
+\begin{itemize}
+ \item $U_{1,\alpha}(x)=x^{\alpha}\qquad\qquad 0<\alpha<1$\\ 
+ $U_2(x)=x$\\
+ 
+ Compruébense los supuestos:
+ \begin{enumerate}[(i)]
+  \item $U_{1,\alpha}(0)=0=U_2(0)$, son crecientes y una vez dif.
+  \item $U'_{1,\alpha}(0)=+\infty$, $U'_2(0)=1\qquad{\therefore \,\, U'_{1,\alpha}(0)>U'_2(0)}$
+  \item $\forall \,\, \mu>0$\\
+  
+  $\displaystyle\lim_{x\rightarrow +\infty}\displaystyle\frac{U_{1,\alpha}(\mu x)}{U_2(x)}=\mu^{\alpha}\displaystyle\lim_{x\rightarrow +\infty}\displaystyle\frac{x^{\alpha}}{x}=\mu^{\alpha}\displaystyle\lim_{x\rightarrow +\infty}\displaystyle\frac{1}{x^{1-\alpha}}=0$\\
+  
+  Para una apuesta con probabilidad $p$ y momio $\mu$ el óptimo se da en:\\
+  
+  $\displaystyle{\frac{p(\mu-1)}{(1-p)}=\frac{U'_2(x)}{U'_{1,\alpha}((\mu-1)x)}=\frac{1}{\alpha((\mu-1)x)^{\alpha-1}}=\frac{1}{\alpha}(\mu-1)^{1-\alpha}x^{1-\alpha}}$\\\\
+  
+  $\rightarrow \left(\displaystyle\frac{\alpha p}{(1-p)}\right)(\mu-1)^{\alpha}=x^{1-\alpha}\rightarrow x^*=\left(\displaystyle\frac{\alpha p}{1-p}\right)^{\frac{1}{1-\alpha}}(\mu-1)^{\alpha/1-\alpha}$\\
+ \end{enumerate}
+
+ \item $U_{1,\alpha}(x)=x^{\alpha}\qquad\qquad 0<\alpha<1$\\
+ $U_{2,\beta}(x)=x^{\beta}\qquad\qquad \beta \le1$\\
+ 
+ Es fácil revisar los supuestos. Para una apuesta con probabilidad $p$ y momio $\mu$ el óptimo se da en:\\
+ 
+ ${\displaystyle\frac{p(\mu-1)}{(1-p)}=\frac{\beta x^{\beta-1}}{\alpha(\mu-1)^{\alpha-1}x^{\alpha-1}}=\frac{\beta}{\alpha}(\mu-1)^{1-\alpha}x^{\beta-\alpha}}$\\
+ 
+ $\rightarrow{\displaystyle\left(\frac{\alpha p}{\beta(1-p)}\right)(\mu-1)^{\alpha}=x^{\beta-\alpha}\rightarrow x^*=\left(\frac{\alpha p}{\beta(1-p)}\right)^{1/\beta-\alpha}(\mu-1)^{\alpha/\beta-\alpha}}$
+ 
+ \item $U_1(x)=\ln (x)$\\
+ $U_2(x)=x$\\
+ 
+ Es fácil revisar los supuestos. Para una apuesta con probabilidad $p$ y momio $\mu$ el óptimo se da en:\\
+ 
+ ${\displaystyle \frac{p(\mu-1)}{(1-p)}=\frac{1}{(\frac{1}{(\mu-1) x})}=(\mu-1)x\rightarrow x^*=\frac{p}{1-p}}$\\
+ 
+ \item $U_{1,\alpha}(x)=1-e^{-\alpha x}\qquad\qquad \alpha \ge 1$\\
+ $U_2(x)=x$\\
+ 
+ Es fácil revisar los supuestos. Para una apuesta con probabilidad $p$ y momio $\mu$ el óptimo se da en:\\
+ 
+\[{\displaystyle\frac{p(\mu-1)}{1-p}=\frac{1}{\alpha e^{-\alpha(\mu-1)x}}\,\,\rightarrow \,\,\ln \left(\frac{\alpha p(\mu-1)}{(1-p)}\right)=\alpha(\mu-1)x}\]
+\[\qquad\qquad\qquad\qquad\qquad\qquad\rightarrow\,\, x^*={\displaystyle\frac{1}{\alpha (\mu-1)}\ln \left(\frac{\alpha p(\mu-1)}{(1-p)}\right)}\]
+\end{itemize}
+
+Otras tres funciones de utilidad a considerar:
 
 \begin{itemize}
-	\item Todos los usuarios
-	\item Usuarios activos: aquellos que tienen jornadas pagadas
-	\item Usuarios inactivos: aquellos que ya no tienen jornadas pagadas
-	\item Usuarios registrados: aquellos que se registraron pero no han confirmado su correo
+ \item $U_{1,\alpha}(x)=\alpha x \qquad\qquad \alpha \ge 1$\\
+ $U_2(x)=e^x-1$\\
+ 
+ $\rightarrow {\displaystyle\frac{p(\mu-1)}{1-p}=\frac{e^x}{\alpha}}$\\
+ 
+ $\rightarrow x^*=\ln \left(\displaystyle\frac{p(\mu-1)}{1-p}\right)+\ln (\alpha)$
+ 
+ \item $U_1(x)=\ln (x)\qquad\qquad \alpha \ge 1$\\
+ $U_2(x)=x^{\alpha}$\\
+ 
+ $\rightarrow {\displaystyle\frac{p(\mu-1)}{1-p}=\frac{\alpha x^{\alpha-1}}{\frac{1}{(\mu-1)x}}=\alpha(\mu-1)x^{\alpha}}$\\
+ 
+ $\rightarrow x^*=\left(\displaystyle\frac{p}{\alpha(1-p)}\right)^{1/\alpha}$
+ 
+ \item $U_{1,\alpha}(x)=\tan^{-1}(x)$\\
+ $U_{2,\alpha}(x)=\alpha x\qquad\qquad 0<\alpha\le 1$\\
+ 
+ $\rightarrow \displaystyle\frac{p(\mu-1)}{1-p}=\alpha(1+(\mu-1)^2x^2)$\\
+ 
+ $\rightarrow \displaystyle\frac{p\mu-p-\alpha(1-p)}{1-p}=\alpha(\mu-1)^2x^2$\\
+ 
+ $\rightarrow \displaystyle\frac{p\mu-(1-\alpha)p-\alpha}{1-p}=\alpha(\mu-1)^2x^2$\\
+
+ $\rightarrow x^*={\displaystyle\frac{1}{\sqrt{\alpha}(\mu-1)}\left(\frac{p\mu-(1-\alpha)p-\alpha}{1-p}\right)^{1/2}}$\\
+ 
+ equivalentemente:  $x^*={\displaystyle\frac{1}{\mu-1}\left(\frac{p\mu-(1-\alpha)p-\alpha}{1-p}\right)^{1/2}}$\\
+ 
+ Basta probar que $p\mu-(1-\alpha)p-\alpha \ge 0$\\
+ 
+ $p\mu-(1-\alpha)p-\alpha \ge p\mu-(1-\alpha)-\alpha=p\mu-1 >0$\\
+ 
+ $x^*$ está bien definido.
 \end{itemize}
-Véase figura~\ref{Fig:correos}
 
-\begin{figure}[!htb]\centering
-   \begin {minipage}{0.8\textwidth}
-     \frame{\includegraphics[width=\linewidth]{correos}}
-     \caption{Comunicación con los usuarios}
-	 \label{Fig:correos}
-   \end{minipage}
-\end{figure}
+\section{Ahorro precaucional}
 
-Para redactar los textos, se debe usar la sintaxis de Markdown\footnote{El hipervínculo de \underline{Markdown} redirige a una página dónde se puede aprender sobre el uso de esta sintaxis.}.
-Se pueden usar textos de reemplazo cuándo se quieran personalizar los mensajes, para esto basta con utilizar las palabras clave: \{nombre\}, \{correo\} y \{id\}, las cuales el sistema sustituirá, al momento de mandar el correo, por los valores correspondientes para cada usuario.
+Supongamos $F_1,...,F_n$ distribuciones y la siguiente sucesión de Variables aleatorias $(x_1^t)_{t=1}^{\infty},..., (x_n^t)_{t=n}^{\infty}$ independientes $x_j^{t} \sim F_j \,\forall\, t\, \in\, \mathbb{N}$.\\
 
+Sean $\alpha_1,..., \alpha_n\,\in\,\Re^+\,\, \cdot \ni \cdot \,\,\displaystyle \sum_{j=1}^n\alpha_j=1$, definimos:
 
+\begin{itemize}
+ \item $z_1=\displaystyle \sum_{j=1}^n\alpha_jx_j'$ 
+ \item $z_{t+1}=\displaystyle \sum_{j=1}^n\alpha_jx_j^{t+1}+z_t$ 
+\end{itemize}
+Supongamos que $E[x_j^t]>1\,\,\forall\,t \,\in\,\mathbb{N}\rightarrow E[z_t]=tE[z_1]=t\mu>1$\\
 
+{\bf Problema:}\\
+Encontrar $y \,\,\cdot \ni\cdot\,\,(1-ty)+yz_t \ge y\,\,\forall\,t\,\in \mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$. $(y\in[0,1])$.
 
+$$\rightarrow y z_t\ge (t+1)y-1\quad\rightarrow\quad z_t\ge(t+1)-\frac{1}{y}$$
+$$\qquad\qquad\qquad\qquad\qquad\qquad\qquad\,\,\rightarrow z_t\ge t+k (con\,\,\,k=1-\frac{1}{y})$$
+
+equivalentemente: Encontrar $k\le 0\,\,\cdot\ni\cdot\,\,z_t\ge t+k\,\,\forall\,t\in\mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$.\\
+
+Sol: \\
+Sea $\mu=E[z_1]$, $\sigma^2=Var[z_1]$\\
+
+\[\rightarrow (1-\alpha)=p(z_t)\ge t+k\,\,\forall\,\in\mathbb{N}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad\]
+\[=p(z_1\ge 1+k)\cdot p(z_2\ge 2+k\,\,|z_1\ge 1+k)\cdots\qquad\quad\]
+\[=p(z_1\ge 1+k)\cdot\displaystyle\prod_{t=1}^{\infty}p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)\]\\
+
+Usando el T.C.L.: $z_t \rightarrow N(t\mu,\,t\sigma^2)\,\,\forall\,t\in\,\mathbb{N}$
+
+\begin{enumerate}[(i)]
+ \item $p(z_1\ge 1+k)=p{\displaystyle\left(\frac{z_1-\mu}{\sigma}\ge\frac{(1+k)-\mu}{\sigma}\right)=1-\Phi\left(\frac{k-(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+ 
+ \item $p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)=\displaystyle\frac{p(z_{t+1}\ge (t+1)+k,\,z_t\ge t+k)}{p(z_t\ge t+k)}$\\
+ 
+    \begin{itemize}
+     \item $p(z_t\ge t+k)=p{\displaystyle\left(\frac{z_t-t\mu}{\sqrt{t}\sigma}\ge\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+     
+     $\qquad\qquad\qquad={\displaystyle 1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+     
+     \item $z_{t+1}=y_t+z_t$ con $y_t \sim (\mu,\sigma^2),\,\,y_t,z_t$ independientes\\ $z_t\sim(t\mu,t\sigma^2)$
+    \end{itemize}
+$\rightarrow f(y_t,z_t)\simeq \displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{-\frac{1}{2\sigma^2}[(y_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}$
+\end{enumerate}
+
+Sea \[\omega_t=y_t+z_t\qquad\qquad y_t=\omega_t-v_t\]
+%\[\rightarrow\]
+\[v_t=z_t\qquad\qquad z_t=v_t\]
+
+\[\rightarrow J=\left( {1\atop 0} {-1\atop {1}} \right)\rightarrow |det(J)|=1\]
+
+\[f(z_{t+1}z_t)=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}\]\\
+
+$\rightarrow p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
+
+\[={\displaystyle\int_{t+k}^{\infty}\int_{t+1+k}^{\infty}\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}}dz_{t+1}dz_t\]\\
+
+\[{=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\int_{t+1+k}^{\infty}\frac{1}{\sqrt{2\pi}\sigma}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2\}dz_{t+1}dz_t}\]\\
+
+\newpage
+
+\[\footnote{Ver Apéndice A}= {\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\left[1-\Phi\left(\frac{k+t-z_t-(\mu-1)}{\sigma}\right)\right]}\]
+
+ \rule{14cm}{0.1mm}
+\[\overline{z_t}=\frac{1}{t}z_t,\,\,\,d\overline{z_t}=\frac{1}{t}dz_t,\,\,\,(\overline{z_t})_0=1+\frac{k}{t},\,\,\,(\overline{z_t})_1=\infty\]
+ \rule{14cm}{0.1mm}
+
+\[={\displaystyle\frac{\sqrt{t}}{2\pi\sqrt{t}\sigma^2}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}\]
+
+Por tanto:\\
+
+$p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
+
+\[\simeq {\displaystyle \frac{\sqrt{t}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}{\sqrt{2\pi}\sigma\left(1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)\right)}}\]
+
+Para calcular $k$ se resuelve la siguiente ecuación:
+
+\[\log (1-\alpha)=\log(p|z_1\ge 1+k)+\displaystyle\sum_{t=1}^{\infty}\log(p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k)\]
+
+\[y=\frac{1}{1-k}\]
+
+Se realizó una muestra $y_1,..., y_n$, donde:
+
+\[y_1=CA(p_i,\mu_i,\sigma_i)\]
+
+Donde:
+\begin{itemize}
+ \item $p_i$: Un valor de probabilidad deseado.
+ \item $M_i$: Un valor de $E[z_1]$ dado.
+ \item $\delta_i$: Un valorde $Var(z_i)^{1/2}$.
+ \item $CA$: La función que se define implícitamente de resolver las ecuaciones para calcular la cantidad de apostar.
+\end{itemize}
+
+A tales datos se les ajustó el siguiente modelo lineal:
+
+\[y_i=\beta_0+\beta_1p_i+\beta_2\mu_i+\beta_3\sigma_i+\varepsilon_i\]
+
+\newpage
+
+El ajuste es el siguiente:
+
+\begin{itemize}
+ \item $\beta_0=0.2925$
+  \item $\beta_1=-0.9975$
+ \item $\beta_2=1.3772$
+ \item $\beta_3=-1.1127$
+\end{itemize}
+
+Con $R^2=0.95$.\\
+
+En adelante, se tomará como aproximación lo siguiente:
+
+\[CA(p,\mu,\sigma)\simeq0.2925-0.9975p+1.3772\mu-1.1127\sigma\]
+
+\section{Evolución de la cantidad a Apostar}
+
+{\bf Problema:} Decidir $p$ de manera óptima.\\
+
+Sea $x$ la cantidad de ingresos restantes ($o\ge x\ge1$, en porcentaje), y $\mu$, $\sigma$ la media y la desviación estandar de apostar en un periodo dados.\\
+
+Supongamos $U_1,U_2: \Re^+\rightarrow \Re^+$ funciones de utilidad del dinero. ($U_1$ ganancias, $-U_2$ pérdidas) $\cdot\ni\cdot$ son no decrecientes y una vez continuamente diferenciables. Considerese la siguiente función:\\
+
+\[f(p;x,\mu,\sigma)=[beneficio]-[costo]\]
+\[f(p;x,\mu,\sigma)=[pU_1(y(p,\mu,\sigma)\mu x)]-[(1-p)U_2(x)]\]\\
+
+Suponiendo $y(p,\mu,\sigma)=a_0-a_1p+a_2\mu-a_3\sigma$ se obtiene:\\
+
+$a_i\ge 0,\,\,i=0,...,3$
+\[f=pU_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)-(1-p)U_2(x)\]
+
+El problema es:\\
+
+$max\,\,f$\\
+
+Sol:\\
+
+\[f'(p)=-pU_1'((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)a_1\mu x\]
+\[\qquad\qquad\qquad+U_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)+U_2(x)=0\]
+
+Si $U_1$ es cóncava $\rightarrow$ $p^*$ es un maximizador.\\
+
+ Forma aproximada de obtener $p$ :
+ 
+ \[y=a_0-a_1p+a_2\mu-a_3\sigma\]
+ 
+ $\rightarrow$ Sea $b=a_1\mu x$, $p_0$ una aproximación de $p$. Definimos:
+ 
+ \[\omega=y\mu x,\quad \omega_0=y(p_0,\mu,\sigma)\mu x\]
+ 
+ \[\rightarrow U_1(\omega)=U_1(\omega_0)+U'_1(\omega_0)(\omega-\omega_0)+O((\omega-\omega_0))\] 
+ \[=U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)+O((\omega-\omega_0))\]
+ 
+ Se puede aproximar $f$ por:
+ 
+ \[f(p)\simeq p[U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)]-(1-p)U_2(x)\]
+ 
+ \[\Rightarrow f'(p)\simeq U_1(\omega_0)-2bU'_1(\omega_0)p+bU'_1(\omega_0)p_0+U_2(x)=0\]
+ 
+ \[\Rightarrow p\simeq \frac{1}{2bU'_1(\omega_0)}[U_1(\omega_0)+U_2(x)]+\frac{1}{2}p_0\]
+ 
+Supongamos $U_1:\Re^+ \rightarrow \Re^+$ dada por $U(\omega)=\omega^\alpha\qquad(0<\alpha\le1)$ y $U_2(x)=\beta x$\\
+
+Notese que:
+\begin{itemize}
+ \item ${\displaystyle\frac{U_1(\omega_0)}{U'_1(\omega_0)}=\frac{\omega_0}{\alpha}}$
+ \item ${\displaystyle\frac{\omega_0}{b}=\frac{a_0-a_1p+a_2\mu-a_3\sigma}{a_1}}$
+\end{itemize}
+
+\[\Rightarrow p\simeq \frac{1}{2\alpha a_1}[a_0+a_2\mu-a_3\sigma+\frac{\beta}{\mu}[(a_0-a_1p_0+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}]+\frac{1}{2}(1-\frac{1}{\alpha})p_0\]
+ 
+Supongamos ahora que $f$ es de la siguiente forma:
+
+\[f(p)=pU_1(y(p,\mu,\sigma)\cdot \mu x)-(1-p)U_2(x)-pU_3(\theta(k\sigma-\mu))\]
+ 
+i.e. Hay pérdidas potenciales por el riesgo de la inversión considerar
+\[U_3(\theta(k\sigma-\mu))U_2(\theta(k\sigma-\mu)x)I(\theta(k\sigma-\mu)\ge 0)\]
+ 
+$\Rightarrow$ De manera análoga se obtiene:
+
+\[p\simeq\frac{1}{2bU'(\omega_0)}[U_1(\omega_0)+U_2(x)+U_2(\theta(k\sigma-\mu)xI_{\{m\ge0\}}]+\frac{1}{2}p_0\]
+ 
+\newpage 
+Si tomamos $U_1(\omega)0\omega^\alpha$, $U_2(x)=\beta x$ \\\\
+ 
+$p\simeq \frac{1}{2\alpha a_1}\{(a_0+a_2\mu-a_3\sigma)$
+\[+\frac{\beta_1}{\mu}[1+(\beta_2\sigma-\beta_3 \mu)I_{\{m\ge0\}}][(a_0-a_1p+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}\}+\frac{1}{2}(1-\frac{1}{\alpha})p_0\] 
+ 

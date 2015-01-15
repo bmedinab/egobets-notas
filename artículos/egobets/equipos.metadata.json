@@ -1,0 +1,1 @@
+{ "options" : { "create" : "equipos" }, "indexes" : [ { "name" : "_id_", "ns" : "egobets.equipos", "key" : { "_id" : 1 }, "v" : 0 }, { "v" : 1, "key" : { "nombre" : 1 }, "unique" : true, "ns" : "egobets.equipos", "name" : "nombre_1", "dropDups" : true }, { "v" : 1, "key" : { "liga" : 1 }, "ns" : "egobets.equipos", "name" : "liga_1" } ] }

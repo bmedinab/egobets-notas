@@ -1,0 +1,1 @@
+{ "indexes" : [ { "name" : "_id_", "ns" : "egobets.usuarios", "key" : { "_id" : 1 }, "v" : 0 }, { "v" : 1, "key" : { "correo" : 1 }, "unique" : true, "ns" : "egobets.usuarios", "name" : "correo_1" }, { "v" : 1, "key" : { "status" : 1 }, "ns" : "egobets.usuarios", "name" : "status_1" } ] }

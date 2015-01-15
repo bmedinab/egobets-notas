@@ -1,0 +1,1 @@
+{ "indexes" : [ { "name" : "_id_", "ns" : "egobets.partidos", "key" : { "_id" : 1 }, "v" : 0 }, { "v" : 1, "key" : { "liga" : 1, "fecha" : -1 }, "ns" : "egobets.partidos", "name" : "liga_1_fecha_-1" } ] }

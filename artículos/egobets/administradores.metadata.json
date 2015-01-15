@@ -1,0 +1,1 @@
+{ "indexes" : [ { "name" : "_id_", "ns" : "egobets.administradores", "key" : { "_id" : 1 }, "v" : 0 }, { "v" : 1, "key" : { "correo" : 1 }, "unique" : true, "ns" : "egobets.administradores", "name" : "correo_1" } ] }

@@ -1,0 +1,1 @@
+{ "indexes" : [ { "name" : "_id_", "ns" : "egobets.casas", "key" : { "_id" : 1 }, "v" : 0 }, { "_id" : { "$oid" : "4e49540f737007b47c9aec55" }, "ns" : "egobets.casas", "key" : { "nombre" : 1, "url" : 1 }, "name" : "nombre_1_url_1", "unique" : true, "v" : 0 } ] }

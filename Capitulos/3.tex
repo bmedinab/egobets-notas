@@ -65,19 +65,46 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 
 \subsection{Sistema de recopilación de información y estadísticas de los partidos}
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
-Se recuperan todos los partidos que se juegan por temporada en cada una de las ligas.
-
-
-\subsubsection{Web Scraper}
+Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado la temporada pasada y las fechas de los próximos partidos por jugar de cada una de las ligas. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después pueden ser ingestados en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
 
 \subsubsection{Tecnologías destacadas}
 
 \begin{itemize}
-	\item LAMP
-	\item Code Igniter
+	\item \textbf{Servidor LAMP.} Esta es una de las configuraciones más populares para servidores web. El famoso acrónimo representa lo siguiente:
+	\begin{itemize}
+		\item Linux. Sistema operativo Linux, en específico se utiliza la versión de Ubuntu LTS 12.04. Esta versión es estable con una gran comunidad activa de soporte.
+		\item Apache. El servidor HTTP, encargado de recibir y procesar las llamadas http.
+		\item MySQL. Base de datos relacional que permite al sistema persistir toda la información recuperada del internet.
+		\item PHP. El lenguaje de programación web más utilizado en el mercado \cite{(REFERENCIA)}. PHP es conocido por ....
+		sus principales ventajas son los bajos costos de mantenimiento, ....
+	\end{itemize}
+	
+	\item Code Igniter. Es un framework\footnote{conjunto de herramientas de trabajo. All of them offer you chunks of pre-written code that make the repetitive or complex processes of coding easier, and impose a helpful structure on your site development.
+} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979. 
+	\begin{itemize}
+		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operacioens a los datos según sea necesario.
+		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
+		\item Controladore, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
+	\end{itemize}
+	\cite{upton2007codeigniter}
 	\item PHP Simple HTML DOM Parser
-	\item Bootstrap
+	\cite{chen2009php} \cite{chowdhury2014intelwiki}
+	\item Bootstrap \cite{otto2010bootstrap}
+	\cite{cochran2012twitter}
+	
 \end{itemize}
+
+\subsubsection{Web Scraper}
+Es un script que 
+\cite{hogue2005thresher}
+Definir lo que es un scraper
+
+Definir las páginas que se buscan y como se recorren
+
+Definir los objetos finales de la base de datos que se consumen.
+
+
+
 
 \subsubsection{Descripción de su funcionamiento}
 
@@ -113,7 +140,6 @@ Se recuperan todos los partidos que se juegan por temporada en cada una de las l
 \end{enumerate}
 
 
-Adicionalmente en esta sección se describirá el funcionamiento del Sistema de Estimación. Sin embargo, al ser un conjunto de programas en \emph{Fortran} que son ajenos al autor, no se profundizará en los detalles del desarrollo del mismo.
 
 
 
@@ -126,14 +152,26 @@ Adicionalmente en esta sección se describirá el funcionamiento del Sistema de 
 
 
 \subsection{Sistema de estimación de probabilidades}
+Adicionalmente en esta sección se describirá el funcionamiento del Sistema de Estimación. Sin embargo, al ser un conjunto de programas en \emph{Fortran} que son ajenos al autor, no se profundizará en los detalles del desarrollo del mismo. Sin embargo, se dará la pauta para entender como se podrían generar probabilidades y pronósticos de los partidos.
 
 \subsubsection{Predicciones}
 
+
+
+\cite{rue2000prediction}
+
+\cite{baio2010bayesian}
+
+\cite{dixon2004value}
+
+\cite{koopman2013dynamic}
 
  \subsubsection{Tecnologías destacadas}
 
 \begin{itemize}
 	\item \textbf{Fortran}
+	\cite{robison1996c++}
+	\cite{veldhuizen1997will}
 \end{itemize}
 	
 \subsubsection{Descripción de su funcionamiento}

@@ -232,190 +232,387 @@ Markov
  	\item Sistemas de reserva
  \end{itemize}
  
-\subsection{Encuestas de adversidad al riesgo}
-\subsection{Ahorro precaucional}
+ \subsection{Proceso para la selección de apuestas}
 
-Supongamos $F_1,...,F_n$ distribuciones y la siguiente sucesión de Variables aleatorias $(x_1^t)_{t=1}^{\infty},..., (x_n^t)_{t=n}^{\infty}$ independientes $x_j^{t} \sim F_j \,\forall\, t\, \in\, \mathbb{N}$.\\
-
-Sean $\alpha_1,..., \alpha_n\,\in\,\Re^+\,\, \cdot \ni \cdot \,\,\displaystyle \sum_{j=1}^n\alpha_j=1$, definimos:
-
-\begin{itemize}
- \item $z_1=\displaystyle \sum_{j=1}^n\alpha_jx_j'$ 
- \item $z_{t+1}=\displaystyle \sum_{j=1}^n\alpha_jx_j^{t+1}+z_t$ 
-\end{itemize}
-Supongamos que $E[x_j^t]>1\,\,\forall\,t \,\in\,\mathbb{N}\rightarrow E[z_t]=tE[z_1]=t\mu>1$\\
-
-{\bf Problema:}\\
-Encontrar $y \,\,\cdot \ni\cdot\,\,(1-ty)+yz_t \ge y\,\,\forall\,t\,\in \mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$. $(y\in[0,1])$.
-
-$$\rightarrow y z_t\ge (t+1)y-1\quad\rightarrow\quad z_t\ge(t+1)-\frac{1}{y}$$
-$$\qquad\qquad\qquad\qquad\qquad\qquad\qquad\,\,\rightarrow z_t\ge t+k (con\,\,\,k=1-\frac{1}{y})$$
-
-equivalentemente: Encontrar $k\le 0\,\,\cdot\ni\cdot\,\,z_t\ge t+k\,\,\forall\,t\in\mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$.\\
-
-Sol: \\
-Sea $\mu=E[z_1]$, $\sigma^2=Var[z_1]$\\
-
-\[\rightarrow (1-\alpha)=p(z_t)\ge t+k\,\,\forall\,\in\mathbb{N}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad\]
-\[=p(z_1\ge 1+k)\cdot p(z_2\ge 2+k\,\,|z_1\ge 1+k)\cdots\qquad\quad\]
-\[=p(z_1\ge 1+k)\cdot\displaystyle\prod_{t=1}^{\infty}p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)\]\\
-
-Usando el T.C.L.: $z_t \rightarrow N(t\mu,\,t\sigma^2)\,\,\forall\,t\in\,\mathbb{N}$
-
-\begin{enumerate}[(i)]
- \item $p(z_1\ge 1+k)=p{\displaystyle\left(\frac{z_1-\mu}{\sigma}\ge\frac{(1+k)-\mu}{\sigma}\right)=1-\Phi\left(\frac{k-(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+% Uno de los conceptos más imporantes en la teoría de probabilidad es el del valor esperado de una variable aleatoria\footnote{Retómese el concepto de variable aleatoria más usual, se puede utilizar la definición del capítulo 4 del libro de Ross \cite{ross2006first}, una función $X$ que genera valores aleatorios reales en un espacio muestral completamente definido.}, en palabras del señor Ross \cite{ross2006first} el valor esperado de $X$ se define como un promedio ponderado de los valores posibles que puede tomar $X$; se pondera cada valor con la probabilidad de que $X$ tome ese preciso valor.
+%  \begin{itemize}
+%
+%  	\item Valor esperado de una variable discreta.
+%
+% 		\[E[X] = \sum_{x:p(x)>0}x p(x)\]
+%  	\item Valor esperado de una variable continua.
+% 	\[E[X] = \int_{-\infty}^{infty} f(x) dx\]	
+ % \end{itemize}
  
- \item $p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)=\displaystyle\frac{p(z_{t+1}\ge (t+1)+k,\,z_t\ge t+k)}{p(z_t\ge t+k)}$\\
+ El proceso de la recomendación de apuestas se puede dividir en cinco pasos principales:
+
+ \begin{enumerate}
+ 	\item \textbf{Determinación de apuestas redituables.} De todas las apuestas de las cinco ligas que haya en la jornada a recomendar, se escogen únicamente aquellas que sean redituables a largo plazo. Independientemente del nivel de riesgo de cada cliente, se generarán recomendaciones únicamente de apuestas que, al analizarlas, tengan ganancias esperadas.
+ 	\item \textbf{Selección de apuestas de acuerdo al riesgo del cliente.} Las estimaciones de cada partido tienen un intervalo de confianza. Con base en este intervalo y el perfil de riesgo del usuario se seleccionan las apuestas.
+ 	\item \textbf{Cálculo de la proporción del dinero a invertir por apuesta.} Al conocer la selección de las apuestas, se calcula la proporción de dinero a invertir para cada apuesta, este proceso sigue siendo dependiente de la confianza de la estimación del partido y de la adversidad al riesgo del cliente.
+ 	\item \textbf{Determinación del nivel de reservas.} En este paso se cuenta con un conjunto seleccionado de apuestas y la proporción de dinero que se debe invertir para cada una de ellas. Acorde a su encuesta, se calcula el nivel óptimo de reservas que le permitan al cliente seguir apostando a pesar de que tenga una mala jornada y pierda todas las apuestas.
+ 	\item \textbf{Recomendación.} Todos estos elementos constituyen en su totalidad la recomendación de la semana que se presenta en el portal al cliente.
+ \end{enumerate}
  
-    \begin{itemize}
-     \item $p(z_t\ge t+k)=p{\displaystyle\left(\frac{z_t-t\mu}{\sqrt{t}\sigma}\ge\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
-     
-     $\qquad\qquad\qquad={\displaystyle 1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
-     
-     \item $z_{t+1}=y_t+z_t$ con $y_t \sim (\mu,\sigma^2),\,\,y_t,z_t$ independientes\\ $z_t\sim(t\mu,t\sigma^2)$
-    \end{itemize}
-$\rightarrow f(y_t,z_t)\simeq \displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{-\frac{1}{2\sigma^2}[(y_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}$
+Para definir el escenario completo es necesario definir las variables que se utilizan en el proceso, así como las funciones de utilidad que modelan los perfiles de riesgo de los usuarios. Después de estas dos subsecciones se retomará paso a paso la explicación del proceso de recomendación de apuestas.
+ 
+\subsubsection{Variables necesarias}
+
+En este apartado de la tesis se explica cómo se determinan los partidos que se recomiendan a los clientes.
+Las variables que se necesitan utilzar son las siguientes:
+\begin{enumerate}
+	\item \textbf{Probabilidades.} Ya en apartados anteriores se habló de las probabilidades estimadas de que ocurran los tres diferentes resultados de cada encuentro de la jornada (Victoria del local, del visitante y empate). Estas probabilidades son alimentadas a través del portal administrativo.
+	
+	\item \textbf{Momios.} Los momios que generan las casas de apuestas para cada partido. En la mayoría de los escenarios el usuario escoge usar todos los momios de todos los bookies, en estos casos se tomarán los momios que ofrezcan mejores retornos para cada partido. Estos momios se toman de la información pública de las casas de apuestas.
+	
+	\item \textbf{Variables de riesgo.} Se tienen tres elementos principales que generan la noción de riesgo en el sistema:
+	\begin{itemize}
+		\item \textbf{Función de utilidad en selección.} Determina los partidos redituables de la jornada.
+		\item \textbf{Función de utilidad del dinero.} Dicta la proporción de dinero a apostar en cada partido.
+		\item \textbf{Variable de reserva.} Marca la cantidad de dinero que el cliente debería guardar para siguientes apuestas.
+		Estas variables dependen de la encuesta que se le presenta al cliente al crear su cuenta.
+	\end{itemize}
+	
+	\item \textbf{Variable de evolución de ingreso del cliente.} Se define como la cantidad de dinero que tiene el cliente en esta jornada entre la máxima cantidad de dinero que ha tenido. Esta variable genera una noción, en caso de que existan, de la magnitud de las pérdidas que ha tenido el cliente.
 \end{enumerate}
 
-Sea \[\omega_t=y_t+z_t\qquad\qquad y_t=\omega_t-v_t\]
-%\[\rightarrow\]
-\[v_t=z_t\qquad\qquad z_t=v_t\]
+\subsubsection{Funciones de utilidad}
+Para modelar el comportamiento de un individuo ante el riesgo, se utilizan funciones de utilidad. Estas funciones representan la utilidad (o beneficio) que un individuo puede obtener por una apuesta. Las funciones más arriesgadas le dan valores mayores valores a las apuestas que que ofrecen las mejores ganancias y las funciones más conservadoras favorecen aquellas apuestas con mayores probabilidades.
+En particular, se podría decir de manera intuitiva que el valor obtenido por una función de utilidad para una apuesta en particular es la cantidad de unidades de dinero que el individuo estaría dispuesto a invertir en esa apuesta.
+El siguiente listado presenta las funciones que se utilizan actualmente en el sistema.
+\begin{enumerate}
+		\item \textbf{Polinomial - lineal:} 
+		\[f_1(\alpha, p, m) = \left(\frac{p}{1-p} \right)^\frac{1}{1-\alpha}(m-1)^\frac{\alpha}{1-\alpha}\]
+Parámetro $\alpha$ que va de cero a uno. Es una de las familias más volatiles en cuanto al riesgo, para valores cercanos a uno del parámetro tiende a ser muy arriesgada, casi sin diversificar, y para valores cercanos a cero tiende a ser muy conservadora y suele diversificar mucho más en las apuestas.
 
-\[\rightarrow J=\left( {1\atop 0} {-1\atop {1}} \right)\rightarrow |det(J)|=1\]
+		\item \textbf{Polinomial - cuadrática:} 
+		\[f_2(\alpha, p, m) = \left(\frac{p}{1-p} \right)^\frac{1}{2-\alpha}(m-1)^\frac{\alpha}{2-\alpha}\]
+Esta familia de funciones es muy parecida a la anterior, también tiene un parámetro $\alpha$ entre cero y uno, sólo que en este caso no es tan extremista como en el caso anterior.
+		
+		\item \textbf{Exponencial - lineal:} 
+		\[f_3(\alpha, p, m) = \left(\frac{1}{m-1} \right)ln\left(\frac{\alpha p(m-1)}{1-p}\right)\]
+Esta familia de funciones tiene un parámetro $\alpha$ que es mayor a uno. Es una familia de funciones conservadoras que suelen proteger muy bien adelatandose a semanas malas, a costo que en semanas buenas no logran tan buenos beneficios.
+		
+		\item \textbf{Lineal - exponencial:} 
+		\[f_4(\alpha, p, m) = ln\left(\frac{p(m-1)}{1-p}\right) + ln(\alpha)\]
+Esta familia de funciones tiene un parámetro $\alpha$ que es mayor a uno. Es una familia de funciones que le gusta fuertemente diversificar, aparte tiende a favorecer un poco aquellas apuestas más riesgosas.
 
-\[f(z_{t+1}z_t)=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}\]\\
+		\item \textbf{Logarítmica - polinomial:} 
+		\[f_5(\alpha, p) = \left(\frac{p}{1-p}\right)^\frac{1}{\alpha}\]
+Parámetro $\alpha$ mayor a uno. Es una familia de funciones muy conservadora ya que toma valores sin considerar los momios del mercado, al tomar en cuenta solamente las probabilidades de los partidos tiende a ser más estable en el tiempo.
 
-$\rightarrow p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
+		\item \textbf{Tangente - lineal:} 
+		\[f_6(\alpha, p, m) = \frac{1}{m-1}\sqrt{\frac{pm - (1-\alpha)p - \alpha}{1-p}}\]
+		Parámetro $\alpha$ entre cero y uno. Esta familia es la más conservadora de la lista, busca tener las menores pérdidad posibles y protege las inversiones cada semana.
+\end{enumerate}
 
-\[={\displaystyle\int_{t+k}^{\infty}\int_{t+1+k}^{\infty}\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}}dz_{t+1}dz_t\]\\
+Estas seis funciones son las que utiliza Egobets para modelar la adversidad al riesgo de sus clientes. Cuando ellos llenan la encuesta del perfil, realmente están seleccionando una de estas funciones.
 
-\[{=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\int_{t+1+k}^{\infty}\frac{1}{\sqrt{2\pi}\sigma}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2\}dz_{t+1}dz_t}\]\\
 
-\newpage
+\subsubsection{Paso 1 - Determinación de apuestas redituables}
 
-\[\footnote{Ver Apéndice A}= {\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\left[1-\Phi\left(\frac{k+t-z_t-(\mu-1)}{\sigma}\right)\right]}\]
 
- \rule{14cm}{0.1mm}
-\[\overline{z_t}=\frac{1}{t}z_t,\,\,\,d\overline{z_t}=\frac{1}{t}dz_t,\,\,\,(\overline{z_t})_0=1+\frac{k}{t},\,\,\,(\overline{z_t})_1=\infty\]
- \rule{14cm}{0.1mm}
+Para seguir la explicación de los pasos del proceso se tomará un ejemplo práctico y las transformaciones que sufre durante el proceso. Al empezar las recomendaciones de una jornada se tiene un conjunto de datos muy parecido al que se da en el ejemplo. Tómese la tabla~\ref{momios-y-probas} como base del ejemplo. En esta tabla se presentan momios de alguna casa de apuesta (usualemente los mejores del mercado) para diez partidos distintos, cada uno cuenta con los momios para los tres tipos de apuestas: victoria del Local ($m_L$), empate ($m_E$) y victoria del visitante ($m_V$). Además se muestran las probabilidades estimadas por Egobets de los tres posibles resultados del encuentro: victoria del local ($\hat{p_L}$), empate ($\hat{p_L}$) y victoria del visitante ($\hat{p_L}$).
 
-\[={\displaystyle\frac{\sqrt{t}}{2\pi\sqrt{t}\sigma^2}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}\]
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|ccc|ccc|}
+\toprule
+{\textbf{Partido}}                 & $\mathbf{m_L}$ & $\mathbf{m_E}$ & $\mathbf{m_V}$ & $\mathbf{\hat{p_L}}$ & $\mathbf{\hat{p_E}}$ & $\mathbf{\hat{p_V}}$ \\ \midrule
+A & 2.6  & 3.2  & 2.75  & 0.31  & 0.23  & 0.46  \\ 
+B & 2.1  & 3.3  & 3.5   & 0.37  & 0.3   & 0.32  \\ 
+C & 1.11 & 8.5  & 21    & 0.84  & 0.1   & 0.04  \\ 
+D & 4.5  & 3.75 & 1.72  & 0.29  & 0.27  & 0.45  \\ 
+E & 2    & 3.4  & 3.75  & 0.37  & 0.31  & 0.31  \\ 
+F & 1.53 & 4    & 6     & 0.61  & 0.17  & 0.21  \\ 
+G & 2.1  & 3.25 & 3.6   & 0.51  & 0.24  & 0.25  \\ 
+H & 1.9  & 3.4  & 4     & 0.42  & 0.29  & 0.29  \\ 
+I & 1.8  & 3.5  & 4.5   & 0.46  & 0.29  & 0.25  \\ 
+J & 1.9  & 3.4  & 4     & 0.5   & 0.26  & 0.23  \\ \bottomrule
+\end{tabular}
+}
+\caption{Diez partidos con sus respectivos momios y las probabilidades estimadas por Egobets}
+\label{momios-y-probas}
+\end{table}
 
-Por tanto:\\
-
-$p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
-
-\[\simeq {\displaystyle \frac{\sqrt{t}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}{\sqrt{2\pi}\sigma\left(1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)\right)}}\]
-
-Para calcular $k$ se resuelve la siguiente ecuación:
-
-\[\log (1-\alpha)=\log(p|z_1\ge 1+k)+\displaystyle\sum_{t=1}^{\infty}\log(p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k)\]
-
-\[y=\frac{1}{1-k}\]
-
-Se realizó una muestra $y_1,..., y_n$, donde:
-
-\[y_1=CA(p_i,\mu_i,\sigma_i)\]
-
-Donde:
+Para concretar el ejemplo, se fijarán las siguientes funciones y variables.
 \begin{itemize}
- \item $p_i$: Un valor de probabilidad deseado.
- \item $M_i$: Un valor de $E[z_1]$ dado.
- \item $\delta_i$: Un valorde $Var(z_i)^{1/2}$.
- \item $CA$: La función que se define implícitamente de resolver las ecuaciones para calcular la cantidad de apostar.
+	\item \textbf{Funcion de selección.} Tómese la \emph{Polinomial - lineal} $f_1$ con parametro $\alpha = 0.4$.
+	\item \textbf{Funcion de utilidad del dinero.} Úsese la \emph{Exponencial - lineal} con parámetro $\alpha = 3$
+	\item \textbf{Variable de reserva.} Será $v_R = 15$.
+	\item \textbf{Variable de ingreso.} Será $v_I = 0.80$.
 \end{itemize}
+	
 
-A tales datos se les ajustó el siguiente modelo lineal:
+Ahora para proceder al primer paso, defínase el valor esperado de una apuesta como la multiplicación de la probabilidad de que suceda el resultado por el momio que se tiene para esa apuesta. 
+Con el ejemplo bien definido se procede a filtrar las apuestas con el primer paso. De manera intuitiva, se podría enunciar que el valor esperado de una apuesta corresponde a la cantidad de unidades de dinero que se obtienen por cada unidad de dinero invertida\footnote{Recuérdese que esta cantidad incluye la cantidad de dinero invertida en la apuesta. También recuérdese que la ganancia solamente se obtiene si se gana la apuesta.}
 
-\[y_i=\beta_0+\beta_1p_i+\beta_2\mu_i+\beta_3\sigma_i+\varepsilon_i\]
+Entonces, el primer paso consiste en utilizar para las recomendaciones, sólo las apuestas con ganancias a largo plazo; las otras apuestas tendrán un valor esperado no positivo, es decir, no garantizan más que pérdidas a largo plazo. Más aun, se usarán solo las apuestas que garanticen un valor esperado mayor a $1.025$, esta restricción tiene dos ventajas, la primera es que las probabilidades que se usan son estimaciones por lo que ese $2.5\%$ funciona como protección para no caer en valores esperados negativos y la segunda es que si el rendimiento es tan pequeño toma mucho tiempo para un cliente ir acumulando ganacias. 
 
-\newpage
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|ccc|ccc|ccc|c|}
+\toprule
+Partido & $\mathbf{m_L}$ & $\mathbf{m_E}$ & $\mathbf{m_V}$ & $\mathbf{\hat{p_L}}$ & $\mathbf{\hat{p_E}}$ & $\mathbf{\hat{p_V}}$ & $\mathbf{m_L\cdot\hat{p_V}}$ & $\mathbf{m_E\cdot\hat{p_E}}$ & $\mathbf{m_V\cdot\hat{p_V}}$ & \textbf{Apuesta} \\ \midrule
+A & 2.6 & 3.2 & 2.75 & 0.31 & 0.23 & 0.46 & 0.81 & 0.74 & \textbf{1.27} & Visitante \\
+B & 2.1 & 3.3 & 3.5 & 0.37 & 0.3 & 0.32 & 0.78 & 0.99 & \textbf{1.12} & Visitante \\
+C & 1.11 & 8.5 & 21 & 0.84 & 0.1 & 0.04 & 0.93 & 0.85 & 0.84 & Ninguna \\
+D & 4.5 & 3.75 & 1.72 & 0.29 & 0.27 & 0.45 & \textbf{1.31} & 1.01 & 0.77 & Local \\
+E & 2 & 3.4 & 3.75 & 0.37 & 0.31 & 0.31 & 0.74 & \textbf{1.05} & \textbf{1.16} & Empate/Visitante \\
+F & 1.53 & 4 & 6 & 0.61 & 0.17 & 0.21 & 0.93 & 0.68 & \textbf{1.26} & Visitante \\
+G & 2.1 & 3.25 & 3.6 & 0.51 & 0.24 & 0.25 & \textbf{1.07} & 0.78 & 0.90 & Local \\
+H & 1.9 & 3.4 & 4 & 0.42 & 0.29 & 0.29 & 0.80 & 0.99 & \textbf{1.16} & Visitante \\
+I & 1.8 & 3.5 & 4.5 & 0.46 & 0.29 & 0.25 & 0.83 & 1.02 & \textbf{1.13} & Visitante \\
+J & 1.9 & 3.4 & 4 & 0.5 & 0.26 & 0.23 & 0.95 & 0.88 & 0.92 & Ninguna\\ \bottomrule
+\end{tabular}
+}
+\caption{Escogiendo apuestas que vale la pena realizar}
+\label{redituables}
+\end{table}
 
-El ajuste es el siguiente:
+Observese en la tabla~\ref{redituables} como en negritas se han señalado las posibles apuestas a realizar. De las treinta posibles apuestas, ahora sólo quedan 9 redituables. Hay dos partidos el `C' y el `J' que no ameritan apuesta alguna. Y el partido `E', por ejemplo, tiene dos posibles apuestas redituables.
 
-\begin{itemize}
- \item $\beta_0=0.2925$
-  \item $\beta_1=-0.9975$
- \item $\beta_2=1.3772$
- \item $\beta_3=-1.1127$
-\end{itemize}
+\subsubsection{Paso 2 - Selección de apuestas}
 
-Con $R^2=0.95$.\\
+Para determinar el portafolio de apuestas basta con calcular el valor de la función de utilidad de selección y se deben tomar aquellas ``$n$'' apuestas que tengan los mayores valores (Donde ``$n$'' es el número de apuestas a recomendar).
+Ver tabla~\ref{seleccion}
 
-En adelante, se tomará como aproximación lo siguiente:
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+\textbf{Partido} & \textbf{Apuesta} & \textbf{Momio} & $\mathbf{\hat{p}}$ & $\mathbf{f_1(\alpha, p, m)}$ \\ \midrule
+A & Visitante & 2.75 & 0.46 & \textbf{1.07} \\
+B & Visitante & 3.5 & 0.32 & 0.53 \\
+D & Local & 4.5 & 0.29 & 0.49 \\
+E & Empate & 3.4 & 0.31 & 0.48 \\
+E & Visitante & 3.75 & 0.31 & 0.53 \\
+F & Visitante & 6 & 0.21 & 0.31 \\
+G & Local & 2.1 & 0.51 & \textbf{1.12} \\
+H & Visitante & 4 & 0.29 & 0.48 \\
+I & Visitante & 4.5 & 0.25 & 0.36\\ \bottomrule
+\end{tabular}
+}
+\caption{Escogiendo apuestas que vale la pena realizar}
+\label{seleccion}
+\end{table}
 
-\[CA(p,\mu,\sigma)\simeq0.2925-0.9975p+1.3772\mu-1.1127\sigma\]
+\subsubsection{Paso 3 - Calcular cuanto dinero a cada apuesta}
 
-\subsection{Asesoría de apuestas}
-{\bf Problema:} Decidir $p$ de manera óptima.\\
+Una vez determinado el portafolio de apuestas hace falta determinar la cantidad de dinero que se invertira ́ en  ́este. Esta seccio ́n y la pr ́oxima resolveran tal problema.
+ Empezamos por determinar cu ́al es la proporcio ́n de dinero que se invertira ́ en cada apuesta. La solucio ́n es sencilla, ya determinamos en secciones anteriores que el valor definido por una funcio ́n de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estar ́ıa dispuesta a invertir en una apuesta en particular. El u ́nico problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dolares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su funcio ́n de utilidad del dinero y despu ́es lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma tenemos los nu ́meros como porcentajes.
+ Regresando al ejemplo: (En este caso la funcio ́n de utilidad del dinero era Exponencial-Lineal con par ́ametro 3)
+Ver tabla~\ref{proporcion}
 
-Sea $x$ la cantidad de ingresos restantes ($o\ge x\ge1$, en porcentaje), y $\mu$, $\sigma$ la media y la desviación estandar de apostar en un periodo dados.\\
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+\textbf{Partido} & \textbf{Apuesta} & \textbf{Momio} & $\mathbf{\hat{p}}$ & $\mathbf{f_3(\alpha, p, m)}$ \\ \midrule
+A & Visitante & 2.75 & 0.46 & 0.23 \\
+G & Local & 2.1 & 0.51 & 0.35 \\ \bottomrule
+\end{tabular}
+}
+\caption{Escogiendo apuestas que vale la pena realizar}
+\label{proporcion}
+\end{table}
 
-Supongamos $U_1,U_2: \Re^+\rightarrow \Re^+$ funciones de utilidad del dinero. ($U_1$ ganancias, $-U_2$ pérdidas) $\cdot\ni\cdot$ son no decrecientes y una vez continuamente diferenciables. Considerese la siguiente función:\\
 
-\[f(p;x,\mu,\sigma)=[beneficio]-[costo]\]
-\[f(p;x,\mu,\sigma)=[pU_1(y(p,\mu,\sigma)\mu x)]-[(1-p)U_2(x)]\]\\
+Los valores suman a 0.59, cuando se divide cada valor por 0.59 resulta: De la cantidad a apostar, se debe de apostar $40 \%$ en el partido A a visitante y $60 \%$ en el partido G a local.
 
-Suponiendo $y(p,\mu,\sigma)=a_0-a_1p+a_2\mu-a_3\sigma$ se obtiene:\\
 
-$a_i\ge 0,\,\,i=0,...,3$
-\[f=pU_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)-(1-p)U_2(x)\]
+\subsubsection{Paso 4 - Determinar nivel de reservas}
 
-El problema es:\\
 
-$max\,\,f$\\
 
-Sol:\\
-
-\[f'(p)=-pU_1'((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)a_1\mu x\]
-\[\qquad\qquad\qquad+U_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)+U_2(x)=0\]
-
-Si $U_1$ es cóncava $\rightarrow$ $p^*$ es un maximizador.\\
-
- Forma aproximada de obtener $p$ :
- 
- \[y=a_0-a_1p+a_2\mu-a_3\sigma\]
- 
- $\rightarrow$ Sea $b=a_1\mu x$, $p_0$ una aproximación de $p$. Definimos:
- 
- \[\omega=y\mu x,\quad \omega_0=y(p_0,\mu,\sigma)\mu x\]
- 
- \[\rightarrow U_1(\omega)=U_1(\omega_0)+U'_1(\omega_0)(\omega-\omega_0)+O((\omega-\omega_0))\] 
- \[=U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)+O((\omega-\omega_0))\]
- 
- Se puede aproximar $f$ por:
- 
- \[f(p)\simeq p[U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)]-(1-p)U_2(x)\]
- 
- \[\Rightarrow f'(p)\simeq U_1(\omega_0)-2bU'_1(\omega_0)p+bU'_1(\omega_0)p_0+U_2(x)=0\]
- 
- \[\Rightarrow p\simeq \frac{1}{2bU'_1(\omega_0)}[U_1(\omega_0)+U_2(x)]+\frac{1}{2}p_0\]
- 
-Supongamos $U_1:\Re^+ \rightarrow \Re^+$ dada por $U(\omega)=\omega^\alpha\qquad(0<\alpha\le1)$ y $U_2(x)=\beta x$\\
-
-Notese que:
-\begin{itemize}
- \item ${\displaystyle\frac{U_1(\omega_0)}{U'_1(\omega_0)}=\frac{\omega_0}{\alpha}}$
- \item ${\displaystyle\frac{\omega_0}{b}=\frac{a_0-a_1p+a_2\mu-a_3\sigma}{a_1}}$
-\end{itemize}
-
-\[\Rightarrow p\simeq \frac{1}{2\alpha a_1}[a_0+a_2\mu-a_3\sigma+\frac{\beta}{\mu}[(a_0-a_1p_0+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}]+\frac{1}{2}(1-\frac{1}{\alpha})p_0\]
- 
-Supongamos ahora que $f$ es de la siguiente forma:
-
-\[f(p)=pU_1(y(p,\mu,\sigma)\cdot \mu x)-(1-p)U_2(x)-pU_3(\theta(k\sigma-\mu))\]
- 
-i.e. Hay pérdidas potenciales por el riesgo de la inversión considerar
-\[U_3(\theta(k\sigma-\mu))U_2(\theta(k\sigma-\mu)x)I(\theta(k\sigma-\mu)\ge 0)\]
- 
-$\Rightarrow$ De manera análoga se obtiene:
-
-\[p\simeq\frac{1}{2bU'(\omega_0)}[U_1(\omega_0)+U_2(x)+U_2(\theta(k\sigma-\mu)xI_{\{m\ge0\}}]+\frac{1}{2}p_0\]
- 
-\newpage 
-Si tomamos $U_1(\omega)0\omega^\alpha$, $U_2(x)=\beta x$ \\\\
- 
-$p\simeq \frac{1}{2\alpha a_1}\{(a_0+a_2\mu-a_3\sigma)$
-\[+\frac{\beta_1}{\mu}[1+(\beta_2\sigma-\beta_3 \mu)I_{\{m\ge0\}}][(a_0-a_1p+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}\}+\frac{1}{2}(1-\frac{1}{\alpha})p_0\] 
+% \subsection{Encuestas de adversidad al riesgo}
+% \subsection{Ahorro precaucional}
+%
+% Supongamos $F_1,...,F_n$ distribuciones y la siguiente sucesión de Variables aleatorias $(x_1^t)_{t=1}^{\infty},..., (x_n^t)_{t=n}^{\infty}$ independientes $x_j^{t} \sim F_j \,\forall\, t\, \in\, \mathbb{N}$.\\
+%
+% Sean $\alpha_1,..., \alpha_n\,\in\,\Re^+\,\, \cdot \ni \cdot \,\,\displaystyle \sum_{j=1}^n\alpha_j=1$, definimos:
+%
+% \begin{itemize}
+%  \item $z_1=\displaystyle \sum_{j=1}^n\alpha_jx_j'$
+%  \item $z_{t+1}=\displaystyle \sum_{j=1}^n\alpha_jx_j^{t+1}+z_t$
+% \end{itemize}
+% Supongamos que $E[x_j^t]>1\,\,\forall\,t \,\in\,\mathbb{N}\rightarrow E[z_t]=tE[z_1]=t\mu>1$\\
+%
+% {\bf Problema:}\\
+% Encontrar $y \,\,\cdot \ni\cdot\,\,(1-ty)+yz_t \ge y\,\,\forall\,t\,\in \mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$. $(y\in[0,1])$.
+%
+% $$\rightarrow y z_t\ge (t+1)y-1\quad\rightarrow\quad z_t\ge(t+1)-\frac{1}{y}$$
+% $$\qquad\qquad\qquad\qquad\qquad\qquad\qquad\,\,\rightarrow z_t\ge t+k (con\,\,\,k=1-\frac{1}{y})$$
+%
+% equivalentemente: Encontrar $k\le 0\,\,\cdot\ni\cdot\,\,z_t\ge t+k\,\,\forall\,t\in\mathbb{N}$ con probabilidad $(1-\alpha)\times 100\%$.\\
+%
+% Sol: \\
+% Sea $\mu=E[z_1]$, $\sigma^2=Var[z_1]$\\
+%
+% \[\rightarrow (1-\alpha)=p(z_t)\ge t+k\,\,\forall\,\in\mathbb{N}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad\]
+% \[=p(z_1\ge 1+k)\cdot p(z_2\ge 2+k\,\,|z_1\ge 1+k)\cdots\qquad\quad\]
+% \[=p(z_1\ge 1+k)\cdot\displaystyle\prod_{t=1}^{\infty}p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)\]\\
+%
+% Usando el T.C.L.: $z_t \rightarrow N(t\mu,\,t\sigma^2)\,\,\forall\,t\in\,\mathbb{N}$
+%
+% \begin{enumerate}[(i)]
+%  \item $p(z_1\ge 1+k)=p{\displaystyle\left(\frac{z_1-\mu}{\sigma}\ge\frac{(1+k)-\mu}{\sigma}\right)=1-\Phi\left(\frac{k-(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+%
+%  \item $p(z_{t+1}\ge (t+1)+k\,|z_t\ge t+k)=\displaystyle\frac{p(z_{t+1}\ge (t+1)+k,\,z_t\ge t+k)}{p(z_t\ge t+k)}$\\
+%
+%     \begin{itemize}
+%      \item $p(z_t\ge t+k)=p{\displaystyle\left(\frac{z_t-t\mu}{\sqrt{t}\sigma}\ge\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+%
+%      $\qquad\qquad\qquad={\displaystyle 1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)}$\\
+%
+%      \item $z_{t+1}=y_t+z_t$ con $y_t \sim (\mu,\sigma^2),\,\,y_t,z_t$ independientes\\ $z_t\sim(t\mu,t\sigma^2)$
+%     \end{itemize}
+% $\rightarrow f(y_t,z_t)\simeq \displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{-\frac{1}{2\sigma^2}[(y_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}$
+% \end{enumerate}
+%
+% Sea \[\omega_t=y_t+z_t\qquad\qquad y_t=\omega_t-v_t\]
+% %\[\rightarrow\]
+% \[v_t=z_t\qquad\qquad z_t=v_t\]
+%
+% \[\rightarrow J=\left( {1\atop 0} {-1\atop {1}} \right)\rightarrow |det(J)|=1\]
+%
+% \[f(z_{t+1}z_t)=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}\]\\
+%
+% $\rightarrow p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
+%
+% \[={\displaystyle\int_{t+k}^{\infty}\int_{t+1+k}^{\infty}\frac{1}{2\pi\sqrt{t}\sigma^2}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2+\frac{1}{t}(z_t-t\mu)^2]\}}dz_{t+1}dz_t\]\\
+%
+% \[{=\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\int_{t+1+k}^{\infty}\frac{1}{\sqrt{2\pi}\sigma}\exp\{\displaystyle -\frac{1}{2\sigma^2}[(z_{t+1}-z_t-\mu)^2\}dz_{t+1}dz_t}\]\\
+%
+% \newpage
+%
+% \[\footnote{Ver Apéndice A}= {\displaystyle\frac{1}{2\pi\sqrt{t}\sigma^2}\int_{t+k}^{\infty}\exp\{-\frac{1}{2\sigma^2 t}(z_t-t\mu)^2\}\left[1-\Phi\left(\frac{k+t-z_t-(\mu-1)}{\sigma}\right)\right]}\]
+%
+%  \rule{14cm}{0.1mm}
+% \[\overline{z_t}=\frac{1}{t}z_t,\,\,\,d\overline{z_t}=\frac{1}{t}dz_t,\,\,\,(\overline{z_t})_0=1+\frac{k}{t},\,\,\,(\overline{z_t})_1=\infty\]
+%  \rule{14cm}{0.1mm}
+%
+% \[={\displaystyle\frac{\sqrt{t}}{2\pi\sqrt{t}\sigma^2}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}\]
+%
+% Por tanto:\\
+%
+% $p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k$\\
+%
+% \[\simeq {\displaystyle \frac{\sqrt{t}\int_{1+k/t}^{\infty}\exp\{-\frac{t}{2\sigma^2 }(\overline{z}_t-\mu)^2\}\left[1-\Phi\left(\frac{k+t(1-\overline{z}_t)-(\mu-1)}{\sigma}\right)\right]d\overline{z}_t}{\sqrt{2\pi}\sigma\left(1-\Phi\left(\frac{k-t(\mu-1)}{\sqrt{t}\sigma}\right)\right)}}\]
+%
+% Para calcular $k$ se resuelve la siguiente ecuación:
+%
+% \[\log (1-\alpha)=\log(p|z_1\ge 1+k)+\displaystyle\sum_{t=1}^{\infty}\log(p(z_{t+1})\ge (t+1)+k,\,z_t\ge t+k)\]
+%
+% \[y=\frac{1}{1-k}\]
+%
+% Se realizó una muestra $y_1,..., y_n$, donde:
+%
+% \[y_1=CA(p_i,\mu_i,\sigma_i)\]
+%
+% Donde:
+% \begin{itemize}
+%  \item $p_i$: Un valor de probabilidad deseado.
+%  \item $M_i$: Un valor de $E[z_1]$ dado.
+%  \item $\delta_i$: Un valorde $Var(z_i)^{1/2}$.
+%  \item $CA$: La función que se define implícitamente de resolver las ecuaciones para calcular la cantidad de apostar.
+% \end{itemize}
+%
+% A tales datos se les ajustó el siguiente modelo lineal:
+%
+% \[y_i=\beta_0+\beta_1p_i+\beta_2\mu_i+\beta_3\sigma_i+\varepsilon_i\]
+%
+% \newpage
+%
+% El ajuste es el siguiente:
+%
+% \begin{itemize}
+%  \item $\beta_0=0.2925$
+%   \item $\beta_1=-0.9975$
+%  \item $\beta_2=1.3772$
+%  \item $\beta_3=-1.1127$
+% \end{itemize}
+%
+% Con $R^2=0.95$.\\
+%
+% En adelante, se tomará como aproximación lo siguiente:
+%
+% \[CA(p,\mu,\sigma)\simeq0.2925-0.9975p+1.3772\mu-1.1127\sigma\]
+%
+% \subsection{Asesoría de apuestas}
+% {\bf Problema:} Decidir $p$ de manera óptima.\\
+%
+% Sea $x$ la cantidad de ingresos restantes ($o\ge x\ge1$, en porcentaje), y $\mu$, $\sigma$ la media y la desviación estandar de apostar en un periodo dados.\\
+%
+% Supongamos $U_1,U_2: \Re^+\rightarrow \Re^+$ funciones de utilidad del dinero. ($U_1$ ganancias, $-U_2$ pérdidas) $\cdot\ni\cdot$ son no decrecientes y una vez continuamente diferenciables. Considerese la siguiente función:\\
+%
+% \[f(p;x,\mu,\sigma)=[beneficio]-[costo]\]
+% \[f(p;x,\mu,\sigma)=[pU_1(y(p,\mu,\sigma)\mu x)]-[(1-p)U_2(x)]\]\\
+%
+% Suponiendo $y(p,\mu,\sigma)=a_0-a_1p+a_2\mu-a_3\sigma$ se obtiene:\\
+%
+% $a_i\ge 0,\,\,i=0,...,3$
+% \[f=pU_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)-(1-p)U_2(x)\]
+%
+% El problema es:\\
+%
+% $max\,\,f$\\
+%
+% Sol:\\
+%
+% \[f'(p)=-pU_1'((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)a_1\mu x\]
+% \[\qquad\qquad\qquad+U_1((a_0-a_1p+a_2\mu-a_3\sigma)\mu x)+U_2(x)=0\]
+%
+% Si $U_1$ es cóncava $\rightarrow$ $p^*$ es un maximizador.\\
+%
+%  Forma aproximada de obtener $p$ :
+%
+%  \[y=a_0-a_1p+a_2\mu-a_3\sigma\]
+%
+%  $\rightarrow$ Sea $b=a_1\mu x$, $p_0$ una aproximación de $p$. Definimos:
+%
+%  \[\omega=y\mu x,\quad \omega_0=y(p_0,\mu,\sigma)\mu x\]
+%
+%  \[\rightarrow U_1(\omega)=U_1(\omega_0)+U'_1(\omega_0)(\omega-\omega_0)+O((\omega-\omega_0))\]
+%  \[=U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)+O((\omega-\omega_0))\]
+%
+%  Se puede aproximar $f$ por:
+%
+%  \[f(p)\simeq p[U_1(\omega_0)+bU'_1(\omega_0)(\omega_0)(p-p_0)]-(1-p)U_2(x)\]
+%
+%  \[\Rightarrow f'(p)\simeq U_1(\omega_0)-2bU'_1(\omega_0)p+bU'_1(\omega_0)p_0+U_2(x)=0\]
+%
+%  \[\Rightarrow p\simeq \frac{1}{2bU'_1(\omega_0)}[U_1(\omega_0)+U_2(x)]+\frac{1}{2}p_0\]
+%
+% Supongamos $U_1:\Re^+ \rightarrow \Re^+$ dada por $U(\omega)=\omega^\alpha\qquad(0<\alpha\le1)$ y $U_2(x)=\beta x$\\
+%
+% Notese que:
+% \begin{itemize}
+%  \item ${\displaystyle\frac{U_1(\omega_0)}{U'_1(\omega_0)}=\frac{\omega_0}{\alpha}}$
+%  \item ${\displaystyle\frac{\omega_0}{b}=\frac{a_0-a_1p+a_2\mu-a_3\sigma}{a_1}}$
+% \end{itemize}
+%
+% \[\Rightarrow p\simeq \frac{1}{2\alpha a_1}[a_0+a_2\mu-a_3\sigma+\frac{\beta}{\mu}[(a_0-a_1p_0+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}]+\frac{1}{2}(1-\frac{1}{\alpha})p_0\]
+%
+% Supongamos ahora que $f$ es de la siguiente forma:
+%
+% \[f(p)=pU_1(y(p,\mu,\sigma)\cdot \mu x)-(1-p)U_2(x)-pU_3(\theta(k\sigma-\mu))\]
+%
+% i.e. Hay pérdidas potenciales por el riesgo de la inversión considerar
+% \[U_3(\theta(k\sigma-\mu))U_2(\theta(k\sigma-\mu)x)I(\theta(k\sigma-\mu)\ge 0)\]
+%
+% $\Rightarrow$ De manera análoga se obtiene:
+%
+% \[p\simeq\frac{1}{2bU'(\omega_0)}[U_1(\omega_0)+U_2(x)+U_2(\theta(k\sigma-\mu)xI_{\{m\ge0\}}]+\frac{1}{2}p_0\]
+%
+% \newpage
+% Si tomamos $U_1(\omega)0\omega^\alpha$, $U_2(x)=\beta x$ \\\\
+%
+% $p\simeq \frac{1}{2\alpha a_1}\{(a_0+a_2\mu-a_3\sigma)$
+% \[+\frac{\beta_1}{\mu}[1+(\beta_2\sigma-\beta_3 \mu)I_{\{m\ge0\}}][(a_0-a_1p+a_2\mu-a_3\sigma)\mu x]^{1-\alpha}\}+\frac{1}{2}(1-\frac{1}{\alpha})p_0\]
 
 

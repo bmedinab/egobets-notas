@@ -1,0 +1,249 @@
+\chapter{Bases de datos} 
+\label{chap:dbs} 
+
+
+\section{Dump BD Egobets.com} 
+
+En este anexo se presenta un dump BSON de la base de datos de MongoDB del sistema de Egobets. Cada apartado contiene el ejemplo de un documento de esa colección.
+
+
+
+\subsection{Casas de apuestas}
+\lstset{language=javascript}
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e4953dac67d3e1d5b000000"),
+	"nombre" : "Bwin",
+	"url" : "http://www.bwin.com"
+} 
+\end{lstlisting}
+
+\subsection{Administradores}
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("544450209273f5e31edb66b7"),
+	"correo" : "bruno@egobets.com",
+	"nombre" : "Brus Medina",
+	"password" : "9f9c1136c11828b14e6ff2c057e693d6eaeb9485",
+	"titulo" : "Arquitecto de Software"
+} 
+\end{lstlisting}
+
+
+\subsection{Equipos}
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e012952c67d3ebc5e000000"),
+	"diff" : -1,
+	"indicadores" : {
+		"local" : {
+			"ataques" : {
+				"1" : [
+					77,
+					74,
+					76,
+					77,
+					64,
+					78
+				],
+				"2" : [
+					100,
+					100,
+					76,
+					85,
+					100,
+					91
+				],
+				"3" : [
+					83,
+					100,
+					82,
+					78,
+					84,
+					93
+				]
+			},
+			"defensas" : {
+				"1" : [
+					71,
+					62,
+					58,
+					56,
+					48,
+					79
+				],
+				"2" : [
+					67,
+					68,
+					68,
+					59,
+					64,
+					60
+				],
+				"3" : [
+					95,
+					100,
+					87,
+					77,
+					100,
+					91
+				]
+			},
+			"ataque_total" : 100,
+			"defensa_total" : 72,
+			"posesion" : 42.55401
+		},
+		"visitante" : {
+			"ataques" : {
+				"1" : [
+					70,
+					67,
+					69,
+					70,
+					58,
+					71
+				],
+				"2" : [
+					74,
+					74,
+					56,
+					63,
+					74,
+					67
+				],
+				"3" : [
+					65,
+					78,
+					64,
+					61,
+					66,
+					72
+				]
+			},
+			"defensas" : {
+				"1" : [
+					64,
+					56,
+					52,
+					51,
+					43,
+					71
+				],
+				"2" : [
+					84,
+					85,
+					85,
+					73,
+					79,
+					75
+				],
+				"3" : [
+					92,
+					97,
+					84,
+					74,
+					97,
+					88
+				]
+			},
+			"ataque_total" : 53,
+			"defensa_total" : 79,
+			"posesion" : "43.75194"
+		}
+	},
+	"liga" : "alemana",
+	"nombre" : "Bayern Munich",
+	"posicion" : 1,
+	"status" : 1
+}
+\end{lstlisting}
+
+
+\subsection{Usuario}
+
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e810d6992c6e97059000002"),
+	"usuario" : ObjectId("4e680ec592c6e98b2a000001"),
+	"jornada" : 3,
+	"inicio" : 0,
+	"fin" : 0
+} 
+\end{lstlisting}
+
+\subsection{Mailing}
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e0e264292c6e94939000000"),
+	"correo" : "rob@surealista.com",
+	"desde" : "2011-07-01T19:55:46.648Z",
+	"idioma" : "en",
+	"invitado" : 1,
+	"nombre" : "Roberto Hidalgo"
+} 
+\end{lstlisting}
+
+\subsection{partidos}
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e23a78092c6e90b15000000"),
+	"fecha" : "2011-07-24T05:00:00Z",
+	"liga" : "alemana",
+	"local" : "4e012952c67d3ebc5e00000f",
+	"marcl" : "0.93522",
+	"marcv" : "1.0974",
+	"momios" : {
+		"local" : 3.36516,
+		"empate" : 3.20177,
+		"visitante" : 2.56075
+	},
+	"probe" : "0.30131",
+	"probl" : "0.30991",
+	"probv" : "0.38878",
+	"visitante" : "4e012952c67d3ebc5e00000d"
+}
+
+\end{lstlisting}
+
+\subsection{Resultados}
+
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("4e810d6992c6e97059000002"),
+	"usuario" : ObjectId("4e680ec592c6e98b2a000001"),
+	"jornada" : 3,
+	"inicio" : 0,
+	"fin" : 0
+} 
+\end{lstlisting}
+
+\subsection{system.indexes}
+\begin{lstlisting} 
+{
+	"v" : 1,
+	"name" : "_id_",
+	"key" : {
+		"_id" : 1
+	},
+	"ns" : "egobets.usuarios"
+}
+\end{lstlisting}
+
+\subsection{usuarios}
+
+\begin{lstlisting} 
+{
+	"_id" : ObjectId("5457db71c0622ba170a37d30"),
+	"nombre" : "Manuel Colin",
+	"correo" : "machingon15@hotmail.com",
+	"idioma" : true,
+	"facebook" : "555255439",
+	"status" : NumberLong(1),
+	"usuarioDesde" : "2014-11-03T19:45:53.241Z",
+	"jornadas" : NumberLong(0)
+} 
+\end{lstlisting}
+
+
+
+

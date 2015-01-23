@@ -25,25 +25,25 @@ El Sistema de recopilación de información y estadísiticas de los partidos (\e
 El sistema usa la nube para ofrecer sus servicio a los usuarios, se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{computoNube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
 Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{computoNube}  se retoman las siguentes ventajas de este paradigma:
 \begin{itemize}
-	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento).
+	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
 
-	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor.
+	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor. En particular a Egobets le permite utilizar este tipo de tecnología a la par de otros sistemas gigantes que tienen mucho más tiempo en el mercado y mucho mayores ingresos.
 
-	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente.
+	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
 
 
-	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio.
+	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
 
-	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones.
+	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
 
-	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata.
+	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos.
 
-	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente.
+Este paradigma del computo en la nube juega un papel fundamental en muchas de las piezas de software de Egobets.
 
 \end{itemize}
 
 
-\subsection{Proceso de generación de asesorías de apuestas}
+\subsection{Piezas de software y su interacción}
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -65,45 +65,137 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 
 \subsection{Sistema de recopilación de información y estadísticas de los partidos}
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
-Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado la temporada pasada y las fechas de los próximos partidos por jugar de cada una de las ligas. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después pueden ser ingestados en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
+Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado en las temporadas pasadas, así como el calendario de próximos partidos por jugar. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después son persistidos en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
 
 \subsubsection{Tecnologías destacadas}
 
 \begin{itemize}
-	\item \textbf{Servidor LAMP.} Esta es una de las configuraciones más populares para servidores web. El famoso acrónimo representa lo siguiente:
+	\item \textbf{Servidor LAMP.} Esta es una de las configuraciones más populares para servidores web. 
+		Una de las principales ventajas de utilizar una arquitectura LAMP es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos le permiten modificarlo y compartirlo \cite{lozano2008software}.
+	El famoso acrónimo representa lo siguiente :
 	\begin{itemize}
-		\item Linux. Sistema operativo Linux, en específico se utiliza la versión de Ubuntu LTS 12.04. Esta versión es estable con una gran comunidad activa de soporte.
-		\item Apache. El servidor HTTP, encargado de recibir y procesar las llamadas http.
-		\item MySQL. Base de datos relacional que permite al sistema persistir toda la información recuperada del internet.
-		\item PHP. El lenguaje de programación web más utilizado en el mercado \cite{(REFERENCIA)}. PHP es conocido por ....
-		sus principales ventajas son los bajos costos de mantenimiento, ....
+		\item Linux. Sistema operativo Linux (creado por Linus Torvalds), en específico se utiliza la versión de Ubuntu LTS 12.04. Esta versión es estable con una gran comunidad activa de soporte. Algunas de las ventajas de usar Linux son:
+		\begin{itemize}
+			\item El costo de licencia es gratuito y su uso no tiene algún otro costo monetario.
+			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
+			\item Tener las aplicaciones en sus últimas versiones, bien configuradas y aplicar los parches de manera inteligente, garantizan que el servidor se encuentre seguro y sea funcional.
+		\end{itemize}
+		\item Apache. El servidor HTTP, encargado de recibir y procesar las llamadas HTTP, nació hace diecisiete años como un proyecto por desarrollar un software robusto, de grado comercial, modular y gratuito para servir peticiones (Web) HTTP. Algunas de las ventajas con las que cuenta son \cite{apacheWeb}:
+		\begin{itemize}
+			\item Gran variedad de módulos. Existen muchos módulos que la comunidad desarrolla para atacar las problemáticas diarias, gracias a que su comunidad es muy activa estos desarrollos nunca acaban.
+			\item Fácil de administrar. El soporte de la comunidad y su extensivo uso permite que sea muy sencillo encontrar documentación de como realizar las funciones básicas de administración de servidores como la creación de nuevos dominios, implantación de certificados SSL, etc.
+			\item No importa el sistema operativo, Apache corre en UNIX, Windows, Mac y en la gran mayoría de sistemas operativos.
+			\item Corre bajo la licencia pública general de GNU.
+		\end{itemize}
+
+		\item MySQL. Base de datos relacional que permite al sistema persistir toda la información recuperada del internet. Las principales características de MySQL son \cite{mysqlWeb}:
+		\begin{itemize}
+			\item Sistema de administración. El servidor MySQL provee las herramientas para agregar, ingresear, procesar y desplegar la información guardada en la base de datos.
+			\item Las bases de datos MySQL son relacionales. La información se guarda en tablas separadas en vez de poner todo junto en un solo lugar. Las estructuras de base de datos están organizadas en archivos físicos optimizados para la velcidad. El modelo lógico con objetos como bases de datos, tablas, vistas, tuplas y columnas ofrece un ambiente de programación flexible. Y MySQL se asegura de que se respeten los tipos de relaciones entre tablas como puede ser uno a uno, uno a varios, únicas, u opcionales. Una base de datos bien diseñada nunca permitirá información incosistente, duplicada, huerfana, fuera de fecha o perdida.
+			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
+		\end{itemize}
+				\item PHP: Hypertext Preprocessor.. Según su página Web \cite{phpWeb} es un lenguaje de scripting, el cual puede ser embebido dentro de páginas HTML. Gran parte de su sintaxis fue tomada de C, Java y Perl con un par de características específicas propias de PHP. El objetivo del lenguaje es permitir a desarrolladores Web escribir páginas generadas dinámicamente con agilidad.
+				 PHP está enfocado principalmente a la programación de scripts del lado del servidor, por lo que se puede hacer cualquier cosa como recopilar datos de formularios, generar páginas con contenidos dinámicos, o enviar y recibir cookies. Aunque PHP puede hacer mucho más.
+				 Ventajas:
+		 		\begin{itemize}
+		 			\item No depende del sistema operativo. Esto se debe a que corre al ser llamado por el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
+					\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archiso del sistema operativo. 
+					\item Permite la conexión casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
+					\item PHP también cuenta con soporte para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
+					\item Existen muchas otras extensiones interesantes, las cuales están categorizadas alfabéticamente y por categoría.
+		 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
+		 		\end{itemize}
+
 	\end{itemize}
+
 	
-	\item Code Igniter. Es un framework\footnote{conjunto de herramientas de trabajo. All of them offer you chunks of pre-written code that make the repetitive or complex processes of coding easier, and impose a helpful structure on your site development.
-} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979. 
+	\item Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como
+una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979. 
+	Sobre el libro de Upton \cite{upton2007codeigniter} se tiene una aproximación a este patrón de diseño en CodeIgniter:
 	\begin{itemize}
 		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operacioens a los datos según sea necesario.
 		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
-		\item Controladore, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
+		\item Controladores, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
 	\end{itemize}
-	\cite{upton2007codeigniter}
+	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
+	\begin{itemize}
+		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
+		\item Documentación clara. La guía que se incluye cuenta con guía y tutoriales para empezar a trabajar de manera muy práctica.
+		\item Compatibildad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluído MySQL.
+		
+		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estandares convenidos en internet.
+		
+	\end{itemize}
+	
+	
 	\item PHP Simple HTML DOM Parser
+	Es un script de PHP que permite interpretar el HTML DOM de una página web y permite manipularlo de manera muy sencilla. Requiere PHP 5 o mayor, soporta archivos HTML mal formados y permite encontrar las etiquetas HTML con selectores como lo haría jQuery. Con una simple línea de código basta para extraer los contenidos de una página HTML \cite{htmlparserWeb}.
 	\cite{chen2009php} \cite{chowdhury2014intelwiki}
-	\item Bootstrap \cite{otto2010bootstrap}
+	\item Bootstrap. Es un framework elegante, intuitivo y poderoso que agiliza y facilita el desarrollo Web de front-end Su principal objetivo es facilitar el desarrollo de sitios móviles y responsive. 
+	Documentación amplia y detallada, docenas de elementos HTML, componentes CSS e increíbles plugins de jQuery son algunas de sus principales características\cite{bootstrapWeb}. 
+	\cite{otto2010bootstrap}
 	\cite{cochran2012twitter}
 	
 \end{itemize}
 
 \subsubsection{Web Scraper}
-Es un script que 
-\cite{hogue2005thresher}
-Definir lo que es un scraper
+El proceso de ``Web Scraping'' consiste en extraer y crear representaciones estructuradas con la información de un sitio Web en particular. HTML, el lenguaje de marcado usado para darle estructura a la información de las páginas web está sujeta a muchos cambios, especialmente cuando se actualiza su estilo. Ya que las técnicas de extracción se basan en el lenguaje de marcado, un solo cambio puede llevar a extraer datos incorrectos o incompletos \cite{cording2011algorithms}.
 
-Definir las páginas que se buscan y como se recorren
+Las técnicas de ``Web Scraping'' permiten, por ejemplo, que una compañía monitoree los precios de los productos de sus competidores. De igual manera le permiten a Egobets, conseguir la última información detallada con la información de las fechas de los partidos, marcadores, tiros a gol, posesión del balón y nombres de los equipos.
 
-Definir los objetos finales de la base de datos que se consumen.
+Si el dueño de la información no provee de una API abierta, el remedio (como en el caso de Egobets) es el de escribir un programa que apunte a la información desplegada en la página Web. Las propiedades buscadas en un scraper son:
+\begin{itemize}
+	\item Ser tan tolerante como pueda ser posible a cambios en el lenguaje de marcado.
+	\item Ser lo suficientemente rápido como para ofrecer respuestas en milisegundos y evitar ``time-outs'' durante el consumo del servicio.
+	\item No tener restricciones en los patrones que conforman la estructura del HTML del sitio. En específico esto implica que el servicio debe ser lo suficientemente bueno como para interpretar de la mejor manera la información aún incluso si el HTML se encuentra mal formado
+\end{itemize}
+
+Cording, P. \cite{cording2011algorithms} presenta en su tesis de maestría un estudio de como realizar un scraper que base su funcionamiento en la coincidencia aproximada de los patrones de un árbol, esta es la base de muchas de las librerías que existen (incluyendo la que se usa en este trabajo). Para realizar esta tarea se utiliza una librería de código abierto que permite manipular DOM\footnote{W3schools \cite{domWeb} lo define como: ``Documento W3C Object Model (DOM) es una interfaz de la plataforma y de lenguaje neutro que permite a los programas y scripts acceder y actualizar dinámicamente el contenido, la estructura y el estilo de un documento.''} de HTML y conseguir la información necesaria, esta libreria se llama: PHP Simple HTML DOM Parser. 
+
+\textbf{Un ejemplo de uso}
+
+Supóngase el siguiente HTML:
+
+\lstset{language=HTML}
+\begin{lstlisting}[frame=single]
+<div class="team-names">
+	<div class="team-name">
+		<span>
+			<img src="http://espncdn.com/teamlogos/soccer/500/102.png" alt="Villarreal" width="22">
+			Villarreal
+		</span>
+	</div>
+	<div class="team-name">
+		<span>
+			<img src="http://espncdn.com/teamlogos/soccer/500/93.png" alt="Athletic Bilbao" width="22">
+			Athletic Bilbao
+		</span>
+	</div>
+</div>
+\end{lstlisting}
+
+Ahora analícese el siguiente código:
+
+\lstset{language=PHP}
+\begin{lstlisting}[frame=single]
+	$aux = $table->find('.team-name',0);
+	$nomEquipoLocal = $aux;
+	$partido['prints']['local_nom']= $nomEquipoLocal;
+	$idEspnEquipoLocal = trim(strstr(substr(strstr($aux->innertext, 'soccer/500/'), strlen('soccer/500/')),'.png',true));
+\end{lstlisting}
 
 
+Con este código se pueden obtener los nombres del equipo local y el identificador que le asigna ESPN a sus equipos. Esto es gracias a que \emph{``find('.team-name',0)''} recorre todo el árbol DOM y encuentra todas las ocurrencias de la clase con nombre \emph{``team-name''} el cero que se le proporciona a la función \emph{find} regresa el primer elemento encontrado. De ahí, la propiedad \emph{``->innertext''} muestra la cadena de caracteres plana que contiene ese elemento, por lo que basta con hacer un manejo de cadenas de caracteres para obtener el identificador del equipo que se nombra el archivo PNG del logo del equipo.
+% Es un script que
+% \cite{hogue2005thresher}
+% Definir lo que es un scraper
+%
+%
+% Definir las páginas que se buscan y como se recorren
+%
+% Definir los objetos finales de la base de datos que se consumen.
+%
+%
 
 
 \subsubsection{Descripción de su funcionamiento}
@@ -310,6 +402,7 @@ Estas seis funciones son las que utiliza Egobets para modelar la adversidad al r
 
 
 \subsubsection{Paso 1 - Determinación de apuestas redituables}
+\label{sec:paso-1}
 
 
 Para seguir la explicación de los pasos del proceso se tomará un ejemplo práctico y las transformaciones que sufre durante el proceso. Al empezar las recomendaciones de una jornada se tiene un conjunto de datos muy parecido al que se da en el ejemplo. Tómese la tabla~\ref{momios-y-probas} como base del ejemplo. En esta tabla se presentan momios de alguna casa de apuesta (usualemente los mejores del mercado) para diez partidos distintos, cada uno cuenta con los momios para los tres tipos de apuestas: victoria del Local ($m_L$), empate ($m_E$) y victoria del visitante ($m_V$). Además se muestran las probabilidades estimadas por Egobets de los tres posibles resultados del encuentro: victoria del local ($\hat{p_L}$), empate ($\hat{p_L}$) y victoria del visitante ($\hat{p_L}$).
@@ -375,6 +468,8 @@ J & 1.9 & 3.4 & 4 & 0.5 & 0.26 & 0.23 & 0.95 & 0.88 & 0.92 & Ninguna\\ \bottomru
 Observese en la tabla~\ref{redituables} como en negritas se han señalado las posibles apuestas a realizar. De las treinta posibles apuestas, ahora sólo quedan 9 redituables. Hay dos partidos el `C' y el `J' que no ameritan apuesta alguna. Y el partido `E', por ejemplo, tiene dos posibles apuestas redituables.
 
 \subsubsection{Paso 2 - Selección de apuestas}
+\label{sec:paso-2}
+
 
 Para determinar el portafolio de apuestas basta con calcular el valor de la función de utilidad de selección y se deben tomar aquellas ``$n$'' apuestas que tengan los mayores valores (Donde ``$n$'' es el número de apuestas a recomendar).
 Ver tabla~\ref{seleccion}
@@ -401,6 +496,7 @@ I & Visitante & 4.5 & 0.25 & 0.36\\ \bottomrule
 \end{table}
 
 \subsubsection{Paso 3 - Calcular cuanto dinero a cada apuesta}
+\label{sec:paso-3}
 
 Una vez determinado el portafolio de apuestas hace falta determinar la cantidad de dinero que se invertirá en éste. Esta sección y la próxima resolverán tal problema.
  Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dolares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su funcion de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma tenemos los números como porcentajes.
@@ -426,6 +522,8 @@ Los valores suman a 0.59, cuando se divide cada valor por 0.59 resulta: De la ca
 
 
 \subsubsection{Paso 4 - Determinar nivel de reservas}
+\label{sec:paso-4}
+
 %[COMENTARIO]ESto no creo que vaya aquí, estas propiedades deberían estar definidas en otro lugar
 % El sistema de reservas, en pocas palabras, tiene como intención proteger el dinero de los clientes en el corto plazo, de tal forma que si una semana resulta en pérdidas, éstas no vayan a afectar la tendencia a largo plazo de sus ingresos totales. Las ventajas de usar un sistema de reservas son las siguientes: primero, como ya se dijo, proteger el dinero del cliente en el corto plazo cuando haya pérdidas, en segundo lugar, permite al cliente mantener el mismo nivel de apuestas cada semana, y tercero, permite darle una estructura de fondo de inversión a las apuestas y así poder aprovechar el potencial interés compuesto que resulte de apostar. En contraste, las desventajas son: en cada semana se decide apostar menos dinero y por lo tanto las ganancias son menores en el corto plazo, además al ser una estrategia de largo plazo, los clientes que deseén incurrir en mayores riesgos no usarán este sistema de reservas.
 %
@@ -489,8 +587,8 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 	\[p_\sigma = \frac{1}{1.749615}(I_1 + I_2) - 1.06 + X\]
 	Donde $I_1$ es
 	\[I_1 = 0.2925 +1.3772\mu - 1.127\rho\]
-	e $I_2$ es
-	\[I_2 = \frac{3.11}{\mu}(1 + 0.792\sigma - \mu)((-0.567345 + 1.3772\mu -1.17\sigma)\muX)^{0.123}\]
+	e $I_2$ equivale a
+	\[I_2 = \frac{3.11}{\mu}(1 + 0.792\sigma - \mu)((-0.567345 + 1.3772\mu -1.17\sigma)\mu X)^{0.123}\]
 	
 	
 	\item \textbf{Calcular variable proxy.}
@@ -513,6 +611,7 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 	$C_A$ representa, en porcentaje, la cantidad de dinero que se le recomendará al cliente que apueste en esa semana para el portafolio de apuests en cuestión.
 	
 	\textbf{Calculando el nivel de reserva en el ejemplo.}
+	
 	Primero que nada es importante recordar cuanto valían las distintas variables y establecer los valores necesarios para el ejemplo.
 	\begin{itemize}
 		\item $k = 2$ (Cantidad apuestas a realizar)
@@ -522,26 +621,37 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 	Ahora se procederá a calcular el nivel de reservas.
 	\begin{enumerate}
 		\item Se obtiene $j = 2$ (Cantidad de partidos en los que se apuesta)
-		\item Se calcula el valor esperado  $\mu = (0.4)(2.75)(0.46) + (0.6)(2.1)(0.51) = 1.1486$ y el riesgo $\sigma = \sqrt{(0.4)^2(2.75)^2(0.46)(0.54)+(0.6)^2(2.1)^2(0.51)(0.49)} = 0.835$
+		\item Se calcula el valor esperado 
+		\[\mu = (0.4)(2.75)(0.46) + (0.6)(2.1)(0.51) = 1.1486\] 
+		y el riesgo del portafolio 
+		\[\sigma = \sqrt{(0.4)^2(2.75)^2(0.46)(0.54)+(0.6)^2(2.1)^2(0.51)(0.49)} = 0.835\]
 		\item Se actualiza el riesgo $\sigma = \left(\sqrt{\frac{2}{15}}\right)0.835 = 0.3$
 		\item Se calcula la probabilidad de riesgo
 		\[I_1 = 0.2925 +1.3772(1.1486) - 1.127(0.3) = 1.53\]
-		\[I_2 = \frac{3.11}{1.1486}(1 + 0.792(0.3) - \mu)((-0.567345 + 1.3772(1.1486) -1.17(0.3))(1.1486)(0.8))^{0.123} =0.2272\]
+		\[I_2 = \frac{3.11}{1.1486}(1 + 0.792(0.3) - \mu)((-0.567345 + 1.3772(1.1486)\]
+		\[-1.17(0.3))(1.1486)(0.8))^{0.123} = 0.2272\]
 		Entonces
 		\[p_\sigma = \frac{1}{1.749615}(1.53 + 0.2272) - 1.06 + 0.8 = 0.74\]
 		
 		\item Se calcula la variable auxiliar $proxy = 0.2925 + 1.3772(1.1486) -1.127(0.3) - 0.9975(0.74) = 0.81$
 		
-		\item La cantidad de riesgo entonces es igual a $c_A = \frac{2(0.81)}{15} = 0.108$
-		Por lo tanto, bajo este nivel de riesgo el porcentaje óptimo a apostar del ingreso es el $10.8\%$ en el portafolio de la tabla~\ref{proporcion}
+		\item La cantidad a apostar es entonces es igual a $c_A = \frac{2(0.81)}{15} = 0.108$
+		Por lo tanto, con esta adversidad al riesgo y con base en el portafolio de apuestas de la tabla~\ref{proporcion}.
 		
-		
-		
+		\textbf{El nivel de reserva para esta recomendación es del} $\mathbf{89.2\%}$.
 	\end{enumerate}
-	
-	
 \end{enumerate}
 
+\subsubsection{Paso 5 - Presentando la recomendación}
+\label{sec:paso-5}
+Ahora, con todos los pasos cumplidos lo único restante es poner las cifras juntas. Se toma la proporción calculada en~\ref{sec:paso-3} y se multiplica por la cantidad a apostar obtenida en~\ref{sec:paso-4}.
+Más aún, si el usuario proporciona la cantidad de dinero que tiene disponible, las recomendaciones se pueden expresar en moneda.
+
+Finalmente si para el ejemplo planteado en~\ref{sec:paso-1} se conoce que el usuario tiene $\$10'000.00$ para apostar, la recomendación de apuesta quedaría de la siguiente manera:
+\begin{enumerate}
+	\item Apueste $\$432$ pesos ($4.32\%$) en el partido A a favor del equipo visitante.
+	\item Apueste $\$648$ pesos ($8.48\%$) en el partido G a favor del equipo local.
+\end{enumerate}
 
 \subsection{Encuestas de adversidad al riesgo}
 \subsection{Ahorro precaucional}

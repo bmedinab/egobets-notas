@@ -21,17 +21,43 @@
 \usepackage{enumerate}
 \usepackage{cleveref}
 \usepackage{caption}
+%Cositas para hacer tablitas mas bonititas
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{multirow}
+%madres para hacer links de indices-itos
+\usepackage[pdfpagelabels]{hyperref}
+%a ver si sale el código bonito
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=HTML,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 \usepackage{tikz}
 \usetikzlibrary{trees}
 \usepackage{textcomp}
 \usepackage{placeins}
 \usepackage[sorting=nyt]{biblatex}
 \usepackage{url}
-%%% --- Se supone que estas lineas aumentan el tamaño que tienen las urls en *.bib--- %%%
+%%% --- Se supone que estas lineas aumentan el tamaño que tienen las urls en *.bib (luego las corta)--- %%%
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
 \addbibresource{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/Decidido.bib}

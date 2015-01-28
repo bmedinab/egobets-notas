@@ -1,3 +1,465 @@
-\chapter{Conclusiones}
+\chapter{Sistema de Egobets.com}
+\label{chap:software}
+\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
+
+Egobets.com proporciona al cliente los servicios de asesoría de apuestas personalizada a través de un portal web usable, práctico y profesional. En este capítulo se presenta el sistema desarrollado con los fundamentos teóricos descritos en los capítulos anteriores, una verdadera aplicación computacional de las matemáticas
+
+Se describen las cuatro piezas de software desarrolladas que conforman en su totalidad el sistema de Egobets. Las tres primeras permiten al usuario adminstrativo echar a andar toda la maquinaria. Y la última pieza, conocida como e 
+A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
 
 
+
+% Capítulo 1 y dos tal como están
+% Capítulo  3: Egobets: Matemáticas
+% Capítulo  4: Egobets: Sistema
+% 4.1 Descripción  de egobets (componentes y funcionalidad  a alto nivel)
+% 4.2 Descripción  de Principios de diseño (¿por qué  hacerlo así?)
+% 4.3 Diseño de  bases de datos (empieza indicando que al ser un MVC web está  orientado a diseñarse desde la base de datos hacia la pantalla)
+% 4.4 Elección de tecnología
+% 5. Conclusiones.
+
+
+\section{Egobets.com}
+\label{sec:egobets-com}
+
+\subsection{Diseño y arquitectura}
+\label{sec:design}
+
+\subsection{Implementación}
+\label{sec:implementation}
+
+\subsection{Servicios}
+\label{sec:services}
+
+\begin{enumerate}
+	\item \emph{Recomendación personalizada de apuestas en fútbol:} Cada persona es diferente y debe ser tratada de forma única, en Egobets se determina el perfil de riesgo de cada usuario mediante una encuesta y se le recomienda apuestas a su medida, de tal forma que pueda obtener ganancias y sentirse cómodo al mismo tiempo.
+	\item \emph{Pronósticos:} Para cada partido se proporcionan, entre otros: marcador final más probable, resultado más probable y el nivel de posesión de balón de cada equipo.
+	\item \emph{Estadísticas:} A través de éstas se pueden analizar las fortalezas y debilidades de los equipos favoritos del usuario.
+\end{enumerate}
+
+\subsubsection{Encuesta}
+
+\textbf{Perfil de riesgo}
+
+
+El perfil de riesgo sirve para poder personalizar la asesoría de apuestas y se calcula a través de las respuestas proporcionadas en la encuesta de perfil de riesgo.
+
+De forma genérica hay tres perfiles de riesgo:
+\begin{enumerate}
+	\item Agresivo: Toma riesgos altos para poder obtener la mayor cantidad de ganancias posibles en el corto plazo. 
+	\item Conservador: Apuesta a lo más seguro para proteger su dinero lo más posible, busca ganancias al largo plazo.
+	\item Moderado: Término medio entre agresivo y conservador.
+\end{enumerate}
+
+\textbf{Sistema de reservas}
+
+En \emph{Egobets.com} se entiende que cada persona es diferente, que cada apuesta es diferente y debe ser analizada de forma individual, por eso se ha desarrollado el sistema de reservas que determina cuánto dinero apostar en la recomendación de la semana.
+
+La reserva es la cantidad de dinero que no se apostará, sirve para poder seguir apostando en semanas posteriores en el caso en que se lleguen a tener pérdidas.
+
+
+Se toman en cuenta tres factores: la volatilidad de la apuesta, la ganancia esperada de ésta y el nivel de riesgo deseado del cliente. Se combina esta información en un modelo probabilístico que proporciona la cantidad a apostar. Mediante este sistema se busca de proteger al cliente de pérdidas potenciales.
+
+Beneficios:
+\begin{enumerate}
+
+	\item Protege su dinero de pérdidas potenciales.
+	\item Permite recuperarse con mayor velocidad de semanas con pérdidas.
+	\item Permite dar una estructura de fondo de inversión a las apuestas al obtener un sistema de interés compuesto.
+
+\end{enumerate}
+
+Costos:
+\begin{enumerate}
+	\item Se restringe la cantidad de ganancias a corto plazo.
+\end{enumerate}
+
+Es un sistema a largo plazo, no se recomienda a personas que desean incurrir en riesgos elevados en beneficio de la posibilidad de obtener mayores ganancias.
+
+
+\subsubsection{Tablero de apuestas}
+
+El tablero es la página principal para el usuario de \emph{Egobets.com}. En el tablero se presenta la recomendación de la semana:
+\begin{enumerate}
+
+\item Barra de ingreso.
+\item Los partidos en que se apostará: el partido, el resultado a apostar, la cantidad de dinero a apostar, el momio ofrecido y la casa de apuestas que ofrece tal momio.
+\item La gráfica de valor esperado.
+\end{enumerate}
+
+En \emph{Egobets.com} se le da seguimiento a cada uno de nuestros clientes. Con esta información se puede monitorear la evolución del ingreso y así dar las recomendaciones de acuerdo al nivel de ganancias o pérdidas. Es importante que esta información sea verdadera para poder brindar el mejor servicio posible.
+\begin{enumerate}
+
+	\item \textbf{¿Se pueden hacer recomendaciones de resultados que no sean los más probables?}
+\end{enumerate}
+
+
+Sí, depende del perfil de riesgo y de lo que pague la casa de apuestas en tal partido. En algunas ocasiones es recomendable apostar en contra del favorito si el pago es suficientemente grande. Si se tiene activado el sistema en contra de favoritos (en el menú perfil) o si el perfil es muy agresivo se presentarán muchas recomendaciones de este tipo. 
+
+La gráfica de valor esperado es una herramienta visual que permite ver cuáles son los posibles resultados de la recomendación de la semana. En \emph{Egobets.com} se conoce que todas las apuestas tienen un riesgo y mediante esta gráfica se puede cuantificar: Cada barra representa la probabilidad de que se gane o pierda la cantidad indicada debajo de ella, mientras más grande sea la barra mayores probabilidades hay de que tal resultado ocurra.
+
+
+
+\subsubsection{Pronósticos}
+Pronósticos: Se pronostica el marcador final, la posesión del balón y el ganador del encuentro. Al poner el apuntador sobre el resultado más probable aparece el grado de confiabilidad del pronóstico.
+
+
+En \emph{Egobets.com} se presentan los equipos mediante un power ranking. Con base en las estadísticas de los partidos y dados sus resultados, se pronostica cuál será la tabla de posiciones al finalizar dicha liga.
+
+
+\subsubsection{Estadísticas}
+
+
+En orden de aparición: Una estrella indicando si el equipo está o no marcado como uno de los favoritos, la posición en el power ranking, el nombre del equipo, el índice de ataque general del equipo, el índice de defensa general del equipo y por último el cambio dentro de la tabla de power ranking. 
+
+\begin{enumerate}
+
+\item Índice de ataque general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para atacar.
+\item Índices de medio centro, delanteros y definición: Con una calificación de cero a cien. Representan la capacidad de controlar el medio centro, de atacar a portería y de precisión de los tiros, respectivamente.
+\item Índice de defensa general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para defender.
+\item Índices de medio centro, defensas y portero: Con una calificación del cero a cien. Representan la capacidad de defender en el centro, de los defensas y del portero, respectivamente.
+\item Al hacer click en las variables mencionadas en 2 o 4 se tienen acceso a la evolución de tales variables desde el minuto 0 hasta el 90 de un partido.
+\end{enumerate}
+
+\begin{enumerate}
+
+	\item \emph{Resultados de la jornada anterior:} Se presenta el partido, el marcador real, el marcador pronosticado y el resultado pronosticado. Esto con el fin de que los usuarios puedan comparar lo pronosticado y lo que en verdad ocurrió.
+	\item \emph{Pronósticos de la jornada actual:} Se presenta el partido, el resultado pronosticado (o favorito), el marcador pronosticado y la fecha del encuentro. Además al poner el apuntador encima de un partido se presenta el grado de confiabilidad del pronóstico.
+\end{enumerate}
+
+Además para cada tabla se pueden presentar los resultados de una liga en particular al seleccionarla en el recuadro de arriba.
+
+\section{Alimentando el sistema}
+\label{sec:inserting-data}
+
+\subsection{Próximos partidos}
+\label{sec:next-match}
+
+\subsection{Resultados finales}
+\label{sec:results}
+
+
+% \section{Descripción General}
+% \label{sec:description}
+%
+% El ecosistema de Egobets consiste principalmente de cuatro piezas de software. Ver la figura~\ref{Fig:Sistemas}.
+%
+%
+%
+%
+% \begin{figure}[!htb]\centering
+%    \begin {minipage}{1\textwidth}
+%      \includegraphics[width=\linewidth]{sistemas}
+%      \caption{Diagrama de sistemas y usuarios}\label{Fig:Sistemas}
+%    \end{minipage}
+% \end{figure}
+%
+% El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor en la nube de Amazon Web Services; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal.
+%
+%
+% \subsubsection{Computación en la nube}
+%
+% El sistema usa la nube para ofrecer sus servicio a los usuarios, se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{computoNube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
+% Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{computoNube}  se retoman las siguentes ventajas de este paradigma:
+% \begin{itemize}
+% 	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
+%
+% 	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor. En particular a Egobets le permite utilizar este tipo de tecnología a la par de otros sistemas gigantes que tienen mucho más tiempo en el mercado y mucho mayores ingresos.
+%
+% 	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
+%
+%
+% 	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
+%
+% 	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
+%
+% 	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos.
+%
+% Este paradigma del computo en la nube juega un papel fundamental en muchas de las piezas de software de Egobets.
+%
+% \end{itemize}
+%
+%
+% \subsection{Piezas de software y su interacción}
+%
+% \begin{figure}[!htb]\centering
+%    \begin {minipage}{1\textwidth}
+%      \includegraphics[width=\linewidth]{flujo}
+%      \caption{Diagrama de flujo de información}\label{Fig:flujo}
+%    \end{minipage}
+% \end{figure}
+%
+% El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
+% \begin{enumerate}
+% 	\item A través del \emph{Sistema de recopilación} los administradores descargan de la página de Internet de ESPN los resultados de todos los partidos de la temporada junto con la información de los próximos partidos por jugar  de cada una de las ligas Europeas.
+% 	\item Los datos recopilados permiten a los administradores generar un conjunto de archivos de texto con toda la información de los resultados de los últimos partidos y las fechas de los próximos partidos.
+% 	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
+% 	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
+% 	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
+% 	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones peronalizadas de apuestas.
+% \end{enumerate}
+%
+%
+% \subsection{Sistema de recopilación de información y estadísticas de los partidos}
+% \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
+% Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado en las temporadas pasadas, así como el calendario de próximos partidos por jugar. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después son persistidos en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
+%
+% \subsubsection{Tecnologías destacadas}
+%
+% \begin{itemize}
+% 	\item \textbf{Servidor LAMP.} Esta es una de las configuraciones más populares para servidores web.
+% 		Una de las principales ventajas de utilizar una arquitectura LAMP es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos le permiten modificarlo y compartirlo \cite{lozano2008software}.
+% 	El famoso acrónimo representa lo siguiente :
+% 	\begin{itemize}
+% 		\item Linux. Sistema operativo Linux (creado por Linus Torvalds), en específico se utiliza la versión de Ubuntu LTS 12.04. Esta versión es estable con una gran comunidad activa de soporte. Algunas de las ventajas de usar Linux son:
+% 		\begin{itemize}
+% 			\item El costo de licencia es gratuito y su uso no tiene algún otro costo monetario.
+% 			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
+% 			\item Tener las aplicaciones en sus últimas versiones, bien configuradas y aplicar los parches de manera inteligente, garantizan que el servidor se encuentre seguro y sea funcional.
+% 		\end{itemize}
+% 		\item Apache. El servidor HTTP, encargado de recibir y procesar las llamadas HTTP, nació hace diecisiete años como un proyecto por desarrollar un software robusto, de grado comercial, modular y gratuito para servir peticiones (Web) HTTP. Algunas de las ventajas con las que cuenta son \cite{apacheWeb}:
+% 		\begin{itemize}
+% 			\item Gran variedad de módulos. Existen muchos módulos que la comunidad desarrolla para atacar las problemáticas diarias, gracias a que su comunidad es muy activa estos desarrollos nunca acaban.
+% 			\item Fácil de administrar. El soporte de la comunidad y su extensivo uso permite que sea muy sencillo encontrar documentación de como realizar las funciones básicas de administración de servidores como la creación de nuevos dominios, implantación de certificados SSL, etc.
+% 			\item No importa el sistema operativo, Apache corre en UNIX, Windows, Mac y en la gran mayoría de sistemas operativos.
+% 			\item Corre bajo la licencia pública general de GNU.
+% 		\end{itemize}
+%
+% 		\item MySQL. Base de datos relacional que permite al sistema persistir toda la información recuperada del internet. Las principales características de MySQL son \cite{mysqlWeb}:
+% 		\begin{itemize}
+% 			\item Sistema de administración. El servidor MySQL provee las herramientas para agregar, ingresear, procesar y desplegar la información guardada en la base de datos.
+% 			\item Las bases de datos MySQL son relacionales. La información se guarda en tablas separadas en vez de poner todo junto en un solo lugar. Las estructuras de base de datos están organizadas en archivos físicos optimizados para la velcidad. El modelo lógico con objetos como bases de datos, tablas, vistas, tuplas y columnas ofrece un ambiente de programación flexible. Y MySQL se asegura de que se respeten los tipos de relaciones entre tablas como puede ser uno a uno, uno a varios, únicas, u opcionales. Una base de datos bien diseñada nunca permitirá información incosistente, duplicada, huerfana, fuera de fecha o perdida.
+% 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
+% 		\end{itemize}
+% 				\item PHP: Hypertext Preprocessor.. Según su página Web \cite{phpWeb} es un lenguaje de scripting, el cual puede ser embebido dentro de páginas HTML. Gran parte de su sintaxis fue tomada de C, Java y Perl con un par de características específicas propias de PHP. El objetivo del lenguaje es permitir a desarrolladores Web escribir páginas generadas dinámicamente con agilidad.
+% 				 PHP está enfocado principalmente a la programación de scripts del lado del servidor, por lo que se puede hacer cualquier cosa como recopilar datos de formularios, generar páginas con contenidos dinámicos, o enviar y recibir cookies. Aunque PHP puede hacer mucho más.
+% 				 Ventajas:
+% 		 		\begin{itemize}
+% 		 			\item No depende del sistema operativo. Esto se debe a que corre al ser llamado por el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
+% 					\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archiso del sistema operativo.
+% 					\item Permite la conexión casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
+% 					\item PHP también cuenta con soporte para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
+% 					\item Existen muchas otras extensiones interesantes, las cuales están categorizadas alfabéticamente y por categoría.
+% 		 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
+% 		 		\end{itemize}
+%
+% 	\end{itemize}
+%
+%
+% 	\item Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como
+% una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979.
+% 	Sobre el libro de Upton \cite{upton2007codeigniter} se tiene una aproximación a este patrón de diseño en CodeIgniter:
+% 	\begin{itemize}
+% 		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operacioens a los datos según sea necesario.
+% 		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
+% 		\item Controladores, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
+% 	\end{itemize}
+% 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
+% 	\begin{itemize}
+% 		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
+% 		\item Documentación clara. La guía que se incluye cuenta con guía y tutoriales para empezar a trabajar de manera muy práctica.
+% 		\item Compatibildad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluído MySQL.
+%
+% 		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estandares convenidos en internet.
+%
+% 	\end{itemize}
+%
+%
+% 	\item PHP Simple HTML DOM Parser
+% 	Es un script de PHP que permite interpretar el HTML DOM de una página web y permite manipularlo de manera muy sencilla. Requiere PHP 5 o mayor, soporta archivos HTML mal formados y permite encontrar las etiquetas HTML con selectores como lo haría jQuery. Con una simple línea de código basta para extraer los contenidos de una página HTML \cite{htmlparserWeb}.
+% 	\cite{chen2009php} \cite{chowdhury2014intelwiki}
+% 	\item Bootstrap. Es un framework elegante, intuitivo y poderoso que agiliza y facilita el desarrollo Web de front-end Su principal objetivo es facilitar el desarrollo de sitios móviles y responsive.
+% 	Documentación amplia y detallada, docenas de elementos HTML, componentes CSS e increíbles plugins de jQuery son algunas de sus principales características\cite{bootstrapWeb}.
+% 	\cite{otto2010bootstrap}
+% 	\cite{cochran2012twitter}
+%
+% \end{itemize}
+%
+% \subsubsection{Web Scraper}
+% El proceso de ``Web Scraping'' consiste en extraer y crear representaciones estructuradas con la información de un sitio Web en particular. HTML, el lenguaje de marcado usado para darle estructura a la información de las páginas web está sujeta a muchos cambios, especialmente cuando se actualiza su estilo. Ya que las técnicas de extracción se basan en el lenguaje de marcado, un solo cambio puede llevar a extraer datos incorrectos o incompletos \cite{cording2011algorithms}.
+%
+% Las técnicas de ``Web Scraping'' permiten, por ejemplo, que una compañía monitoree los precios de los productos de sus competidores. De igual manera le permiten a Egobets, conseguir la última información detallada con la información de las fechas de los partidos, marcadores, tiros a gol, posesión del balón y nombres de los equipos.
+%
+% Si el dueño de la información no provee de una API abierta, el remedio (como en el caso de Egobets) es el de escribir un programa que apunte a la información desplegada en la página Web. Las propiedades buscadas en un scraper son:
+% \begin{itemize}
+% 	\item Ser tan tolerante como pueda ser posible a cambios en el lenguaje de marcado.
+% 	\item Ser lo suficientemente rápido como para ofrecer respuestas en milisegundos y evitar ``time-outs'' durante el consumo del servicio.
+% 	\item No tener restricciones en los patrones que conforman la estructura del HTML del sitio. En específico esto implica que el servicio debe ser lo suficientemente bueno como para interpretar de la mejor manera la información aún incluso si el HTML se encuentra mal formado
+% \end{itemize}
+%
+% Cording, P. \cite{cording2011algorithms} presenta en su tesis de maestría un estudio de como realizar un scraper que base su funcionamiento en la coincidencia aproximada de los patrones de un árbol, esta es la base de muchas de las librerías que existen (incluyendo la que se usa en este trabajo). Para realizar esta tarea se utiliza una librería de código abierto que permite manipular DOM\footnote{W3schools \cite{domWeb} lo define como: ``Documento W3C Object Model (DOM) es una interfaz de la plataforma y de lenguaje neutro que permite a los programas y scripts acceder y actualizar dinámicamente el contenido, la estructura y el estilo de un documento''. La especificación formal se puede leer en la recomendación \cite{wood1998document}.} de HTML y conseguir la información necesaria, esta libreria se llama: PHP Simple HTML DOM Parser.
+%
+% \textbf{Un ejemplo de uso}
+%
+% Supóngase el siguiente HTML:
+%
+% \lstset{language=HTML}
+% \begin{lstlisting}[frame=single]
+% <div class="team-names">
+% 	<div class="team-name">
+% 		<span>
+% 			<img src="http://espncdn.com/teamlogos/soccer/500/102.png" alt="Villarreal" width="22">
+% 			Villarreal
+% 		</span>
+% 	</div>
+% 	<div class="team-name">
+% 		<span>
+% 			<img src="http://espncdn.com/teamlogos/soccer/500/93.png" alt="Athletic Bilbao" width="22">
+% 			Athletic Bilbao
+% 		</span>
+% 	</div>
+% </div>
+% \end{lstlisting}
+%
+% Ahora analícese el siguiente código:
+%
+% \lstset{language=PHP}
+% \begin{lstlisting}[frame=single]
+% 	$aux = $table->find('.team-name',0);
+% 	$nomEquipoLocal = $aux;
+% 	$partido['prints']['local_nom']= $nomEquipoLocal;
+% 	$idEspnEquipoLocal = trim(strstr(substr(strstr($aux->innertext, 'soccer/500/'), strlen('soccer/500/')),'.png',true));
+% \end{lstlisting}
+%
+%
+% Con este código se pueden obtener los nombres del equipo local y el identificador que le asigna ESPN a sus equipos. Esto es gracias a que \emph{``find('.team-name',0)''} recorre todo el árbol DOM y encuentra todas las ocurrencias de la clase con nombre \emph{``team-name''} el cero que se le proporciona a la función \emph{find} regresa el primer elemento encontrado. De ahí, la propiedad \emph{``->innertext''} muestra la cadena de caracteres plana que contiene ese elemento, por lo que basta con hacer un manejo de cadenas de caracteres para obtener el identificador del equipo que se nombra el archivo PNG del logo del equipo. Para más ejemplos y documentación de como utilizar la librería dirigirse a \cite{sourceparserWeb}.
+% % Es un script que
+% % \cite{hogue2005thresher}
+% % Definir lo que es un scraper
+% %
+% %
+% % Definir las páginas que se buscan y como se recorren
+% %
+% % Definir los objetos finales de la base de datos que se consumen.
+% %
+% %
+%
+%
+% \subsubsection{Descripción de su funcionamiento}
+%
+% \begin{enumerate}
+% 	\item \textbf{Equipos de la temporada.}
+% 	Para poder comenzar la recuperación de información, es importante contar con los equipos que estén jugando esta temporada. Dependiendo de los resultados de la temporada anterior, los equipos que hayan quedado hasta abajo en la tabla de posición descienden a ligas menores y a su vez suben los mejores de estas ligas. Ver figura~\ref{Fig:los-equipos}
+% 	\begin{figure}[!htb]\centering
+% 	   \begin {minipage}{1\textwidth}
+% 	     \frame{\includegraphics[width=\linewidth]{los-equipos}}
+% 	     \caption[Ejemplo de equipos de la liga española]{Ejemplo de equipos de la liga española\footnotemark }\label{Fig:los-equipos}
+% 	   \end{minipage}
+% 	\end{figure}
+%
+%
+% 	\item \textbf{Calendario de próximos partidos.}
+% 	\begin{figure}[!htb]\centering
+% 	   \begin {minipage}{1\textwidth}
+% 	     \frame{\includegraphics[width=\linewidth]{proximos-partidos}}
+% 	     \caption{Recuperación de próximos partidos}\label{Fig:proximos-partidos}
+% 	   \end{minipage}
+% 	\end{figure}
+%
+% 	\item \textbf{Estadísticas e información de partidos jugados.}
+% 	\begin{figure}[!htb]\centering
+% 	   \begin {minipage}{1\textwidth}
+% 	     \frame{\includegraphics[width=\linewidth]{pasados-partidos}}
+% 	     \caption{Recuperación de resultados de partidos ya jugados}\label{Fig:pasados-partidos}
+% 	   \end{minipage}
+% 	\end{figure}
+% 	\item \textbf{Generación de archivos con resultados.}
+% 	Es importante mencionar que se usan aproximadamente los últimos quinientos partidos para la generación de los archivos, esto implica que se deben tener en base de datos los equipos que participaron en las pasadas dos temporadas de juegos. Por este motivo de pueden encontrar equipos que se encuentran en el sistema con la bandera de inactivos.
+%
+% \end{enumerate}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+% \subsection{Sistema de estimación de probabilidades}
+% Adicionalmente en esta sección se describirá el funcionamiento del Sistema de Estimación. Sin embargo, al ser un conjunto de programas en \emph{Fortran} que son ajenos al autor, no se profundizará en los detalles del desarrollo del mismo. Sin embargo, se dará la pauta para entender como se podrían generar probabilidades y pronósticos de los partidos.
+%
+% \subsubsection{Predicciones}
+%
+%
+%
+% \cite{rue2000prediction}
+%
+% \cite{baio2010bayesian}
+%
+% \cite{dixon2004value}
+%
+% \cite{koopman2013dynamic}
+%
+%  \subsubsection{Tecnologías destacadas}
+%
+% \begin{itemize}
+% 	\item \textbf{Fortran}
+% 	\cite{robison1996c++}
+% 	\cite{veldhuizen1997will}
+% \end{itemize}
+%
+% \subsubsection{Descripción de su funcionamiento}
+%
+% Montecarlo
+% Poisson
+% Nonormal
+% Markov
+%
+%
+% \subsection{Portal administrativo}
+%
+% \subsubsection{Sitio web para los administradores}
+%
+%  \cite{alfredo2005ingenieria}
+%
+%  \subsubsection{Tecnologías destacadas}
+%
+%  \begin{itemize}
+%  	\item LNNP
+%  	\item Code Igniter
+%  	\item Raphael
+%  \end{itemize}
+%
+%  \subsubsection{Diagrama de base de datos}
+%
+%  \subsubsection{Descripciónde su funcionamiento}
+%
+%  \begin{itemize}
+%  	\item CRUD
+%  	\item Ingesta de archivos
+%
+%  \end{itemize}
+%
+%
+% \section{Portal público Egobets.com}
+%
+% \subsection{Características principales}
+% \subsubsection{Sitio web para los jugadores}
+% \subsubsection{Tecnologías destacadas}
+%
+%  \begin{itemize}
+%  	\item LNNP
+%  	\item Code Igniter
+%  	\item Parallax
+%  \end{itemize}
+%
+% \subsubsection{Módulos}
+%
+%  \begin{itemize}
+%  	\item Tablero
+%  	\item Mis Equipos
+%  	\item Ligas
+%  	\item Partidos
+%  	\item Perfil
+%  	\item Pagos
+%  	\item Perfil de riesgo
+%  	\item Sistemas de reserva
+%  \end{itemize}
+%
+%
+%

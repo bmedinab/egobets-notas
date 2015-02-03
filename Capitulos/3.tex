@@ -35,14 +35,20 @@ Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un part
  
 \[p(X,Y;\lambda_x,\lambda_y,\gamma) = e^{(-\lambda_x-\lambda_y-\gamma)}\frac{\lambda^X_x}{X!}\frac{\lambda^Y_y}{Y!}\sum_{k=0}^{min(X,Y)}\left(\frac{X}{k}\right)\left(\frac{Y}{k}\right)k!\left(\frac{\gamma}{\lambda_x\lambda_y}\right)^k \]
 
-para $X = X_{it}$ y $Y = Y_{it}$ con $\lambda_x$ y $\lambda_y$ coeficientes de intensidad para $X$ y $Y$ respectivamente, y $\gamma$ siendo elcoeficiente que mide la dependencia entre ambas cuentas del par $(X,Y)$. La notiación corta se decribe como:
-\[(X,Y) ~ BP(\lambda_x,\lambda_y,\gamma)\]\footnote{La definición que se presenta en este documento es propuesta por \cite{koopman2013dynamic}, sin embargo hay otras variantes de esta fórmula \cite{kocherlakota1992bivariate} y \cite{johnson1997discrete}}
+para $X = X_{it}$ y $Y = Y_{it}$ con $\lambda_x$ y $\lambda_y$ coeficientes de intensidad para $X$ y $Y$ respectivamente, y $\gamma$ siendo elcoeficiente que mide la dependencia entre ambas cuentas del par $(X,Y)$. 
+
+La notación corta se decribe como\footnote{La definición que se presenta en este documento es propuesta por \cite{koopman2013dynamic}, sin embargo hay otras variantes de esta fórmula \cite{kocherlakota1992bivariate} y \cite{johnson1997discrete}}:
+\[(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)\]
 Su valor esperado, varianza y covarianza son los siguientes:
-\[E(X) = Var(X) = \lambda_x + \gamma\], \[E(X) = Var(Y) = \lambda_y + \gamma\], \[Cov(X,Y) = \gamma\]
+
+
+$E(X) = Var(X) = \lambda_x + \gamma$, $E(X) = Var(Y) = \lambda_y + \gamma$, $Cov(X,Y) = \gamma$
+
+
 y el coeficiente de correlación entre $X$ y $Y$ está dado por:
 \[\rho = \frac{\lambda}{\sqrt{(\lambda_x+\gamma)(\lambda_y+\gamma)}}\]
 
-La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invariancia de $\gamma$ cuando $(X,Y) ~ BP(\lambda_x,\lambda_y,\gamma)$.
+La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invariancia de $\gamma$ cuando $(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)$.
 
 \subsection{Verificando el modelo}
 \label{subsec:verification}
@@ -50,8 +56,8 @@ La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado,
 El modelo descrito es puesto a prueba en el artículo de Koopman y Lit (2013) \cite{koopman2013dynamic}, donde para la liga inglesa Premier toma una muesta de la temporada 2003/03 a 2009/10 y su pronóstico logra mejorar la precisión del modelo de Maher \cite{maher1982modelling} que ya se había discutido. Esta implicación reafirma que los ajustes aplicados como la dependencia entre las cuentas obtenidas por cada equipo, así como los coeficientes variables en función del tiempo describen de mejor manera el fenómeno y presentan mejor pronósticos que los anteriores.
 
 Koopman y Lit (2013) \cite{koopman2013dynamic} llevan esto a un paso más allá y presentan un análisis sobre estrategia de apuestas para demostrar que se pueden obtener ganancias contra el bookie. Básicamente su estrategia de apuestas consiste en apostar si el valor esperado de la apuesta sobre el evento $A$ es mayor a una variable $\tau$.
-\[EV(A) = P(A) \cdot Odds(A) - 1 \]
-La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implica $\tau > 7\%$. Esto trae consigo un part de observaciones, con $0<\tau<0.12$, el promedio de retorno esperado es cercano a cero. Con $\tau>0.12$ se tiene un valor esperado positivo de ganancias. Sin embargo, conforme $\tau$ crece  la cantidad de oportunidads de apuestas se vuelve pequeña y los intervalos de confianza de las predicciones de las apuestas empiezan a reflejar mucha mayor incertidumbre.
+\[EV(A) = P(A) \cdot Odds(A) - 1 > \tau\]
+La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implica $\tau > 7\%$. Esto trae consigo un par de observaciones, con $0<\tau<0.12$, el promedio de retorno esperado es cercano a cero. Con $\tau>0.12$ se tiene un valor esperado positivo de ganancias. Sin embargo, conforme $\tau$ crece  la cantidad de oportunidads de apuestas se vuelve pequeña y los intervalos de confianza de las predicciones de las apuestas empiezan a reflejar mucha mayor incertidumbre.
 
 Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporadas y el retorno se espera justo un poco menos de $0.5$ en promedio. Cuando se juega con una unidad para cada 50 apuestas, se espera recibir 75 unidades del bookie de regreso, es decir 25 unidades de ganancia, un $50\%$ de retorno en promedio. Como el retorno esperado negativo no da un intervalo de confianza del $90\%$ no se esperan pérdidas con una estrategia de apuestas para $\tau = 0.4$.
 

@@ -4,31 +4,80 @@
 
 Egobets.com proporciona al cliente los servicios de asesoría de apuestas personalizada a través de un portal web usable, práctico y profesional. En este capítulo se presenta el sistema desarrollado con los fundamentos teóricos descritos en los capítulos anteriores, una verdadera aplicación computacional de las matemáticas
 
-Se describen las cuatro piezas de software desarrolladas que conforman en su totalidad el sistema de Egobets. Las tres primeras permiten al usuario adminstrativo echar a andar toda la maquinaria. Y la última pieza, conocida como e 
-A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
+% Se describen las cuatro piezas de software desarrolladas que conforman en su totalidad el sistema de Egobets. Las tres primeras permiten al usuario adminstrativo echar a andar toda la maquinaria. Y la última pieza, conocida como e
+% A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
 
 
 
-% Capítulo 1 y dos tal como están
-% Capítulo  3: Egobets: Matemáticas
-% Capítulo  4: Egobets: Sistema
-% 4.1 Descripción  de egobets (componentes y funcionalidad  a alto nivel)
-% 4.2 Descripción  de Principios de diseño (¿por qué  hacerlo así?)
-% 4.3 Diseño de  bases de datos (empieza indicando que al ser un MVC web está  orientado a diseñarse desde la base de datos hacia la pantalla)
-% 4.4 Elección de tecnología
-% 5. Conclusiones.
 
-
-\section{Egobets.com}
-\label{sec:egobets-com}
-
-\subsection{Diseño y arquitectura}
+\section{Diseño y arquitectura}
 \label{sec:design}
+Egobets.com es un sistema con arquitectura cliente servidor montado sobre una máquina virtual con sistema operativo Linux de la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño Modelo Vista Controlador junto con su respectivo representación de la base de datos que origina el Modelo base del sistema.
+\subsection{Ventajas de correr Egobets en la nube}
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{diagrama-portal-publico}
+     \caption{Arquitectura Cliente Servidor sobre Nube de AWS}\label{Fig:diagrama-portal-publico}
+   \end{minipage}
+\end{figure}
 
-\subsection{Implementación}
-\label{sec:implementation}
+El sistema usa la nube de AWS para ofrecer sus servicio a los usuarios (Vease la imagen\ref{Fig:diagrama-portal-publico}), más aún se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{computoNube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
+Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{computoNube}  se retoman las siguentes ventajas de este paradigma:
+\begin{itemize}
+	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
 
-\subsection{Servicios}
+	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor. En particular a Egobets le permite utilizar este tipo de tecnología a la par de otros sistemas gigantes que tienen mucho más tiempo en el mercado y mucho mayores ingresos.
+
+	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
+
+
+	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
+
+	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
+
+	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos.
+
+Es por estas razones que Egobets tiene cabida en el paradigma del computo en la nube.
+
+\end{itemize}
+
+\subsection{Patrón de diseño MVC}
+
+
+Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como
+una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979.
+	Sobre el libro de Upton \cite{upton2007codeigniter} se tiene una aproximación a este patrón de diseño en CodeIgniter:
+	\begin{itemize}
+		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operacioens a los datos según sea necesario.
+		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
+		\item Controladores, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
+	\end{itemize}
+	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
+	\begin{itemize}
+		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
+		\item Documentación clara. La guía que se incluye cuenta con guía y tutoriales para empezar a trabajar de manera muy práctica.
+		\item Compatibildad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluído MySQL.
+
+		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estandares convenidos en internet.
+
+	\end{itemize}
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{mvc-architecture-mongo}
+     \caption{Patrón de diseño Modelo Vista Controlador (MVC)}\label{Fig:mvc}
+   \end{minipage}
+\end{figure}
+
+
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{mongoDB/schema/bd-egobets}
+     \caption{Representación UML de las colecciones de la base de datos de Egobets}\label{Fig:db-egobets}
+   \end{minipage}
+\end{figure}
+
+
+\section{Servicios}
 \label{sec:services}
 
 \begin{enumerate}
@@ -37,7 +86,9 @@ A todo este conjunto de herramientas y programas que el usuario necesita para es
 	\item \emph{Estadísticas:} A través de éstas se pueden analizar las fortalezas y debilidades de los equipos favoritos del usuario.
 \end{enumerate}
 
-\subsubsection{Encuesta}
+\subsection{Encuesta}
+\label{subsec:encuesta}
+
 
 \textbf{Perfil de riesgo}
 
@@ -77,7 +128,7 @@ Costos:
 Es un sistema a largo plazo, no se recomienda a personas que desean incurrir en riesgos elevados en beneficio de la posibilidad de obtener mayores ganancias.
 
 
-\subsubsection{Tablero de apuestas}
+\subsection{Tablero de apuestas}
 
 El tablero es la página principal para el usuario de \emph{Egobets.com}. En el tablero se presenta la recomendación de la semana:
 \begin{enumerate}
@@ -100,14 +151,14 @@ La gráfica de valor esperado es una herramienta visual que permite ver cuáles 
 
 
 
-\subsubsection{Pronósticos}
+\subsection{Pronósticos}
 Pronósticos: Se pronostica el marcador final, la posesión del balón y el ganador del encuentro. Al poner el apuntador sobre el resultado más probable aparece el grado de confiabilidad del pronóstico.
 
 
 En \emph{Egobets.com} se presentan los equipos mediante un power ranking. Con base en las estadísticas de los partidos y dados sus resultados, se pronostica cuál será la tabla de posiciones al finalizar dicha liga.
 
 
-\subsubsection{Estadísticas}
+\subsection{Estadísticas}
 
 
 En orden de aparición: Una estrella indicando si el equipo está o no marcado como uno de los favoritos, la posición en el power ranking, el nombre del equipo, el índice de ataque general del equipo, el índice de defensa general del equipo y por último el cambio dentro de la tabla de power ranking. 
@@ -130,13 +181,40 @@ En orden de aparición: Una estrella indicando si el equipo está o no marcado c
 Además para cada tabla se pueden presentar los resultados de una liga en particular al seleccionarla en el recuadro de arriba.
 
 \section{Alimentando el sistema}
-\label{sec:inserting-data}
 
-\subsection{Próximos partidos}
-\label{sec:next-match}
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{sistemas}
+     \caption{Diagrama de sistemas y usuarios}\label{Fig:Sistemas}
+   \end{minipage}
+\end{figure}
 
-\subsection{Resultados finales}
-\label{sec:results}
+\label{sec:inserting-data}	
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{erd-pronosticos}
+     \caption{Diagrama de entidad-relación de la BD del recopilador}\label{Fig:erd-pronosticos}
+   \end{minipage}
+\end{figure}
+
+El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
+\begin{enumerate}
+	\item A través del \emph{Sistema de recopilación} los administradores descargan de la página de Internet de ESPN los resultados de todos los partidos de la temporada junto con la información de los próximos partidos por jugar  de cada una de las ligas Europeas.
+	\item Los datos recopilados permiten a los administradores generar un conjunto de archivos de texto con toda la información de los resultados de los últimos partidos y las fechas de los próximos partidos.
+	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
+	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
+	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
+	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones peronalizadas de apuestas.
+	
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{flujo}
+     \caption{Proceso de alimentación del sistema}\label{Fig:flujo}
+   \end{minipage}
+\end{figure}
+\end{enumerate}
+
+
 
 
 % \section{Descripción General}
@@ -157,28 +235,7 @@ Además para cada tabla se pueden presentar los resultados de una liga en partic
 % El Sistema de recopilación de información y estadísiticas de los partidos (\emph{Sistema de recopilación}), el \emph{Portal administrativo} y el \emph{Portal público} corren bajo una arquitectura cliente servidor en la nube de Amazon Web Services; mientras que el Sistema de estimación de probabilidades (\emph{Sistema de estimación}) corre en un ordenador personal.
 %
 %
-% \subsubsection{Computación en la nube}
-%
-% El sistema usa la nube para ofrecer sus servicio a los usuarios, se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{computoNube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
-% Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{computoNube}  se retoman las siguentes ventajas de este paradigma:
-% \begin{itemize}
-% 	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
-%
-% 	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor. En particular a Egobets le permite utilizar este tipo de tecnología a la par de otros sistemas gigantes que tienen mucho más tiempo en el mercado y mucho mayores ingresos.
-%
-% 	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
-%
-%
-% 	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
-%
-% 	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
-%
-% 	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos.
-%
-% Este paradigma del computo en la nube juega un papel fundamental en muchas de las piezas de software de Egobets.
-%
-% \end{itemize}
-%
+
 %
 % \subsection{Piezas de software y su interacción}
 %

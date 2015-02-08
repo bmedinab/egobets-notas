@@ -1,0 +1,1393 @@
+%PDF-1.3
+1 0 obj
+<< /Type /Catalog
+/Outlines 2 0 R
+/Pages 3 0 R
+/OpenAction 8 0 R >>
+endobj
+2 0 obj
+<< /Type /Outlines /Count 0 >>
+endobj
+3 0 obj
+<< /Type /Pages
+/Kids [6 0 R
+28 0 R
+34 0 R
+38 0 R
+44 0 R
+62 0 R
+]
+/Count 6
+/Resources <<
+/ProcSet 4 0 R
+/Font << 
+/F1 11 0 R
+/F2 12 0 R
+/F3 17 0 R
+>>
+/XObject << 
+/I1 9 0 R
+/I2 10 0 R
+>>
+>>
+/MediaBox [0.000 0.000 612.000 792.000]
+ >>
+endobj
+4 0 obj
+[/PDF /Text /ImageC ]
+endobj
+5 0 obj
+<<
+/Creator (DOMPDF)
+/CreationDate (D:20150207201401-06'00')
+/ModDate (D:20150207201401-06'00')
+/Title (Cómputo en Nube: Ventajas y Desventajas)
+>>
+endobj
+6 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 13 0 R 15 0 R 18 0 R 20 0 R 22 0 R 24 0 R 26 0 R ]
+/Contents 7 0 R
+>>
+endobj
+7 0 obj
+<<
+/Length 8376 >>
+stream
+
+q
+171.000 0 0 42.000 34.016 715.984 cm
+/I2 Do
+Q
+0.000 0.000 0.000 rg
+BT 34.016 705.208 Td /F1 12.0 Tf  [(Publicado en )] TJ ET
+BT 99.344 705.388 Td /F2 12.0 Tf  [(Revista .Seguridad)] TJ ET
+BT 190.004 705.208 Td /F1 12.0 Tf  [( \()] TJ ET
+0.000 0.000 0.800 rg
+BT 197.000 705.208 Td /F1 12.0 Tf  [(http://revista.seguridad.unam.mx)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+197.000 703.790 m 355.328 703.790 l S
+0.000 0.000 0.000 rg
+BT 355.328 705.208 Td /F1 12.0 Tf  [(\))] TJ ET
+0.000 0.000 0.800 rg
+BT 34.016 678.952 Td /F1 12.0 Tf  [(Inicio)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 677.534 m 62.012 677.534 l S
+0.000 0.000 0.000 rg
+BT 62.012 678.952 Td /F1 12.0 Tf  [( > Cómputo en Nube: Ventajas y Desventajas)] TJ ET
+0.000 0.000 0.000 RG
+34.016 669.472 m 577.984 669.472 l 577.234 668.722 l 34.766 668.722 l  f
+0.160 0.160 0.160 rg
+0.160 0.160 0.160 RG
+34.016 666.472 m 577.984 666.472 l 577.234 667.222 l 34.766 667.222 l  f
+577.984 669.472 m 577.984 666.472 l 577.234 667.222 l 577.234 668.722 l  f
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+34.016 669.472 m 34.016 666.472 l 34.766 667.222 l 34.766 668.722 l  f
+BT 34.016 635.992 Td /F3 24.0 Tf  [(Cómputo en Nube: Ventajas y Desventajas)] TJ ET
+BT 34.016 603.064 Td /F1 12.0 Tf  [(Por )] TJ ET
+BT 53.684 603.244 Td /F2 12.0 Tf  [(Francisco Carlos Martínez Godínez, Beatriz Verónica Gutiérrez Galán)] TJ ET
+57.816 570.184 m 
+57.816 570.734 57.589 571.280 57.201 571.669 c
+56.812 572.058 56.266 572.284 55.716 572.284 c
+55.166 572.284 54.620 572.058 54.231 571.669 c
+53.842 571.280 53.616 570.734 53.616 570.184 c
+53.616 569.634 53.842 569.088 54.231 568.699 c
+54.620 568.311 55.166 568.084 55.716 568.084 c
+56.266 568.084 56.812 568.311 57.201 568.699 c
+57.589 569.088 57.816 569.634 57.816 570.184 c f
+0.000 0.000 0.800 rg
+BT 64.016 564.808 Td /F1 12.0 Tf  [(numero-08)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 563.390 m 116.672 563.390 l S
+0.000 0.000 0.000 rg
+BT 119.672 564.808 Td /F1 12.0 Tf  [([1])] TJ ET
+0.000 0.000 0.000 RG
+57.816 555.928 m 
+57.816 556.478 57.589 557.024 57.201 557.413 c
+56.812 557.802 56.266 558.028 55.716 558.028 c
+55.166 558.028 54.620 557.802 54.231 557.413 c
+53.842 557.024 53.616 556.478 53.616 555.928 c
+53.616 555.378 53.842 554.832 54.231 554.443 c
+54.620 554.055 55.166 553.828 55.716 553.828 c
+56.266 553.828 56.812 554.055 57.201 554.443 c
+57.589 554.832 57.816 555.378 57.816 555.928 c f
+0.000 0.000 0.800 rg
+BT 64.016 550.552 Td /F1 12.0 Tf  [(cómputo)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 549.134 m 106.016 549.134 l S
+0.000 0.000 0.000 rg
+BT 109.016 550.552 Td /F1 12.0 Tf  [([2])] TJ ET
+0.000 0.000 0.000 RG
+57.816 541.672 m 
+57.816 542.222 57.589 542.768 57.201 543.157 c
+56.812 543.546 56.266 543.772 55.716 543.772 c
+55.166 543.772 54.620 543.546 54.231 543.157 c
+53.842 542.768 53.616 542.222 53.616 541.672 c
+53.616 541.122 53.842 540.576 54.231 540.187 c
+54.620 539.799 55.166 539.572 55.716 539.572 c
+56.266 539.572 56.812 539.799 57.201 540.187 c
+57.589 540.576 57.816 541.122 57.816 541.672 c f
+0.000 0.000 0.800 rg
+BT 64.016 536.296 Td /F1 12.0 Tf  [(Internet)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 534.878 m 101.336 534.878 l S
+0.000 0.000 0.000 rg
+BT 104.336 536.296 Td /F1 12.0 Tf  [([3])] TJ ET
+0.000 0.000 0.000 RG
+57.816 527.416 m 
+57.816 527.966 57.589 528.512 57.201 528.901 c
+56.812 529.290 56.266 529.516 55.716 529.516 c
+55.166 529.516 54.620 529.290 54.231 528.901 c
+53.842 528.512 53.616 527.966 53.616 527.416 c
+53.616 526.866 53.842 526.320 54.231 525.931 c
+54.620 525.543 55.166 525.316 55.716 525.316 c
+56.266 525.316 56.812 525.543 57.201 525.931 c
+57.589 526.320 57.816 526.866 57.816 527.416 c f
+0.000 0.000 0.800 rg
+BT 64.016 522.040 Td /F1 12.0 Tf  [(nube)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 520.622 m 87.344 520.622 l S
+0.000 0.000 0.000 rg
+BT 90.344 522.040 Td /F1 12.0 Tf  [([4])] TJ ET
+0.000 0.000 0.800 rg
+BT 34.016 507.784 Td /F1 12.0 Tf  [(Tweet)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 506.366 m 64.004 506.366 l S
+0.000 0.000 0.000 rg
+BT 67.004 507.784 Td /F1 12.0 Tf  [([5])] TJ ET
+BT 34.016 493.528 Td /F1 12.0 Tf  [(El cómputo en la nube representa un paradigma tecnológico, en el que la información se encuentra almacena)] TJ ET
+BT 555.548 493.528 Td /F1 12.0 Tf  [(da )] TJ ET
+BT 34.016 479.272 Td /F1 12.0 Tf  [(a la distancia y es administrada a través de servicios ofrecidos en la red. Sin embargo, los usuarios deben tener)] TJ ET
+BT 34.016 465.016 Td /F1 12.0 Tf  [(ciertas consideraciones de seguridad respecto a este servicio.)] TJ ET
+BT 34.016 438.760 Td /F1 12.0 Tf  [(En el modelo tradicional de implementación de Tecnologías de Información \(TI\), las organizaciones destin)] TJ ET
+BT 547.916 438.760 Td /F1 12.0 Tf  [(an )] TJ ET
+BT 34.016 424.504 Td /F1 12.0 Tf  [(recursos materiales, humanos y tecnológicos, los cuales se agrupan en un área encargada de solucionar lo)] TJ ET
+BT 539.552 424.504 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 410.248 Td /F1 12.0 Tf  [(problemas relacionados con la infraestructura informática y el desarrollo de aplicaciones para la organización.)] TJ ET
+BT 34.016 383.992 Td /F1 12.0 Tf  [(La mayoría de dichas áreas, se ven obligadas a dedicar una buena parte de su tiempo en las tareas d)] TJ ET
+BT 510.548 383.992 Td /F1 12.0 Tf  [(e )] TJ ET
+BT 34.016 369.736 Td /F1 12.0 Tf  [(implementar, configurar, dar mantenimiento y actualizar proyectos relacionados con la infraestructura de su )] TJ ET
+BT 34.016 355.480 Td /F1 12.0 Tf  [(organización, lo cual, normalmente no supone un valor añadido en el balance final de la producción de la misma.)] TJ ET
+BT 34.016 329.224 Td /F1 12.0 Tf  [(Por otro lado, se observa que la distribución de servicios tales como: la energía eléctrica, el agua potable o )] TJ ET
+BT 547.580 329.224 Td /F1 12.0 Tf  [(la )] TJ ET
+BT 34.016 314.968 Td /F1 12.0 Tf  [(telefonía; dejan al proveedor la total responsabilidad de generar, organizar y administrar todo lo necesario para)] TJ ET
+BT 34.016 300.712 Td /F1 12.0 Tf  [(que el usuario final reciba lo acordado, pagando éste únicamente por el uso que hace de los mismos, mientra)] TJ ET
+BT 554.576 300.712 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 286.456 Td /F1 12.0 Tf  [(que el proveedor se encarga de precisar los mecanismos por medio de los cuales determina el consumo por el )] TJ ET
+BT 34.016 272.200 Td /F1 12.0 Tf  [(que se genera el cobro.)] TJ ET
+BT 34.016 245.944 Td /F1 12.0 Tf  [(De esta manera surge una pregunta interesante: ¿por qué no implementar servicios o recursos de Internet bajo u)] TJ ET
+BT 568.880 245.944 Td /F1 12.0 Tf  [(n )] TJ ET
+BT 34.016 231.688 Td /F1 12.0 Tf  [(esquema similar al descrito, donde el proveedor proporcione lo requerido y el usuario pague únicamente por el)] TJ ET
+BT 34.016 217.432 Td /F1 12.0 Tf  [(uso que hace?)] TJ ET
+BT 34.016 191.176 Td /F1 12.0 Tf  [(Si esto ocurriera, el usuario no tendría por qué preocuparse por adquirir equipos de cómputo y su respecti)] TJ ET
+BT 539.912 191.176 Td /F1 12.0 Tf  [(vo )] TJ ET
+BT 34.016 176.920 Td /F1 12.0 Tf  [(mantenimiento, actualizar las aplicaciones o sistema operativo, pues sería responsabilidad del proveedor.)] TJ ET
+BT 34.016 150.664 Td /F1 12.0 Tf  [(Es por este motivo, que las organizaciones están dirigiendo sus miradas hacia esta tecnología conocida com)] TJ ET
+BT 550.592 150.664 Td /F1 12.0 Tf  [(o )] TJ ET
+BT 34.016 136.408 Td /F1 12.0 Tf  [(cómputo en la nube \(cloud computig\), la cual es capaz de minimizar el tiempo empleado en actividades de)] TJ ET
+BT 34.016 122.152 Td /F1 12.0 Tf  [(menor valor y permitir al personal que labora en áreas de tecnologías de información, centrar su atención)] TJ ET
+BT 538.220 122.152 Td /F1 12.0 Tf  [( en )] TJ ET
+BT 34.016 107.896 Td /F1 12.0 Tf  [(actividades estratégicas que tienen un impacto real en los procesos de negocio de la organización.)] TJ ET
+BT 34.016 81.640 Td /F1 12.0 Tf  [(El uso de este concepto se está extendiendo con una velocidad considerable, dando como resultado un)] TJ ET
+BT 34.016 67.384 Td /F1 12.0 Tf  [(incremento en el número de empresas que proporcionan servicios a través de esta tecnología, así como)] TJ ET
+BT 526.568 67.384 Td /F1 12.0 Tf  [( de )] TJ ET
+BT 34.016 53.128 Td /F1 12.0 Tf  [(organizaciones que están pensando seriamente en la adopción del cómputo en la nube como una alternati)] TJ ET
+BT 537.572 53.128 Td /F1 12.0 Tf  [(va )] TJ ET
+endstream
+endobj
+8 0 obj
+[6 0 R /Fit]
+endobj
+9 0 obj
+<<
+/Type /XObject
+/Subtype /Image
+/Width 228
+/Height 56
+/Filter /FlateDecode
+/DecodeParms << /Predictor 15 /Colors 1 /Columns 228 /BitsPerComponent 8>>
+/ColorSpace /DeviceGray
+/BitsPerComponent 8
+/Length 3571>>
+stream
+híZD«ß?f&™™d2“$É$I’\I2WråÊ•d’+I’$É•$Ir%I&×$×\¹’$I&×L’Lf&3óx<3333s|ÎysÎól{Ö§úŞïçûù|}ŞÔóœ÷yŸó~óşuÎ3 4Hß7åò>Å¢O·îşJ­ÿ²6Ò—òê(O÷Š™Ï0Í%!¥$c«Ö¯$o\”(i-å…d–˜®xÅ€Q*TÊšçÒ°€ÄÍnúÈ|¼È Õå5>ÑK8Û)XL¹»¿ås •Õ÷z B\1Ã/ÁˆQ¾ÆŞJÏ</§ïsDW&ZÔŞ.j`„0µğvİ_LÏü^FßgéŒ=µ_©€‰*ßäÍoWş¥ô+'SBä.Ñ#üšˆĞCQ;GQ‰{ï;>ì±}Í8ÿí_H=c„4"èÑ#ğš÷‰¿°Ù*v¡^z¯§ïĞËúè7š¥ƒÖÔkd¸—‘AÛé-½²	­k€46õ´Û´Ôèë0I¤¯?”!í'¤a=çS¢À‡ä÷º£Ç£NiQxèQ	êÆ1ç"‹†šŸg2½[#'r¯JÊÙo?•N;€áÃ†7ÂqÑPä’´5HmßÇS¯UƒÔ}ôG8^ˆ¼Àù>W+zÔ¹e¡à²¡ÈiX´b¿7Æûì&²vßÙÎ"Š?tQ¹Ö]˜á¶ˆ‘ç†îI[¢Cî¦§¡;ê şùÔ¡9+G{·b‹ÊTYn¼ ¤y™Sç¹¬à!)N¿ªeb#{Ú ¨pb_ÃêŸr°€âƒR{ÅnALN )‡—´´°âIC¸3AT9QDéÜ"r•æ`AºNÒˆA6rEjÀlXÚ…öpA“¤_RñÁøê00-,&áfœfJ˜'ä‰%…ÕÕN°e•´œÑA«µt*²‰/mÎ]aSÕ`h!53!„÷úX¨ÓİåKåy´GïµêDbÓ7ÚËHÆˆ†_µ¥ù˜¿ r] „K( k…sµ}H‹©äDqQ—ào2kšÚBFx†ëTÆTÕx…š-úD‡“†s³Ú¹eŠ¸YïQ•…+ CìğÙ§KÑ¯D¨$+;Ô8Ã8nè)~Îª3vŞ§â­{YÂˆïtUw-+Úæ%*Rl(ßu;)éäşÊzG)#=šØô©ú/çí3ëÇyé™…§#‡_ı*¡–p±W#gQL"¨8›ÜñPvÄüW:«(ù'°1sÌä‰UœAÒp’O‰ÅóH²Ÿî;ßD*¾'%ŞÆ sú@Å§­ë'OÁˆQGÉÇXAß”rns˜.~)H`¤{¤¦ÄX•Ÿ2‹525Ëä‰F9 •šìË@Æe–AÏ@Rk='b¶µ$µÕ:šÕŞŞİ¿B-ÊI0å=ÛÚR 8‚bIˆ/å‡4O‰Œ'êò*O‹ÿL²yÈU:@S‰v' mcî Ïb"Míß¡B5Thˆ®¶H´Õ‹~¾(dk5D©l°ùªâ™¤çªÂ£ÙAi?˜)RâéÒ>”
+iƒD¤ë\IÕ å’]ÊÉ¾ä¦Hƒ/­HãuidFBòğC¢³•‰©¢ÏÅ\'Q&²pcb´{	Èì'ÔŞOÒp¯‘õ@Õª]«Aš[ŒQİâp.»'ékE™ÑG„Cfa'Î›W€Ìh¤‰Æ[º)·ÄRe!êN§ŠPDÙtÏüµä®Q<’9µƒ±¸F´J‰E”  ³[D¢¹4ºÒ<ÉêœçARŸTè©…z™	|ôál{‡yê“A&£§B>`•œ-ÿ„Ë·fÚœè¡=é%ïÈĞµ”S÷N_°^B»ôjÕÈ“‚ÜÓÂVìykT¬²X! §çÄ¥\ÓÌÁÓ#‡ry2OK  cV²e–Zî«äİtíy¢Bn‰q—àısè xLó¸ó®ºsI]ñLæÕkf3Öó ?ÒÜOôÕ,ênéaÑû~Œºêá° ² 8³¢.ÏÏtTV4m±ÀÃ;ˆˆ-ò3ØIó"wÒ­ÀJˆqU†Ì=Ô‘¹KÓ"¯ğigIÔ%:9& Åå…$¢[¦3ğÔKÛÒ)±W™ÎÇb¹””Æ”¤‘‘*j=°ÚUÜé0Õöÿ¢£æiU¦Q“`¶±H	¢:(zôä°r›êèvÁ,¶à
+¨ÊĞ Ÿj±`74=±©yğÈ„¸ÓùoªlpÇtK=BmÛÁ5ñ|œWªU,÷g0Ò´2&v
+ÉV@*§&í‹QDºİ0/¢ê+€¶²I.Zå9¹*kÓ>»‚•Öy2w†ÊUÁø‰4üÔÌiÈ€j)üEä)ià[9ë*Å¶cíµ–.kû¹x.şÔJfZĞB™bß¨Š–rbr€úcZe¢»$JUEu]ú@3fKÉ.Kª‰+£0´ó¤P,åŠ2\§T¼s¶+w‰½¥7I¿¼Íõ¡¢	r‘6"eZóFPÁÌÇWëª±GÔ5DÒGı:ÜEÛİ
+HZºá;KáY(EİC á%âdİpj³ù¢»ãÑø€b;â&HDg)«òG“	g´ÊÑ¯_›AEk'~¯ «„-t)—KÂ$+\bï‹ï>rm”¬jB™*ÇMÑô˜ÔÓ¶blqßÁ•hÆB³W|ôJ2Q
+fÇi…Ö„ÈsO¿úÕ¬:7:±&`>ÁÇ‚‡,W·‡Óù1x«¬tzHlÎD¸ğÙ”¥§]2­¶RÒä–Çµ­^E8Aà¹Ğ¼'¼œ¬®ûòéşG;hp!ù,_¿-
+	7+Á Ò)‘±¡»£Z“cí™™|gQŞ+]R0FóÇl-å®OgÑæ%dhi)÷Õ°üÇCkóoÿÔèˆ1'Éª. Ò+¿{¢ÿ!é¯‹>LË”½ù»Èß‘t©+÷¨mêÿ\ú+ÚÌœøÓøçbÿ02,D•[—|‚[ıÛFBµã?ná§Ûãg÷_ñƒé_R“®±®à½ÂüR+Ô™_ó³©gˆN¹Pó'µ¨ºÆŒ©¦Måúà“ptIÕ°[€®³ñÃ×Ãµ7(¥A›Pú¼²”ƒ0½ó9™2]>Ã«ñ{õio	ÖÀ>4<GÕğ7ıê§oßš5øšß"ü~vrº'g‡À İÃçQÁ¢Ó0*¼«†›Á"¬íÍ^;ÃmrKó°±w¦i1¹ò‘š²~p¦¥
+Î£‡‘Õ!Z^ôXÆ'qVq¼7M›nhe½à
+Ş>Œ*ëşåqô×8l·9¸ŸÁ¹†ÿ·£ÓªÉ¹6†²×5|!†gnhû ñšZD“ê´:'ğuøÊ,;6 Ãÿ¼e~«ö~#OµpÍ†ö\MÁlfÔŠ/©íp	µœ@8v³ÇÙ¹wåäó7¤ÁŸ÷gbÄ—‚¡h<CÇc_ôf+uWğ6%Ö¯°	€ŸÙ*ğ>Ä3íhª³$9#¨|€Ù˜,#iáa òÍ gcğQ°zsŒ£ó‘+{şßø¦}bÖ%¢î`ÎöB^0UÃ/h¯à4	@
+ZÌp¹à,˜†·]Õ†ÊQ4—(oå"œÖÕzÈYØÌ<ù.q×+ªNa¸„ûµ5` cøùî20fAİàƒ*¼dc°–à"˜‡à&iõ	/Zçløå«BÌõ»ÆM¤§›Ã—Ï‹ÕğŞeÈ¿r[¹„AN©A.c3dîa\p=Aùps‘Dç½HøgÊãñDÈ÷‘ÛŒÏ8.8î~Ë"^(Àe8aÂtìñÜÃª*üñ£	_­æ`ƒ!÷=xrú¼´½dí­ÒÇ€=hƒ¨‚|Ekß8†__²Y¾¢œ1H ›K@6I ±ùëo3'äu`[Ÿ—â¢uyoãÈ}ÚÄ¥dn?’˜·Q	†`ÛE Ñü&~·Ua£©GÂş i‚Û _VV¶`…»H7ú»
+k÷éƒù3¯Ìİm~~1Hp›EÑ¥1u*ñ5î	‰7ä¯ğW&
+²ÇR/ùÙ¤né¹•Gçäñ!2Ömí»ò²B02Š?V¸óS ŒÂ^'¤¢LµìÄ A‡AÈT50<&u½Ø6}ä¹hBKübéÌÙI*íÀîûCpRíVØr A÷}!m`L^ÏúsP¤¶Dæ0("em)qãÇ,	¤˜½¹Åß¨¼Ò«â‰­ÓüÀÀ3(^B™½ïÙsPW±‰,út|Ó'QÖ²#{®=Â!Ğ¬ôA'Ëó 9u9w—C+œ<Æí‹ù…=îRX-B¼HP»íõîbu»kõ`ÔS@ÏË vçb½Î3†<R´îÚ¿˜ño'M«Ş»­wãQÀ;AÍâªc×3‹¼u}_Ûıp3‹-¹É#•U»w¾•
+PãAê±p“'pş{ĞºöŸ= ß·{ h÷8Èé±C¾|êvO9=&p$etãÌù¡İ3E1ty¤û©ÍÃr 'İ]ÿæk‘³üİ(|÷›´cï}ıÚ{¯ì
+endstream
+endobj
+10 0 obj
+<<
+/Type /XObject
+/Subtype /Image
+/Width 228
+/Height 56
+/SMask 9 0 R
+/Filter /FlateDecode
+/DecodeParms << /Predictor 15 /Colors 3 /Columns 228 /BitsPerComponent 8>>
+/ColorSpace /DeviceRGB
+/BitsPerComponent 8
+/Length 7079>>
+stream
+xœí}i]Å•æw2óŞû¶ÚU¥*IP’XÅÒ˜mÜnÿÿ¥#Ì"ô@ĞM´Û,‚öÄğÛ¡ßØ,ª’1n‡g0¸ÊnG÷ÿí?3ã0cŒ¹i0B Tû^õ–{ofùñJ¥ª{ó½z¯$ë‹
+B‘ËÉ“yO<yÎÉ13¶Œ£ßĞ}}lkÀÌÁ`"3„”²à¿ÿxëCüy£r²(µrVù³ãøî¿nfõäA¡©Í[ğİïnæeDu¸(à²»tsŒãIæîn±4°L:†HÇ   R’
+l®İä
+4ô(ß?ü“­òÿç/6ˆÊÌ6YäË=ı¹-Ñ”:¦j…‘RRÙÏn‰äå„£ºà¨È¶ ¬¤‡€-–çÄò¬uoRc`Ê–iğ3èÙ¡‡ö«0MË¶¶L3Ÿ“Ñ‰rÛ7ˆLûV‰3çÈ¦6À®›ñwÿ¸Eš—liê3Gùu·ˆVIÅCû¹4‡óÿI‹SHOØ‰¨Jãgxn"Î”ñ½§Zñ./’îš«L±´Ì­	k<t€¢2ÍM uK—J‹˜‹ƒ2F‹­ö½†Ë·4\- ÷^"-˜ñë4¦ÎmÊ–‚ˆ¶ù[&q—‚u
++_š•$L¢˜ nÉf0õYJÈµ!È²01…UT–İ4–fD[7^{ÿğ‹V†şs
+]l“ŸNx[ßï‚)-¬tuÈ*pì%!À­xXÅ¡£Âóyûn!¤b²–¥Ğ1˜iò,Òí™±2wl÷Z™ÀŸ-H)îêO—3“Ü$H¤…UĞL»+H³G„æ]Wåáƒ¾İu}»-ùÁóoX³5Â7”}ƒûÈ±¥%zvôhØ{šXÂDB‘2,|^À‘_6ÉíœúÛĞØ`jlk^É/ C`î«5§:ôÓ-yı	€{q5qˆ‰KÑ ?|0ªf˜­ĞÙ^ƒ#[¡sêoµ‰˜ØÀÓMR`j2(?.–&±0¬ğ3¶wĞñçé.ñ±G±8IaJA*V>)!Y*ïğ(6ºúª'Š(Ì"9,ST	ö3ğ2ä,¤Ì¼°Ù÷-ÆÓ€6 ˜Y˜ÖBù,$Hq² ­µ69wA€òm#í†	£(x.µ¸ß{Jg*Öå!A€G6¶)‚Ä¾ğÁĞ¡ê:ff„5 0	@@
+bã LÄ~<óæú²ÊĞßH®ÁÚX‹¸’ğÅ "VZâ;#zø ¦?OÚiBğ›¼Rßq´MY€ÀÖ¡cØBB*–Š„` Bz‡§¹Ò«ÃEÉf•N’=0‘ß/p`$:@ÓŸ¡ZÚĞY*ØÛ¬f%aa\šÕÄTg«Ú Û-³ b!	Ò*í“k'(ÆÆJ­i~|Ë5¢T^Zı‡òe×öxh?‘RÏ»E6>Q„±X£ò2â*­ÛŠ€·uGí=d@q(fÇ’ıÛºlÇ6Óô9¤,Etõ/ïµ=Ë•eáòrÿn"‹Ê²XšIVºXöT”ÈÊ…)TKU×\ª€×ïÃÄ§"­PºX®;+G‹zœ=Ö˜GX†µ‰s”„@¾3êè¥¡Ç˜šS®o<©Md­åE,ÍBÇ ’dkÿUríºĞÅCzA„§ÿ%IêÔ3Q8'¦¹1„°‹½BW„m.R}íÙ¬°
+V9ƒj)Şïm—‰!±ïë!|ãI2†æ&©äŠ[¬‡hú<Ÿ·íŠıÃ…şGß2ËËĞ1MŸƒÜØÒÒ-Ïqû6H™6©™!†Ñ"v?Ÿş½ş°Ã@_íÅ 8j­€K˜ş)·? (Ádb˜Ô¶a¶´jöGÃEbK+³Xœ©kwZ‹å9QZàíÔŞ½©K5|£H±¡…)QZØÜ–Õ1–f±4‹BgÜÕï*®×GñğAp,–f°8ë<¯jìÑÒ,­, k;ºjjÍ
+«¶AÖYEÓç¸½;2ÛèØ~"Š=ù_MÑ=ùÅ¡˜úQµING4qı{«'Š™CE/-óâ4-ÏnN--N9kHHfâÚ^OÁ’Ğ`ç=œßŸ %ÜNx ª`ò“ºÒmƒH"åÈ”dÔîÖ`â“ºûsÃ,Ícy¶4¬2uâqŠµ˜<ÛÍu •6&Ş¶síö\=yPÙãgÜÇr’=ƒÙ1Zš©'ÒÍ:‡ƒ#o³ò!Ü‹NKsâü‡4öÌ|Òœ¶¥xèÑøØ~}ü	¼Z?0ZŒã²˜ù¬I­-M~¢â8:ñx­@ŸxQ¹)ImLXJf“s¦BŠœ¨ww}~!Àl=½áÈ^ëP-câl#½•ï °Û'*$º4õ8Æôg­I•ê @db1Ùœô§;W–VâãÀ©gdaêÓ¦$uqToè\WJIÛÙ‹¹‰º-¬Ae¹f¹	drÈt®í·äGŞNr5ÉXCµœ¤#º)Û¥¬5"±4›hk0õõÀ÷B!m€ÖoG&/qµD¥%¤óB.€„ô|©CrxO @àĞ¨»§Ó$ÉÌ™r¬š5LM|C_bé­SÇF¢áÇhya¥øö2d4¢ŠÛÒHÁ?†Òª…šD¶€l2yÉ:B¥DåÅ´ÜÓò, q8OËóu5ÑEöbDÕfØkAXÅ¡ŸÙ¡ı(/'ojN°Ee•ÌOòEg_<ô(¼Ã?[mpêf+“×øl´Ö£ìäíè=­ıg
+TYÂìø†–qÈ±.‚‹SÙJÅ}×C$„ò¥å;¸£f>¯'(LåHåOƒêZ]N)°Ãã±x#‘^À~†¬E\E!ÈÕÂøîm³zÿÚO©{Û*;=hï3”£™ÖĞô¹†: ,4…H/©óíÜ½“”Pa„~^9Y”™<ÚºhâLR²«%0áÔ3S=töq[w=Ö°d¦Ï!n¤Î[Š`±òŠ{¯£Ùó(×	P9¡#šùÒÃöëã¡Ş‘Q &^+‹I%'$¶ÆÈf×™¼5ãáGUiy~Cóå¯Ë·ZÚP¾Ênß 	‚5»¶F§râ Ú~=itÌÕ	7ºD;­@"€p`¯?Ü¨c× çÛ @H,‘ a­v–á¢[!õ]?ëÍÍ®w-‡oEÿš›@ƒ‹ì¾ÅÂ£î°e01CGV(¸»ß³8²š4—}v@|¼ˆl–ç6aq¬E¥äNuÚ¾~Æ›»s}îl4\¤ş½4;†ÎŸ4ZL|öÇŞŒyåJ˜ŸlÍ11ÆÏĞ¶ëâ¼C£Æ&54·u“”YD8‘´t­ˆÎ>lV”–¹‹³Cá:¡¼õ7°²‡ŞŠOäŞ]4~¦æ¯¤äí{H)ïùŸ%«†ÀlÅvw×íKÌÕ²C3ydı#IiğÜ†ˆºûEu¥î™ûwÿ¸ñúHÕãO¨  ²,%ü¸r²(	d‘%KA^àd8t±—kc?ãIÎ×~'ŠQÏ€¨–NC Í_°.âïÿÙ{áçhïà{¹÷z:!›–xfÌœ£H‡o,¢Ô‘$=[­D®?*-QA%Â´LF»Ï¶nÏºèŞ³oAzP_|:wí*PiIpä—Cn‚5Ås»l=çÃ‘_
+©Ğ³£y™,ƒ,3Å±>¶ß«Tii…–ç±0k¦ÄüVÜzZ@»ƒó]ı^·@JtÔãf‹/Ô³?EMugsÌÌÌ¢ZBe	•ºÛbÌ˜ı\öZ@è”m>w¾ÕX ±…šU(¼X7 BDğ¤¸€ÚáÕj¬¼qûT­TÈädèÆÆ.ÊÖ"ªºÈÊÌóu˜êĞÛÑ±ıÂA0Yı (bëi•yŠ*ˆ*µ3ıb°¦!Ó–™â{µ¸ÿÓÿ³^/ÿĞ¨>öˆk¾Œ­?k©‘^[”Ñb<ÓE¹v¶ÖRy	¥Eª®¸¯z‘{­`¦zÉ­€­ÖiR¶a”ÆJ%¤r0ÀåŒƒf#ad8¨)]{‘BpL–ı,SûÁçB1X¤oº^€T9ÈÚ¤NââC—>—¤ˆª4;ŞÔe:ÍJ»)ü¬ã9M¢+íF§%‡/QX/âÀÈÅãùÕ¢îêå|'¬ç>pÛµ+‹d©%“·8,ÃÒ¤Ï6ÖAhMÕRº×j¦„Yã¨m´Ğìh¿f²uÔJÒağ%@V§û
+0³kD?³iZ*±… Š7öå–ÃĞY9ñ	VwÖ&Á`÷Š|Ÿà:X&BÒÃ@Ø˜"øÆ“1Ç€Ô¥äb¡‘R‚-d[bïÈÆÌÔïŒÔˆêávÇòì{É„+\h'³·s¢¼h·]ç ¥#¼ñ$s‡|™¨,ºXq²ÚQÛ0ğèho×b8]K0<¾(Øºœ9h†+œw%ºÉÊrrh–ÄŒÑ¢æM}B‹“HÉ^Ï*@TåÅô LÂÁv¸b[‰5«+É2`€hø	BD&¦(Ô~Cª »Ş°ˆ†ã(„şkm¥l«UTª¶Zµa˜½÷Ôñ>ªçGÃW^<³’ö_xÕÅl×®¹?$ù¯™Í•Íz!HziR~|6sëÍÎ¬Ùh¸hV*K¿wD\sFåkV&+ñù$ÍÂnw²zõø“Û4²Kd¶[Ğ‘]Lsˆ0è«?1 €Õ¶<^Ö“N »0¦m9é0.ìjœQO6şæÜGÉ[)Ud=%Ã‰ñêo>Jw“Û¶·Ş,2A-‘Œ™!Hø~töÓê’G
+»àùÏªm”W±\Øq[#îN=c#^IÊ¹ëXUN¥Õâü‡kçÚãş½Ş«E|ç‚ŠUd&ç«¿y7MÜÌÌèáÇÕóuG'Ii¤hoX¶åSkÍÈµg»Õau¸¨¤TS‰krøıI&‡ˆÏîïİŸxÜ;´!rV9YQ¾÷^ºÖ_¥°Õ8õşÁ†Ò“OQX®¼óëtûµ$gª­C¢¶¹»$	G_ $•l/pÊ.ä0‡OÇk_Û¯ÇÏ9˜‘ `âĞLM¦kƒÛnSÆÏÏ¿µ¾<:ÀaÅÁÙQ0s)[ÂèÊÉbÍM›†.MëócÎ• ¼8–ç> õš|±B½ı†µê?ûSşş7K¦ÏŸS}½øE|;9¼>şW+DŒTGÕÕdG[b­õÄ„ßÖáœ ëh|ÜtuÒ÷Jå‡ß@B¨ş>3Ìµ­ü¿w2÷Üƒ×öSà+I:Ö`+Â(|ï=®–Ó©¹òX
+¡Dº]^Ñ……zëµ‡#FøÛßpiÅ%JÈ!úM%ê	áÜ6  ğE{æ’!¢ğ÷§³÷Şç¦6T„‰£?ª'd­]\HÔRxışs=CÒÚÌÏ;¨”ñe[›]Lªğğôéà+w;¹«œ,
+«£³gœ+) eb^úıùdªä{×0á!‘Íq˜tìÙ¥¥ğôû|ûâøc€ğ¼J™ÈSU`MøÛwİ¡í\XÉîn3³a­õø˜Œ‡÷Ò‰Cê™©èôi ªg›ØŞ¾ò "È·ß^ù·KÚQTıÕ¯Ôö~ÑÓ£.-›ù=>kœ\ÕX@BR[;‰ñDşøcÙÕe†¼ ²¢–ÃÓïÛ¥%7A¢5Gvº5§Z‰„›¸´r[ş,™DË++zr’^{Äcuñlôñ¢ÑQtú}bGr	!Ã‰œëÇ4ºÿİÌÎòÊJ¹+ÙÓ£Ç’¢eíìlüê#ª®ú¡‡‹2ÃßıÎù«6„‚„J&Eâ”"ßnÜ~ği®ìülø«ÿ­ú¨½ÃÚ€/UôÄ„™³c—µ`}§ØAgÏlLÖäè½wƒ»î_y9Ï‹ıjyFêjú£W©éHOarŒ”
+¾öu%”‘óMñG¦Ù3ÓfúbòÒš~s CÈö66Ârøë_y×]_íèà(²ózì<¬u+i€ˆ-Gÿ+ru¸8^C8Í "øÏŒD¯>,;Ûír2ôô¯,Ún¦W‚'H[fpµ¾ÿ‡aƒ#…,‹l†7kxeÉFa4| äù}:š¹Cëó±KI×¦å~›_}H´å9eUGÿñ¾İ¹Ëî¾¾ÿğ•4Ûr9zÿß9ŠÜ6 ˆ@¢£ (º’Q>ïÈ(^{Xœ?Çe—ãÍj=vcmp~Œà;É“xúâõş=ñ'o¨«á;ÿGöˆî›Ïa1–—ÍÌ”]^BÊòó÷İFÂÃso èµ‡ìü¬ß§®
+2éƒÈ|öĞ›á+; LŸıÃÅæEß"Bß^šskÚÌÏJlÁÆa=×úÛá;ÿ×ÁæÔ„™¤lNä…ve¹¦êí+€!ˆ¢£ÍÎ%oññû¿İ}²§'¬ä¹¼b—–ÌÄGQ½é 0eŠşm·Gï¾ã`oâ¼™¹<åòVíÊòjÄ¡{l@PğUpçW¢ßı†/-)›õ÷İæ‹DLŒá=îï»#z÷×­‡v.BìD._…{3<°Ó.ÎÛ…¤ng&ìÌ†\ÄôãÙÕ#:»ıj'ûôİv§Y˜‹?ú ºQ¾ùwÓ­¬uüŸ§“4•#oLâaÕÛgfSoÎêA0'|[Ä†˜ª2&m¬a½™ëª–-åê‹¡ü#¿Œ_Dõ˜©:y›Õ²­–Q“MMdfRÚy]¼Úğ:¶SçíÔ†3½Şs& °ŒSÏxÏğkËŞ^;['5¬RâJ©9ö áA&îıªó­Ş®ë¼}·wİ/r¹t¬Ò;ü6eï+÷QàCŠ-ü‰®.9xCĞÙ¹Jñ»ÿê·yŞ-wP¡Ğ*)ÊfÔ-·ùë]S/şÄ{ñŸ¼ŞŞà¾¯É”Í::zJ]¿Û¿û¿ˆmVÒX¬ºáü6Oİt+ü¦f*:»2÷ÿ</I’„l´c,¶Ô„OlƒZ xY¥öŞ,ºº[Yº¬sÁPÏÿT¶u¨ş¾…Ÿœ5¤°FCÎğ3mŞMûDGgìår”Ï;ªjöpäç>{ª‡Ús³êğs½Ş³o9×Îáª³Í¿ë~ÙÕM‚ZøSÊÛ}ƒë>e6üú×·G8“óï¸[öö5OMv÷øwİO^€Ãÿ”àPõe^ŞÜuopÿ×ı»¿êßz‡wó¾à®û‚ûş*sï_Ê×û»<Ö1W+iÊ-õo@yşmw‰l¶á¼¤Ã­Ş¾;YJb›¬%³°DF;úZÃ›†F‰dA›°ff>=âSFİr»ã­¤äf_Azƒ7÷~Mäóš +¹ûF5°ƒ„hLM
+Ş_ñ®Û“®b««U ı±‘yß_x{n$¹){Êß{SpÏ_:×¼æ?¾vÚêÙ‘Ê‰ƒê¦}`ğüŒ™çr*Ş°¶ÖLVöl§®y/ş"mBÏ½‰SßÄî›yç 9w†—ê›$::Å®½¾ev¹~#êì"‚ççñÜ›øÑ·âjÌ^^|>ÿjdÓv$åÛÖgxøÏècÄ÷˜©q3ùùÓ‚ˆ‚,åÛÔ®=Ê{ágÑ«É®N¤QKiURt$]rd77¨ˆ¨O?ø$Iä]`şÅŸ@|üÑ ³KŸ;Ã¥e‡-.„èÜ&¯ßËB°5"›Cš"Œñèoâëöªƒñ§óò|ò¹¢”Í«]{Í‹ °Æ¤§&„„\íUKM¶¯?t÷êssi™ÓÙvBŠ^¹s·”Êê˜r9”$¨Ùßp`´¨§…BØ2™ØF!…U‰L^@BP-Î¡|yxdÓS=yP†ÃÂXBTVli…Q6\ü€1Ë Ç;>Sµ“Ÿs¥*o¤L&}D”‡z&ÔçÏğl2‚%wªƒò¹ÄG‹á˜©E˜at/€lIš@®¦!ÛoµãL'%‰<6UçìIJÇSıuˆíw<mHëgƒÁäÊ‰ƒÒh2š	ĞÚ–KP6¥ "†×añ÷ÿ¬Omèt“]t'•‡z633ÃXÖ1yˆ@ïĞÛáÕ
+§Ó0„0^=´añÃ7¤8dkÁê¥@6GJ	&ø§ÿÅ+W…¼aMàD1”Ôš%{B5ş½ƒMQ9Yô,±1€ %yx¶á»úf\UVÍÙVÓdı@íÙÇÊ#"á{ÌF[mÖ|ú!—RéèDjß}*4z—;ZÄ˜Â‹o]Êó„Ñb4£ ø%u9~—ğÆxî'—mâCÄ²ÀBø¢ìøzL\6aıâ ‡X6˜øÔÎ¥Ò/„¤L¹<yWJË\-;óQÄ¶èÛå7Ôs×ğÅâ2¥~8úîîÁâŒ]œ†ãÅ3s¸‚på¢x
+J{)×†¾~fÛæõ.	_ÍŠ£Gã®ß¡´hÇ?Ş<é.¶nÑ¿ÇËd.Ñt¹†+/…° âãûÙ0ÍóÂdS"Km=Ô½ƒH)OÖÏâ½†«_a€¡"ÊÂZŠC”æQ]†‰aôªì
+	@ùP>eòÈvP™àšBıSÁ—KX/ zª(c"¯>ª¢Z®0`!YI²P}¼Åß½†/_Na½†/%®âÿkÇ5\ÃF\6×ÕË/¿\ûÇK/½t%Ú_^|±£_QÔ›Z­üªïÛi¼ôÒKµÚË ¬‰a¶°(_bÑ¹JĞ@ş„p¥Ì€/Çê|9ğ¥Ñ—ªY×em-Ö—$–É¹jÎöõz¥÷@zPÔù*öÏÖº¯5sV5˜KºczÎy5wS¶_~ùåfÈ:û:›5ş^ëË7eµŞš¬ÇeÓ¬k¤_º€ËEyS4£Å›—Ô&	^
+MgG§5Õ€x3l·4µVgİd{§ŠÙÚÁ{UxÖz«}×oÄª®%6¶0z=:h:OŒíëU5ÃöÈ6næ\öKa£|ñ‰,‰	87bã^õ4MƒÍè¶-Ph|’ÖNáÆ£ÔSÀ?sc V»6tódÍÖSpR[33Ú±-}£z¸"ÂúÇ¼]µ4Vó;{ıº_vâ¸|—/êÎÔÒ²_.y¸lf@Ú”ù#¯c3çQãı½Âåb¾Uš­šûë—½Ş%¦™{X3£Ô;LşdÌ€õçZƒk`KÆûÖN+q+º”fõ7¶gô%Ş[jÓ<…ÆıÊ±q4«s»üÑÔêÖî[ ĞRßV¹Ú¼?-•lmÜ/Äü¸–ÈÒ,®òpå•ÀÕM¸*\W×pÍàÿûÌ
+endstream
+endobj
+11 0 obj
+<< /Type /Font
+/Subtype /Type1
+/Name /F1
+/BaseFont /Times-Roman
+/Encoding /WinAnsiEncoding
+>>
+endobj
+12 0 obj
+<< /Type /Font
+/Subtype /Type1
+/Name /F2
+/BaseFont /Times-Italic
+/Encoding /WinAnsiEncoding
+>>
+endobj
+13 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 14 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 196.9997 704.1043 355.3277 715.9843 ]
+>>
+endobj
+14 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx)
+>>
+endobj
+15 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 16 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 677.8483 62.0117 689.7283 ]
+>>
+endobj
+16 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/)
+>>
+endobj
+17 0 obj
+<< /Type /Font
+/Subtype /Type1
+/Name /F3
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+>>
+endobj
+18 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 19 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 563.7043 116.6717 575.5843 ]
+>>
+endobj
+19 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/./numero-08)
+>>
+endobj
+20 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 21 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 549.4483 106.0157 561.3283 ]
+>>
+endobj
+21 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/cómputo)
+>>
+endobj
+22 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 23 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 535.1923 101.3357 547.0723 ]
+>>
+endobj
+23 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/internet)
+>>
+endobj
+24 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 25 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 520.9363 87.3437 532.8163 ]
+>>
+endobj
+25 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/nube)
+>>
+endobj
+26 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 27 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 506.6803 64.0037 518.5603 ]
+>>
+endobj
+27 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://twitter.com/share)
+>>
+endobj
+28 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 30 0 R 32 0 R ]
+/Contents 29 0 R
+>>
+endobj
+29 0 obj
+<<
+/Length 6894 >>
+stream
+
+0.000 0.000 0.000 rg
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+BT 34.016 723.208 Td /F1 12.0 Tf  [(totalmente viable.)] TJ ET
+BT 34.016 696.952 Td /F1 12.0 Tf  [(“El cómputo en la nube es un paradigma que permite ofrecer servicios de cómputo a través de Internet, en )] TJ ET
+BT 545.888 696.952 Td /F1 12.0 Tf  [(este )] TJ ET
+BT 34.016 682.696 Td /F1 12.0 Tf  [(contexto la nube es una metáfora de Internet”)] TJ ET
+0.000 0.000 0.800 rg
+BT 252.284 682.696 Td /F1 12.0 Tf  [(1)] TJ ET
+0.24 w 0 J [  ] 0 d
+252.284 681.278 m 258.284 681.278 l S
+0.000 0.000 0.000 rg
+BT 261.284 682.696 Td /F1 12.0 Tf  [([6])] TJ ET
+BT 275.276 682.696 Td /F1 12.0 Tf  [(. Los tipos de servicios que pueden ser proporcionados a )] TJ ET
+BT 34.016 668.440 Td /F1 12.0 Tf  [(través de la nube son extensos. De acuerdo con este modelo, el cliente paga a un proveedor por un servicio o por)] TJ ET
+BT 34.016 654.184 Td /F1 12.0 Tf  [(el uso de un recurso determinado \(memoria, almacenamiento, procesamiento, software, bases de datos, etc.\) y )] TJ ET
+BT 34.016 639.928 Td /F1 12.0 Tf  [(éste le proporciona dicho servicio a través de Internet.)] TJ ET
+BT 34.016 613.672 Td /F1 12.0 Tf  [(La comercialización y estandarización de tecnologías; la virtualización y el crecimiento de arquitecturas)] TJ ET
+BT 533.888 613.672 Td /F1 12.0 Tf  [( de )] TJ ET
+BT 34.016 599.416 Td /F1 12.0 Tf  [(software orientadas al servicio y el aumento en la confiabilidad de las soluciones empresariales de Internet; son )] TJ ET
+BT 34.016 585.160 Td /F1 12.0 Tf  [(las bases sobre las que el cómputo en la nube ha logrado crecer.)] TJ ET
+BT 34.016 558.904 Td /F1 12.0 Tf  [(Estas tres tendencias, de acuerdo con Christy Pettey, analista de Gartner Daryl Plummer, en su artículo Gartne)] TJ ET
+BT 563.576 558.904 Td /F1 12.0 Tf  [(r )] TJ ET
+BT 34.016 544.648 Td /F1 12.0 Tf  [(Says Cloud Computing Will Be As Influential As E-business)] TJ ET
+0.000 0.000 0.800 rg
+BT 327.356 544.648 Td /F1 12.0 Tf  [(2)] TJ ET
+0.24 w 0 J [  ] 0 d
+327.356 543.230 m 333.356 543.230 l S
+0.000 0.000 0.000 rg
+BT 336.356 544.648 Td /F1 12.0 Tf  [([6])] TJ ET
+BT 350.348 544.648 Td /F1 12.0 Tf  [(, constituyen una discontinuidad que creará)] TJ ET
+BT 34.016 530.392 Td /F1 12.0 Tf  [(una nueva forma de relación entre aquellos que utilizan servicios de TI y quienes los ofrecen. Esencialmente)] TJ ET
+BT 34.016 516.136 Td /F1 12.0 Tf  [(esto significará que los usuarios serán capaces de centrar su atención en lo que el servicio proporciona en lug)] TJ ET
+BT 557.216 516.136 Td /F1 12.0 Tf  [(ar )] TJ ET
+BT 34.016 501.880 Td /F1 12.0 Tf  [(de preocuparse en cómo se implementa o donde se aloja.)] TJ ET
+BT 34.016 473.273 Td /F3 14.0 Tf  [(Ventajas)] TJ ET
+BT 34.016 444.905 Td /F1 12.0 Tf  [(Costos. Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la m)] TJ ET
+BT 558.608 444.905 Td /F1 12.0 Tf  [(ás)] TJ ET
+BT 34.016 430.649 Td /F1 12.0 Tf  [(evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de l)] TJ ET
+BT 523.580 430.649 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 416.393 Td /F1 12.0 Tf  [(infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar)] TJ ET
+BT 34.016 402.137 Td /F1 12.0 Tf  [(personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software)] TJ ET
+BT 547.244 402.137 Td /F1 12.0 Tf  [(. )] TJ ET
+BT 34.016 387.881 Td /F1 12.0 Tf  [(Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar)] TJ ET
+BT 536.924 387.881 Td /F1 12.0 Tf  [( un )] TJ ET
+BT 34.016 373.625 Td /F1 12.0 Tf  [(plan de pago normalmente a partir del tiempo en que éste se utiliza \(memoria, procesamiento, almacenamiento\).)] TJ ET
+BT 34.016 347.369 Td /F1 12.0 Tf  [(Competitividad. Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a la)] TJ ET
+BT 548.252 347.369 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 333.113 Td /F1 12.0 Tf  [(más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo l)] TJ ET
+BT 499.916 333.113 Td /F1 12.0 Tf  [(as )] TJ ET
+BT 34.016 318.857 Td /F1 12.0 Tf  [(organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas d)] TJ ET
+BT 555.884 318.857 Td /F1 12.0 Tf  [(e )] TJ ET
+BT 34.016 304.601 Td /F1 12.0 Tf  [(cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien l)] TJ ET
+BT 552.260 304.601 Td /F1 12.0 Tf  [(os )] TJ ET
+BT 34.016 290.345 Td /F1 12.0 Tf  [(emplea mejor.)] TJ ET
+BT 34.016 264.089 Td /F1 12.0 Tf  [(Disponibilidad. El proveedor está obligado a garantizar que el servicio siempre esté disponible para el client)] TJ ET
+BT 553.256 264.089 Td /F1 12.0 Tf  [(e. )] TJ ET
+BT 34.016 249.833 Td /F1 12.0 Tf  [(En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta)] TJ ET
+BT 34.016 235.577 Td /F1 12.0 Tf  [(tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo )] TJ ET
+BT 566.180 235.577 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 221.321 Td /F1 12.0 Tf  [(las especificaciones del cliente.)] TJ ET
+BT 34.016 195.065 Td /F1 12.0 Tf  [(Abstracción de la parte técnica. Como se mencionó al hablar de costos, el cómputo en la nube permite al cli)] TJ ET
+BT 550.916 195.065 Td /F1 12.0 Tf  [(ente )] TJ ET
+BT 34.016 180.809 Td /F1 12.0 Tf  [(la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo est)] TJ ET
+BT 561.956 180.809 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 166.553 Td /F1 12.0 Tf  [(responsabilidad al proveedor del servicio.)] TJ ET
+BT 34.016 140.297 Td /F1 12.0 Tf  [(Acceso desde cualquier punto geográfico. El uso de las aplicaciones diseñadas sobre el paradigma del cómpu)] TJ ET
+BT 558.560 140.297 Td /F1 12.0 Tf  [(to )] TJ ET
+BT 34.016 126.041 Td /F1 12.0 Tf  [(en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. E)] TJ ET
+BT 569.876 126.041 Td /F1 12.0 Tf  [(l )] TJ ET
+BT 34.016 111.785 Td /F1 12.0 Tf  [(acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicament)] TJ ET
+BT 568.544 111.785 Td /F1 12.0 Tf  [(e )] TJ ET
+BT 34.016 97.529 Td /F1 12.0 Tf  [(desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuar)] TJ ET
+BT 550.592 97.529 Td /F1 12.0 Tf  [(io )] TJ ET
+BT 34.016 83.273 Td /F1 12.0 Tf  [(hacer uso de la aplicación incluso desde dispositivos móviles como smartphones.)] TJ ET
+BT 34.016 57.017 Td /F1 12.0 Tf  [(Escalabilidad. El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se est)] TJ ET
+BT 538.568 57.017 Td /F1 12.0 Tf  [(á)] TJ ET
+endstream
+endobj
+30 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 31 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 252.2837 681.5923 258.2837 693.4723 ]
+>>
+endobj
+31 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_01.html#a)
+>>
+endobj
+32 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 33 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 327.3557 543.5443 333.3557 555.4243 ]
+>>
+endobj
+33 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_01.html#a)
+>>
+endobj
+34 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 36 0 R ]
+/Contents 35 0 R
+>>
+endobj
+35 0 obj
+<<
+/Length 6463 >>
+stream
+
+0.000 0.000 0.000 rg
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+BT 34.016 723.208 Td /F1 12.0 Tf  [(corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación )] TJ ET
+BT 531.932 723.208 Td /F1 12.0 Tf  [(de )] TJ ET
+BT 34.016 708.952 Td /F1 12.0 Tf  [(parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones.)] TJ ET
+BT 34.016 694.696 Td /F1 12.0 Tf  [(Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para )] TJ ET
+BT 545.564 694.696 Td /F1 12.0 Tf  [(el )] TJ ET
+BT 34.016 680.440 Td /F1 12.0 Tf  [(usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. L)] TJ ET
+BT 558.560 680.440 Td /F1 12.0 Tf  [(as )] TJ ET
+BT 34.016 666.184 Td /F1 12.0 Tf  [(actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata.)] TJ ET
+BT 34.016 639.928 Td /F1 12.0 Tf  [(Concentración de esfuerzos en los procesos de negocio. Como resultado de las ventajas antes mencionadas, e)] TJ ET
+BT 558.236 639.928 Td /F1 12.0 Tf  [(l )] TJ ET
+BT 34.016 625.672 Td /F1 12.0 Tf  [(cliente pude concentrar más recursos y esfuerzos hacia un aspecto más estratégico y trascendente, que tenga )] TJ ET
+BT 555.524 625.672 Td /F1 12.0 Tf  [(un )] TJ ET
+BT 34.016 611.416 Td /F1 12.0 Tf  [(impacto directo sobre los procesos de negocio de la organización, transfiriendo al proveedor la responsabilidad)] TJ ET
+BT 34.016 597.160 Td /F1 12.0 Tf  [(de la implementación, configuración y mantenimiento de la infraestructura necesaria para que se ejecute l)] TJ ET
+BT 540.884 597.160 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 582.904 Td /F1 12.0 Tf  [(aplicación.)] TJ ET
+BT 34.016 554.297 Td /F3 14.0 Tf  [(Desventajas)] TJ ET
+BT 34.016 525.929 Td /F1 12.0 Tf  [(Privacidad. Es comprensible la percepción de inseguridad que genera una tecnología que pone la informaci)] TJ ET
+BT 548.228 525.929 Td /F1 12.0 Tf  [(ón)] TJ ET
+BT 34.016 511.673 Td /F1 12.0 Tf  [(\(sensible en muchos casos\), en servidores fuera de la organización, dejando como responsable de los datos al)] TJ ET
+BT 34.016 497.417 Td /F1 12.0 Tf  [(proveedor de servicio. El tema a tratar aquí, es el de la privacidad, ya que para muchos es extremadamente)] TJ ET
+BT 34.016 483.161 Td /F1 12.0 Tf  [(difícil el confiar su información sensible a terceros y consideran que lo que propone el cómputo en la nube po)] TJ ET
+BT 560.912 483.161 Td /F1 12.0 Tf  [(ne )] TJ ET
+BT 34.016 468.905 Td /F1 12.0 Tf  [(en riesgo la información vital para los procesos de negocio.)] TJ ET
+BT 34.016 442.649 Td /F1 12.0 Tf  [(Disponibilidad. Si bien es cierto que se incluyó a la disponibilidad previamente como una ventaja, ésta que)] TJ ET
+BT 547.292 442.649 Td /F1 12.0 Tf  [(da )] TJ ET
+BT 34.016 428.393 Td /F1 12.0 Tf  [(como una responsabilidad que compete únicamente al proveedor del servicio, por lo que si su sistema de)] TJ ET
+BT 34.016 414.137 Td /F1 12.0 Tf  [(redundancia falla y no logra mantener al servicio disponible para el usuario, éste no puede realizar ninguna)] TJ ET
+BT 34.016 399.881 Td /F1 12.0 Tf  [(acción correctiva para restablecer el servicio. En tal caso, el cliente debería de esperar a que el problema se)] TJ ET
+BT 547.832 399.881 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 385.625 Td /F1 12.0 Tf  [(resuelto del lado del proveedor.)] TJ ET
+BT 34.016 359.369 Td /F1 12.0 Tf  [(Falta de control sobre recursos. Al tener toda la infraestructura e incluso la aplicación corriendo sobre servidore)] TJ ET
+BT 570.212 359.369 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 345.113 Td /F1 12.0 Tf  [(que se encuentran en la nube, es decir, del lado del proveedor, el cliente carece por completo de control sobre )] TJ ET
+BT 34.016 330.857 Td /F1 12.0 Tf  [(los recursos e incluso sobre su información, una vez que ésta es subida a la nube.)] TJ ET
+BT 34.016 304.601 Td /F1 12.0 Tf  [(Dependencia. En una solución basada en cómputo en la nube, el cliente se vuelve dependiente no sólo )] TJ ET
+BT 526.916 304.601 Td /F1 12.0 Tf  [(del )] TJ ET
+BT 34.016 290.345 Td /F1 12.0 Tf  [(proveedor del servicio, sino también de su conexión a Internet, debido a que el usuario debe esta)] TJ ET
+BT 497.252 290.345 Td /F1 12.0 Tf  [(r )] TJ ET
+BT 34.016 276.089 Td /F1 12.0 Tf  [(permanentemente conectado para poder alcanzar al sistema que se encuentra en la nube.)] TJ ET
+BT 34.016 249.833 Td /F1 12.0 Tf  [(Integración. No en todos los entornos resulta fácil o práctica la integración de recursos disponibles a trav)] TJ ET
+BT 34.016 223.577 Td /F1 12.0 Tf  [(El cómputo en la nube se puede dividir en tres niveles en función de los servicios que ofrecen los proveedores)] TJ ET
+BT 562.244 223.577 Td /F1 12.0 Tf  [(. )] TJ ET
+BT 34.016 209.321 Td /F1 12.0 Tf  [(Desde el nivel más interno hasta el más externo se encuentran: Infraestructura como Servicio, Plataforma com)] TJ ET
+BT 563.228 209.321 Td /F1 12.0 Tf  [(o )] TJ ET
+BT 34.016 195.065 Td /F1 12.0 Tf  [(Servicio y Software como Servicio. A continuación se describen brevemente cada uno de estos niveles:)] TJ ET
+BT 34.016 166.457 Td /F3 14.0 Tf  [(Infraestructura como Servicio \(IaaS - Infraestructure as a Service\) )] TJ ET
+BT 34.016 138.269 Td /F2 12.0 Tf  [(“La Infraestructura como un servicio es un modelo de aprovisionamiento, en el cual una organización colo)] TJ ET
+BT 551.984 138.269 Td /F2 12.0 Tf  [(ca )] TJ ET
+BT 34.016 124.013 Td /F2 12.0 Tf  [(‘fuera de ella’ el equipo usado para soportar operaciones, esto incluye el almacenamiento de la información)] TJ ET
+BT 558.632 124.013 Td /F2 12.0 Tf  [(, el )] TJ ET
+BT 34.016 109.757 Td /F2 12.0 Tf  [(hardware, servidores y componentes de redes. El proveedor del servicio. En ocasiones la IaaS es referida )] TJ ET
+BT 34.016 95.501 Td /F2 12.0 Tf  [(también como Hardware as a Service o HaaS”)] TJ ET
+0.000 0.000 0.800 rg
+BT 260.324 95.501 Td /F2 12.0 Tf  [(3)] TJ ET
+0.24 w 0 J [  ] 0 d
+260.324 94.077 m 266.324 94.077 l S
+0.000 0.000 0.000 rg
+BT 269.324 95.501 Td /F2 12.0 Tf  [([7])] TJ ET
+BT 284.660 95.501 Td /F2 12.0 Tf  [(.)] TJ ET
+BT 34.016 69.065 Td /F1 12.0 Tf  [(La ventaja más evidente de utilizar una IaaS, es la de transferir hacia el proveedor problemas relacionados con)] TJ ET
+BT 34.016 54.809 Td /F1 12.0 Tf  [(la administración de equipos de cómputo. Otra ventaja atractiva es la reducción de costos, como ocurre )] TJ ET
+BT 531.908 54.809 Td /F1 12.0 Tf  [(en )] TJ ET
+endstream
+endobj
+36 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 37 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 260.3237 94.2172 266.3237 106.0972 ]
+>>
+endobj
+37 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_02.html#a)
+>>
+endobj
+38 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 40 0 R 42 0 R ]
+/Contents 39 0 R
+>>
+endobj
+39 0 obj
+<<
+/Length 5863 >>
+stream
+
+0.000 0.000 0.000 rg
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+BT 34.016 723.208 Td /F1 12.0 Tf  [(general en las tecnologías asociadas al cómputo en la nube, al pagar únicamente por lo consumido. Además )] TJ ET
+BT 553.580 723.208 Td /F1 12.0 Tf  [(las )] TJ ET
+BT 34.016 708.952 Td /F1 12.0 Tf  [(Infraestructuras como Servicio permiten escalabilidad prácticamente automática y transparente para e)] TJ ET
+BT 521.876 708.952 Td /F1 12.0 Tf  [(l )] TJ ET
+BT 34.016 694.696 Td /F1 12.0 Tf  [(consumidor, dejando la responsabilidad a los proveedores de los servicios.)] TJ ET
+BT 34.016 668.440 Td /F1 12.0 Tf  [(Otras de sus características son: la conectividad a Internet que provee, los servicios basados en políticas y l)] TJ ET
+BT 547.244 668.440 Td /F1 12.0 Tf  [(a )] TJ ET
+BT 34.016 654.184 Td /F1 12.0 Tf  [(disposición de un escritorio virtual.)] TJ ET
+BT 34.016 625.577 Td /F3 14.0 Tf  [(Plataforma como Servicio \(PaaS - Platform as a Service\) )] TJ ET
+BT 34.016 597.389 Td /F2 12.0 Tf  [(La computación en la nube y su rápido crecimiento ha requerido “incluir plataformas para crear y ejecu)] TJ ET
+BT 540.644 597.389 Td /F2 12.0 Tf  [(tar )] TJ ET
+BT 34.016 583.133 Td /F2 12.0 Tf  [(aplicaciones personalizadas, a este concepto se le conoce como PaaS \(o en español Plataforma como un)] TJ ET
+BT 34.016 568.877 Td /F2 12.0 Tf  [(Servicio\). Las aplicaciones PaaS también son conocidas como de sobre-demanda basadas en Web o soluciones)] TJ ET
+BT 34.016 554.621 Td /F2 12.0 Tf  [(SaaS” )] TJ ET
+0.000 0.000 0.800 rg
+BT 67.688 554.621 Td /F2 12.0 Tf  [(4)] TJ ET
+0.24 w 0 J [  ] 0 d
+67.688 553.196 m 73.688 553.196 l S
+0.000 0.000 0.000 rg
+BT 76.688 554.621 Td /F2 12.0 Tf  [([7])] TJ ET
+BT 92.024 554.621 Td /F2 12.0 Tf  [(.)] TJ ET
+BT 34.016 528.185 Td /F1 12.0 Tf  [(El proveedor, además de resolver problemas en la infraestructura de hardware, también se encarga del software)] TJ ET
+BT 568.172 528.185 Td /F1 12.0 Tf  [(. )] TJ ET
+BT 34.016 513.929 Td /F1 12.0 Tf  [(El cliente que hace uso de este tipo de soluciones no necesita instalar, configurar ni dar mantenimiento a )] TJ ET
+BT 34.016 499.673 Td /F1 12.0 Tf  [(sistemas operativos, bases de datos y servidores de aplicaciones ya que todo esto es proporcionado bajo esta )] TJ ET
+BT 34.016 485.417 Td /F1 12.0 Tf  [(plataforma.)] TJ ET
+BT 34.016 459.161 Td /F1 12.0 Tf  [(Una plataforma como servicio \(PaaS\) resuelve más problemas si se compara con una solución que sólo ofre)] TJ ET
+BT 551.240 459.161 Td /F1 12.0 Tf  [(ce )] TJ ET
+BT 34.016 444.905 Td /F1 12.0 Tf  [(una infraestructura como servicio \(IaaS\), ya que presenta muchas limitaciones relacionadas con el entorno de )] TJ ET
+BT 34.016 430.649 Td /F1 12.0 Tf  [(ejecución. Entre éstas se encuentran el tipo de sistema, el lenguaje de programación \(en algunos casos l)] TJ ET
+BT 529.904 430.649 Td /F1 12.0 Tf  [(as )] TJ ET
+BT 34.016 416.393 Td /F1 12.0 Tf  [(bibliotecas que éstos podrán utilizar\), el manejador de bases de datos.)] TJ ET
+BT 34.016 390.137 Td /F1 12.0 Tf  [(Empresas como Amazon.com, eBay, Google, iTunes y YouTube son algunas de las que emplean este modelo y )] TJ ET
+BT 34.016 375.881 Td /F1 12.0 Tf  [(hacen posible accesar a nuevas capacidades y nuevos mercados a través del navegador Web, las PaaS ofrecen)] TJ ET
+BT 34.016 361.625 Td /F1 12.0 Tf  [(un modelo más rápido y ventaja costo-beneficio para el desarrollo de aplicaciones y entrega”. )] TJ ET
+0.000 0.000 0.800 rg
+BT 486.236 361.625 Td /F1 12.0 Tf  [(5)] TJ ET
+0.24 w 0 J [  ] 0 d
+486.236 360.206 m 492.236 360.206 l S
+0.000 0.000 0.000 rg
+BT 495.236 361.625 Td /F1 12.0 Tf  [([7])] TJ ET
+BT 34.016 333.017 Td /F3 14.0 Tf  [(Software como Servicio \(SaaS – Software as a Service\))] TJ ET
+BT 34.016 290.249 Td /F1 12.0 Tf  [(“Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de soft)] TJ ET
+BT 532.964 290.249 Td /F1 12.0 Tf  [(ware )] TJ ET
+BT 34.016 275.993 Td /F1 12.0 Tf  [(que proporciona a los clientes el acceso a éste a través de la red \(generalmente Internet\). De esta forma, ellos n)] TJ ET
+BT 565.184 275.993 Td /F1 12.0 Tf  [(o )] TJ ET
+BT 34.016 261.737 Td /F1 12.0 Tf  [(tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que toda)] TJ ET
+BT 561.908 261.737 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 247.481 Td /F1 12.0 Tf  [(estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de)] TJ ET
+BT 34.016 233.225 Td /F1 12.0 Tf  [(Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.”)] TJ ET
+BT 34.016 206.969 Td /F1 12.0 Tf  [(Este modelo tiene como objetivo al cliente final que utiliza el software para cubrir procesos de su organización.)] TJ ET
+BT 34.016 192.713 Td /F1 12.0 Tf  [(El Software como Servicio \(SaaS\) se puede describir como aquella aplicación consumida a través de Internet)] TJ ET
+BT 557.564 192.713 Td /F1 12.0 Tf  [(, )] TJ ET
+BT 34.016 178.457 Td /F1 12.0 Tf  [(normalmente a través del navegador, cuyo pago está condicionado al uso de la misma y donde la lógica de )] TJ ET
+BT 547.916 178.457 Td /F1 12.0 Tf  [(la )] TJ ET
+BT 34.016 164.201 Td /F1 12.0 Tf  [(aplicación así como los datos residen en la plataforma del proveedor. Ejemplos de SaaS son Salesforce, Zoho,)] TJ ET
+BT 562.256 164.201 Td /F1 12.0 Tf  [( y )] TJ ET
+BT 34.016 149.945 Td /F1 12.0 Tf  [(Google App.)] TJ ET
+BT 34.016 121.338 Td /F3 14.0 Tf  [(Experiencia con el cómputo en la nube)] TJ ET
+BT 34.016 92.970 Td /F1 12.0 Tf  [(Una usuaria integrante de la Subdirección de Seguridad de la Información, comenta un poco sobre su)] TJ ET
+BT 519.908 92.970 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 78.714 Td /F1 12.0 Tf  [(impresiones después de haber utilizado el cómputo en la nube para resolver un problema de trabajo en conjunto:)] TJ ET
+endstream
+endobj
+40 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 41 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 67.6877 553.3367 73.6877 565.2167 ]
+>>
+endobj
+41 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_02.html#a)
+>>
+endobj
+42 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 43 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 486.2357 360.5207 492.2357 372.4007 ]
+>>
+endobj
+43 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_02.html#a)
+>>
+endobj
+44 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 46 0 R 48 0 R 50 0 R 52 0 R 54 0 R 56 0 R 58 0 R 60 0 R ]
+/Contents 45 0 R
+>>
+endobj
+45 0 obj
+<<
+/Length 6914 >>
+stream
+
+0.000 0.000 0.000 rg
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+BT 64.016 711.208 Td /F1 12.0 Tf  [(“Mi primera experiencia con el cómputo en la nube fue en una ocasión en que trabajé un proy)] TJ ET
+BT 514.232 711.208 Td /F1 12.0 Tf  [(ecto )] TJ ET
+BT 64.016 696.808 Td /F1 12.0 Tf  [(en equipo. )] TJ ET
+BT 64.016 682.552 Td /F1 12.0 Tf  [(Cada uno de los integrantes nos encontrábamos físicamente en zonas geográficas lejanas, y para )] TJ ET
+BT 528.236 682.552 Td /F1 12.0 Tf  [(la )] TJ ET
+BT 64.016 668.296 Td /F1 12.0 Tf  [(toma de decisiones, era importante que tuviéramos en un sólo equipo el desarrollo del proyecto )] TJ ET
+BT 523.940 668.296 Td /F1 12.0 Tf  [(y )] TJ ET
+BT 64.016 654.040 Td /F1 12.0 Tf  [(que todos pudiéramos manipularlo, dicho de otra manera, compartir el área de trabajo. Utilizar e)] TJ ET
+BT 526.244 654.040 Td /F1 12.0 Tf  [(l )] TJ ET
+BT 64.016 639.640 Td /F1 12.0 Tf  [(cómputo en la nube nos permitió resolver este problema.)] TJ ET
+BT 64.016 625.384 Td /F1 12.0 Tf  [(Primeramente se montó en la computadora personal de uno de los integrantes, y utilizando una)] TJ ET
+BT 64.016 611.128 Td /F1 12.0 Tf  [(herramienta disponible dentro del cómputo en la nube, el resto del equipo podía visualizar la)] TJ ET
+BT 508.280 611.128 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 64.016 596.872 Td /F1 12.0 Tf  [(acciones que se llevaban a cabo por parte de la persona que controlaba el proyecto, y en cualquier )] TJ ET
+BT 64.016 582.616 Td /F1 12.0 Tf  [(momento, gracias a esta misma herramienta, cualquiera de los otros miembros podía tomar el)] TJ ET
+BT 64.016 568.216 Td /F1 12.0 Tf  [(control del trabajo.)] TJ ET
+BT 64.016 553.960 Td /F1 12.0 Tf  [(Por otro lado, en la realización del reporte final, se elaboró una presentación en una platafor)] TJ ET
+BT 504.896 553.960 Td /F1 12.0 Tf  [(ma )] TJ ET
+BT 64.016 539.704 Td /F1 12.0 Tf  [(donde también se aplica este mismo concepto. Mediante ella, todos los colaboradores manipulamos)] TJ ET
+BT 64.016 525.448 Td /F1 12.0 Tf  [(el mismo archivo, lo que nos permitió ahorrarnos tiempo en vez de estar enviado y reenviado el)] TJ ET
+BT 64.016 511.192 Td /F1 12.0 Tf  [(archivo por correo.”)] TJ ET
+BT 34.016 484.936 Td /F1 12.0 Tf  [(Ella comenta que la utilización de esta tecnología fue fundamental para la oportuna y adecuada integración d)] TJ ET
+BT 556.556 484.936 Td /F1 12.0 Tf  [(el )] TJ ET
+BT 34.016 470.680 Td /F1 12.0 Tf  [(equipo de trabajo, así como de las respectivas partes del proyecto, además resalta que una de las ventajas qu)] TJ ET
+BT 552.560 470.680 Td /F1 12.0 Tf  [(e )] TJ ET
+BT 34.016 456.424 Td /F1 12.0 Tf  [(ofrece este paradigma es el ahorro de tiempo.)] TJ ET
+BT 34.016 427.817 Td /F3 14.0 Tf  [(Conclusiones)] TJ ET
+BT 34.016 399.449 Td /F1 12.0 Tf  [(Esta tecnología, como sucede normalmente, presenta un crecimiento gradual. Si bien es cierto que el cómput)] TJ ET
+BT 555.920 399.449 Td /F1 12.0 Tf  [(o )] TJ ET
+BT 34.016 385.193 Td /F1 12.0 Tf  [(en la nube es una tecnología que ya se utiliza desde hace algunos años, aún falta que sea completamen)] TJ ET
+BT 524.900 385.193 Td /F1 12.0 Tf  [(te )] TJ ET
+BT 34.016 370.937 Td /F1 12.0 Tf  [(absorbida como una tendencia central en las organizaciones.)] TJ ET
+BT 34.016 344.681 Td /F1 12.0 Tf  [(El nivel de aceptación entre las organizaciones variará dependiendo del tamaño de éstas. Las mediana)] TJ ET
+BT 522.884 344.681 Td /F1 12.0 Tf  [(s y )] TJ ET
+BT 34.016 330.425 Td /F1 12.0 Tf  [(pequeñas empresas ya empiezan a adoptar soluciones basadas en cómputo en la nube, mientras que las grande)] TJ ET
+BT 562.220 330.425 Td /F1 12.0 Tf  [(s )] TJ ET
+BT 34.016 316.169 Td /F1 12.0 Tf  [(organizaciones lo hacen de acuerdo a necesidades particulares.)] TJ ET
+BT 34.016 289.913 Td /F1 12.0 Tf  [(En la otra cara de la moneda, se encuentran los usuarios finales, a quienes el cómputo en la nube les ha)] TJ ET
+BT 34.016 275.657 Td /F1 12.0 Tf  [(cambiado la forma de realizar sus actividades, mejorando en la mayoría de los casos y permitiéndoles colabora)] TJ ET
+BT 566.228 275.657 Td /F1 12.0 Tf  [(r )] TJ ET
+BT 34.016 261.401 Td /F1 12.0 Tf  [(de una manera distinta con otros usuarios en diferentes lugares, tener acceso a las aplicaciones que requieren )] TJ ET
+BT 34.016 247.145 Td /F1 12.0 Tf  [(desde su navegador web y prácticamente desde cualquier equipo, incluso desde sus dispositivos móviles.)] TJ ET
+BT 34.016 216.485 Td /F3 12.0 Tf  [(Referencias)] TJ ET
+BT 34.016 186.569 Td /F1 12.0 Tf  [(\(1\) )] TJ ET
+0.000 0.000 0.800 rg
+BT 51.008 186.569 Td /F1 12.0 Tf  [(http://www.imaginar.org/iicd/fichas/05_Cloud_computing.pdf)] TJ ET
+0.24 w 0 J [  ] 0 d
+51.008 185.150 m 350.672 185.150 l S
+0.000 0.000 0.000 rg
+BT 353.672 186.569 Td /F1 12.0 Tf  [([8])] TJ ET
+BT 34.016 172.169 Td /F1 12.0 Tf  [(\(2\) )] TJ ET
+0.000 0.000 0.800 rg
+BT 51.008 172.169 Td /F1 12.0 Tf  [(http://www.gartner.com/it/page.jsp?id=707508)] TJ ET
+0.24 w 0 J [  ] 0 d
+51.008 170.750 m 276.764 170.750 l S
+0.000 0.000 0.000 rg
+BT 279.764 172.169 Td /F1 12.0 Tf  [([9])] TJ ET
+BT 34.016 157.769 Td /F1 12.0 Tf  [(\(3\) )] TJ ET
+0.000 0.000 0.800 rg
+BT 51.008 157.769 Td /F1 12.0 Tf  [(http://searchcloudcomputing.techtarget.com/sDefinition/0,,sid201_gci1358983,00.html)] TJ ET
+0.24 w 0 J [  ] 0 d
+51.008 156.350 m 469.664 156.350 l S
+0.000 0.000 0.000 rg
+BT 472.664 157.769 Td /F1 12.0 Tf  [([10])] TJ ET
+BT 34.016 143.369 Td /F1 12.0 Tf  [(\(4\) )] TJ ET
+0.000 0.000 0.800 rg
+BT 51.008 143.369 Td /F1 12.0 Tf  [(http://www.salesforce.com/paas/)] TJ ET
+0.24 w 0 J [  ] 0 d
+51.008 141.950 m 208.316 141.950 l S
+0.000 0.000 0.000 rg
+BT 211.316 143.369 Td /F1 12.0 Tf  [([11])] TJ ET
+BT 34.016 129.113 Td /F1 12.0 Tf  [(\(5\) )] TJ ET
+0.000 0.000 0.800 rg
+BT 51.008 129.113 Td /F1 12.0 Tf  [(http://msdn.microsoft.com/en-us/magazine/ee309870.aspx)] TJ ET
+0.24 w 0 J [  ] 0 d
+51.008 127.694 m 331.988 127.694 l S
+0.000 0.000 0.000 rg
+BT 334.988 129.113 Td /F1 12.0 Tf  [([12])] TJ ET
+0.000 0.000 0.800 rg
+BT 34.016 102.857 Td /F1 12.0 Tf  [(Francisco Carlos Martínez Godínez)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 101.438 m 204.980 101.438 l S
+0.000 0.000 0.000 rg
+BT 207.980 102.857 Td /F1 12.0 Tf  [([13])] TJ ET
+0.000 0.000 0.800 rg
+BT 34.016 88.601 Td /F1 12.0 Tf  [(Beatriz Verónica Gutiérrez Galán)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 87.182 m 195.620 87.182 l S
+0.000 0.000 0.000 rg
+BT 198.620 88.601 Td /F1 12.0 Tf  [([14])] TJ ET
+0.000 0.000 0.000 RG
+57.816 55.721 m 
+57.816 56.271 57.589 56.817 57.201 57.206 c
+56.812 57.594 56.266 57.821 55.716 57.821 c
+55.166 57.821 54.620 57.594 54.231 57.206 c
+53.842 56.817 53.616 56.271 53.616 55.721 c
+53.616 55.171 53.842 54.625 54.231 54.236 c
+54.620 53.847 55.166 53.621 55.716 53.621 c
+56.266 53.621 56.812 53.847 57.201 54.236 c
+57.589 54.625 57.816 55.171 57.816 55.721 c f
+0.000 0.000 0.800 rg
+BT 64.016 50.345 Td /F1 12.0 Tf  [(numero-08)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 48.926 m 116.672 48.926 l S
+endstream
+endobj
+46 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 47 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 51.0077 185.4647 350.6717 197.3447 ]
+>>
+endobj
+47 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.imaginar.org/iicd/fichas/05_Cloud_computing.pdf)
+>>
+endobj
+48 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 49 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 51.0077 171.0647 276.7637 182.9447 ]
+>>
+endobj
+49 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.gartner.com/it/page.jsp?id=707508)
+>>
+endobj
+50 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 51 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 51.0077 156.6647 469.6637 168.5447 ]
+>>
+endobj
+51 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://searchcloudcomputing.techtarget.com/sDefinition/0,,sid201_gci1358983,00.html)
+>>
+endobj
+52 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 53 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 51.0077 142.2647 208.3157 154.1447 ]
+>>
+endobj
+53 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.salesforce.com/paas/)
+>>
+endobj
+54 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 55 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 51.0077 128.0087 331.9877 139.8887 ]
+>>
+endobj
+55 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://msdn.microsoft.com/en-us/magazine/ee309870.aspx)
+>>
+endobj
+56 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 57 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 101.7527 204.9797 113.6327 ]
+>>
+endobj
+57 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/autores/francisco-carlos-martínez-godínez)
+>>
+endobj
+58 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 59 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 87.4967 195.6197 99.3767 ]
+>>
+endobj
+59 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/autores/beatriz-verónica-gutiérrez-galán)
+>>
+endobj
+60 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 61 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 49.2407 116.6717 61.1207 ]
+>>
+endobj
+61 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/./numero-08)
+>>
+endobj
+62 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Annots [ 64 0 R 66 0 R 68 0 R 70 0 R 72 0 R 74 0 R 76 0 R 78 0 R 80 0 R 82 0 R 84 0 R 86 0 R 88 0 R ]
+/Contents 63 0 R
+>>
+endobj
+63 0 obj
+<<
+/Length 5675 >>
+stream
+
+0.000 0.000 0.800 rg
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+57.816 728.584 m 
+57.816 729.134 57.589 729.680 57.201 730.069 c
+56.812 730.458 56.266 730.684 55.716 730.684 c
+55.166 730.684 54.620 730.458 54.231 730.069 c
+53.842 729.680 53.616 729.134 53.616 728.584 c
+53.616 728.034 53.842 727.488 54.231 727.099 c
+54.620 726.711 55.166 726.484 55.716 726.484 c
+56.266 726.484 56.812 726.711 57.201 727.099 c
+57.589 727.488 57.816 728.034 57.816 728.584 c f
+0.000 0.000 0.800 rg
+BT 64.016 723.208 Td /F1 12.0 Tf  [(cómputo)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 721.790 m 106.016 721.790 l S
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+57.816 714.328 m 
+57.816 714.878 57.589 715.424 57.201 715.813 c
+56.812 716.202 56.266 716.428 55.716 716.428 c
+55.166 716.428 54.620 716.202 54.231 715.813 c
+53.842 715.424 53.616 714.878 53.616 714.328 c
+53.616 713.778 53.842 713.232 54.231 712.843 c
+54.620 712.455 55.166 712.228 55.716 712.228 c
+56.266 712.228 56.812 712.455 57.201 712.843 c
+57.589 713.232 57.816 713.778 57.816 714.328 c f
+0.000 0.000 0.800 rg
+BT 64.016 708.952 Td /F1 12.0 Tf  [(Internet)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 707.534 m 101.336 707.534 l S
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+57.816 700.072 m 
+57.816 700.622 57.589 701.168 57.201 701.557 c
+56.812 701.946 56.266 702.172 55.716 702.172 c
+55.166 702.172 54.620 701.946 54.231 701.557 c
+53.842 701.168 53.616 700.622 53.616 700.072 c
+53.616 699.522 53.842 698.976 54.231 698.587 c
+54.620 698.199 55.166 697.972 55.716 697.972 c
+56.266 697.972 56.812 698.199 57.201 698.587 c
+57.589 698.976 57.816 699.522 57.816 700.072 c f
+0.000 0.000 0.800 rg
+BT 64.016 694.696 Td /F1 12.0 Tf  [(nube)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+64.016 693.278 m 87.344 693.278 l S
+BT 34.016 680.440 Td /F1 12.0 Tf  [(Universidad Nacional Autónoma de México)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 679.022 m 246.644 679.022 l S
+BT 34.016 654.040 Td /F1 12.0 Tf  [(Universidad Nacional Autónoma de México)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 652.622 m 246.644 652.622 l S
+BT 34.016 639.784 Td /F1 12.0 Tf  [(Directorio)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 638.366 m 83.336 638.366 l S
+BT 34.016 613.528 Td /F1 12.0 Tf  [(Dirección General de Cómputo y de Tecnologías de Información y Comunicación)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 612.110 m 427.940 612.110 l S
+BT 34.016 587.128 Td /F1 12.0 Tf  [(Dirección General de Cómputo y de)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 585.710 m 207.644 585.710 l S
+BT 34.016 572.872 Td /F1 12.0 Tf  [(Tecnologías de Información y Comunicación)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 571.454 m 251.312 571.454 l S
+BT 34.016 546.616 Td /F1 12.0 Tf  [(SSI / UNAMCERT)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 545.198 m 128.024 545.198 l S
+BT 34.016 520.360 Td /F1 12.0 Tf  [(SSI / UNAMCERT)] TJ ET
+0.24 w 0 J [  ] 0 d
+34.016 518.942 m 128.024 518.942 l S
+0.000 0.000 0.000 rg
+BT 34.016 482.104 Td /F1 12.0 Tf  [([)] TJ ET
+0.000 0.000 0.800 rg
+BT 38.012 482.104 Td /F1 12.0 Tf  [( CONTACTO )] TJ ET
+0.24 w 0 J [  ] 0 d
+38.012 480.686 m 109.340 480.686 l S
+0.000 0.000 0.000 rg
+BT 109.340 482.104 Td /F1 12.0 Tf  [(])] TJ ET
+BT 34.016 455.704 Td /F1 12.0 Tf  [(Se prohíbe la reproducción total o parcial)] TJ ET
+BT 34.016 441.448 Td /F1 12.0 Tf  [(de los artículos sin la autorización por escrito de los autores)] TJ ET
+0.000 0.000 0.000 RG
+34.016 419.968 m 577.984 419.968 l 577.234 419.218 l 34.766 419.218 l  f
+0.160 0.160 0.160 rg
+0.160 0.160 0.160 RG
+34.016 416.968 m 577.984 416.968 l 577.234 417.718 l 34.766 417.718 l  f
+577.984 419.968 m 577.984 416.968 l 577.234 417.718 l 577.234 419.218 l  f
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+34.016 419.968 m 34.016 416.968 l 34.766 417.718 l 34.766 419.218 l  f
+BT 34.016 399.748 Td /F3 12.0 Tf  [(URL del envío:)] TJ ET
+0.000 0.000 0.800 rg
+BT 115.016 400.192 Td /F1 12.0 Tf  [(http://revista.seguridad.unam.mx/numero-08/c%C3%B3mputo-en-nube-ventajas-y-desventajas)] TJ ET
+0.000 0.000 0.800 RG
+0.24 w 0 J [  ] 0 d
+115.016 398.774 m 571.952 398.774 l S
+0.000 0.000 0.000 rg
+BT 34.016 361.348 Td /F3 12.0 Tf  [(Enlaces:)] TJ ET
+BT 34.016 347.392 Td /F1 12.0 Tf  [([1] http://revista.seguridad.unam.mx/./numero-08)] TJ ET
+BT 34.016 332.992 Td /F1 12.0 Tf  [([2] http://revista.seguridad.unam.mx/category/tipo-de-articulo/c%C3%B3mputo)] TJ ET
+BT 34.016 318.592 Td /F1 12.0 Tf  [([3] http://revista.seguridad.unam.mx/category/tipo-de-articulo/internet)] TJ ET
+BT 34.016 304.192 Td /F1 12.0 Tf  [([4] http://revista.seguridad.unam.mx/category/tipo-de-articulo/nube)] TJ ET
+BT 34.016 289.792 Td /F1 12.0 Tf  [([5] http://twitter.com/share)] TJ ET
+BT 34.016 275.392 Td /F1 12.0 Tf  [([6] http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_01.html#a)] TJ ET
+BT 34.016 260.992 Td /F1 12.0 Tf  [([7] http://10.0.1.114/~igonzalez/revistaOld/rs_unam_08/008_01/art_02.html#a)] TJ ET
+BT 34.016 246.592 Td /F1 12.0 Tf  [([8] http://www.imaginar.org/iicd/fichas/05_Cloud_computing.pdf)] TJ ET
+BT 34.016 232.192 Td /F1 12.0 Tf  [([9] http://www.gartner.com/it/page.jsp?id=707508)] TJ ET
+BT 34.016 217.792 Td /F1 12.0 Tf  [([10] http://searchcloudcomputing.techtarget.com/sDefinition/0,,sid201_gci1358983,00.html)] TJ ET
+BT 34.016 203.392 Td /F1 12.0 Tf  [([11] http://www.salesforce.com/paas/)] TJ ET
+BT 34.016 188.992 Td /F1 12.0 Tf  [([12] http://msdn.microsoft.com/en-us/magazine/ee309870.aspx)] TJ ET
+BT 34.016 174.592 Td /F1 12.0 Tf  [([13] http://revista.seguridad.unam.mx/autores/francisco-carlos-mart%C3%ADnez-god%C3%ADnez)] TJ ET
+BT 34.016 160.192 Td /F1 12.0 Tf  [([14] http://revista.seguridad.unam.mx/autores/beatriz-ver%C3%B3nica-guti%C3%A9rrez-gal%C3%A1n)] TJ ET
+endstream
+endobj
+64 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 65 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 722.1043 106.0157 733.9843 ]
+>>
+endobj
+65 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/cómputo)
+>>
+endobj
+66 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 67 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 707.8483 101.3357 719.7283 ]
+>>
+endobj
+67 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/internet)
+>>
+endobj
+68 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 69 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 64.0157 693.5923 87.3437 705.4723 ]
+>>
+endobj
+69 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/category/tipo-de-articulo/nube)
+>>
+endobj
+70 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 71 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 679.3363 246.6437 691.2163 ]
+>>
+endobj
+71 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.unam.mx/)
+>>
+endobj
+72 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 73 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 652.9363 246.6437 664.8163 ]
+>>
+endobj
+73 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.unam.mx/)
+>>
+endobj
+74 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 75 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 638.6803 83.3357 650.5603 ]
+>>
+endobj
+75 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/directorio)
+>>
+endobj
+76 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 77 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 612.4243 427.9397 624.3043 ]
+>>
+endobj
+77 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://tic.unam.mx/)
+>>
+endobj
+78 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 79 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 586.0243 207.6437 597.9043 ]
+>>
+endobj
+79 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://tic.unam.mx/)
+>>
+endobj
+80 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 81 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 571.7683 251.3117 583.6483 ]
+>>
+endobj
+81 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://tic.unam.mx/)
+>>
+endobj
+82 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 83 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 545.5123 128.0237 557.3923 ]
+>>
+endobj
+83 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.seguridad.unam.mx/)
+>>
+endobj
+84 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 85 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 34.0157 519.2563 128.0237 531.1363 ]
+>>
+endobj
+85 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://www.seguridad.unam.mx/)
+>>
+endobj
+86 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 87 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 38.0117 481.0003 109.3397 492.8803 ]
+>>
+endobj
+87 0 obj
+<< /Type /Action
+/S /URI
+/URI (mailto:revista@seguridad.unam.mx)
+>>
+endobj
+88 0 obj
+<< /Type /Annot
+/Subtype /Link
+/A 89 0 R
+/Border [0 0 0]
+/H /I
+/Rect [ 115.0157 399.0883 571.9517 410.9683 ]
+>>
+endobj
+89 0 obj
+<< /Type /Action
+/S /URI
+/URI (http://revista.seguridad.unam.mx/numero-08/cómputo-en-nube-ventajas-y-desventajas)
+>>
+endobj
+xref
+0 90
+0000000000 65535 f 
+0000000008 00000 n 
+0000000091 00000 n 
+0000000137 00000 n 
+0000000386 00000 n 
+0000000423 00000 n 
+0000000586 00000 n 
+0000000710 00000 n 
+0000009138 00000 n 
+0000009166 00000 n 
+0000012981 00000 n 
+0000020317 00000 n 
+0000020427 00000 n 
+0000020538 00000 n 
+0000020666 00000 n 
+0000020750 00000 n 
+0000020876 00000 n 
+0000020961 00000 n 
+0000021070 00000 n 
+0000021197 00000 n 
+0000021293 00000 n 
+0000021420 00000 n 
+0000021538 00000 n 
+0000021665 00000 n 
+0000021784 00000 n 
+0000021910 00000 n 
+0000022025 00000 n 
+0000022151 00000 n 
+0000022227 00000 n 
+0000022318 00000 n 
+0000029265 00000 n 
+0000029393 00000 n 
+0000029516 00000 n 
+0000029644 00000 n 
+0000029767 00000 n 
+0000029851 00000 n 
+0000036367 00000 n 
+0000036494 00000 n 
+0000036617 00000 n 
+0000036708 00000 n 
+0000042624 00000 n 
+0000042750 00000 n 
+0000042873 00000 n 
+0000043001 00000 n 
+0000043124 00000 n 
+0000043257 00000 n 
+0000050224 00000 n 
+0000050351 00000 n 
+0000050461 00000 n 
+0000050588 00000 n 
+0000050684 00000 n 
+0000050811 00000 n 
+0000050946 00000 n 
+0000051073 00000 n 
+0000051156 00000 n 
+0000051283 00000 n 
+0000051389 00000 n 
+0000051516 00000 n 
+0000051642 00000 n 
+0000051767 00000 n 
+0000051892 00000 n 
+0000052017 00000 n 
+0000052113 00000 n 
+0000052281 00000 n 
+0000058009 00000 n 
+0000058136 00000 n 
+0000058254 00000 n 
+0000058381 00000 n 
+0000058500 00000 n 
+0000058626 00000 n 
+0000058741 00000 n 
+0000058868 00000 n 
+0000058939 00000 n 
+0000059066 00000 n 
+0000059137 00000 n 
+0000059263 00000 n 
+0000059358 00000 n 
+0000059485 00000 n 
+0000059556 00000 n 
+0000059683 00000 n 
+0000059754 00000 n 
+0000059881 00000 n 
+0000059952 00000 n 
+0000060079 00000 n 
+0000060160 00000 n 
+0000060287 00000 n 
+0000060368 00000 n 
+0000060495 00000 n 
+0000060579 00000 n 
+0000060707 00000 n 
+trailer
+<<
+/Size 90
+/Root 1 0 R
+/Info 5 0 R
+>>
+startxref
+60840
+%%EOF

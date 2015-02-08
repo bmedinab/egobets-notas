@@ -12,7 +12,7 @@ Egobets.com proporciona al cliente los servicios de asesoría de apuestas person
 
 \section{Diseño y arquitectura}
 \label{sec:design}
-Egobets.com es un sistema con arquitectura cliente servidor montado sobre una máquina virtual con sistema operativo Linux de la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño Modelo Vista Controlador junto con su respectivo representación de la base de datos que origina el Modelo base del sistema.
+Egobets.com es un sistema con arquitectura cliente servidor montado sobre una máquina virtual con sistema operativo Linux en la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño Modelo Vista Controlador junto con su respectiva representación gráfica de base de datos.
 \subsection{Ventajas de correr Egobets en la nube}
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -21,10 +21,10 @@ Egobets.com es un sistema con arquitectura cliente servidor montado sobre una m�
    \end{minipage}
 \end{figure}
 
-El sistema usa la nube de AWS para ofrecer sus servicio a los usuarios (Vease la imagen\ref{Fig:diagrama-portal-publico}), más aún se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{computoNube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
-Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{computoNube}  se retoman las siguentes ventajas de este paradigma:
+El sistema usa la nube de AWS para ofrecer sus servicio a los usuarios (Vease la imagen~\ref{Fig:diagrama-portal-publico}), más aún se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{godinez2010nube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
+Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{godinez2010nube}  se retoman las siguentes ventajas de este paradigma:
 \begin{itemize}
-	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
+	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software, la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
 
 	\item \textbf{Competitividad.} Al no tener que adquirir equipos costosos, las pequeñas empresas pueden tener acceso a las más nuevas tecnologías a precios a su alcance pagando únicamente por consumo. De este modo las organizaciones de cualquier tipo podrían competir en igualdad de condiciones en áreas de TI con empresas de cualquier tamaño. La ventaja competitiva no está en aquel que tiene los recursos de cómputo sino en quien los emplea mejor. En particular a Egobets le permite utilizar este tipo de tecnología a la par de otros sistemas gigantes que tienen mucho más tiempo en el mercado y mucho mayores ingresos.
 
@@ -35,23 +35,59 @@ Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutié
 
 	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
 
-	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos.
+	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos a que el servidor se auto-escale.
 
-Es por estas razones que Egobets tiene cabida en el paradigma del computo en la nube.
+Es por estas razones que Egobets funciona tan bien en el paradigma del computo en la nube.
 
 \end{itemize}
 
+\subsection{Servidor LNNP}
+
+Este acrónimo respresenta un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que será descrito en la sección \ref{sec:inserting-data}.} que utiliza las siguientes tecnologías:
+\begin{itemize}
+	\item \textbf{L}inux, el sistema operativo.
+	\item \textbf{N}ginx, el servidor Web.
+	\item \textbf{N}oSQL, la Base de datos.
+	\item \textbf{P}HP, el lenguaje de programación.
+\end{itemize}
+
+La máquina virtual de AWS corre Ubuntu LTS 12.04, una versión del sistema operativo creado por Linux Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
+		\begin{itemize}
+ 			\item El costo de licencia es gratuito y su uso no tiene algún otro costo monetario.
+ 			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
+ 			\item Tener las aplicaciones en sus últimas versiones, bien configuradas y aplicar los parches de manera inteligente, garantizan que el servidor se encuentre seguro y sea funcional.
+ 		\end{itemize}
+		
+Encima del sistema operativo, tenemos \textbf{Nginx}. Un servidor Web de alto performance creado por Igor Sysoev para el sitio \emph{www.rambler.ru}, el segundo sitio más grande de Rusia \cite{reese2008nginx}. Nginx es capaz de servir más peticiones por segundo y con menos recursos que sus competidores, gracias a su arquitectura. Grosso modo, consiste en un proceso maestro que delega a sus procesos \emph{trabajadores} toda al carga de trabajo. Cada trabajador maneja varias solicitudes de manera asíncrona utilizando una funcionalidad especial del kernel de Linux\footnote{Se puede leer más al respecto de como funciona internamente Nginx en Zhu \cite{zhu2010nginx}}. Esto permite a Nginx, manejar un gran número de solicitudes simultáneas  con muy poca sobrecarga.
+
+A un lado, se tiene la base de datos No-SQL. A \textbf{MongoDB}, derivado de la palabra \emph{humongous}, Membrey \cite{membrey2010definitive} le describe como una nueva especie de base de datos carente de conceptos de tablas, esquemas, SQL, o renglones. No tiene transacciones, joins, llaves externas, o cualquier otra de las características que suelen causar dolores de cabeza matutinos. En pocas palabras, MongoDB es una base de datos orientada a documentos, optimizada para ser veloz, escalable y fácil de integrar con cualquier lenguaje.
+
+Finalmente el lenguaje en el que está programado el portal es \textbf{PHP}, cuyo acrónimo recursivo significa: \emph{PHP Hypertext Preprocessor}. Según su página Web \cite{phpWeb} es un lenguaje de scripting, el cual puede ser embebido dentro de páginas HTML. Gran parte de su sintaxis fue tomada de C, Java y Perl con un par de características específicas propias de PHP. El objetivo del lenguaje es permitir a desarrolladores Web escribir páginas generadas dinámicamente con agilidad.
+PHP está enfocado principalmente a la programación de scripts del lado del servidor, por lo que se puede hacer cualquier cosa como recopilar datos de formularios, generar páginas con contenidos dinámicos, o enviar y recibir cookies. Aunque PHP puede hacer mucho más.
+				 Ventajas:
+	\begin{itemize}
+		\item No depende del sistema operativo. Esto se debe a que corre al ser llamado por el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
+		\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archiso del sistema operativo.
+		\item Permite la conexión casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
+		\item PHP también cuenta con soporte para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
+		\item Existen muchas otras extensiones interesantes, las cuales están organizadas alfabéticamente y por categoría.
+		\item Corre bajo la licencia Pública General de GNU. Por lo que se puede ser modificado y ser utilizado por cualquiera.
+	\end{itemize}
+
+
 \subsection{Patrón de diseño MVC}
 
+El portal público de Egobets.com está desarrollado en una de las arquitecturas más utilizadas en los sistemas de información, Modelo Vista Controlador (MVC) \cite{alfredo2005ingenieria}. Esta arquitectura se basa en tres dimensiones principales: \emph{Modelo} correspondiente a la información, \emph{Vista} correspondiente a la presentación o interacción con el usuario y \emph{Control} correspondiente al comportamiento. El sistema utiliza esta arquitectura a través de: \emph{CodeIgniter}.
 
-Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como
-una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño conocido como Modelo Vista Controlador (MVC), este patrón fue descrito por el noruego Trygve Reenskaug en 1979.
-	Sobre el libro de Upton \cite{upton2007codeigniter} se tiene una aproximación a este patrón de diseño en CodeIgniter:
-	\begin{itemize}
-		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operacioens a los datos según sea necesario.
-		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
-		\item Controladores, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
-	\end{itemize}
+\begin{figure}[!htb]\centering
+   \begin {minipage}{1\textwidth}
+     \includegraphics[width=\linewidth]{mvc-architecture-mongo}
+     \caption{Patrón de diseño Modelo Vista Controlador (MVC)}\label{Fig:mvc}
+   \end{minipage}
+\end{figure}
+
+CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. Uno de los puntos interesantes de este framework es que utiliza el patrón de diseño MVC, este patrón fue descrito por el noruego Trygve Reenskaug en 1979.
+	
 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
 	\begin{itemize}
 		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
@@ -61,12 +97,15 @@ una aplicación genérica incompleta y configurable a la que se le puede añadir
 		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estandares convenidos en internet.
 
 	\end{itemize}
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{mvc-architecture-mongo}
-     \caption{Patrón de diseño Modelo Vista Controlador (MVC)}\label{Fig:mvc}
-   \end{minipage}
-\end{figure}
+	
+	
+	Sobre el libro de Upton \cite{upton2007codeigniter} se tiene una aproximación a este patrón de diseño en CodeIgniter:
+	\begin{itemize}
+		\item Modelos, son objetos que representan los datos. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operaciones a los datos según sea necesario.
+		\item Vistas, reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
+		\item Controladores, ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
+	\end{itemize}
+	
 
 
 \begin{figure}[!htb]\centering
@@ -181,6 +220,7 @@ En orden de aparición: Una estrella indicando si el equipo está o no marcado c
 Además para cada tabla se pueden presentar los resultados de una liga en particular al seleccionarla en el recuadro de arriba.
 
 \section{Alimentando el sistema}
+\label{sec:inserting-data}	
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -189,7 +229,6 @@ Además para cada tabla se pueden presentar los resultados de una liga en partic
    \end{minipage}
 \end{figure}
 
-\label{sec:inserting-data}	
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
      \includegraphics[width=\linewidth]{erd-pronosticos}
@@ -268,12 +307,6 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 % 		Una de las principales ventajas de utilizar una arquitectura LAMP es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos le permiten modificarlo y compartirlo \cite{lozano2008software}.
 % 	El famoso acrónimo representa lo siguiente :
 % 	\begin{itemize}
-% 		\item Linux. Sistema operativo Linux (creado por Linus Torvalds), en específico se utiliza la versión de Ubuntu LTS 12.04. Esta versión es estable con una gran comunidad activa de soporte. Algunas de las ventajas de usar Linux son:
-% 		\begin{itemize}
-% 			\item El costo de licencia es gratuito y su uso no tiene algún otro costo monetario.
-% 			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
-% 			\item Tener las aplicaciones en sus últimas versiones, bien configuradas y aplicar los parches de manera inteligente, garantizan que el servidor se encuentre seguro y sea funcional.
-% 		\end{itemize}
 % 		\item Apache. El servidor HTTP, encargado de recibir y procesar las llamadas HTTP, nació hace diecisiete años como un proyecto por desarrollar un software robusto, de grado comercial, modular y gratuito para servir peticiones (Web) HTTP. Algunas de las ventajas con las que cuenta son \cite{apacheWeb}:
 % 		\begin{itemize}
 % 			\item Gran variedad de módulos. Existen muchos módulos que la comunidad desarrolla para atacar las problemáticas diarias, gracias a que su comunidad es muy activa estos desarrollos nunca acaban.
@@ -288,19 +321,7 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 % 			\item Las bases de datos MySQL son relacionales. La información se guarda en tablas separadas en vez de poner todo junto en un solo lugar. Las estructuras de base de datos están organizadas en archivos físicos optimizados para la velcidad. El modelo lógico con objetos como bases de datos, tablas, vistas, tuplas y columnas ofrece un ambiente de programación flexible. Y MySQL se asegura de que se respeten los tipos de relaciones entre tablas como puede ser uno a uno, uno a varios, únicas, u opcionales. Una base de datos bien diseñada nunca permitirá información incosistente, duplicada, huerfana, fuera de fecha o perdida.
 % 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
 % 		\end{itemize}
-% 				\item PHP: Hypertext Preprocessor.. Según su página Web \cite{phpWeb} es un lenguaje de scripting, el cual puede ser embebido dentro de páginas HTML. Gran parte de su sintaxis fue tomada de C, Java y Perl con un par de características específicas propias de PHP. El objetivo del lenguaje es permitir a desarrolladores Web escribir páginas generadas dinámicamente con agilidad.
-% 				 PHP está enfocado principalmente a la programación de scripts del lado del servidor, por lo que se puede hacer cualquier cosa como recopilar datos de formularios, generar páginas con contenidos dinámicos, o enviar y recibir cookies. Aunque PHP puede hacer mucho más.
-% 				 Ventajas:
-% 		 		\begin{itemize}
-% 		 			\item No depende del sistema operativo. Esto se debe a que corre al ser llamado por el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
-% 					\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archiso del sistema operativo.
-% 					\item Permite la conexión casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
-% 					\item PHP también cuenta con soporte para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
-% 					\item Existen muchas otras extensiones interesantes, las cuales están categorizadas alfabéticamente y por categoría.
-% 		 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
-% 		 		\end{itemize}
-%
-% 	\end{itemize}
+% 				\item PHP: 
 %
 %
 % 	\item Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como

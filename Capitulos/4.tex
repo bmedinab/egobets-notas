@@ -121,10 +121,10 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 	\end{itemize}
 	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos vease \ref{chap:dbs}.
 	
-	Con base en la estructura de datos definida, retómese el punto más interesantes de CodeIgniter, el patrón de diseño MVC. Este patrón fue descrito por el noruego Trygve Reenskaug en 197, retomando este concepto junto con Upton \cite{upton2007codeigniter} y  Weitzenfeld \cite{alfredo2005ingenieria} se puede describir el sistema de Egobets de una manera más organizada:
+	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, retomando este concepto junto con Upton \cite{upton2007codeigniter} y  Weitzenfeld \cite{alfredo2005ingenieria} se puede describir el sistema de Egobets de una manera más organizada:
 	
 	\begin{itemize}
-		\item \textbf{Modelos.} La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. Estos objetos reflejan las tabla de la base de datos y pueden modificarla conforme sea requerido. Los modelos también realizan operaciones a los datos según sea necesario.
+		\item \textbf{Modelos.} La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
 		En particular, es importante notar que la estructura de datos definida en la figura ~\ref{Fig:db-egobets} representa de igual manera los objetos definidos en el código definido en los modelos del sistema
 		\item \textbf{Vistas.} reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
 		\item \textbf{Controladores.} ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.

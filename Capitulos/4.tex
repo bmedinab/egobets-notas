@@ -80,7 +80,7 @@ Encima de PHP se utiliza una tecnología llamada CodeIgniter, esta tecnolgía ti
 
 \subsection{Patrón de diseño MVC}
 
-El portal público de Egobets.com está desarrollado en una de las arquitecturas más utilizadas en los sistemas de información, Modelo Vista Controlador (MVC) \cite{alfredo2005ingenieria}. Esta arquitectura se basa en tres dimensiones principales: \emph{Modelo} correspondiente a la información, \emph{Vista} correspondiente a la presentación o interacción con el usuario y \emph{Control} correspondiente al comportamiento. El sistema utiliza esta arquitectura a través de: \emph{CodeIgniter}.
+El portal público de Egobets.com está desarrollado en una de las arquitecturas más utilizadas en los sistemas de información, Modelo Vista Controlador (MVC) \cite{alfredo2005ingenieria}. Esta arquitectura se basa en tres dimensiones principales: \emph{Modelo} correspondiente a la información, \emph{Vista} correspondiente a la presentación o interacción con el usuario y \emph{Control} correspondiente al comportamiento. Como ya se mencionó el sistema utiliza esta arquitectura a través de \emph{CodeIgniter}.
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -89,7 +89,14 @@ El portal público de Egobets.com está desarrollado en una de las arquitecturas
    \end{minipage}
 \end{figure}
 
-CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. 
+	\begin{figure}[!htb]\centering
+	   \begin {minipage}{1\textwidth}
+	     \includegraphics[width=\linewidth]{mongoDB/schema/bd-egobets}
+	     \caption{Representación UML de las colecciones de la base de datos de Egobets}\label{Fig:db-egobets}
+	   \end{minipage}
+	\end{figure}
+	
+CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. 
 	
 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
 	\begin{itemize}
@@ -101,32 +108,89 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 
 	\end{itemize}
 	
+
 	Por la naturaleza de la arquitectura MVC es necesario conocer la definición de la estructura de datos para después poder describir en mayor detalle los elementos del sistema. Ahora, hay que recordar que Egobets no utiliza una base de datos relacional por lo que se presenta un diagrama de clases para representar las colecciones que se tienen en la base de datos de Mongo DB.
 	
-	\begin{figure}[!htb]\centering
-	   \begin {minipage}{1\textwidth}
-	     \includegraphics[width=\linewidth]{mongoDB/schema/bd-egobets}
-	     \caption{Representación UML de las colecciones de la base de datos de Egobets}\label{Fig:db-egobets}
-	   \end{minipage}
-	\end{figure}
-	
-	Cómo se puede observar en la figura ~\ref{Fig:db-egobets}, se cuenta con seis clases principales:
+	La base de datos cuenta con seis colecciones principales (Vease la figura~\ref{Fig:db-egobets}):
+
 	\begin{itemize}
 		\item Usuario. Se trata de los usuarios que se enrolan al sistema y utilizan los servicios de portal, como las asesorías de apuestas o las predicciones de los partidos.
-		\item Administrador. Estos usuarios son los que tienen privilegios para ingresar al portal administrador (Ver \ref{sec:inserting-data}) y gestionar la información del sistema.
+		\item Administrador. Estos usuarios son los que tienen privilegios para ingresar al portal administrador y gestionar la información del sistema.
 		\item Equipo. En esta colección se almacenan todos los equipos de las cinco ligas junto con la posición en la que se encuentra  y la fortaleza con la que cuenta en ese momento.
 		\item Partido. Se guardan los partidos de las cinco ligas junto con los marcadores estimados y después los reales. De igual manera se tienen los momios de las casas de apuestas para ese partido.
-		\item Casa. Guarda las casas de apuestas y su URL.
-		\item Resultado. Se tiene la cantidad de dinero que obtiene o pierde un usuario en una jornada.
+		\item Casa. En esta colección se almacenan los datos de las casas de apuestas de las cuales se recuperan sus momios para hacer los cálculos de las asesorías de apuestas.
+		\item Resultado. Aquí se guarda la cantidad de dinero que obtiene o pierde un usuario en cada jornada.
 	\end{itemize}
-	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos vease \ref{chap:dbs}.
+	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos vease el Apendice \ref{chap:dbs}.
 	
-	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, retomando este concepto junto con Upton \cite{upton2007codeigniter} y  Weitzenfeld \cite{alfredo2005ingenieria} se puede describir el sistema de Egobets de una manera más organizada:
+	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}:
 	
 	\begin{itemize}
-		\item \textbf{Modelos.} La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
-		En particular, es importante notar que la estructura de datos definida en la figura ~\ref{Fig:db-egobets} representa de igual manera los objetos definidos en el código definido en los modelos del sistema
-		\item \textbf{Vistas.} reflejan el estado del modelo. Son las responsables de desplegar la información al usuario final. En este caso específico, todas las vistas son representaciones HTML del contenido.
+		\item \textbf{Modelos.} 
+		
+		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
+		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraidos con las consultas.
+		
+		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más esencial (y la más aburrida) es el escribir operaciones ABCD.  Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
+		
+		En concreto, para el portal público de Egobets las siguiente son las funciones utilizadas en los modelos:
+		\begin{itemize}
+			\item \emph{Usuarios}
+				\begin{itemize}
+					\item Agregar - A través del modelo, se permite crear un nuevo \emph{usuario} de la plataforma.
+					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario. 
+					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene de facebook en el sistema y las casas de apuestas a las que está suscrito en Egobets.
+				\end{itemize}
+			\item \emph{Resultados}
+			\begin{itemize}
+				\item Agregar - Se recibe la información de la cantidad de dinero ganada o perdida por cada usuario e inserta esta información en la colección de \emph{Resultados}.
+				\item Desplegar - Se obtienen los \emph{resultados} de ganancias o pérdidas en función del usuario. También se genera la información base para hacer las gráficas de la evolución de dinero en el tiempo.
+			\end{itemize}
+			\item \emph{Transacciones}
+				\begin{itemize}
+					\item Agregar - Se permite inicializar e insertar una nueva \emph{transacción} a la base de datos con un estatus de pendiente de pago.
+					\item Cambiar - Se puede cambiar y asignar un estatus de pagada junto con una fecha de pago a una \emph{transacción} a través de este modelo.
+					\item Desplegar - Para algún usuario, se pueden obtener todas las \emph{transacciones} realizadas.
+				\end{itemize}
+			\item \emph{Equipos}
+				\begin{itemize}
+					\item Desplegar - El modelo  de \emph{Equipos} despliega todos los \emph{equipos} registrados en el sistema y estos pueden ser filtrados directamente por: el nombre equipo, el id del equipo o la liga a la que pertenecen. También se despliegan los equipos favoritos por cliente.
+				\end{itemize}
+			\item \emph{Partidos}
+				\begin{itemize}
+					\item Desplegar - Se muestran todos los \emph{partidos} registrados en el sistema y se pueden filtrar por: el equipo que juega en ellos, el id del partido o la liga a la que pertenecen. También este modelo permite obtener las estrellas de cada partido, estas estrellas denotan la confiabilidad que tiene la predicción del resultado de ese partido.
+				\end{itemize}
+		\end{itemize}
+	
+		\item \textbf{Vistas.} 
+		
+		Las vistas reflejan el estado del modelo y corresponden a las interfaces que se le presentan al usuario para el manejo de la información. Por lo general, pueden existir múltiples vistas sobre un mismo modelo, por ejemplo puede existir una vista que despliegue un listado de  partidos por liga y al mismo tiempo existir una vista que muestre una gráfica con la cantidad de goles anotados por los equipos locales a través del tiempo. Estas vistas utilizan los mismos modelos, pero la información que despliega es completamente distinta y tiene fines diferentes.
+		
+		También una vista puede implementar varios modelos, es decir, mostrar información compleja compuesta por varios elementos de la base de datos. Un ejemplo sería una vista que presente los datos de un partido junto con las estadísticas generales de cada equipo y una gráfica representativa de la cantidad de dinero gastada por los usuarios en las distintas apuestas del partido.
+		
+		Las vistas que se tienen en el sistema se pueden enumerar de la siguiente manera:
+		\begin{itemize}
+			\item \emph{Relativas al perfil del usuario}
+			Aquí caen elementos como las siguientes vistas: Crea tu perfil, recupera tu password, actualiza tus datos de perfil, inicio de seción, paga más jornadas para recibir más recomendaciones y edita las preferencias de tu cuenta.
+			
+			
+			\item \emph{Estáticas}
+			
+			Son esas páginas que no necesitan ser actualizadas nunca y su contenido es estático. En Egobets, se tienen varias como: FAQ, Portada, poíticas de privacidad, términos y condiciones, etc.
+			
+			\item \emph{Relativas a las ligas}
+
+			Estas vistas muestran toda la información relativa a los juegos siguientes y ya pasados. Se tienen las vistas de \emph{equipos},ligas, partidos pasasdos, equipos 
+			
+			
+			\item \emph{Relativas a la asesoría de apuestas}
+			
+			En estas vistas se tienen pantallas como el \emph{Dashboard} que presenta las ganancias y estadísiticas de los resultados de las jornadas de apuestas. También se tiene la vista de \emph{recomendaciones}, donde se especifica la recomendación de la jornada al usuario. También se tiene una vista con los resultados de los partidos próximos y el nivel de confiabilidad de la recomendación.
+			
+		\end{itemize}
+		
+		
+		
 		\item \textbf{Controladores.} ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
 	\end{itemize}
 	

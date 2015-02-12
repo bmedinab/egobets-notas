@@ -2,7 +2,7 @@
 \label{chap:software}
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
 
-Egobets.com proporciona al cliente los servicios de asesoría de apuestas personalizada a través de un portal web usable, práctico y profesional. En este capítulo se presenta el sistema desarrollado con los fundamentos teóricos descritos en los capítulos anteriores, una verdadera aplicación computacional de las matemáticas
+Egobets.com proporciona al cliente los servicios de asesoría de apuestas personalizada a través de un portal Web usable, práctico y profesional. En este capítulo se presenta el sistema desarrollado con los fundamentos teóricos descritos en los capítulos anteriores, una verdadera aplicación computacional de las matemáticas
 
 % Se describen las cuatro piezas de software desarrolladas que conforman en su totalidad el sistema de Egobets. Las tres primeras permiten al usuario adminstrativo echar a andar toda la maquinaria. Y la última pieza, conocida como e
 % A todo este conjunto de herramientas y programas que el usuario necesita para esta tarea se le conocerá como \emph{Back Office}.
@@ -22,7 +22,7 @@ Egobets.com es un sistema con arquitectura cliente servidor montado sobre una m�
 \end{figure}
 
 El sistema usa la nube de AWS para ofrecer sus servicio a los usuarios (Vease la imagen~\ref{Fig:diagrama-portal-publico}), más aún se puede decir que el software corre en un esquema tipo ``SaaS''\footnote{Software as a Service. ``Es el más conocido de los niveles de cómputo en la nube. El SaaS es un modelo de distribución de software que proporciona a los clientes el acceso a éste a través de la red (generalmente Internet). De esta forma, ellos no tienen que preocuparse de la configuración, implementación o mantenimiento de las aplicaciones, ya que todas estas labores se vuelven responsabilidad del proveedor. Las aplicaciones distribuidas a través de un modelo de Software como Servicio pueden llegar a cualquier empresa sin importar su tamaño o ubicación geográfica.'' \cite{godinez2010nube}.}, esto implica que el usuario simplemente ingresa a su cuenta en un navegador de internet y puede ver las asesorías para sus apuestas.
-Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{godinez2010nube}  se retoman las siguentes ventajas de este paradigma:
+Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutiérrez \cite{godinez2010nube}  se retoman las siguientes ventajas de este paradigma:
 \begin{itemize}
 	\item \textbf{Costos.} Podría ser la ventaja más atractiva que presenta el cómputo en la nube, y si no lo es, al menos es la más evidente de todas las que ofrece esta tecnología. Al dejar la responsabilidad de la implementación de la infraestructura al proveedor, el cliente no tiene que preocuparse por comprar equipos de cómputo, capacitar personal para la configuración y mantenimiento de éstos, y en algunos casos, por el desarrollo del software. Además el usuario de estos servicios únicamente paga por los recursos que utiliza, permitiéndole diseñar un plan de pago normalmente a partir del tiempo en que éste se utiliza (memoria, procesamiento, almacenamiento). Para Egobets, esta cualidad es vital, ya que en el comienzo después de haber implantado el software, la cantidad de usuarios es mínima y los ingresos también. Conforme crece la bolsa de clientes también irá creciendo la potencia del servidor.
 
@@ -43,7 +43,7 @@ Es por estas razones que Egobets funciona tan bien en el paradigma del computo e
 
 \subsection{Servidor LNNP}
 
-Este acrónimo respresenta un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que será descrito en la sección \ref{sec:inserting-data}.} LNNP viene de:
+Este acrónimo representa un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que será descrito en la sección \ref{sec:inserting-data}.} LNNP viene de:
 \begin{itemize}
 	\item \textbf{L}inux, el sistema operativo.
 	\item \textbf{N}ginx, el servidor Web.
@@ -69,14 +69,14 @@ PHP está enfocado principalmente a la programación de scripts del lado del ser
 				 Ventajas:
 	\begin{itemize}
 		\item No depende del sistema operativo. Esto se debe a que corre al ser llamado por el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
-		\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archiso del sistema operativo.
+		\item No se limita a genera HTML. Puede crear por ejemplo: imágenes, ficheros PDF e incluso películas Flash al vuelo. También puede generar archivos de texto y guardarlos en el sistema de archivo del sistema operativo.
 		\item Permite la conexión casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
 		\item PHP también cuenta con soporte para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
 		\item Existen muchas otras extensiones interesantes, las cuales están organizadas alfabéticamente y por categoría.
-		\item Corre bajo la licencia Pública General de GNU. Por lo que se puede ser modificado y ser utilizado por cualquiera.
+		\item Corre bajo la licencia Pública General de GNU. Por lo que se puede ser modificado y ser utilizado por cualquiera.'
 	\end{itemize}
 
-Encima de PHP se utiliza una tecnología llamada CodeIgniter, esta tecnolgía tiene la propiedad de utilizar le patrón de diseño MVC. Esta propiedad separa la lógica del código en categorías y hace más sencillo el mantenimiento y desarrollo del mismo, en el siguiente apartado se detalla más esta arquitectura.
+Encima de PHP se utiliza una tecnología llamada CodeIgniter, esta tecnología tiene la propiedad de utilizar le patrón de diseño MVC. Esta propiedad separa la lógica del código en categorías y hace más sencillo el mantenimiento y desarrollo del mismo, en el siguiente apartado se detalla más esta arquitectura.
 
 \subsection{Patrón de diseño MVC}
 
@@ -102,16 +102,16 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 	\begin{itemize}
 		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
 		\item Documentación clara. La guía que se incluye cuenta con guía y tutoriales para empezar a trabajar de manera muy práctica.
-		\item Compatibildad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluído MySQL.
+		\item Compatibilidad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluido MySQL.
 
-		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estandares convenidos en internet.
+		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estándares convenidos en internet.
 
 	\end{itemize}
 	
 
 	Por la naturaleza de la arquitectura MVC es necesario conocer la definición de la estructura de datos para después poder describir en mayor detalle los elementos del sistema. Ahora, hay que recordar que Egobets no utiliza una base de datos relacional por lo que se presenta un diagrama de clases para representar las colecciones que se tienen en la base de datos de Mongo DB.
-	
-	La base de datos cuenta con seis colecciones principales (Vease la figura~\ref{Fig:db-egobets}):
+	\textbf{Definición de la base de datos}
+	La base de datos cuenta con seis colecciones principales (Véase la figura~\ref{Fig:db-egobets}):
 
 	\begin{itemize}
 		\item Usuario. Se trata de los usuarios que se enrolan al sistema y utilizan los servicios de portal, como las asesorías de apuestas o las predicciones de los partidos.
@@ -121,25 +121,25 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\item Casa. En esta colección se almacenan los datos de las casas de apuestas de las cuales se recuperan sus momios para hacer los cálculos de las asesorías de apuestas.
 		\item Resultado. Aquí se guarda la cantidad de dinero que obtiene o pierde un usuario en cada jornada.
 	\end{itemize}
-	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos vease el Apendice \ref{chap:dbs}.
+	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
 	
-	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}:
+	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartado se describirán  los componentes de Egobets en estas tres dimensiones.
 	
-	\begin{itemize}
-		\item \textbf{Modelos.} 
+
+		 \subsection{Modelos} 
 		
 		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
-		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraidos con las consultas.
+		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
 		
 		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más esencial (y la más aburrida) es el escribir operaciones ABCD.  Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
 		
-		En concreto, para el portal público de Egobets las siguiente son las funciones utilizadas en los modelos:
+		En concreto, para el portal público de Egobets las siguientes son las funciones utilizadas en los modelos:
 		\begin{itemize}
 			\item \emph{Usuarios}
 				\begin{itemize}
 					\item Agregar - A través del modelo, se permite crear un nuevo \emph{usuario} de la plataforma.
 					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario. 
-					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene de facebook en el sistema y las casas de apuestas a las que está suscrito en Egobets.
+					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene de Facebook en el sistema y las casas de apuestas a las que está suscrito en Egobets.
 				\end{itemize}
 			\item \emph{Resultados}
 			\begin{itemize}
@@ -148,7 +148,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			\end{itemize}
 			\item \emph{Transacciones}
 				\begin{itemize}
-					\item Agregar - Se permite inicializar e insertar una nueva \emph{transacción} a la base de datos con un estatus de pendiente de pago.
+					\item Agregar - Se permite iniciar e insertar una nueva \emph{transacción} a la base de datos con un estatus de pendiente de pago.
 					\item Cambiar - Se puede cambiar y asignar un estatus de pagada junto con una fecha de pago a una \emph{transacción} a través de este modelo.
 					\item Desplegar - Para algún usuario, se pueden obtener todas las \emph{transacciones} realizadas.
 				\end{itemize}
@@ -162,7 +162,9 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\end{itemize}
 		\end{itemize}
 	
-		\item \textbf{Vistas.} 
+		\subsection{Vistas}
+		
+		\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/vistas/}}
 		
 		Las vistas reflejan el estado del modelo y corresponden a las interfaces que se le presentan al usuario para el manejo de la información. Por lo general, pueden existir múltiples vistas sobre un mismo modelo, por ejemplo puede existir una vista que despliegue un listado de  partidos por liga y al mismo tiempo existir una vista que muestre una gráfica con la cantidad de goles anotados por los equipos locales a través del tiempo. Estas vistas utilizan los mismos modelos, pero la información que despliega es completamente distinta y tiene fines diferentes.
 		
@@ -170,35 +172,157 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		
 		Las vistas que se tienen en el sistema se pueden enumerar de la siguiente manera:
 		\begin{itemize}
-			\item \emph{Relativas al perfil del usuario}
-			Aquí caen elementos como las siguientes vistas: Crea tu perfil, recupera tu password, actualiza tus datos de perfil, inicio de seción, paga más jornadas para recibir más recomendaciones y edita las preferencias de tu cuenta.
+			\item \emph{\textbf{Vistas relativas al usuario}}
 			
+			\begin{figure}[!htb]\centering
+			   \begin {minipage}{0.7\textwidth}
+			     \includegraphics[width=\linewidth]{encuesta}
+			     \caption{La encuesta define el perfil de riesgo del usuario}\label{Fig:encuesta}
+			   \end{minipage}
+			\end{figure}
 			
-			\item \emph{Estáticas}
-			
-			Son esas páginas que no necesitan ser actualizadas nunca y su contenido es estático. En Egobets, se tienen varias como: FAQ, Portada, poíticas de privacidad, términos y condiciones, etc.
-			
-			\item \emph{Relativas a las ligas}
+			En este conjunto de vistas se le permite al usuario gestionar toda la información que tiene que ver con su perfil. Se tienen desde las pantallas para crear una cuenta, hasta las pantallas para editar la encuesta que define las recomendaciones que el usuario recibe.
+			A continuación se listan estas vistas:
+			\begin{itemize}
+				\item Sign up. Permite al usuario crear una nueva cuenta para utilizar el sistema (Se puede utilizar Facebook para crear el perfil más rápidamente).
+				\item Inicio de Sesión. A través de esta pantalla el usuario ingresa sus datos para entrar al sistema.
+				\item Restablecer contraseña. Permite al usuario ingresar su correo electrónico para generar una nueva contraseña.
+				\item Mi Perfil. En esta vista un usuario puede cambiar sus preferencias como el idioma, si requiere ser notificado cuando haya nuevas recomendaciones y seleccionar las casas de apuestas que utiliza.
+				\item Mis Amigos. A través de esta pantalla se pueden ingresar los correos electrónicos de otras personas que tienen cuenta en Egobets para después comparar resultados de sus ganancias.
+				\item Encuesta. Como ya se mencionó el riesgo del usuario depende de esta pantalla. El usuario puede ajustarla cada vez que guste cambiar su estrategia de apuesta. Ver imagen~\ref{Fig:encuesta}
 
-			Estas vistas muestran toda la información relativa a los juegos siguientes y ya pasados. Se tienen las vistas de \emph{equipos},ligas, partidos pasasdos, equipos 
+				
+			\end{itemize}
 			
 			
-			\item \emph{Relativas a la asesoría de apuestas}
+			\item \emph{\textbf{Vistas Estáticas}}
 			
-			En estas vistas se tienen pantallas como el \emph{Dashboard} que presenta las ganancias y estadísiticas de los resultados de las jornadas de apuestas. También se tiene la vista de \emph{recomendaciones}, donde se especifica la recomendación de la jornada al usuario. También se tiene una vista con los resultados de los partidos próximos y el nivel de confiabilidad de la recomendación.
+
+			
+			Estas vistas no necesitan ser actualizadas casi nunca, es decir, su contenido es estático. Las páginas estáticas son:
+			\begin{itemize}
+				\item FAQ. Preguntas frecuentes que ayudan al usuario a comprender más a fondo el sistema (Ver imagen~\ref{Fig:faq}).
+				
+				\begin{figure}[!htb]\centering
+				   \begin {minipage}{0.75\textwidth}
+				     \includegraphics[width=\linewidth]{faq}
+				     \caption{La encuesta define el perfil de riesgo del usuario}\label{Fig:faq}
+				   \end{minipage}
+				\end{figure}
+				
+				\item Home Page. La página que recibe a todos los que ingresan al sitio y presenta una bienvenida a los posibles clientes junto con una explicación de lo que es Egobets.com. Además de que contiene el aviso legal.
+				\item Términos y condiciones. Presenta el contrato de uso al que se comprometen los clientes al utilizar el sistema.
+			\end{itemize}
+			
+
+			\item \emph{\textbf{Vistas relativas a la operación del sistema}}
+			
+
+			En estas vistas se presenta la información de todas las ligas, equipos, partidos y las recomendaciones de apuestas.
+			
+			\begin{itemize}
+				
+				\item Tablero. La recomendación de apuestas de esta jornada es mostrada al usuario. Se le indica al usuario la cantidad de dinero en porcentaje a apostar en cada una de las apuestas recomendadas y los mejores momios para ese partido por casa de apuestas.
+				\item Mis Equipos. Una tabla con los equipos preferidos del usuario junto con sus variables de ataque y de defensa.
+				\item Tabla de posiciones de la liga. Muestra los nombres de los equipos de la liga seleccionada, variables de ataque y defensa calculadas por el sistema  y el cambio en la tabla de posiciones que han tenido. Se permite al usuario agregar a sus favoritos cualquier equipo para tener un acceso directo a ellos.  
+				\item Detalle del Equipo. Se presenta el nombre del equipo, su posición en la liga y las estadísticas de ataque y defensa cuando es local o visitante. También se muestran el listado de los partidos próximos que tiene el equipo.
+				\item Partidos de la jornada. Consiste en una tabla con los partidos próximos ordenados por fecha del juego. La tabla incluye los equipos participantes, quien es el favorito, el marcador esperado por el sistema y la fecha del juego.
+				\item Detalle del partido. Se tienen los equipos que participan, el resultado más probable (junto con su confiabilidad en estrellas), el marcador esperado, la posesión del balón esperada y las estadísticas de ataque y defensa. Estas estadísticas se muestran divididas en las tres categorías. Medio centro, delanteros y definición, para el ataque. Y medio centro, defensas y portero, para la defensa. Cada una de estas variables despliega al ser presionada un histograma con la magnitud esperada de esa variable durante los noventa minutos del partido en intervalos de quince minutos. (Ver imagen~\ref{Fig:partido}). 
+				\begin{figure}[!htb]\centering
+				   \begin {minipage}{0.8\textwidth}
+				     \includegraphics[width=\linewidth]{partido}
+				     \caption{Partido con recomendación y estadísticas de los equipos}\label{Fig:partido}
+				   \end{minipage}
+				\end{figure}
+				
+				\item Partidos anteriores. Finalmente esta tabla muestra un comparativo de todos los partidos predichos y su resultado real. Se remarcan los aciertos del sistema y puede ser filtrada por liga.
+				
+			\end{itemize}
 			
 		\end{itemize}
 		
 		
+		Todas la vistas descritas en los párrafos anteriores consisten en archivos HTML5\footnote{HTML viene de HyperText Markup Language, este lenguaje de marcado llegó a la versión 5 utilizada hoy en día el 24 de Octubre del 2014 en el consorcio de la World Wide Web (Básicamente el consorcio de Internet). Para más información leer What is HTML5 de MacLauhlin \cite{mclaughlin2011html5}.} creados dinámicamente en función del código PHP de las vistas. Cada una de estas pantallas cuentan con un archivo CSS\footnote{Cascade Style Sheet, } que aplica el estilo y el diseño al lenguaje de marcado HTML. A su vez, se utiliza Javascript para las animaciones, validaciones y cambios en las propiedades tanto del CSS como del HTML; un ejemplo claro del uso de Javascript es la animación de los gráficos de las estadísticas de los equipos.
 		
-		\item \textbf{Controladores.} ofrecen opciones para cambiar el estado del modelo. Son los encargados de consultar los modelos. Proveen a las vistas los datos dinámicos a mostrar.
-	\end{itemize}
+		\subsection{Controladores}
+		Corresponden a la manipulación de la información a través de sus diversas presentaciones, ofrecen opciones para cambiar el estado del modelo, son los encargados de consultar los modelos y proveer a las vistas los datos dinámicos a mostrar. Básicamente, los controladores implementan el comportamiento o el control de la lógica del sistema, especificando cuándo y como el sistema cambia de estado. Este comportamiento requiere la interacción de múltiples modelos y vistas.
+		A continuación se muestra un listado de los controladores del sistema de Egobets junto con las funciones específicas que puede realizar cada uno de ellos.:
+		\begin{itemize}
+			\item \textbf{Usuario.} 
+			\begin{itemize}
+				\item Restablecer/crear/cambiar un password de una cuenta de usuario.
+				\item Calcular el perfil de riesgo del cliente realizando y procesando los resultados de la encuesta.
+			\end{itemize}
+			\item \textbf{Perfil.} Despliega la información completa del perfil de un usuario, 
+			\begin{itemize}
+				\item Desplegar la información completa del perfil de un usuario junto con los botones necesarios para editarla.
+				\item Agregar/quitar una cuenta de Facebook al perfil.
+				\item Agregar/quitar casas de apuestas al usuario.
+ 				\item Desplegar información del historial de pagos del usuario.
+				\item Agregar/quitar casas de apuestas al usuario.
+			\end{itemize}
+			\item \textbf{Dashboard.}
+			\begin{itemize}
+				\item Desplegar la información completa de la recomendación de apuestas de esta jornada al usuario en función de su perfil de riesgo, las casas de apuestas utilizadas y la reserva correspondiente a este usuario.
+				\item Agregar la información de las ganancias o pérdidas del usuario en esta semana.
+			\end{itemize}
+			\item \textbf{Amigos.}
+			\begin{itemize}
+				\item Desplegar una tabla de posiciones del usuario entre sus amigos respecto a las ganancias de cada uno de ellos. También muestra el listado con la información de sus amigos.
+				\item Agregar/quitar amigos de Facebook o por correo.
+				\item Buscar amigos en el sistema con su correo electrónico.
+			\end{itemize}
+			\item \textbf{Ayuda.}
+			\begin{itemize}
+				\item Desplegar la información completa del perfil de un usuario junto con los botones necesarios para editarla.
+				\item Agregar/quitar una cuenta de Facebook al perfil.
+				\item Agregar/quitar casas de apuestas al usuario.
+ 				\item Desplegar información del historial de pagos del usuario.
+				\item Agregar/quitar casas de apuestas al usuario.
+			\end{itemize}
+			\item \textbf{Sesión.}
+			\begin{itemize}
+				\item Desplegar la página de inicio de sesión.
+				\item Iniciar la sesión del usuario con Facebook o a través de una combinación de correo y password.
+				\item Cerrar la sesión de un usuario.
+ 				\item Crear un nuevo usuario desde cero o con Facebook login.
+			\end{itemize}
+			\item \textbf{Partido.}
+			\begin{itemize}
+				\item Desplegar la información de los resultados estimados para la jornada en curso.
+				\item Desplegar la información de los partidos de la semana pasada con sus respectivos marcadores y las predicciones dadas por el sistema.
+			\end{itemize}
+			\item \textbf{Equipo.}
+			\begin{itemize}
+				\item Desplegar la tabla de los equipos favoritos del usuario.
+				\item Desplegar las ligas disponibles en el sistema.
+				\item Desplegar la tabla de posiciones con todos los equipos que juegan en una liga.
+				\item Desplegar la pantalla de detalle de un equipo.
+			\end{itemize}
+			\item \textbf{Pagos.}
+			\begin{itemize}
+				\item Desplegar las opciones para comprar jornadas de recomendaciones.
+				\item Procesar la transferencia correcta de parte de Paypal de los pagos realizados por el usuario.
+			\end{itemize}
+			\item \textbf{Ayuda.}
+			\begin{itemize}
+				\item Desplegar el archivo de preguntas y respuestas de manera correcta.
+			\end{itemize}
+			\item \textbf{Favoritos.}
+			\begin{itemize}
+				\item Agregar/Borrar equipos de los favoritos del usuario.
+			\end{itemize}
+			
+		\end{itemize}
 	
+Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama <pre>auth();</pre> la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
-
+En la siguiente sección de este documento, se retoman las funciones más interesantes\footnote{Se considera más interesante una función que muestra los resultados de los partidos, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática real de obtener recomendaciones que permitan al usuario obtener ganancias de manera estratégica, no el de proveer documentación para la replicación del sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
 
 
 \section{Servicios}
+\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
+
 \label{sec:services}
 
 \begin{enumerate}
@@ -325,7 +449,7 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
 	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
 	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
-	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones peronalizadas de apuestas.
+	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones personalizadas de apuestas.
 	
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}

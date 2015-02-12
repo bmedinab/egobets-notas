@@ -1,7 +1,7 @@
 \chapter{Las matemáticas detrás de Egobets.com}
 \label{chap:mate}
 
-En este capítulo se presentan, sin entrar al detalle técnico, los resultados comprobables de las teorías que prorporcionan las probabilidades de los resultados de los partidos y las predicciones de sus resultados. De igual manera se destaca la importancia de un sistema de reservas para optimizar las tasas de crecimiento de la cantidad de dinero dedicada a las apuestas. Finalmente se retoman estos conceptos y se detalla el algoritmo que utiliza Egobets para la generación de las recomendaciones de apuestas.
+En este capítulo se presentan, sin entrar al detalle técnico, los resultados comprobables de las teorías que proporcionan las probabilidades de los resultados de los partidos y las predicciones de sus resultados. De igual manera se destaca la importancia de un sistema de reservas para optimizar las tasas de crecimiento de la cantidad de dinero dedicada a las apuestas. Finalmente se retoman estos conceptos y se detalla el algoritmo que utiliza Egobets para la generación de las recomendaciones de apuestas.
 
 
 
@@ -12,7 +12,7 @@ El tema central de esta tesis no es la predicción de resultados de futbol princ
 
 Maher en 1982 \cite{maher1982modelling} describió la intuición detrás del modelado de un partido de futbol. Los goles anotados por un equipo en un partido pudieran ser modelados por una variable Poisson, la posesión es un aspecto importante del futbol ya que cada vez que un equipo tiene la pelota tiene la oportunidad de atacar y anotar. La probabilidad de que un ataque resulte en gol es pequeña, pero son muchas las veces que el equipo tiene la posesión durante el encuentro. Si la probabilidad de anotar en cada ataque y los ataques son independientes, el número de goles sería Binomial en estas circunstancias la aproximación por una Poisson funciona correctamente.
 
-Más aún, Maher (1982) \cite{maher1982modelling} al verificar la precisión de su modelo descubrió que si bien el modelo binomial se ajustaba razonablemente bien a los datos\footnote{En su artículo, Maher (1982) \cite{maher1982modelling} cuenta que, al comparar doce conjuntos de datos (valores observados y esperados) mediante el valor esperado de una $\chi^2$, diecinueve de los veinticuatro casos dan un resultado no significante a un $5\%$.}, pero encontró que en los valores observados había una cantidad mayor de ocasiones en las que no habían goles durante el partido, o que simplemente la cantidad de goles anotada era muchísimo mayor a la predicha; esta observación lo llevó el ajuste del model considerando un coeficiente de correlación entre la cantidad de goles anotados entre ambos equipos.
+Más aún, Maher (1982) \cite{maher1982modelling} al verificar la precisión de su modelo descubrió que si bien el modelo binomial se ajustaba razonablemente bien a los datos\footnote{En su artículo, Maher (1982) \cite{maher1982modelling} cuenta que, al comparar doce conjuntos de datos (valores observados y esperados) mediante el valor esperado de una $\chi^2$, diecinueve de los veinticuatro casos dan un resultado no significante a un $5\%$.}, pero encontró que en los valores observados había una cantidad mayor de ocasiones en las que no habían goles durante el partido, o que simplemente la cantidad de goles anotada era muchísimo mayor a la predicha; esta observación lo llevó el ajuste del modelo considerando un coeficiente de correlación entre la cantidad de goles anotados entre ambos equipos.
 
 Dixon y Coles (1997) \cite{dixon1997modelling} en su contribución, mencionan algunas propiedades deseables en un modelo de futbol:
 \begin{itemize}
@@ -31,13 +31,13 @@ Finalmente, Koopman y Lit (2013) \cite{koopman2013dynamic} retoman todas estas i
 \subsection{Modelo de Poisson bivariada}
 \label{subsec:bivariate-poisson}
 
-Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $I\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el numero no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el numero de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribuición Poisson bivariada con función de densidad de probabilidad:
+Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $I\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el numero no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el numero de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con función de densidad de probabilidad:
  
 \[p(X,Y;\lambda_x,\lambda_y,\gamma) = e^{(-\lambda_x-\lambda_y-\gamma)}\frac{\lambda^X_x}{X!}\frac{\lambda^Y_y}{Y!}\sum_{k=0}^{min(X,Y)}\left(\frac{X}{k}\right)\left(\frac{Y}{k}\right)k!\left(\frac{\gamma}{\lambda_x\lambda_y}\right)^k \]
 
-para $X = X_{it}$ y $Y = Y_{it}$ con $\lambda_x$ y $\lambda_y$ coeficientes de intensidad para $X$ y $Y$ respectivamente, y $\gamma$ siendo elcoeficiente que mide la dependencia entre ambas cuentas del par $(X,Y)$. 
+para $X = X_{it}$ y $Y = Y_{it}$ con $\lambda_x$ y $\lambda_y$ coeficientes de intensidad para $X$ y $Y$ respectivamente, y $\gamma$ siendo el coeficiente que mide la dependencia entre ambas cuentas del par $(X,Y)$. 
 
-La notación corta se decribe como\footnote{La definición que se presenta en este documento es propuesta por \cite{koopman2013dynamic}, sin embargo hay otras variantes de esta fórmula \cite{kocherlakota1992bivariate} y \cite{johnson1997discrete}}:
+La notación corta se describe como\footnote{La definición que se presenta en este documento es propuesta por \cite{koopman2013dynamic}, sin embargo hay otras variantes de esta fórmula \cite{kocherlakota1992bivariate} y \cite{johnson1997discrete}}:
 \[(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)\]
 Su valor esperado, varianza y covarianza son los siguientes:
 
@@ -57,17 +57,17 @@ El modelo descrito es puesto a prueba en el artículo de Koopman y Lit (2013) \c
 
 Koopman y Lit (2013) \cite{koopman2013dynamic} llevan esto a un paso más allá y presentan un análisis sobre estrategia de apuestas para demostrar que se pueden obtener ganancias contra el bookie. Básicamente su estrategia de apuestas consiste en apostar si el valor esperado de la apuesta sobre el evento $A$ es mayor a una variable $\tau$.
 \[EV(A) = P(A) \cdot Odds(A) - 1 > \tau\]
-La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implica $\tau > 7\%$. Esto trae consigo un par de observaciones, con $0<\tau<0.12$, el promedio de retorno esperado es cercano a cero. Con $\tau>0.12$ se tiene un valor esperado positivo de ganancias. Sin embargo, conforme $\tau$ crece  la cantidad de oportunidads de apuestas se vuelve pequeña y los intervalos de confianza de las predicciones de las apuestas empiezan a reflejar mucha mayor incertidumbre.
+La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implica $\tau > 7\%$. Esto trae consigo un par de observaciones, con $0<\tau<0.12$, el promedio de retorno esperado es cercano a cero. Con $\tau>0.12$ se tiene un valor esperado positivo de ganancias. Sin embargo, conforme $\tau$ crece  la cantidad de oportunidades de apuestas se vuelve pequeña y los intervalos de confianza de las predicciones de las apuestas empiezan a reflejar mucha mayor incertidumbre.
 
 Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporadas y el retorno se espera justo un poco menos de $0.5$ en promedio. Cuando se juega con una unidad para cada 50 apuestas, se espera recibir 75 unidades del bookie de regreso, es decir 25 unidades de ganancia, un $50\%$ de retorno en promedio. Como el retorno esperado negativo no da un intervalo de confianza del $90\%$ no se esperan pérdidas con una estrategia de apuestas para $\tau = 0.4$.
 
 \section{Reserva un poco para después}
 \label{sec:kelly}
 
-En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganacias o recuperar pérdidas.
+En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas.
 
 
-Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como la estrategia óptima de crecimiento, o como la estrategia de utilidad logarítmica. Manciona que es óptima cuando en una variedad de circunstancias la ganancia crece multiplicativamente, unícamente. Hace enfasis 	que la mayoría de las propiedades de optimalidad son asintóticas en naturaleza (hacia un horizonte infinito), en su trabajo analiza las propiedades de la estrategia de Kelly a corto plazo.
+Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como la estrategia óptima de crecimiento, o como la estrategia de utilidad logarítmica. Menciona que es óptima cuando en una variedad de circunstancias la ganancia crece multiplicativamente, únicamente. Hace énfasis que la mayoría de las propiedades de optimalidad son asintóticas en naturaleza (hacia un horizonte infinito), en su trabajo analiza las propiedades de la estrategia de Kelly a corto plazo.
 
 \cite{kelly1956new}
 \cite{vancura2000finding}
@@ -99,7 +99,7 @@ Para definir el escenario completo es necesario definir las variables que se uti
 \subsection{Variables necesarias}
 
 En este apartado de la tesis se explica cómo se determinan los partidos que se recomiendan a los clientes.
-Las variables que se necesitan utilzar son las siguientes:
+Las variables que se necesitan utilizar son las siguientes:
 \begin{enumerate}
 	\item \textbf{Probabilidades.} Ya en apartados anteriores se habló de las probabilidades estimadas de que ocurran los tres diferentes resultados de cada encuentro de la jornada (Victoria del local, del visitante y empate). Estas probabilidades son alimentadas a través del portal administrativo.
 	
@@ -123,7 +123,7 @@ El siguiente listado presenta las funciones que se utilizan actualmente en el si
 \begin{enumerate}
 		\item \textbf{Polinomial - lineal:} 
 		\[f_1(\alpha, p, m) = \left(\frac{p}{1-p} \right)^\frac{1}{1-\alpha}(m-1)^\frac{\alpha}{1-\alpha}\]
-Parámetro $\alpha$ que va de cero a uno. Es una de las familias más volatiles en cuanto al riesgo, para valores cercanos a uno del parámetro tiende a ser muy arriesgada, casi sin diversificar, y para valores cercanos a cero tiende a ser muy conservadora y suele diversificar mucho más en las apuestas.
+Parámetro $\alpha$ que va de cero a uno. Es una de las familias más volátiles en cuanto al riesgo, para valores cercanos a uno del parámetro tiende a ser muy arriesgada, casi sin diversificar, y para valores cercanos a cero tiende a ser muy conservadora y suele diversificar mucho más en las apuestas.
 
 		\item \textbf{Polinomial - cuadrática:} 
 		\[f_2(\alpha, p, m) = \left(\frac{p}{1-p} \right)^\frac{1}{2-\alpha}(m-1)^\frac{\alpha}{2-\alpha}\]
@@ -131,7 +131,7 @@ Esta familia de funciones es muy parecida a la anterior, también tiene un pará
 		
 		\item \textbf{Exponencial - lineal:} 
 		\[f_3(\alpha, p, m) = \left(\frac{1}{m-1} \right)ln\left(\frac{\alpha p(m-1)}{1-p}\right)\]
-Esta familia de funciones tiene un parámetro $\alpha$ que es mayor a uno. Es una familia de funciones conservadoras que suelen proteger muy bien adelatandose a semanas malas, a costo que en semanas buenas no logran tan buenos beneficios.
+Esta familia de funciones tiene un parámetro $\alpha$ que es mayor a uno. Es una familia de funciones conservadoras que suelen proteger muy bien adelantándose a semanas malas, a costo que en semanas buenas no logran tan buenos beneficios.
 		
 		\item \textbf{Lineal - exponencial:} 
 		\[f_4(\alpha, p, m) = ln\left(\frac{p(m-1)}{1-p}\right) + ln(\alpha)\]
@@ -143,7 +143,7 @@ Parámetro $\alpha$ mayor a uno. Es una familia de funciones muy conservadora ya
 
 		\item \textbf{Tangente - lineal:} 
 		\[f_6(\alpha, p, m) = \frac{1}{m-1}\sqrt{\frac{pm - (1-\alpha)p - \alpha}{1-p}}\]
-		Parámetro $\alpha$ entre cero y uno. Esta familia es la más conservadora de la lista, busca tener las menores pérdidad posibles y protege las inversiones cada semana.
+		Parámetro $\alpha$ entre cero y uno. Esta familia es la más conservadora de la lista, busca tener las menores pérdidas posibles y protege las inversiones cada semana.
 \end{enumerate}
 
 Estas seis funciones son las que utiliza Egobets para modelar la adversidad al riesgo de sus clientes. Cuando ellos llenan la encuesta del perfil, realmente están seleccionando una de estas funciones.
@@ -153,7 +153,7 @@ Estas seis funciones son las que utiliza Egobets para modelar la adversidad al r
 \label{sec:paso-1}
 
 
-Para seguir la explicación de los pasos del proceso se tomará un ejemplo práctico y las transformaciones que sufre durante el proceso. Al empezar las recomendaciones de una jornada se tiene un conjunto de datos muy parecido al que se da en el ejemplo. Tómese la tabla~\ref{momios-y-probas} como base del ejemplo. En esta tabla se presentan momios de alguna casa de apuesta (usualemente los mejores del mercado) para diez partidos distintos, cada uno cuenta con los momios para los tres tipos de apuestas: victoria del Local ($m_L$), empate ($m_E$) y victoria del visitante ($m_V$). Además se muestran las probabilidades estimadas por Egobets de los tres posibles resultados del encuentro: victoria del local ($\hat{p_L}$), empate ($\hat{p_L}$) y victoria del visitante ($\hat{p_L}$).
+Para seguir la explicación de los pasos del proceso se tomará un ejemplo práctico y las transformaciones que sufre durante el proceso. Al empezar las recomendaciones de una jornada se tiene un conjunto de datos muy parecido al que se da en el ejemplo. Tómese la tabla~\ref{momios-y-probas} como base del ejemplo. En esta tabla se presentan momios de alguna casa de apuesta (usualmente los mejores del mercado) para diez partidos distintos, cada uno cuenta con los momios para los tres tipos de apuestas: victoria del Local ($m_L$), empate ($m_E$) y victoria del visitante ($m_V$). Además se muestran las probabilidades estimadas por Egobets de los tres posibles resultados del encuentro: victoria del local ($\hat{p_L}$), empate ($\hat{p_L}$) y victoria del visitante ($\hat{p_L}$).
 
 \begin{table}[ht]
 \centering
@@ -179,8 +179,8 @@ J & 1.9  & 3.4  & 4     & 0.5   & 0.26  & 0.23  \\ \bottomrule
 
 Para concretar el ejemplo, se fijarán las siguientes funciones y variables.
 \begin{itemize}
-	\item \textbf{Funcion de selección.} Tómese la \emph{Polinomial - lineal} $f_1$ con parametro $\alpha = 0.4$.
-	\item \textbf{Funcion de utilidad del dinero.} Úsese la \emph{Exponencial - lineal} con parámetro $\alpha = 3$
+	\item \textbf{Función de selección.} Tómese la \emph{Polinomial - lineal} $f_1$ con parámetro $\alpha = 0.4$.
+	\item \textbf{Función de utilidad del dinero.} Úsese la \emph{Exponencial - lineal} con parámetro $\alpha = 3$
 	\item \textbf{Variable de reserva.} Será $v_R = 15$.
 	\item \textbf{Variable de ingreso.} Será $v_I = 0.80$.
 \end{itemize}
@@ -189,7 +189,7 @@ Para concretar el ejemplo, se fijarán las siguientes funciones y variables.
 Ahora para proceder al primer paso, defínase el valor esperado de una apuesta como la multiplicación de la probabilidad de que suceda el resultado por el momio que se tiene para esa apuesta. 
 Con el ejemplo bien definido se procede a filtrar las apuestas con el primer paso. De manera intuitiva, se podría enunciar que el valor esperado de una apuesta corresponde a la cantidad de unidades de dinero que se obtienen por cada unidad de dinero invertida\footnote{Recuérdese que esta cantidad incluye la cantidad de dinero invertida en la apuesta. También recuérdese que la ganancia solamente se obtiene si se gana la apuesta.}
 
-Entonces, el primer paso consiste en utilizar para las recomendaciones, sólo las apuestas con ganancias a largo plazo; las otras apuestas tendrán un valor esperado no positivo, es decir, no garantizan más que pérdidas a largo plazo. Más aun, se usarán solo las apuestas que garanticen un valor esperado mayor a $1.025$, esta restricción tiene dos ventajas, la primera es que las probabilidades que se usan son estimaciones por lo que ese $2.5\%$ funciona como protección para no caer en valores esperados negativos y la segunda es que si el rendimiento es tan pequeño toma mucho tiempo para un cliente ir acumulando ganacias. 
+Entonces, el primer paso consiste en utilizar para las recomendaciones, sólo las apuestas con ganancias a largo plazo; las otras apuestas tendrán un valor esperado no positivo, es decir, no garantizan más que pérdidas a largo plazo. Más aun, se usarán solo las apuestas que garanticen un valor esperado mayor a $1.025$, esta restricción tiene dos ventajas, la primera es que las probabilidades que se usan son estimaciones por lo que ese $2.5\%$ funciona como protección para no caer en valores esperados negativos y la segunda es que si el rendimiento es tan pequeño toma mucho tiempo para un cliente ir acumulando ganancias. 
 
 \begin{table}[ht]
 \centering
@@ -213,7 +213,7 @@ J & 1.9 & 3.4 & 4 & 0.5 & 0.26 & 0.23 & 0.95 & 0.88 & 0.92 & Ninguna\\ \bottomru
 \label{redituables}
 \end{table}
 
-Observese en la tabla~\ref{redituables} como en negritas se han señalado las posibles apuestas a realizar. De las treinta posibles apuestas, ahora sólo quedan 9 redituables. Hay dos partidos el `C' y el `J' que no ameritan apuesta alguna. Y el partido `E', por ejemplo, tiene dos posibles apuestas redituables.
+Obsérvese en la tabla~\ref{redituables} como en negritas se han señalado las posibles apuestas a realizar. De las treinta posibles apuestas, ahora sólo quedan 9 redituables. Hay dos partidos el `C' y el `J' que no ameritan apuesta alguna. Y el partido `E', por ejemplo, tiene dos posibles apuestas redituables.
 
 \subsection{Paso 2 - Selección de apuestas}
 \label{sec:paso-2}
@@ -247,7 +247,7 @@ I & Visitante & 4.5 & 0.25 & 0.36\\ \bottomrule
 \label{sec:paso-3}
 
 Una vez determinado el portafolio de apuestas hace falta determinar la cantidad de dinero que se invertirá en éste. Esta sección y la próxima resolverán tal problema.
- Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dolares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su funcion de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma tenemos los números como porcentajes.
+ Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dólares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su función de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma tenemos los números como porcentajes.
  Regresando al ejemplo: (En este caso la función de utilidad del dinero era Exponencial-Lineal con parámetro 3)
 Ver tabla~\ref{proporcion}
 
@@ -325,7 +325,7 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 	\item \textbf{Actualizar el riesgo del portafolio.}
 	
 	
-	Sea $\rho$ el parámetro de reserva un número entereo entre $10$ y $25$ dependiendo de la encuesta del cliente. Se actualiza el riesgo del portafolio al multiplicarlo por un escalar proveniente de la raiz cuadrada del cociente de la cantidad de partidos $j$ entre el parámetro de reserva $\rho$.
+	Sea $\rho$ el parámetro de reserva un número entero entre $10$ y $25$ dependiendo de la encuesta del cliente. Se actualiza el riesgo del portafolio al multiplicarlo por un escalar proveniente de la raíz cuadrada del cociente de la cantidad de partidos $j$ entre el parámetro de reserva $\rho$.
 	\[\sigma = \left(\sqrt{\frac{j}{\rho}}\right)\sigma\]
 	
 
@@ -356,7 +356,7 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 	           \end{cases}
 	\end{equation*}
 	
-	$C_A$ representa, en porcentaje, la cantidad de dinero que se le recomendará al cliente que apueste en esa semana para el portafolio de apuests en cuestión.
+	$C_A$ representa, en porcentaje, la cantidad de dinero que se le recomendará al cliente que apueste en esa semana para el portafolio de apuestas en cuestión.
 	
 	\textbf{Calculando el nivel de reserva en el ejemplo.}
 	

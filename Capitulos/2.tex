@@ -158,13 +158,13 @@ Levitt \cite{levitt2004gambling} menciona tres escenarios que permitirían a los
  \end{itemize}
 
   Sea $m_i$ el momio que propone el bookie para que los jugadores apuesten a que se cumpla el evento $i$. Entonces, se define el momio de la siguiente manera:
- \[m_i = \frac{1}{1 - \hat{p_i}}\]
+ \[m_i = \frac{1}{\hat{p_i}}\]
  Donde $\hat{p_i}$ es la probabilidad estimada que tiene el bookie de que suceda el evento $i$\footnote{Otros deportes tienen diferentes tipos de momios y su definición varía dependiendo del tipo de apuesta, se puede leer más de ellos en \cite{ignatin1984sports}.}
 
  Con estos momios se pueden calcular las ``probabilidades estimadas por el bookie'':
- \[\hat{p_L} = 1 - \frac{1}{9.290} \approx 0.107643...\] 
- \[\hat{p_E} = 1 - \frac{1}{1.423} \approx 0.702741...\]
- \[\hat{p_V} = 1 - \frac{1}{4.760} \approx 0.210084...\]
+ \[\hat{p_L} = \frac{1}{9.290} \approx 0.107643...\] 
+ \[\hat{p_E} = \frac{1}{1.423} \approx 0.702741...\]
+ \[\hat{p_V} = \frac{1}{4.760} \approx 0.210084...\]
  Donde $\hat{p_L}$ es la probabilidad estimada por la casa de apuestas de que gane el equipo local, $\hat{p_E}$ es la probabilidad de que el partido termine en empate y $\hat{p_V}$ es la probabilidad de que gane el equipo visitante.
  
  Estas probabilidades estimadas proponen que el escenario más probable es un empate, después la victoria del Juventus y finalmente la victoria del Cagliari. Curiosamente en este ejemplo, se puede ver que aunque el equipo Cagliari es local, se enfrenta a un adversario que puede contra la desventaja de ser visitante.

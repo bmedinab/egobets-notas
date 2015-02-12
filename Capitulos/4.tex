@@ -172,7 +172,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		
 		Las vistas que se tienen en el sistema se pueden enumerar de la siguiente manera:
 		\begin{itemize}
-			\item \emph{\textbf{Vistas relativas al usuario}}
+			\item \emph{\textbf{Vistas relativas al perfil del usuario}}
 			
 			\begin{figure}[!htb]\centering
 			   \begin {minipage}{0.7\textwidth}
@@ -222,7 +222,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			
 			\begin{itemize}
 				
-				\item Tablero. La recomendación de apuestas de esta jornada es mostrada al usuario. Se le indica al usuario la cantidad de dinero en porcentaje a apostar en cada una de las apuestas recomendadas y los mejores momios para ese partido por casa de apuestas.
+				\item Tablero. La recomendación de apuestas de esta jornada es mostrada al usuario. Se le indica al usuario la cantidad de dinero en porcentaje a apostar en cada una de las apuestas recomendadas y los mejores momios para ese partido por casa de apuestas (Ver figura~\ref{fig:dashboard}).
 				\item Mis Equipos. Una tabla con los equipos preferidos del usuario junto con sus variables de ataque y de defensa.
 				\item Tabla de posiciones de la liga. Muestra los nombres de los equipos de la liga seleccionada, variables de ataque y defensa calculadas por el sistema  y el cambio en la tabla de posiciones que han tenido. Se permite al usuario agregar a sus favoritos cualquier equipo para tener un acceso directo a ellos.  
 				\item Detalle del Equipo. Se presenta el nombre del equipo, su posición en la liga y las estadísticas de ataque y defensa cuando es local o visitante. También se muestran el listado de los partidos próximos que tiene el equipo.
@@ -317,130 +317,45 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 	
 Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama <pre>auth();</pre> la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
-En la siguiente sección de este documento, se retoman las funciones más interesantes\footnote{Se considera más interesante una función que muestra los resultados de los partidos, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática real de obtener recomendaciones que permitan al usuario obtener ganancias de manera estratégica, no el de proveer documentación para la replicación del sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
+En la siguiente sección de este documento, se retoma la función más interesante\footnote{Se considera más interesante una función que muestra recomendaciones de apuestas, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática de obtener recomendaciones que permitan al usuario apostar de manera estratégica con el fin de obtener ganancias, no el de proveer documentación para la replicación de este sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
 
 
-\section{Servicios}
-\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
+\section{Servicio de asesoría de apuestas}
+\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/}}
+\label{sec:service}
 
-\label{sec:services}
+En el Capítulo~\ref{chap:mate} se describió el algoritmo detrás de la generación de asesorías de apuestas desde un punto de vista teórico. En este apartado previo a las conclusiones, se hablará de como a través de varias herramientas se logra conseguir la información necesaria para presentarle al usuario una recomendación de apuestas como la de la figura~\ref{fig:dashboard}
 
-\begin{enumerate}
-	\item \emph{Recomendación personalizada de apuestas en fútbol:} Cada persona es diferente y debe ser tratada de forma única, en Egobets se determina el perfil de riesgo de cada usuario mediante una encuesta y se le recomienda apuestas a su medida, de tal forma que pueda obtener ganancias y sentirse cómodo al mismo tiempo.
-	\item \emph{Pronósticos:} Para cada partido se proporcionan, entre otros: marcador final más probable, resultado más probable y el nivel de posesión de balón de cada equipo.
-	\item \emph{Estadísticas:} A través de éstas se pueden analizar las fortalezas y debilidades de los equipos favoritos del usuario.
-\end{enumerate}
+				\begin{figure}[!htb]\centering
+				   \begin {minipage}{0.9\textwidth}
+				     \includegraphics[width=\linewidth]{vistas/dashboard}
+				     \caption{Pantalla de inicio del usuario con recomendaciones de apuestas}\label{fig:dashboard}
+				   \end{minipage}
+				\end{figure}
+				
+Como ya se mencionó, el algoritmo para generar la asesoría de apuestas se basa en los siguientes pasos:
+ \begin{enumerate}
+ 	\item Determinación de apuestas redituables.
+ 	\item Selección de apuestas de acuerdo al riesgo del cliente.
+ 	\item Cálculo de la proporción del dinero a invertir por apuesta.
+ 	\item Determinación del nivel de reservas.
+ 	\item Presentar la recomendación.
+ \end{enumerate}
 
-\subsection{Encuesta}
-\label{subsec:encuesta}
+Ahora en términos del sistema estos cinco pasos se llevan a cabo en milisegundos cada vez que el usuario entra a su perfil\footnote{En realidad se genera únicamente si no se tiene la recomendación ya guardada en el cache. Este caché se actualiza cada que hay cambios en los partidos, o cuando el usuario cambia su perfil de riesgo al contestar la encuesta nuevamente.}. Todo este laborioso trabajo que se definió con tanto esfuerzo en el Capítulo~\ref{chap:mate} se ve reducido a una librería de aproximadamente unas quinientas cincuenta líneas de código.
 
-
-\textbf{Perfil de riesgo}
-
-
-El perfil de riesgo sirve para poder personalizar la asesoría de apuestas y se calcula a través de las respuestas proporcionadas en la encuesta de perfil de riesgo.
-
-De forma genérica hay tres perfiles de riesgo:
-\begin{enumerate}
-	\item Agresivo: Toma riesgos altos para poder obtener la mayor cantidad de ganancias posibles en el corto plazo. 
-	\item Conservador: Apuesta a lo más seguro para proteger su dinero lo más posible, busca ganancias al largo plazo.
-	\item Moderado: Término medio entre agresivo y conservador.
-\end{enumerate}
-
-\textbf{Sistema de reservas}
-
-En \emph{Egobets.com} se entiende que cada persona es diferente, que cada apuesta es diferente y debe ser analizada de forma individual, por eso se ha desarrollado el sistema de reservas que determina cuánto dinero apostar en la recomendación de la semana.
-
-La reserva es la cantidad de dinero que no se apostará, sirve para poder seguir apostando en semanas posteriores en el caso en que se lleguen a tener pérdidas.
-
-
-Se toman en cuenta tres factores: la volatilidad de la apuesta, la ganancia esperada de ésta y el nivel de riesgo deseado del cliente. Se combina esta información en un modelo probabilístico que proporciona la cantidad a apostar. Mediante este sistema se busca de proteger al cliente de pérdidas potenciales.
-
-Beneficios:
-\begin{enumerate}
-
-	\item Protege su dinero de pérdidas potenciales.
-	\item Permite recuperarse con mayor velocidad de semanas con pérdidas.
-	\item Permite dar una estructura de fondo de inversión a las apuestas al obtener un sistema de interés compuesto.
-
-\end{enumerate}
-
-Costos:
-\begin{enumerate}
-	\item Se restringe la cantidad de ganancias a corto plazo.
-\end{enumerate}
-
-Es un sistema a largo plazo, no se recomienda a personas que desean incurrir en riesgos elevados en beneficio de la posibilidad de obtener mayores ganancias.
-
-
-\subsection{Tablero de apuestas}
-
-El tablero es la página principal para el usuario de \emph{Egobets.com}. En el tablero se presenta la recomendación de la semana:
-\begin{enumerate}
-
-\item Barra de ingreso.
-\item Los partidos en que se apostará: el partido, el resultado a apostar, la cantidad de dinero a apostar, el momio ofrecido y la casa de apuestas que ofrece tal momio.
-\item La gráfica de valor esperado.
-\end{enumerate}
-
-En \emph{Egobets.com} se le da seguimiento a cada uno de nuestros clientes. Con esta información se puede monitorear la evolución del ingreso y así dar las recomendaciones de acuerdo al nivel de ganancias o pérdidas. Es importante que esta información sea verdadera para poder brindar el mejor servicio posible.
-\begin{enumerate}
-
-	\item \textbf{¿Se pueden hacer recomendaciones de resultados que no sean los más probables?}
-\end{enumerate}
-
-
-Sí, depende del perfil de riesgo y de lo que pague la casa de apuestas en tal partido. En algunas ocasiones es recomendable apostar en contra del favorito si el pago es suficientemente grande. Si se tiene activado el sistema en contra de favoritos (en el menú perfil) o si el perfil es muy agresivo se presentarán muchas recomendaciones de este tipo. 
-
-La gráfica de valor esperado es una herramienta visual que permite ver cuáles son los posibles resultados de la recomendación de la semana. En \emph{Egobets.com} se conoce que todas las apuestas tienen un riesgo y mediante esta gráfica se puede cuantificar: Cada barra representa la probabilidad de que se gane o pierda la cantidad indicada debajo de ella, mientras más grande sea la barra mayores probabilidades hay de que tal resultado ocurra.
-
-
-
-\subsection{Pronósticos}
-Pronósticos: Se pronostica el marcador final, la posesión del balón y el ganador del encuentro. Al poner el apuntador sobre el resultado más probable aparece el grado de confiabilidad del pronóstico.
-
-
-En \emph{Egobets.com} se presentan los equipos mediante un power ranking. Con base en las estadísticas de los partidos y dados sus resultados, se pronostica cuál será la tabla de posiciones al finalizar dicha liga.
-
-
-\subsection{Estadísticas}
-
-
-En orden de aparición: Una estrella indicando si el equipo está o no marcado como uno de los favoritos, la posición en el power ranking, el nombre del equipo, el índice de ataque general del equipo, el índice de defensa general del equipo y por último el cambio dentro de la tabla de power ranking. 
-
-\begin{enumerate}
-
-\item Índice de ataque general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para atacar.
-\item Índices de medio centro, delanteros y definición: Con una calificación de cero a cien. Representan la capacidad de controlar el medio centro, de atacar a portería y de precisión de los tiros, respectivamente.
-\item Índice de defensa general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para defender.
-\item Índices de medio centro, defensas y portero: Con una calificación del cero a cien. Representan la capacidad de defender en el centro, de los defensas y del portero, respectivamente.
-\item Al hacer click en las variables mencionadas en 2 o 4 se tienen acceso a la evolución de tales variables desde el minuto 0 hasta el 90 de un partido.
-\end{enumerate}
-
-\begin{enumerate}
-
-	\item \emph{Resultados de la jornada anterior:} Se presenta el partido, el marcador real, el marcador pronosticado y el resultado pronosticado. Esto con el fin de que los usuarios puedan comparar lo pronosticado y lo que en verdad ocurrió.
-	\item \emph{Pronósticos de la jornada actual:} Se presenta el partido, el resultado pronosticado (o favorito), el marcador pronosticado y la fecha del encuentro. Además al poner el apuntador encima de un partido se presenta el grado de confiabilidad del pronóstico.
-\end{enumerate}
-
-Además para cada tabla se pueden presentar los resultados de una liga en particular al seleccionarla en el recuadro de arriba.
-
-\section{Alimentando el sistema}
-\label{sec:inserting-data}	
+En la sección~\ref{subsec:variables-necesarias} se habla de cuatro variables principales necesarias para poder realizar el algoritmo. Sin embargo, lo que es necesario para poder correr el sistema es: Obtener la información de los partidos, estimar las probabilidades de los partidos y generar las variables de riesgo en función de la encuesta. Estos serán los siguientes apartados del documento.
 
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{sistemas}
-     \caption{Diagrama de sistemas y usuarios}\label{Fig:Sistemas}
+     \includegraphics[width=\linewidth]{diagramas/sistemas}
+     \caption{Diagrama de herramientas y perfiles}\label{Fig:Sistemas}
    \end{minipage}
 \end{figure}
 
-\begin{figure}[!htb]\centering
-   \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{erd-pronosticos}
-     \caption{Diagrama de entidad-relación de la BD del recopilador}\label{Fig:erd-pronosticos}
-   \end{minipage}
-\end{figure}
+\subsection{Información de los partidos y pronósticos}
+
+Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado en las temporadas pasadas, así como el calendario de próximos partidos por jugar. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después son persistidos en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
 
 El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
 \begin{enumerate}
@@ -450,16 +365,208 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
 	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
 	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones personalizadas de apuestas.
-	
+\end{enumerate}
+
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
-     \includegraphics[width=\linewidth]{flujo}
+     \includegraphics[width=\linewidth]{diagramas/flujo}
      \caption{Proceso de alimentación del sistema}\label{Fig:flujo}
    \end{minipage}
 \end{figure}
-\end{enumerate}
+
+\subsubsection{Web Scraper}
+El proceso de ``Web Scraping'' consiste en extraer y crear representaciones estructuradas con la información de un sitio Web en particular. HTML, el lenguaje de marcado usado para darle estructura a la información de las páginas web está sujeta a muchos cambios, especialmente cuando se actualiza su estilo. Ya que las técnicas de extracción se basan en el lenguaje de marcado, un solo cambio puede llevar a extraer datos incorrectos o incompletos \cite{cording2011algorithms}.
+
+Las técnicas de ``Web Scraping'' permiten, por ejemplo, que una compañía monitoree los precios de los productos de sus competidores. De igual manera le permiten a Egobets, conseguir la última información detallada con la información de las fechas de los partidos, marcadores, tiros a gol, posesión del balón y nombres de los equipos.
+
+Si el dueño de la información no provee de una API abierta, el remedio (como en el caso de Egobets) es el de escribir un programa que apunte a la información desplegada en la página Web. Las propiedades buscadas en un scraper son:
+\begin{itemize}
+	\item Ser tan tolerante como pueda ser posible a cambios en el lenguaje de marcado.
+	\item Ser lo suficientemente rápido como para ofrecer respuestas en milisegundos y evitar ``time-outs'' durante el consumo del servicio.
+	\item No tener restricciones en los patrones que conforman la estructura del HTML del sitio. En específico esto implica que el servicio debe ser lo suficientemente bueno como para interpretar de la mejor manera la información aún incluso si el HTML se encuentra mal formado
+\end{itemize}
+
+Cording, P. \cite{cording2011algorithms} presenta en su tesis de maestría un estudio de como realizar un scraper que base su funcionamiento en la coincidencia aproximada de los patrones de un árbol, esta es la base de muchas de las librerías que existen (incluyendo la que se usa en este trabajo). Para realizar esta tarea se utiliza una librería de código abierto que permite manipular DOM\footnote{W3schools \cite{domWeb} lo define como: ``Documento W3C Object Model (DOM) es una interfaz de la plataforma y de lenguaje neutro que permite a los programas y scripts acceder y actualizar dinámicamente el contenido, la estructura y el estilo de un documento''. La especificación formal se puede leer en la recomendación \cite{wood1998document}.} de HTML y conseguir la información necesaria, esta libreria se llama: PHP Simple HTML DOM Parser.
+
+\textbf{Un ejemplo de uso}
+
+Supóngase el siguiente HTML:
+
+\lstset{language=HTML}
+\begin{lstlisting}[frame=single]
+<div class="team-names">
+	<div class="team-name">
+		<span>
+			<img src="http://espncdn.com/teamlogos/soccer/500/102.png" alt="Villarreal" width="22">
+			Villarreal
+		</span>
+	</div>
+	<div class="team-name">
+		<span>
+			<img src="http://espncdn.com/teamlogos/soccer/500/93.png" alt="Athletic Bilbao" width="22">
+			Athletic Bilbao
+		</span>
+	</div>
+</div>
+\end{lstlisting}
+
+Ahora analícese el siguiente código:
+
+\lstset{language=PHP}
+\begin{lstlisting}[frame=single]
+	$aux = $table->find('.team-name',0);
+	$nomEquipoLocal = $aux;
+	$partido['prints']['local_nom']= $nomEquipoLocal;
+	$idEspnEquipoLocal = trim(strstr(substr(strstr($aux->innertext, 'soccer/500/'), strlen('soccer/500/')),'.png',true));
+\end{lstlisting}
 
 
+Con este código se pueden obtener los nombres del equipo local y el identificador que le asigna ESPN a sus equipos. Esto es gracias a que \emph{``find('.team-name',0)''} recorre todo el árbol DOM y encuentra todas las ocurrencias de la clase con nombre \emph{``team-name''} el cero que se le proporciona a la función \emph{find} regresa el primer elemento encontrado. De ahí, la propiedad \emph{``->innertext''} muestra la cadena de caracteres plana que contiene ese elemento, por lo que basta con hacer un manejo de cadenas de caracteres para obtener el identificador del equipo que se nombra el archivo PNG del logo del equipo. Para más ejemplos y documentación de como utilizar la librería dirigirse a \cite{sourceparserWeb}.
+
+
+% \end{enumerate}
+
+\subsection{Generar las variables en función de la encuesta}
+
+
+
+
+%
+% \begin{enumerate}
+% 	\item \emph{Recomendación personalizada de apuestas en fútbol:} Cada persona es diferente y debe ser tratada de forma única, en Egobets se determina el perfil de riesgo de cada usuario mediante una encuesta y se le recomienda apuestas a su medida, de tal forma que pueda obtener ganancias y sentirse cómodo al mismo tiempo.
+% 	\item \emph{Pronósticos:} Para cada partido se proporcionan, entre otros: marcador final más probable, resultado más probable y el nivel de posesión de balón de cada equipo.
+% 	\item \emph{Estadísticas:} A través de éstas se pueden analizar las fortalezas y debilidades de los equipos favoritos del usuario.
+% \end{enumerate}
+%
+% \subsection{Encuesta}
+% \label{subsec:encuesta}
+%
+%
+% \textbf{Perfil de riesgo}
+%
+%
+% El perfil de riesgo sirve para poder personalizar la asesoría de apuestas y se calcula a través de las respuestas proporcionadas en la encuesta de perfil de riesgo.
+%
+% De forma genérica hay tres perfiles de riesgo:
+% \begin{enumerate}
+% 	\item Agresivo: Toma riesgos altos para poder obtener la mayor cantidad de ganancias posibles en el corto plazo.
+% 	\item Conservador: Apuesta a lo más seguro para proteger su dinero lo más posible, busca ganancias al largo plazo.
+% 	\item Moderado: Término medio entre agresivo y conservador.
+% \end{enumerate}
+%
+% \textbf{Sistema de reservas}
+%
+% En \emph{Egobets.com} se entiende que cada persona es diferente, que cada apuesta es diferente y debe ser analizada de forma individual, por eso se ha desarrollado el sistema de reservas que determina cuánto dinero apostar en la recomendación de la semana.
+%
+% La reserva es la cantidad de dinero que no se apostará, sirve para poder seguir apostando en semanas posteriores en el caso en que se lleguen a tener pérdidas.
+%
+%
+% Se toman en cuenta tres factores: la volatilidad de la apuesta, la ganancia esperada de ésta y el nivel de riesgo deseado del cliente. Se combina esta información en un modelo probabilístico que proporciona la cantidad a apostar. Mediante este sistema se busca de proteger al cliente de pérdidas potenciales.
+%
+% Beneficios:
+% \begin{enumerate}
+%
+% 	\item Protege su dinero de pérdidas potenciales.
+% 	\item Permite recuperarse con mayor velocidad de semanas con pérdidas.
+% 	\item Permite dar una estructura de fondo de inversión a las apuestas al obtener un sistema de interés compuesto.
+%
+% \end{enumerate}
+%
+% Costos:
+% \begin{enumerate}
+% 	\item Se restringe la cantidad de ganancias a corto plazo.
+% \end{enumerate}
+%
+% Es un sistema a largo plazo, no se recomienda a personas que desean incurrir en riesgos elevados en beneficio de la posibilidad de obtener mayores ganancias.
+%
+%
+% \subsection{Tablero de apuestas}
+%
+% El tablero es la página principal para el usuario de \emph{Egobets.com}. En el tablero se presenta la recomendación de la semana:
+% \begin{enumerate}
+%
+% \item Barra de ingreso.
+% \item Los partidos en que se apostará: el partido, el resultado a apostar, la cantidad de dinero a apostar, el momio ofrecido y la casa de apuestas que ofrece tal momio.
+% \item La gráfica de valor esperado.
+% \end{enumerate}
+%
+% En \emph{Egobets.com} se le da seguimiento a cada uno de nuestros clientes. Con esta información se puede monitorear la evolución del ingreso y así dar las recomendaciones de acuerdo al nivel de ganancias o pérdidas. Es importante que esta información sea verdadera para poder brindar el mejor servicio posible.
+% \begin{enumerate}
+%
+% 	\item \textbf{¿Se pueden hacer recomendaciones de resultados que no sean los más probables?}
+% \end{enumerate}
+%
+%
+% Sí, depende del perfil de riesgo y de lo que pague la casa de apuestas en tal partido. En algunas ocasiones es recomendable apostar en contra del favorito si el pago es suficientemente grande. Si se tiene activado el sistema en contra de favoritos (en el menú perfil) o si el perfil es muy agresivo se presentarán muchas recomendaciones de este tipo.
+%
+% La gráfica de valor esperado es una herramienta visual que permite ver cuáles son los posibles resultados de la recomendación de la semana. En \emph{Egobets.com} se conoce que todas las apuestas tienen un riesgo y mediante esta gráfica se puede cuantificar: Cada barra representa la probabilidad de que se gane o pierda la cantidad indicada debajo de ella, mientras más grande sea la barra mayores probabilidades hay de que tal resultado ocurra.
+%
+%
+%
+% \subsection{Pronósticos}
+% Pronósticos: Se pronostica el marcador final, la posesión del balón y el ganador del encuentro. Al poner el apuntador sobre el resultado más probable aparece el grado de confiabilidad del pronóstico.
+%
+%
+% En \emph{Egobets.com} se presentan los equipos mediante un power ranking. Con base en las estadísticas de los partidos y dados sus resultados, se pronostica cuál será la tabla de posiciones al finalizar dicha liga.
+%
+%
+% \subsection{Estadísticas}
+%
+%
+% En orden de aparición: Una estrella indicando si el equipo está o no marcado como uno de los favoritos, la posición en el power ranking, el nombre del equipo, el índice de ataque general del equipo, el índice de defensa general del equipo y por último el cambio dentro de la tabla de power ranking.
+%
+% \begin{enumerate}
+%
+% \item Índice de ataque general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para atacar.
+% \item Índices de medio centro, delanteros y definición: Con una calificación de cero a cien. Representan la capacidad de controlar el medio centro, de atacar a portería y de precisión de los tiros, respectivamente.
+% \item Índice de defensa general: Con calificación de una a cinco estrellas o de uno a diez (abajo). Representa la capacidad general del equipo para defender.
+% \item Índices de medio centro, defensas y portero: Con una calificación del cero a cien. Representan la capacidad de defender en el centro, de los defensas y del portero, respectivamente.
+% \item Al hacer click en las variables mencionadas en 2 o 4 se tienen acceso a la evolución de tales variables desde el minuto 0 hasta el 90 de un partido.
+% \end{enumerate}
+%
+% \begin{enumerate}
+%
+% 	\item \emph{Resultados de la jornada anterior:} Se presenta el partido, el marcador real, el marcador pronosticado y el resultado pronosticado. Esto con el fin de que los usuarios puedan comparar lo pronosticado y lo que en verdad ocurrió.
+% 	\item \emph{Pronósticos de la jornada actual:} Se presenta el partido, el resultado pronosticado (o favorito), el marcador pronosticado y la fecha del encuentro. Además al poner el apuntador encima de un partido se presenta el grado de confiabilidad del pronóstico.
+% \end{enumerate}
+%
+% Además para cada tabla se pueden presentar los resultados de una liga en particular al seleccionarla en el recuadro de arriba.
+%
+% \section{Alimentando el sistema}
+% \label{sec:inserting-data}
+%
+% \begin{figure}[!htb]\centering
+%    \begin {minipage}{1\textwidth}
+%      \includegraphics[width=\linewidth]{sistemas}
+%      \caption{Diagrama de sistemas y usuarios}\label{Fig:Sistemas}
+%    \end{minipage}
+% \end{figure}
+%
+% \begin{figure}[!htb]\centering
+%    \begin {minipage}{1\textwidth}
+%      \includegraphics[width=\linewidth]{erd-pronosticos}
+%      \caption{Diagrama de entidad-relación de la BD del recopilador}\label{Fig:erd-pronosticos}
+%    \end{minipage}
+% \end{figure}
+%
+% El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{Portal público} (Ver la figura~\ref{Fig:flujo}), se puede describir de la siguiente manera:
+% \begin{enumerate}
+% 	\item A través del \emph{Sistema de recopilación} los administradores descargan de la página de Internet de ESPN los resultados de todos los partidos de la temporada junto con la información de los próximos partidos por jugar  de cada una de las ligas Europeas.
+% 	\item Los datos recopilados permiten a los administradores generar un conjunto de archivos de texto con toda la información de los resultados de los últimos partidos y las fechas de los próximos partidos.
+% 	\item Los administradores usan estos archivos para alimentar el \emph{Sistema de estimación} y calcular los pronósticos de los próximos partidos y las probabilidades de los resultados.
+% 	\item Se obtienen los archivos que contienen la información de los próximos partidos así como la información de los equipos por liga y su desempeño en la temporada en curso.
+% 	\item En el \emph{Portal administrativo} se ingestan los archivos obtenidos con la información de los próximos partidos, resultados de partidos anteriores y las estadísticas de los equipos en la temporada en curso.
+% 	\item Finalmente, con la nueva información ingresada, los usuarios podrán disfrutar en el \emph{Portal público} sus recomendaciones personalizadas de apuestas.
+%
+% \begin{figure}[!htb]\centering
+%    \begin {minipage}{1\textwidth}
+%      \includegraphics[width=\linewidth]{flujo}
+%      \caption{Proceso de alimentación del sistema}\label{Fig:flujo}
+%    \end{minipage}
+% \end{figure}
+% \end{enumerate}
+%
+%
 
 
 % \section{Descripción General}
@@ -504,7 +611,7 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 %
 % \subsection{Sistema de recopilación de información y estadísticas de los partidos}
 % \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
-% Se desarrolló un sistema web que recupera al principio de cada temporada todos los partidos que se hayan jugado en las temporadas pasadas, así como el calendario de próximos partidos por jugar. Para lograr la extracción de esta información el sistema cuenta con un ``Web Scraper'' que consigue la información de la página de ESPN y la transforma en objetos que después son persistidos en la base de datos. Finalmente, esta información se organiza en un documento CSV para ser descargado por los administradores.
+% 
 %
 % \subsubsection{Tecnologías destacadas}
 %
@@ -559,56 +666,7 @@ El proceso que se lleva a cabo en el \emph{Back Office} para alimentar el \emph{
 %
 % \end{itemize}
 %
-% \subsubsection{Web Scraper}
-% El proceso de ``Web Scraping'' consiste en extraer y crear representaciones estructuradas con la información de un sitio Web en particular. HTML, el lenguaje de marcado usado para darle estructura a la información de las páginas web está sujeta a muchos cambios, especialmente cuando se actualiza su estilo. Ya que las técnicas de extracción se basan en el lenguaje de marcado, un solo cambio puede llevar a extraer datos incorrectos o incompletos \cite{cording2011algorithms}.
-%
-% Las técnicas de ``Web Scraping'' permiten, por ejemplo, que una compañía monitoree los precios de los productos de sus competidores. De igual manera le permiten a Egobets, conseguir la última información detallada con la información de las fechas de los partidos, marcadores, tiros a gol, posesión del balón y nombres de los equipos.
-%
-% Si el dueño de la información no provee de una API abierta, el remedio (como en el caso de Egobets) es el de escribir un programa que apunte a la información desplegada en la página Web. Las propiedades buscadas en un scraper son:
-% \begin{itemize}
-% 	\item Ser tan tolerante como pueda ser posible a cambios en el lenguaje de marcado.
-% 	\item Ser lo suficientemente rápido como para ofrecer respuestas en milisegundos y evitar ``time-outs'' durante el consumo del servicio.
-% 	\item No tener restricciones en los patrones que conforman la estructura del HTML del sitio. En específico esto implica que el servicio debe ser lo suficientemente bueno como para interpretar de la mejor manera la información aún incluso si el HTML se encuentra mal formado
-% \end{itemize}
-%
-% Cording, P. \cite{cording2011algorithms} presenta en su tesis de maestría un estudio de como realizar un scraper que base su funcionamiento en la coincidencia aproximada de los patrones de un árbol, esta es la base de muchas de las librerías que existen (incluyendo la que se usa en este trabajo). Para realizar esta tarea se utiliza una librería de código abierto que permite manipular DOM\footnote{W3schools \cite{domWeb} lo define como: ``Documento W3C Object Model (DOM) es una interfaz de la plataforma y de lenguaje neutro que permite a los programas y scripts acceder y actualizar dinámicamente el contenido, la estructura y el estilo de un documento''. La especificación formal se puede leer en la recomendación \cite{wood1998document}.} de HTML y conseguir la información necesaria, esta libreria se llama: PHP Simple HTML DOM Parser.
-%
-% \textbf{Un ejemplo de uso}
-%
-% Supóngase el siguiente HTML:
-%
-% \lstset{language=HTML}
-% \begin{lstlisting}[frame=single]
-% <div class="team-names">
-% 	<div class="team-name">
-% 		<span>
-% 			<img src="http://espncdn.com/teamlogos/soccer/500/102.png" alt="Villarreal" width="22">
-% 			Villarreal
-% 		</span>
-% 	</div>
-% 	<div class="team-name">
-% 		<span>
-% 			<img src="http://espncdn.com/teamlogos/soccer/500/93.png" alt="Athletic Bilbao" width="22">
-% 			Athletic Bilbao
-% 		</span>
-% 	</div>
-% </div>
-% \end{lstlisting}
-%
-% Ahora analícese el siguiente código:
-%
-% \lstset{language=PHP}
-% \begin{lstlisting}[frame=single]
-% 	$aux = $table->find('.team-name',0);
-% 	$nomEquipoLocal = $aux;
-% 	$partido['prints']['local_nom']= $nomEquipoLocal;
-% 	$idEspnEquipoLocal = trim(strstr(substr(strstr($aux->innertext, 'soccer/500/'), strlen('soccer/500/')),'.png',true));
-% \end{lstlisting}
-%
-%
-% Con este código se pueden obtener los nombres del equipo local y el identificador que le asigna ESPN a sus equipos. Esto es gracias a que \emph{``find('.team-name',0)''} recorre todo el árbol DOM y encuentra todas las ocurrencias de la clase con nombre \emph{``team-name''} el cero que se le proporciona a la función \emph{find} regresa el primer elemento encontrado. De ahí, la propiedad \emph{``->innertext''} muestra la cadena de caracteres plana que contiene ese elemento, por lo que basta con hacer un manejo de cadenas de caracteres para obtener el identificador del equipo que se nombra el archivo PNG del logo del equipo. Para más ejemplos y documentación de como utilizar la librería dirigirse a \cite{sourceparserWeb}.
-% % Es un script que
-% % \cite{hogue2005thresher}
+
 % % Definir lo que es un scraper
 % %
 % %

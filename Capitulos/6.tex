@@ -1,10 +1,179 @@
+%%!TEX TS-program = pdflatex 
+%%!TEX encoding = UTF-8 Unicode 
+\documentclass[11pt,letterpaper,twoside,openright]{book}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{papersize={17cm,22.5cm}}                   % ...Tamaño tesis
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{epstopdf}
+\usepackage{bbding}
+\usepackage{color,colortbl}
+\usepackage{lscape}
+\usepackage{datetime}
+\usepackage{mathrsfs}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{cleveref}
+\usepackage{caption}
+%Cositas para hacer tablitas mas bonititas
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+%madres para hacer links de indices-itos
+\usepackage[pdfpagelabels]{hyperref}
+%a ver si sale el código bonito
+\usepackage{listings}
+\usepackage{color}
 
-Partiendo de los siguientes dos supuestos: a) un jugador promedio busca maximizar las ganancias de sus apuestas en función de su adversidad al riesgo y, b) apostar siempre conviene más que no apostar. Se plantea una manera de encontrar la apuesta óptima para un partido. Con base en este planteamiento se sigue el análisis a una jornada: ¿A qué partidos de la jornada el usuario le debería apostar? Finalmente, considerando que el usuario busca apostar en todas las jornadas de la temporada, se ataca el problema de la evolución del dinero a apostar durante toda la temporada.
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=HTML,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{textcomp}
+\usepackage{placeins}
+\usepackage[sorting=nyt]{biblatex}
+\usepackage{url}
+%%% --- Se supone que estas lineas aumentan el tamaño que tienen las urls en *.bib (luego las corta)--- %%%
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/Decidido.bib}
+%----------------------------------------------------------------------------------------
+%	Metadata
+%----------------------------------------------------------------------------------------
+\pdfinfo{
+	/Author (Bruno Medina Bolaños Cacho)
+	/Title (Egobets, un Sistema Computacional de Asesoría de Apuestas de Futbol)
+	/Creator (pdfLatex)
+	/Subject (Applied Mathematics and Computation)
+	/Keywords (egobets, apuestas, pronosticos, computacion, matematicas)
+	/CreationDate (D:\pdfdate)
+}
+
+%%% ESte codiguito hace que las imágenes se queden dentro de la subsección
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter
+    {\expandafter\@fb@secFB\subsection}%
+  \newcommand\@fb@secFB{\FloatBarrier
+    \gdef\@fb@afterHHook{\@fb@topbarrier \gdef\@fb@afterHHook{}}}%
+  \g@addto@macro\@afterheading{\@fb@afterHHook}%
+  \gdef\@fb@afterHHook{}%
+}
+% \makeatother
+% %%% ESte codiguito hace los quotes de los famosos
+% \makeatletter
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
 
 
-\section{Ahorro precaucional}
+%%Parece que no les gustaron mis quotes de famosos
+%% Use esta:
+%\usepackage{quotchap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% Centrar así sin espacio
+\newenvironment{tightcenter}{%
+  \setlength\topsep{0pt}
+  \setlength\parskip{0pt}
+  \begin{center}
+}{%
+  \end{center}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-\section{Evolución de la cantidad a Apostar}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename  #1 .tif`.png}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
+
+%\date{}                                           % Activate to display a given date or no date
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	Portada, declaración, dedicatoria, agradecimientos, índices
+%----------------------------------------------------------------------------------------	
+%\include{./Capitulos/encabezados}
+%----------------------------------------------------------------------------------------
+%	Capítulos
+%----------------------------------------------------------------------------------------
+\mainmatter
+%\include{./Capitulos/1} %Introducción
+%\include{./Capitulos/2} %Panorama general de apuestas
+%\include{./Capitulos/3} %Egobets Matemáticas
+%\include{./Capitulos/4} %Egobets Software
+%\include{./Capitulos/5} %Conclusiones
+% Reestructurando a sólo 5 capítulos
+%\include{./Capitulos/6}
+%----------------------------------------------------------------------------------------
+%	APÉNDICES
+%----------------------------------------------------------------------------------------
+
+%\addtocontents{toc}{\vspace{2em}} % Agrega espacios en la toc
+
+\appendix % Los siguientes capítulos son apéndices
+%  Incluye los apéndices en el folder de apéndices
+%\include{Apendices/demos}
+%\include{Apendices/archivos}
+\include{../Apendices/clubs}
+%\include{Apendices/bd}
+%\include{Apendices/manual-admin}
+%\include{Apendices/faq}
+
+
+\thispagestyle{empty}
+
+\addtocontents{toc}{\vspace{2em}} % Agrega espacio en la toc
+
+%----------------------------------------------------------------------------------------
+%	Bibliografía
+%----------------------------------------------------------------------------------------
+
+\backmatter
+%\printbibliography
+
+\end{document}  

@@ -1,10 +1,12 @@
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/marco/}}
 \chapter{Panorama general de las apuestas}
+\label{chap:general}
 
-
-En este capítulo, se explora el panorama general de las apuestas para auxiliar al lector en la comprensión de la relevancia de Egobets en la industria de las apuestas y en el ámbito científico; también, se revisan las teorías relacionadas más destacadas y los estudios previos más sobresalientes. Finalmente, se dan a conocer las ligas que se estarán analizando y los motivos por las que fueron elegidas.
+Este capítulo, habla de las ilusiones detrás de las apuestas y describe en general como los casinos utilizan los juegos de azar para generar ganancias. Después, explica como funcionan los mercados de las apuestas deportivas y sus diferencias con los casinos. Y finalmente, se cierra el capítulo definiendo lo que son los ``momios'' y su papel como regulador en la demanda de la apuesta. 
 
  \section{La fascinación por los juegos de azar}
+ \label{sec:fascinacion}
+ 
 
 Nadie conoce el origen de las apuestas, algunos dicen que todo comenzó con un anónimo paleolítico que rodó unos cuantos huesos para decidir hacia que dirección ir a cazar \cite{schwartz2013roll}. Más adelante, tanto los antiguos griegos como los etruscos examinarían la forma y las características del hígado de una oveja para tomar las mejores decisiones para su futuro\footnote{Los adivinos llamados ``Arúspices'' eran los encargados de llevar la tarea de predecir el futuro en función de la examinación de las entrañas de varias bestias.}. Siglos después, los romanos usarían los huesos astrágalos (Ver figura~\ref{Fig:huesos}) de animales como precursores a los dados \cite{schwartz2013roll}.
 
@@ -109,6 +111,7 @@ Finalmente, aun sin la ventaja de la casa se deber recordar que existe un famoso
 
 
  \section{Mercados de apuestas deportivas}
+ \label{sec:apuestasd-deportivas}
  
  A diferencia de las máquinas tragamonedas y los juegos de mesa de los casinos, las apuestas deportivas tienen una gran ventaja para los apostadores: los resultados de los encuentros deportivos \textbf{no son completamente aleatorios,} ya que dependen en cierta medida del nivel de juego que tienen los equipos participantes. Hannum menciona en su libro \cite{hannum2005practical} : \emph{``La ventaja de la casa existe para casi todas las apuestas en un casino (ignorando las salas de Poker y las apuestas deportivas donde algunos pocos profesionales pueden vivir de de las apuestas)''}
 
@@ -171,10 +174,14 @@ Levitt \cite{levitt2004gambling} menciona tres escenarios que permitirían a los
 
  Uno de los teoremas básicos de la probabilidad, dice que la suma de las probabilidades de todos los resultados del evento debe sumar uno \cite{ross2006first}. Sin embargo, en el caso de los bookies, las probabilidades estimadas exceden la unidad. Este excedente, es la vieja conocida: ``Ventaja de la Casa''.
 
- Sea $\mathcal{O}$ el conjunto de todas las opciones sobre las que un jugador puede apostar para cierto evento. Para el caso de las apuestas sobre los resultados de los partidos, se tiene que: $\mathcal{O} = \{\text{Apostar a que gane local}, \text{Apostar al empate}, \text{Apostar a que gane visitante}\}$.
+ Sea $\mathcal{O}$ el conjunto de todas las opciones sobre las que un jugador puede apostar para cierto evento. Para el caso de las apuestas sobre los resultados de los partidos, se tiene que: 
+ 
+ $\mathcal{O} = \{\text{Apostar a que gane local}, \\ 
+ \text{Apostar al empate}, \\
+ \text{Apostar a que gane visitante}\}$.
 
  Por lo tanto:
- \[\text{Ventaja de la casa} =  \left(\sum_{i \in \mathcal{O}}{\left(1 - \frac{1}{\text{Momio de la opción } i}\right)}\right) - 1\] 
+ \[\text{Ventaja de la casa} =  \left(\sum_{i \in \mathcal{O}}{\frac{1}{\text{Momio de la opción } i}}\right) - 1\] 
 
  Siguiendo con el ejemplo, se tiene que la ventaja de la casa de este bookie para esta apuesta en particular es:
  \[\text{Ventaja de la casa} = \hat{p_L} + \hat{p_E} + \hat{p_V} - 1 \approx 0.020467\]

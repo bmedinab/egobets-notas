@@ -66,7 +66,7 @@ Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporada
 \section{Reserva un poco para después}
 \label{sec:reserva}
 
-En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas.
+En esta sección se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas. También se describe el criterio de Kelly \cite{kelly1956new} y su importancia como guía en la optimización del valor esperado de un conjunto de apuestas independientes a través del tiempo.
 	
 Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como la estrategia óptima de crecimiento, o como la estrategia de utilidad logarítmica. Menciona que es óptima cuando en una variedad de circunstancias la ganancia crece multiplicativamente, únicamente. Hace énfasis que la mayoría de las propiedades de optimalidad son asintóticas en naturaleza (hacia un horizonte infinito), en su trabajo analiza las propiedades de la estrategia de Kelly a corto plazo.
 
@@ -77,7 +77,7 @@ Sea $T_k = 1$, si se gana el $k$-ésimo lanzamiento y $T_k = -1$ si se pierde. E
  
 La intuición sugiere que como el juego tiene un valor esperado positivo ya que $p - q > 0$, entonces para maximizar $E(X_n)$ se quisiera maximizar $E(B_k)$ en cada lanzamiento, además para maximizar la ganancia esperada se debería apostar todo el dinero en cada lanzamiento. Sin embargo, la probabilidad de perderlo todo es equivalente a $1 - p^n$ y como $p < 1$, $\lim_n[1 - p^n] = 1$ es decir, la ruina es segura. Por lo que, la intrépida decisión de apostar para maximizar la ganancia esperada es indeseable.
 
-De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador\ref{chap:ruina} muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta, .lo que a su vez minimiza la ganancia esperada. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
+De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta, .lo que a su vez minimiza la ganancia esperada. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
 
 El criterio de Kelly \cite{kelly1956new} propone una estrategia de optimización asintótica para este problema. Supóngase que se apuesta la cantidad $B_i = fX_i-1$, con $0 \leqslant f \leqslant 1$. Sean $S$ y $F$ la cantidad de éxitos y fallos (respectivamente), entonces se tiene que en $n$ lanzamientos el capitán del jugador sería el siguiente:
 \[X_n = X_0(1+f)^S(1-f)^F\] con $S + F = n$ y $0<f<1$, $p(X_n \leqslant 0) = 0 $. 
@@ -107,6 +107,7 @@ Ahora como
     \end{minipage}
  \end{figure}
  
+ A continuación se presenta un teorema que enumera las ventajas de maximizar $g(f)$, dentro de estas pautas se presentan propiedades básicas que cumplen el criterio de Kelly y dan a entender mejor su función en cada apuesta. La prueba de este teorema se omite en esta tesis, pero se puede revisar en Thorp\cite{thorp1969optimal} para el caso de una simple binomial y para un caso más general se deber revisar Breiman\cite{breiman1961optimal}.
  
 \begin{itshape}
 
@@ -119,7 +120,7 @@ Ahora como
 
 	\item Si $g(f) < 0$, entonces $\lim_{n\to\infty}X_n = 0$ casi seguro. Es decir, para cada $\varepsilon > 0 $ se tiene que $p(\lim \sup_{n\to\infty}X_n <\varepsilon)=1$.
 	
-	\item Si $g(f) = 0$, entonces $\lim \sup_{n\to\infty}X_n = \infty$ casi seguro y $\lim \inf_{n\to\infty}X_n = =$ casi seguro.
+	\item Si $g(f) = 0$, entonces $\lim \sup_{n\to\infty}X_n = \infty$ casi seguro y $\lim \inf_{n\to\infty}X_n = 0$ casi seguro.
 
 	\item Dada una estrategia $\phi^*$ que maximiza $E(\log(X_n))$ y cualquier otra estrategia $\phi$ ``esencialmente diferente'' (No necesariamente una estrategia de apuestas fraccionada fija), entonces $\lim_{n\to\infty}X_n(\phi^*)/X_n(\phi)=\infty$ casi seguro.
 
@@ -133,8 +134,29 @@ Ahora como
 
 De la parte 1 de este teorema se muestra que excepto para un número finito de términos, el capital del jugador $X_n$ sobrepasará una cota fija $M$ cuando $f$ se escoge dentro del intervalo $(0,f_c)$. Pero, si $f>f_c$, entonces la parte 2 muestra que la ruina será casi segura. La parte 3 demuestra que si $f=f_c$, entonces $X_n$ (casi seguro) oscilará aleatoriamente entre $0$ y $\infty$. Las partes 4 y 5 establecen que la estrategia de Kelly de maximizar $E(\log(X_n))$ es asintóticamente óptima ya que si se toma una estrategia ``esencialmente diferente'' como aquella tal que la diferencia, $E(\log(X_n^*)) - E(\log(X_n))$, entre la estrategia de Kelly y cualquier otra estrategia crece más rápido que la desviación estándar de $\log(X_n^*) - \log(X_n)$, asegurando $p(\log(X_n^*)-\log(X_n)>0) \to 1$. Finalmente, la parte 6 establece la validez de utilizar el método de Kelly para escoger $f_i*$ en cada uno de los ensayos (aun cuando las probabilidades cambian de un ensayo a otro) con el fin de maximizar $E(\log(X_n))$.
 
+\paragraph{Ejemplificando} % (fold)
+\label{par:ejemplificando}
+Retómese la situación descrita al principio de esta sección de un jugador contra un adversario infinitamente rico. Supóngase que el jugador gana la apuesta con una probabilidad $p=0.53$, que su capital inicial es de $X_0$ y que su capital es infinitamente divisible y disponible para apostar. Aplicando el Teorema parte 5, se tiene que $f^* = p-q =0.53-0.47 = 0.06$. Es decir, el jugador debe apostar $6\%$ de su capital para hacerlo crecer $X_n$ a la mayor tasa posible con probabilidad cero de irse a la quiebra. De igual manera, si el jugador continuamente apuesta una fracción más pequeña que el $6\%$, también su capital se irá al infinito, pero la velocidad de crecimiento será menor.
+
+Ahora, si se resuelve numéricamente la ecuación $g(f) = 0.53\log(1+f)+0.47\log(1-f)=0$ se obtiene que $f_c= 0.119712...$. Esto quiere decir que el usuario puede apostar hasta tantito menos del $12\%$ de su capital y como en el caso anterior, su capital se iría al infinito pero a menor escala que con el óptimo. Después del $12\%$, aunque el jugador pudiera ganar dinero a una velocidad mayor que la de la estrategia óptima, al final su capital se irá a cero (casi seguro). 
+
+En cuanto a la tasa de crecimiento, se tienen que $g(f*)= 0.001801$ por lo que después de $n$ apuestas exitosas, su capital crecerá $0.001801n$ veces más dinero que con el que comenzó. De aquí se puede calcular el tiempo esperado de doblar la cantidad de dinero del capital, se tiene que $0.001801n=\log2$. Es decir que después de $n=385$ ensayos se estará doblando la cuenta del jugador.
+% paragraph ejemplificando (end)
+
+\paragraph{Aplicando Kelly a las apuestas de futbol} % (fold)
+\label{par:aplicando_kelly_a_las_apuestas_de_futbol}
+El criterio de Kelly se puede extender a las apuestas de futbol. Retómese la situación original pero ahora el jugador puede ganar $b$ pesos por cada peso invertido en la apuesta. Además, considérese que el jugador no apostará a juegos no favorables, es decir que sólo apostará cuando la probabilidad de ganar $p>0$ sea ventajosa, i.e. $pb - q > 0$.
+De la misma manera se maximiza la siguiente función\footnote{Esta optimización y la fórmula, que a la fecha es tan usada por todos los sitios de apuestas, tuvo su aparición en  Thorp\cite{thorp1969optimal}, aquí mismo se puede encontrar su demostración formal}:
+\[g(f) = E(log(\frac{X_n}{X_0}))=p\log(1+bf)+q\log(1-f)\]
+Y se obtiene que:
+\[f^* = \frac{bp -q}{b}\]
+Esta $f^*$ dicta la fracción del capital que el jugador debe apostar en \textbf{cada} apuesta. Es decir, que la cantidad a apostar depende de dos cosas: Primero, de la probabilidad de éxito de la apuesta. Segundo, del posible retorno de inversión de la apuesta (momio).
 
 
+Hay tres quejas a considerar sobre Kelly: La primera tiene que ver con el supuesto de ``divisibilidad infinita'', ya que las casas de apuestas usualmente tienen una cantidad mínima para las apuestas y algunas casas tienen todas sus apuestas en función de múltiplos de estos mínimos (o créditos), esto implica que  (casi seguro) siempre se alcanza la ruina. La segunda, va más enfocada a los mercados financieros que implican la posibilidad de pérdidas (Commodity futures o securities short sales), en estos casos se puede perder perder dinero $a$ con probabilidad $q$. Donde la esperanza es igual a $m=bp-aq>0$, $f^*=m/ab >0$. Para este caso, se sugiere al lector revisar Thorp y Kassouf \cite{thorp1967beat}. Finalmente, como se vio en los tiempos esperados para duplicar el capital, Kelly es muy lento en el crecimiento del capital al garantizar la ruina con probabilidad $0$; esto hace que en temporadas de futbol (con una cantidad finita de juegos) el criterio sirva únicamente de guía.
+
+
+% paragraph aplicando_kelly_a_las_apuestas_de_futbol (end)
 
 
 \cite{kelly1956new}
@@ -315,7 +337,7 @@ I & Visitante & 4.5 & 0.25 & 0.36\\ \bottomrule
 \label{sec:paso-3}
 
 Una vez determinado el portafolio de apuestas hace falta determinar la cantidad de dinero que se invertirá en éste. Esta sección y la próxima resolverán tal problema.
- Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dólares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su función de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma se tiene los números como porcentajes.
+ Se empieza por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya se determinó en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dólares, pesos, etc).Se hace lo siguiente: para cada apuesta se calcula el valor de su función de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma se tiene los números como porcentajes.
  Regresando al ejemplo: (En este caso la función de utilidad del dinero era Exponencial-Lineal con parámetro 3)
 Ver tabla~\ref{proporcion}
 

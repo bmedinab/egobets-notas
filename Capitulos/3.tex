@@ -1,3 +1,5 @@
+\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/}}
+
 \chapter{Las matemáticas detrás de Egobets.com}
 \label{chap:mate}
 
@@ -64,6 +66,10 @@ Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporada
 \section{Reserva un poco para después}
 \label{sec:reserva}
 
+En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas.
+	
+Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como la estrategia óptima de crecimiento, o como la estrategia de utilidad logarítmica. Menciona que es óptima cuando en una variedad de circunstancias la ganancia crece multiplicativamente, únicamente. Hace énfasis que la mayoría de las propiedades de optimalidad son asintóticas en naturaleza (hacia un horizonte infinito), en su trabajo analiza las propiedades de la estrategia de Kelly a corto plazo.
+
 Supóngase que un jugador se enfrenta a un oponente infinitamente rico en apuestas sobre lanzamientos de monedas independientes. El oponente rico siempre igualará la misma cantidad de dinero apostada por el jugador en cada uno de las apuestas. Además, supóngase también que en cada lanzamiento la probabilidad de ganar es $p>\frac{1}{2}$ y que la probabilidad de perder es $q = 1 - p$. El capital inicial del jugador es $X_0$. El objetivo de este ejercicio es el de maximizar el valor esperado $E(X_n)$ después de $n$ lanzamientos. Por lo que la duda que se busca responder es la siguiente: ¿Cuánto se debe apostar, $B_k$, en el $k$-ésimo lanzamiento?
 
 Sea $T_k = 1$, si se gana el $k$-ésimo lanzamiento y $T_k = -1$ si se pierde. Entonces $x_k = X_{k-1} + T_k B_k$ para $k=1,2,3, ...,$ y $X_n = X_0 + \sum_{k=1}^{n}{T_k B_k}$. Por lo que se puede expresar el valor esperado de la siguiente manera:
@@ -73,42 +79,63 @@ La intuición sugiere que como el juego tiene un valor esperado positivo ya que 
 
 De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador\ref{chap:ruina} muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta, .lo que a su vez minimiza la ganancia esperada. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
 
-El criterio de Kelly \cite{kelly1956new} propone una estrategia de optimización asintótica para este problema. Supóngase que se apuesta la cantidad $B_i = fX_i-1$, con $0<= f <= 1$. Sean $S$ y $F$ la cantidad de éxitos y fallos (respectivamente), entonces se tiene que en $n$ lanzamientos el capitán del jugador sería el siguiente:
-\[X_n = X_0(1+f)^S(1-f)^F\] con $S + F = n$ y $0<f<1$, $p(X_n<=0) = 0 $. 
+El criterio de Kelly \cite{kelly1956new} propone una estrategia de optimización asintótica para este problema. Supóngase que se apuesta la cantidad $B_i = fX_i-1$, con $0 \leqslant f \leqslant 1$. Sean $S$ y $F$ la cantidad de éxitos y fallos (respectivamente), entonces se tiene que en $n$ lanzamientos el capitán del jugador sería el siguiente:
+\[X_n = X_0(1+f)^S(1-f)^F\] con $S + F = n$ y $0<f<1$, $p(X_n \leqslant 0) = 0 $. 
 Ahora también, considérese que el jugador está arruinado cuando la cantidad de dinero después de la apuesta $n$ del jugador es menor un entero positivo pequeño, i.e. $X_n < \varepsilon$.
 
 Nótese que dado que
 \[e^{n \log{\frac{X_n}{X_0}^{1/n}}} = \frac{X_n}{X_0}\]
 
 se tiene que la cantidad
-\[G_n(f) = \log{{\frac{X_n}{X_0}}^{1/n}} = \frac{S}{n}\log{1+f} + \frac{F}{n}\log{1-f}\]
+\[G_n(f) = \log{\left(\frac{X_n}{X_0}\right)^{1/n}} = \frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)\]
 mide la tasa de incremento exponencial por lanzamiento. Kelly sugiere maximizar el valor esperado del coeficiente de la tasa de crecimiento $g(f)$ donde
-\[g(f) = E{\log{\frac{X_n}{X_0}^{1/n}}} = E{\frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)}\]
+\[g(f) = E\left(\log\left(\frac{X_n}{X_0}\right)^{1/n}\right) = E\left(){\frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)}\right)\]
 \[=p\log(1+f)+q\log(1-f)\]
 
-Nótese que $g(f) = (1/n)E\log{X_n}-(1/n)\log{X_0}$, así que para $n$ fijo, maximizar $g(f)$ es lo mismo que máximizar $E \log{X_n}$. Véase que:
+Nótese que $g(f) = (1/n)E(\log{X_n})-(1/n)\log{X_0}$, así que para $n$ fijo, maximizar $g(f)$ es lo mismo que maximizar $E \log(X_n)$. Véase que:
 \[g'(f) = \frac{p}{1+f} - \frac{q}{1-f} = \frac{p-q-f}{(1+f)(1-f)} = 0\]
-cuanod $f=f^* = p-q$
+cuando $f=f^* = p-q$
 
 Ahora como
 \[g''(f) = -p(1+f)^2 - q/(1-f)^2 < 0\]
- entonces $g'{f}$ es monótona estrictamente decreciente en $[0,1)$. También, $g'(0) =p -q >0$ y $\lim$
+ entonces $g'(f)$ es monótona estrictamente decreciente en $[0,1)$. También, $g'(0) =p -q >0$ y $\lim_{f\to1}-g'(f)=-\infty$. Por lo tanto, dado que $g'(f)$ y $g(f)$ son continuas, $g$ tiene un único máximo cuando $f=f^*$, donde $g(f^*) = p\log(p) + q\log(q) +\log(2) >0$. Más aun, $g(0)= 0$ y el $\lim_{f\to1}-g(f)=-\infty$ por lo que existe un único número $f_c>0$ en $0 < f^* < f_c < 1$ tal que $g(f_c)=0$. Véase la figura~\ref{Fig:Gf} para una mejor referencia de la forma de la función $g(f)$.
+ 
+ \begin{figure}[!htb]\centering
+    \begin {minipage}{0.65\textwidth}
+      \frame{\includegraphics[width=\linewidth]{plotGF}}
+      \caption{La función $g(f)$ siempre encuentra un máximo y después tiende a $-\infty$}\label{Fig:Gf}
+    \end{minipage}
+ \end{figure}
+ 
+ 
+\begin{itshape}
+
+\paragraph{Teorema} % (fold)
+\label{par:teorema}
+
+\begin{enumerate}
+
+	\item Si $g(f) > 0$, entonces $\lim_{n\to\infty}X_n = \infty$ casi seguro. Es decir, para cada $M$ se tiene que $p(\lim \inf{n\to\infty}X_n >M)=1$.
+
+	\item Si $g(f) < 0$, entonces $\lim_{n\to\infty}X_n = 0$ casi seguro. Es decir, para cada $\varepsilon > 0 $ se tiene que $p(\lim \sup_{n\to\infty}X_n <\varepsilon)=1$.
+	
+	\item Si $g(f) = 0$, entonces $\lim \sup_{n\to\infty}X_n = \infty$ casi seguro y $\lim \inf_{n\to\infty}X_n = =$ casi seguro.
+
+	\item Dada una estrategia $\phi^*$ que maximiza $E(\log(X_n))$ y cualquier otra estrategia $\phi$ ``esencialmente diferente'' (No necesariamente una estrategia de apuestas fraccionada fija), entonces $\lim_{n\to\infty}X_n(\phi^*)/X_n(\phi)=\infty$ casi seguro.
+
+	\item El tiempo esperado para que la cantidad de capital actual $X_n$ alcance alguna meta fija $C$ es asintóticamente menor con una estrategia que maximice $E(\log(X_n))$.
+
+	\item Supóngase que el retorno en una unidad apostada en el i-ésimo ensayo es la variable aleatoria $U_i$, además supóngase que la probabilidad de éxito es $p_i$ donde $1/2 < p_i < 1$. Entonces, $E(\log(X_n))$ se maximiza escogiendo en cada ensayo la fracción $f_i^* = p_i -q_i$ que maximiza $E(\log(1+f_iU_i))$.
+
+\end{enumerate}
+% paragraph Teorema 1 (end)
+\end{itshape}
+
+De la parte 1 de este teorema se muestra que excepto para un número finito de términos, el capital del jugador $X_n$ sobrepasará una cota fija $M$ cuando $f$ se escoge dentro del intervalo $(0,f_c)$. Pero, si $f>f_c$, entonces la parte 2 muestra que la ruina será casi segura. La parte 3 demuestra que si $f=f_c$, entonces $X_n$ (casi seguro) oscilará aleatoriamente entre $0$ y $\infty$. Las partes 4 y 5 establecen que la estrategia de Kelly de maximizar $E(\log(X_n))$ es asintóticamente óptima ya que si se toma una estrategia ``esencialmente diferente'' como aquella tal que la diferencia, $E(\log(X_n^*)) - E(\log(X_n))$, entre la estrategia de Kelly y cualquier otra estrategia crece más rápido que la desviación estándar de $\log(X_n^*) - \log(X_n)$, asegurando $p(\log(X_n^*)-\log(X_n)>0) \to 1$. Finalmente, la parte 6 establece la validez de utilizar el método de Kelly para escoger $f_i*$ en cada uno de los ensayos (aun cuando las probabilidades cambian de un ensayo a otro) con el fin de maximizar $E(\log(X_n))$.
 
 
 
-Para esta sección es notable recordar que esta tesis es un compendio de aplicaciones de resultados ya conocidos sobre la implementación de estrategias o técnicas utilizadas para optimizar ciertos resultados. En específico, la idea detrás de una estrategia de reservas conlleva lo que se conoce como teoría de portafolios, que claramente no es el tema central de esta tesis y no se estará profundizando en él. Sin embargo, utilizaremos estas técnicas para agregarlas a nuestro compendio de resultados necesarios para la generación de sugerencias de apuestas.
 
-
-EL problema de apostar óptimamente en repetidos juegos favorables esta íntimamente relacionado con el problema de inversión óptima de portafolios en múltiples periodos de economía financiera 
-
-Retomemos 
-
-
-
-En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas.
-
-
-Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como la estrategia óptima de crecimiento, o como la estrategia de utilidad logarítmica. Menciona que es óptima cuando en una variedad de circunstancias la ganancia crece multiplicativamente, únicamente. Hace énfasis que la mayoría de las propiedades de optimalidad son asintóticas en naturaleza (hacia un horizonte infinito), en su trabajo analiza las propiedades de la estrategia de Kelly a corto plazo.
 
 \cite{kelly1956new}
 \cite{vancura2000finding}

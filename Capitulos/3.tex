@@ -64,19 +64,37 @@ Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporada
 \section{Reserva un poco para después}
 \label{sec:reserva}
 
-
-\subsection{Fórmula de Kelly}
-
-Ejemplo
-
 Supóngase que un jugador se enfrenta a un oponente infinitamente rico en apuestas sobre lanzamientos de monedas independientes. El oponente rico siempre igualará la misma cantidad de dinero apostada por el jugador en cada uno de las apuestas. Además, supóngase también que en cada lanzamiento la probabilidad de ganar es $p>\frac{1}{2}$ y que la probabilidad de perder es $q = 1 - p$. El capital inicial del jugador es $X_0$. El objetivo de este ejercicio es el de maximizar el valor esperado $E(X_n)$ después de $n$ lanzamientos. Por lo que la duda que se busca responder es la siguiente: ¿Cuánto se debe apostar, $B_k$, en el $k$-ésimo lanzamiento?
 
 Sea $T_k = 1$, si se gana el $k$-ésimo lanzamiento y $T_k = -1$ si se pierde. Entonces $x_k = X_{k-1} + T_k B_k$ para $k=1,2,3, ...,$ y $X_n = X_0 + \sum_{k=1}^{n}{T_k B_k}$. Por lo que se puede expresar el valor esperado de la siguiente manera:
 \[E(X_n) = X_0 + \sum_{k=1}^{n}{E(B_k T_k)} = X_0 + \sum_{k=1}^{n}{(p-p)E(B_k)}\]
  
-La intuición sugiere que como el juego tiene un valor esperado positivo ya que $p - q > 0$, entonces para maximizar $E(X_n)$ se quisiera maximizar $E(B_k)$ en cada lanzamiento, además para maximizar la ganancia esperada se debería apostar todo el dinero en cada lanzamiento. Sin embargo, la probabilidad de perderlo todo es equivalente a $1 - p^n$ y como $p < 1$, $lim_n[1 - p^n] = 1$ es decir, la ruina es segura. Por lo que, la intrépida decisión de apostar para maximizar la ganancia esperada es indeseable.
+La intuición sugiere que como el juego tiene un valor esperado positivo ya que $p - q > 0$, entonces para maximizar $E(X_n)$ se quisiera maximizar $E(B_k)$ en cada lanzamiento, además para maximizar la ganancia esperada se debería apostar todo el dinero en cada lanzamiento. Sin embargo, la probabilidad de perderlo todo es equivalente a $1 - p^n$ y como $p < 1$, $\lim_n[1 - p^n] = 1$ es decir, la ruina es segura. Por lo que, la intrépida decisión de apostar para maximizar la ganancia esperada es indeseable.
 
-De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
+De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador\ref{chap:ruina} muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta, .lo que a su vez minimiza la ganancia esperada. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
+
+El criterio de Kelly \cite{kelly1956new} propone una estrategia de optimización asintótica para este problema. Supóngase que se apuesta la cantidad $B_i = fX_i-1$, con $0<= f <= 1$. Sean $S$ y $F$ la cantidad de éxitos y fallos (respectivamente), entonces se tiene que en $n$ lanzamientos el capitán del jugador sería el siguiente:
+\[X_n = X_0(1+f)^S(1-f)^F\] con $S + F = n$ y $0<f<1$, $p(X_n<=0) = 0 $. 
+Ahora también, considérese que el jugador está arruinado cuando la cantidad de dinero después de la apuesta $n$ del jugador es menor un entero positivo pequeño, i.e. $X_n < \varepsilon$.
+
+Nótese que dado que
+\[e^{n \log{\frac{X_n}{X_0}^{1/n}}} = \frac{X_n}{X_0}\]
+
+se tiene que la cantidad
+\[G_n(f) = \log{{\frac{X_n}{X_0}}^{1/n}} = \frac{S}{n}\log{1+f} + \frac{F}{n}\log{1-f}\]
+mide la tasa de incremento exponencial por lanzamiento. Kelly sugiere maximizar el valor esperado del coeficiente de la tasa de crecimiento $g(f)$ donde
+\[g(f) = E{\log{\frac{X_n}{X_0}^{1/n}}} = E{\frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)}\]
+\[=p\log(1+f)+q\log(1-f)\]
+
+Nótese que $g(f) = (1/n)E\log{X_n}-(1/n)\log{X_0}$, así que para $n$ fijo, maximizar $g(f)$ es lo mismo que máximizar $E \log{X_n}$. Véase que:
+\[g'(f) = \frac{p}{1+f} - \frac{q}{1-f} = \frac{p-q-f}{(1+f)(1-f)} = 0\]
+cuanod $f=f^* = p-q$
+
+Ahora como
+\[g''(f) = -p(1+f)^2 - q/(1-f)^2 < 0\]
+ entonces $g'{f}$ es monótona estrictamente decreciente en $[0,1)$. También, $g'(0) =p -q >0$ y $\lim$
+
+
 
 Para esta sección es notable recordar que esta tesis es un compendio de aplicaciones de resultados ya conocidos sobre la implementación de estrategias o técnicas utilizadas para optimizar ciertos resultados. En específico, la idea detrás de una estrategia de reservas conlleva lo que se conoce como teoría de portafolios, que claramente no es el tema central de esta tesis y no se estará profundizando en él. Sin embargo, utilizaremos estas técnicas para agregarlas a nuestro compendio de resultados necesarios para la generación de sugerencias de apuestas.
 

@@ -53,7 +53,7 @@ La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado,
 \subsection{Verificando el modelo}
 \label{subsec:verification}
 
-El modelo descrito es puesto a prueba en el artículo de Koopman y Lit (2013) \cite{koopman2013dynamic}, donde para la liga inglesa Premier toma una muesta de la temporada 2003/03 a 2009/10 y su pronóstico logra mejorar la precisión del modelo de Maher \cite{maher1982modelling} que ya se había discutido. Esta implicación reafirma que los ajustes aplicados como la dependencia entre las cuentas obtenidas por cada equipo, así como los coeficientes variables en función del tiempo describen de mejor manera el fenómeno y presentan mejor pronósticos que los anteriores.
+El modelo descrito es puesto a prueba en el artículo de Koopman y Lit (2013) \cite{koopman2013dynamic}, donde para la liga inglesa Premier toma una muestra de la temporada 2003/03 a 2009/10 y su pronóstico logra mejorar la precisión del modelo de Maher \cite{maher1982modelling} que ya se había discutido. Esta implicación reafirma que los ajustes aplicados como la dependencia entre las cuentas obtenidas por cada equipo, así como los coeficientes variables en función del tiempo describen de mejor manera el fenómeno y presentan mejor pronósticos que los anteriores.
 
 Koopman y Lit (2013) \cite{koopman2013dynamic} llevan esto a un paso más allá y presentan un análisis sobre estrategia de apuestas para demostrar que se pueden obtener ganancias contra el bookie. Básicamente su estrategia de apuestas consiste en apostar si el valor esperado de la apuesta sobre el evento $A$ es mayor a una variable $\tau$.
 \[EV(A) = P(A) \cdot Odds(A) - 1 > \tau\]
@@ -62,7 +62,30 @@ La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implic
 Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporadas y el retorno se espera justo un poco menos de $0.5$ en promedio. Cuando se juega con una unidad para cada 50 apuestas, se espera recibir 75 unidades del bookie de regreso, es decir 25 unidades de ganancia, un $50\%$ de retorno en promedio. Como el retorno esperado negativo no da un intervalo de confianza del $90\%$ no se esperan pérdidas con una estrategia de apuestas para $\tau = 0.4$.
 
 \section{Reserva un poco para después}
-\label{sec:kelly}
+\label{sec:reserva}
+
+
+\subsection{Fórmula de Kelly}
+
+Ejemplo
+
+Supóngase que un jugador se enfrenta a un oponente infinitamente rico en apuestas sobre lanzamientos de monedas independientes. El oponente rico siempre igualará la misma cantidad de dinero apostada por el jugador en cada uno de las apuestas. Además, supóngase también que en cada lanzamiento la probabilidad de ganar es $p>\frac{1}{2}$ y que la probabilidad de perder es $q = 1 - p$. El capital inicial del jugador es $X_0$. El objetivo de este ejercicio es el de maximizar el valor esperado $E(X_n)$ después de $n$ lanzamientos. Por lo que la duda que se busca responder es la siguiente: ¿Cuánto se debe apostar, $B_k$, en el $k$-ésimo lanzamiento?
+
+Sea $T_k = 1$, si se gana el $k$-ésimo lanzamiento y $T_k = -1$ si se pierde. Entonces $x_k = X_{k-1} + T_k B_k$ para $k=1,2,3, ...,$ y $X_n = X_0 + \sum_{k=1}^{n}{T_k B_k}$. Por lo que se puede expresar el valor esperado de la siguiente manera:
+\[E(X_n) = X_0 + \sum_{k=1}^{n}{E(B_k T_k)} = X_0 + \sum_{k=1}^{n}{(p-p)E(B_k)}\]
+ 
+La intuición sugiere que como el juego tiene un valor esperado positivo ya que $p - q > 0$, entonces para maximizar $E(X_n)$ se quisiera maximizar $E(B_k)$ en cada lanzamiento, además para maximizar la ganancia esperada se debería apostar todo el dinero en cada lanzamiento. Sin embargo, la probabilidad de perderlo todo es equivalente a $1 - p^n$ y como $p < 1$, $lim_n[1 - p^n] = 1$ es decir, la ruina es segura. Por lo que, la intrépida decisión de apostar para maximizar la ganancia esperada es indeseable.
+
+De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
+
+Para esta sección es notable recordar que esta tesis es un compendio de aplicaciones de resultados ya conocidos sobre la implementación de estrategias o técnicas utilizadas para optimizar ciertos resultados. En específico, la idea detrás de una estrategia de reservas conlleva lo que se conoce como teoría de portafolios, que claramente no es el tema central de esta tesis y no se estará profundizando en él. Sin embargo, utilizaremos estas técnicas para agregarlas a nuestro compendio de resultados necesarios para la generación de sugerencias de apuestas.
+
+
+EL problema de apostar óptimamente en repetidos juegos favorables esta íntimamente relacionado con el problema de inversión óptima de portafolios en múltiples periodos de economía financiera 
+
+Retomemos 
+
+
 
 En esta sección se describe el criterio de Kelly \cite{kelly1956new} y se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas.
 
@@ -94,7 +117,7 @@ Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como 
  	\item \textbf{Recomendación.} Todos estos elementos constituyen en su totalidad la recomendación de la semana que se presenta en el portal al cliente.
  \end{enumerate}
  
-Para definir el escenario completo es necesario definir las variables que se utilizan en el proceso, así como las funciones de utilidad que modelan los perfiles de riesgo de los usuarios. Después de estas dos subsecciones se retomará paso a paso la explicación del proceso de recomendación de apuestas.
+Para definir el escenario completo es necesario definir las variables que se utilizan en el proceso, así como las funciones de utilidad que modelan los perfiles de riesgo de los usuarios. Después de estas dos sub-secciones se retomará paso a paso la explicación del proceso de recomendación de apuestas.
  
 \subsection{Variables necesarias}
 \label{subsec:variables-necesarias}
@@ -247,7 +270,7 @@ I & Visitante & 4.5 & 0.25 & 0.36\\ \bottomrule
 \label{sec:paso-3}
 
 Una vez determinado el portafolio de apuestas hace falta determinar la cantidad de dinero que se invertirá en éste. Esta sección y la próxima resolverán tal problema.
- Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dólares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su función de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma tenemos los números como porcentajes.
+ Empezamos por determinar cuál es la proporción de dinero que se invertirá en cada apuesta. La solución es sencilla, ya determinamos en secciones anteriores que el valor definido por una función de utilidad puede ser comparado con la cantidad de unidades de dinero que una persona estaría dispuesta a invertir en una apuesta en particular. El único problema con este enfoque es que tales cantidades no se encuentran en ninguna escala (es decir, dólares, pesos, etc).Lo que hacemos es lo siguiente: para cada apuesta calculamos el valor de su función de utilidad del dinero y después lo dividimos entre la suma de todos estos valores para todas las apuestas que se van a tomar, de esta forma se tiene los números como porcentajes.
  Regresando al ejemplo: (En este caso la función de utilidad del dinero era Exponencial-Lineal con parámetro 3)
 Ver tabla~\ref{proporcion}
 

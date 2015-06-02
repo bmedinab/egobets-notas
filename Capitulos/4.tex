@@ -51,7 +51,7 @@ Este acrónimo representa un sistema de infraestructura de internet\footnote{LNN
 	\item \textbf{P}HP, el lenguaje de programación.
 \end{itemize}
 
-Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos le permiten modificarlo y compartirlo \cite{lozano2008software}.
+Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos les permiten modificarlo y compartirlo \cite{lozano2008software}.
 
 La máquina virtual de AWS corre Ubuntu LTS 12.04, una versión del sistema operativo creado por Linux Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
 		\begin{itemize}
@@ -131,7 +131,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
 		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
 		
-		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más esencial (y la más aburrida) es el escribir operaciones ABCD.  Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
+		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más fundamental es el escribir operaciones ``ABCD''. Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
 		
 		En concreto, para el portal público de Egobets las siguientes son las funciones utilizadas en los modelos:
 		\begin{itemize}
@@ -139,7 +139,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\begin{itemize}
 					\item Agregar - A través del modelo, se permite crear un nuevo \emph{usuario} de la plataforma.
 					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario. 
-					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene de Facebook en el sistema y las casas de apuestas a las que está suscrito en Egobets.
+					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene en Facebook \cite{facebookDocuWeb} en el sistema y las casas de apuestas a las que está suscrito en Egobets.
 				\end{itemize}
 			\item \emph{Resultados}
 			\begin{itemize}
@@ -154,11 +154,11 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\end{itemize}
 			\item \emph{Equipos}
 				\begin{itemize}
-					\item Desplegar - El modelo  de \emph{Equipos} despliega todos los \emph{equipos} registrados en el sistema y estos pueden ser filtrados directamente por: el nombre equipo, el id del equipo o la liga a la que pertenecen. También se despliegan los equipos favoritos por cliente.
+					\item Desplegar - El modelo  de \emph{Equipos} despliega todos los \emph{equipos} registrados en el sistema y estos pueden ser filtrados directamente por:  nombre, identificador o liga a la que pertenecen. También se despliegan los equipos favoritos por cliente.
 				\end{itemize}
 			\item \emph{Partidos}
 				\begin{itemize}
-					\item Desplegar - Se muestran todos los \emph{partidos} registrados en el sistema y se pueden filtrar por: el equipo que juega en ellos, el id del partido o la liga a la que pertenecen. También este modelo permite obtener las estrellas de cada partido, estas estrellas denotan la confiabilidad que tiene la predicción del resultado de ese partido.
+					\item Desplegar - Se muestran todos los \emph{partidos} registrados en el sistema y se pueden filtrar por: el equipo que juega en ellos, el identificador del partido o la liga a la que pertenecen. También este modelo permite obtener las estrellas de cada partido, estas estrellas denotan la confiabilidad que tiene la predicción del resultado de ese partido.
 				\end{itemize}
 		\end{itemize}
 	
@@ -182,9 +182,9 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			\end{figure}
 			
 			En este conjunto de vistas se le permite al usuario gestionar toda la información que tiene que ver con su perfil. Se tienen desde las pantallas para crear una cuenta, hasta las pantallas para editar la encuesta que define las recomendaciones que el usuario recibe.
-			A continuación se listan estas vistas:
+			A continuación se enlistan estas vistas:
 			\begin{itemize}
-				\item Sign up. Permite al usuario crear una nueva cuenta para utilizar el sistema (Se puede utilizar Facebook para crear el perfil más rápidamente).
+				\item Sign up. Permite al usuario crear una nueva cuenta para utilizar el sistema (Se puede utilizar Facebook \cite{facebookDocuWeb} para crear el perfil más rápidamente).
 				\item Inicio de Sesión. A través de esta pantalla el usuario ingresa sus datos para entrar al sistema.
 				\item Restablecer contraseña. Permite al usuario ingresar su correo electrónico para generar una nueva contraseña.
 				\item Mi Perfil. En esta vista un usuario puede cambiar sus preferencias como el idioma, si requiere ser notificado cuando haya nuevas recomendaciones y seleccionar las casas de apuestas que utiliza.
@@ -256,7 +256,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			\item \textbf{Perfil.} Despliega la información completa del perfil de un usuario, 
 			\begin{itemize}
 				\item Desplegar la información completa del perfil de un usuario junto con los botones necesarios para editarla.
-				\item Agregar/quitar una cuenta de Facebook al perfil.
+				\item Agregar/quitar una cuenta de Facebook \cite{facebookDocuWeb} al perfil.
 				\item Agregar/quitar casas de apuestas al usuario.
  				\item Desplegar información del historial de pagos del usuario.
 				\item Agregar/quitar casas de apuestas al usuario.
@@ -269,13 +269,13 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			\item \textbf{Amigos.}
 			\begin{itemize}
 				\item Desplegar una tabla de posiciones del usuario entre sus amigos respecto a las ganancias de cada uno de ellos. También muestra el listado con la información de sus amigos.
-				\item Agregar/quitar amigos de Facebook o por correo.
+				\item Agregar/quitar amigos de Facebook \cite{facebookDocuWeb} o por correo.
 				\item Buscar amigos en el sistema con su correo electrónico.
 			\end{itemize}
 			\item \textbf{Ayuda.}
 			\begin{itemize}
 				\item Desplegar la información completa del perfil de un usuario junto con los botones necesarios para editarla.
-				\item Agregar/quitar una cuenta de Facebook al perfil.
+				\item Agregar/quitar una cuenta de Facebook \cite{facebookDocuWeb} al perfil.
 				\item Agregar/quitar casas de apuestas al usuario.
  				\item Desplegar información del historial de pagos del usuario.
 				\item Agregar/quitar casas de apuestas al usuario.
@@ -285,7 +285,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\item Desplegar la página de inicio de sesión.
 				\item Iniciar la sesión del usuario con Facebook o a través de una combinación de correo y password.
 				\item Cerrar la sesión de un usuario.
- 				\item Crear un nuevo usuario desde cero o con Facebook login.
+ 				\item Crear un nuevo usuario desde cero o con Facebook \cite{facebookDocuWeb} login.
 			\end{itemize}
 			\item \textbf{Partido.}
 			\begin{itemize}
@@ -315,9 +315,11 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			
 		\end{itemize}
 	
-Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama <pre>auth();</pre> la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
+Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama auth(); la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
-En la siguiente sección de este documento, se retoma la función más interesante\footnote{Se considera más interesante una función que muestra recomendaciones de apuestas, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática de obtener recomendaciones que permitan al usuario apostar de manera estratégica con el fin de obtener ganancias, no el de proveer documentación para la replicación de este sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
+Todas las funciones listadas en este capítulo conforman en su totalidad el sistema del portal público de egobets.com. Las funciones descritas en el capítulo 3 se ponen a disposición del usuario a través de las interfaces ya definidas y le proporcionan la recomendación de apuestas acorde a su perfil de riesgo. De igual manera, el usuario puede actualizar todos los datos necesarios de su perfil para generar recomendaciones más acorde a sus preferencias.
+
+% En la siguiente sección de este documento, se retoma la función más interesante\footnote{Se considera más interesante una función que muestra recomendaciones de apuestas, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática de obtener recomendaciones que permitan al usuario apostar de manera estratégica con el fin de obtener ganancias, no el de proveer documentación para la replicación de este sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
 
 
 % \section{Servicio de asesoría de apuestas}

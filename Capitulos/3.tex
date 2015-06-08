@@ -22,7 +22,7 @@ Dixon y Coles (1997) \cite{dixon1997modelling} en su contribución, mencionan al
 	\item Se debe dar lugar a la ventaja observada que tienen los equipos al jugar en casa.
 	\item La medida más razonable de la habilidad de un equipo debe basarse en el desempeño de sus últimos juegos.
 	\item La habilidad de un equipo, por la naturaleza del futbol, se comprende como la composición de la habilidad de ataque (anotar goles) y la habilidad de defensa (no recibir goles).
-	\item Al presentar el desempeño de un equipo en sus recientes resultados, se deberá tomar en cuenta la habilidad de lo equipos contra los cuales ha jugado.
+	\item Al presentar el desempeño de un equipo en sus recientes resultados, se deberá tomar en cuenta la habilidad de los equipos contra los cuales ha jugado.
 \end{itemize}
 
 En su artículo \cite{dixon1997modelling}, consideran la doble Poisson con un parámetro de dependencia que se estima junto con los otros parámetros. Sugieren que la suposición de independencia entre los goles de los equipos, tiene cabida en los partidos con resultados: 0-0, 1-0, 0-1 y 1-1\footnote{Karlis y Ntzoufras (2003) \cite{karlis2003analysis} sugieren que la predicción de empates mejora si se considera un parámetro de dependencia (incluso aunque sea pequeño)}. Además, agregan al modelo una función que pondera los partidos con el fin de ``diluir'' los efectos de los partidos más lejanos. 
@@ -33,7 +33,7 @@ Finalmente, Koopman y Lit (2013) \cite{koopman2013dynamic} retoman todas estas i
 \subsection{Modelo de Poisson bivariada}
 \label{subsec:bivariate-poisson}
 
-Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $I\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el numero no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el numero de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con función de densidad de probabilidad:
+Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $i\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el número no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el número de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con función de densidad de probabilidad:
  
 \[p(X,Y;\lambda_x,\lambda_y,\gamma) = e^{(-\lambda_x-\lambda_y-\gamma)}\frac{\lambda^X_x}{X!}\frac{\lambda^Y_y}{Y!}\sum_{k=0}^{min(X,Y)}\left(\frac{X}{k}\right)\left(\frac{Y}{k}\right)k!\left(\frac{\gamma}{\lambda_x\lambda_y}\right)^k \]
 
@@ -44,11 +44,12 @@ La notación corta se describe como\footnote{La definición que se presenta en e
 Su valor esperado, varianza y covarianza son los siguientes:
 
 
-$E(X) = Var(X) = \lambda_x + \gamma$, $E(X) = Var(Y) = \lambda_y + \gamma$, $Cov(X,Y) = \gamma$
+\[E(X) = \mathrm{Var}(X) = \lambda_x + \gamma \text{, } E(X) = \mathrm{Var}(Y) = \lambda_y + \gamma\]
+\[\mathrm{Cov}(X,Y) = \gamma\]
 
 
 y el coeficiente de correlación entre $X$ y $Y$ está dado por:
-\[\rho = \frac{\lambda}{\sqrt{(\lambda_x+\gamma)(\lambda_y+\gamma)}}\]
+\[\rho = \frac{\gamma}{\sqrt{(\lambda_x+\gamma)(\lambda_y+\gamma)}}\]
 
 La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invariancia de $\gamma$ cuando $(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)$.
 
@@ -89,7 +90,7 @@ Nótese que dado que
 se tiene que la cantidad
 \[G_n(f) = \log{\left(\frac{X_n}{X_0}\right)^{1/n}} = \frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)\]
 mide la tasa de incremento exponencial por lanzamiento. Kelly sugiere maximizar el valor esperado del coeficiente de la tasa de crecimiento $g(f)$ donde
-\[g(f) = E\left(\log\left(\frac{X_n}{X_0}\right)^{1/n}\right) = E\left(){\frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)}\right)\]
+\[g(f) = E\left(\log\left(\frac{X_n}{X_0}\right)^{1/n}\right) = E\left({\frac{S}{n}\log(1+f) + \frac{F}{n}\log(1-f)}\right)\]
 \[=p\log(1+f)+q\log(1-f)\]
 
 Nótese que $g(f) = (1/n)E(\log{X_n})-(1/n)\log{X_0}$, así que para $n$ fijo, maximizar $g(f)$ es lo mismo que maximizar $E \log(X_n)$. Véase que:
@@ -394,7 +395,7 @@ Determinar el nivel de reservas es un algoritmo que depende del historial de gan
 Defínase $j$,$k$ como la cantidad de partidos a apostar y el número de apuestas a tomar, respectivamente.
 En este pasó bastará con calcular $j$. Sin embargo, es importante notar que hay veces en las que puede haber más de una apuesta sugerida para un mismo partido, i.e. $k>j$. En estos casos se deberá ser cuidadoso de no contar doble los partidos que ya tengan apuestas.
 
-	% Sea $k$ el numero de a
+	% Sea $k$ el número de a
 	% \lstset{language=Pascal}
 	% \begin{lstlisting}[frame=single]
 	% begin

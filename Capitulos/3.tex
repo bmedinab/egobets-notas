@@ -33,7 +33,7 @@ Finalmente, Koopman y Lit (2013) \cite{koopman2013dynamic} retoman todas estas i
 \subsection{Modelo de Poisson bivariada}
 \label{subsec:bivariate-poisson}
 
-Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $i\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el número no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el número de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con función de densidad de probabilidad:
+Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $i\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el número no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el número de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con la siguiente función de masa de probabilidad:
  
 \[p(X,Y;\lambda_x,\lambda_y,\gamma) = e^{(-\lambda_x-\lambda_y-\gamma)}\frac{\lambda^X_x}{X!}\frac{\lambda^Y_y}{Y!}\sum_{k=0}^{min(X,Y)}\left(\frac{X}{k}\right)\left(\frac{Y}{k}\right)k!\left(\frac{\gamma}{\lambda_x\lambda_y}\right)^k \]
 
@@ -51,7 +51,7 @@ Su valor esperado, varianza y covarianza son los siguientes:
 y el coeficiente de correlación entre $X$ y $Y$ está dado por:
 \[\rho = \frac{\gamma}{\sqrt{(\lambda_x+\gamma)(\lambda_y+\gamma)}}\]
 
-La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invariancia de $\gamma$ cuando $(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)$.
+La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invarianza de $\gamma$ cuando $(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)$.
 
 \subsection{Verificando el modelo}
 \label{subsec:verification}
@@ -188,7 +188,7 @@ Browne \cite{browne2000can} llama al criterio de Kelly \cite{kelly1956new} como 
  \begin{enumerate}
  	\item \textbf{Determinación de apuestas redituables.} De todas las apuestas de las cinco ligas que haya en la jornada a recomendar, se escogen únicamente aquellas que sean redituables a largo plazo. Independientemente del nivel de riesgo de cada cliente, se generarán recomendaciones únicamente de apuestas que, al analizarlas, tengan ganancias esperadas.
  	\item \textbf{Selección de apuestas de acuerdo al riesgo del cliente.} Las estimaciones de cada partido tienen un intervalo de confianza. Con base en este intervalo y el perfil de riesgo del usuario se seleccionan las apuestas.
- 	\item \textbf{Cálculo de la proporción del dinero a invertir por apuesta.} Al conocer la selección de las apuestas, se calcula la proporción de dinero a invertir para cada apuesta, este proceso sigue siendo dependiente de la confianza de la estimación del partido y de la adversidad al riesgo del cliente.
+ 	\item \textbf{Cálculo de la proporción del dinero a invertir por apuesta.} Al conocer la selección de las apuestas, se calcula la proporción de dinero a invertir para cada apuesta, este proceso sigue siendo dependiente de la confianza de la estimación del partido y de la aversión al riesgo del cliente.
  	\item \textbf{Determinación del nivel de reservas.} En este paso se cuenta con un conjunto seleccionado de apuestas y la proporción de dinero que se debe invertir para cada una de ellas. Acorde a su encuesta, se calcula el nivel óptimo de reservas que le permitan al cliente seguir apostando a pesar de que tenga una mala jornada y pierda todas las apuestas.
  	\item \textbf{Recomendación.} Todos estos elementos constituyen en su totalidad la recomendación de la semana que se presenta en el portal al cliente.
  \end{enumerate}
@@ -245,7 +245,7 @@ Parámetro $\alpha$ mayor a uno. Es una familia de funciones muy conservadora ya
 		Parámetro $\alpha$ entre cero y uno. Esta familia es la más conservadora de la lista, busca tener las menores pérdidas posibles y protege las inversiones cada semana.
 \end{enumerate}
 
-Estas seis funciones son las que utiliza Egobets para modelar la adversidad al riesgo de sus clientes. Cuando ellos llenan la encuesta del perfil, realmente están seleccionando una de estas funciones.
+Estas seis funciones son las que utiliza Egobets para modelar la aversión al riesgo de sus clientes. Cuando ellos llenan la encuesta del perfil, realmente están seleccionando una de estas funciones.
 
 
 \subsection{Paso 1 - Determinación de apuestas redituables}
@@ -483,7 +483,7 @@ En este pasó bastará con calcular $j$. Sin embargo, es importante notar que ha
 		\item Se calcula la variable auxiliar $proxy = 0.2925 + 1.3772(1.1486) -1.127(0.3) - 0.9975(0.74) = 0.81$
 		
 		\item La cantidad a apostar es entonces es igual a $c_A = \frac{2(0.81)}{15} = 0.108$
-		Por lo tanto, con esta adversidad al riesgo y con base en el portafolio de apuestas de la tabla~\ref{proporcion}.
+		Por lo tanto, con esta aversión al riesgo y con base en el portafolio de apuestas de la tabla~\ref{proporcion}.
 		
 		\textbf{El nivel de reserva para esta recomendación es del} $\mathbf{89.2\%}$.
 	\end{enumerate}

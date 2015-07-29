@@ -1,22 +1,30 @@
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/}}
 
-\chapter{Las matemáticas detrás de Egobets.com}
+\chapter{Sistematización de las apuestas}
 \label{chap:mate}
 
-En este capítulo se presentan, sin entrar al detalle técnico, los resultados comprobables de las teorías que proporcionan las probabilidades de los resultados de los partidos y las predicciones de sus resultados. De igual manera se destaca la importancia de un sistema de reservas para optimizar las tasas de crecimiento de la cantidad de dinero dedicada a las apuestas. Finalmente se retoman estos conceptos y se detalla el algoritmo que utiliza Egobets para la generación de las recomendaciones de apuestas.
+% En este capítulo se presentan, sin entrar al detalle técnico, los resultados comprobables de las teorías que proporcionan las probabilidades de los resultados de los partidos y las predicciones de sus resultados. De igual manera se destaca la importancia de un sistema de reservas para optimizar las tasas de crecimiento de la cantidad de dinero dedicada a las apuestas. Finalmente se retoman estos conceptos y se detalla el algoritmo que utiliza Egobets para la generación de las recomendaciones de apuestas.
+
+En este apartado se detalla el método utilizado por el sistema de Egobets para proveer a sus usuarios de una asesoría de apuestas personalizada. En la primera parte del capítulo, a modo de introducción, se discutirá si es posible modelar de manera matemática un partido de futbol con la finalidad de predecir su resultado. En esta misma subsección se explica como el afamado criterio de Kelly introduce la noción de un sistema de reservas y busca optimizar la ganancia esperada en función de restringir fracción de dinero a invertir en cada partido.
+
+\section{Antecendetes y evidencia a favor}
+\label{sec:evidencia}
+
+Esta tesis no busca predecir los resultados de los partidos de futbol, sin embargo es importante mostrar que esto se puede lograr y que más de algún autor ha encontrado maneras teóricas eficientes de hacerlo. De igual manera, se explica (sin entrar a detalle) uno de los modelos más utilizados en este ámbito: la Poisson bivariada. Esto ayuda al lector a comprender cuales son las variables que parecen afectar más los resultados y le permite tener una mejor noción de lo que puede ser una buena apuesta.
+
+Después de exhibir el modelo, se presentan dos ejemplos concretos de estrategias de apuestas: la estrategia simple (e intuitiva) y la estrategia de Kelly. En particular, Kelly le da al problema un paradigma financiero y abre el camino a buscar apuestas que no arriesguen todo el capital del jugador. Esta idea será retomada en la siguiente sección para el sistema de reservas.
+
+\subsection{Modelar un partido de futbol}
+\label{subsec:modelo}
 
 
+% El tema central de esta tesis no es la predicción de resultados de futbol principal si no la generación automatizada de recomendaciones de apuestas, por este motivo y para evitar cuestiones de plagios del modelo predictivo de Egobets, en este apartado no se entrarán en los detalles de la implementación, solamente se mostrarán las teorías los modelos matemáticos prácticos que permiten predecir los resultados de los partidos de futbol sobre los que se basa Egobets. Los resultados de los estudios analizados en esta sección son suficientes para evidenciar la existencia de un conjunto de probabilidades y resultados estimados que permitan desarrollar una estrategia de apuestas capaz de generar un valor esperado positivo.
 
-\section{Modelo de un partido de futbol}
-\label{sec:modelo}
+Maher en 1982 \cite{maher1982modelling} describió la intuición detrás del modelado de un partido de futbol. Los goles anotados por un equipo en un partido pudieran ser modelados por una variable Poisson, la posesión es un aspecto importante del futbol ya que cada vez que un equipo tiene la pelota tiene la oportunidad de atacar y anotar. La probabilidad de que un ataque resulte en gol es pequeña, pero son muchas las veces que el equipo tiene la posesión durante el encuentro. Si la probabilidad de anotar en cada ataque y los ataques son independientes, entonces se puede afirmar que el número de goles se decribe como una Binomial, por lo que en estas circunstancias la aproximación por una Poisson funciona correctamente.
 
-El tema central de esta tesis no es la predicción de resultados de futbol principal si no la generación automatizada de recomendaciones de apuestas, por este motivo y para evitar cuestiones de plagios del modelo predictivo de Egobets, en este apartado no se entrarán en los detalles de la implementación, solamente se mostrarán las teorías los modelos matemáticos prácticos que permiten predecir los resultados de los partidos de futbol sobre los que se basa Egobets. Los resultados de los estudios analizados en esta sección son suficientes para evidenciar la existencia de un conjunto de probabilidades y resultados estimados que permitan desarrollar una estrategia de apuestas capaz de generar un valor esperado positivo.
+Más aún, el mismo Maher (1982) \cite{maher1982modelling} al verificar la precisión de su modelo descubrió que si bien el modelo binomial se ajustaba razonablemente bien a los datos\footnote{En su artículo, Maher (1982) \cite{maher1982modelling} cuenta que, al comparar doce conjuntos de datos (valores observados y esperados) mediante el valor esperado de una $\chi^2$, diecinueve de los veinticuatro casos dan un resultado no significante a un $5\%$.}, pero encontró que en los valores observados había una cantidad mayor de ocasiones en las que no habían goles durante el partido, o que simplemente la cantidad de goles anotada era muchísimo mayor a la predicha; esta observación lo llevó el ajuste del modelo considerando un coeficiente de correlación entre la cantidad de goles anotados entre ambos equipos.
 
-Maher en 1982 \cite{maher1982modelling} describió la intuición detrás del modelado de un partido de futbol. Los goles anotados por un equipo en un partido pudieran ser modelados por una variable Poisson, la posesión es un aspecto importante del futbol ya que cada vez que un equipo tiene la pelota tiene la oportunidad de atacar y anotar. La probabilidad de que un ataque resulte en gol es pequeña, pero son muchas las veces que el equipo tiene la posesión durante el encuentro. Si la probabilidad de anotar en cada ataque y los ataques son independientes, el número de goles sería Binomial en estas circunstancias la aproximación por una Poisson funciona correctamente.
-
-Más aún, Maher (1982) \cite{maher1982modelling} al verificar la precisión de su modelo descubrió que si bien el modelo binomial se ajustaba razonablemente bien a los datos\footnote{En su artículo, Maher (1982) \cite{maher1982modelling} cuenta que, al comparar doce conjuntos de datos (valores observados y esperados) mediante el valor esperado de una $\chi^2$, diecinueve de los veinticuatro casos dan un resultado no significante a un $5\%$.}, pero encontró que en los valores observados había una cantidad mayor de ocasiones en las que no habían goles durante el partido, o que simplemente la cantidad de goles anotada era muchísimo mayor a la predicha; esta observación lo llevó el ajuste del modelo considerando un coeficiente de correlación entre la cantidad de goles anotados entre ambos equipos.
-
-Dixon y Coles (1997) \cite{dixon1997modelling} en su contribución, mencionan algunas propiedades deseables en un modelo de futbol:
+Tiempo después, Dixon y Coles (1997) \cite{dixon1997modelling} en su contribución, mencionan algunas propiedades deseables en un modelo de futbol:
 \begin{itemize}
 	\item Se deben considerar las habilidades de ambos equipos en un partido.
 	\item Se debe dar lugar a la ventaja observada que tienen los equipos al jugar en casa.
@@ -30,8 +38,8 @@ En su artículo \cite{dixon1997modelling}, consideran la doble Poisson con un pa
 Después, Rue y Salvensen (2000) \cite{rue2000prediction} retoman el análisis de Dixon y Coles \cite{dixon1997modelling} y lo adoptan en un modelo dinámico lineal generalizado y adoptan un procedimiento de estimación Bayesiano para estudiar las propiedades de los equipos sobre un tiempo variable\footnote{En su análisis empírico truncan la cantidad de goles a no más de cinco, consideran que esos marcadores no proveen mayor información acerca del ataque y defensa de un equipo.}. De igual manera, Crowder, Dixon, Ledford, and Robinson (2002) \cite{crowder2002dynamic} representan el modelo de Dixon y Coles \cite{dixon1997modelling} como un espacio de estados no Gaussiano con fuerzas de ataque y defensa variables en el tiempo, la estimación se realiza utilizando métodos de aproximación por su alto costo computacional. Adicionalmente, Ord, Fernandes, and Harvey (1993) \cite{ord1993time} presentan una extensión multivariada de un modelo de daros de conteo dinámico Bayesiano para el análisis y predicción del número de do goles marcados por algún equipo.
 
 Finalmente, Koopman y Lit (2013) \cite{koopman2013dynamic} retoman todas estas ideas y presentan un modelo Poisson bivariado con ataque y defensa como variables estocásticas en función del tiempo. 
-\subsection{Modelo de Poisson bivariada}
-\label{subsec:bivariate-poisson}
+\subsubsection{Modelo de Poisson bivariada}
+\label{subsubsec:bivariate-poisson}
 
 Koopman y Lit (2013) \cite{koopman2013dynamic} dicen que el resultado de un partido entre el equipo local $i$ y el visitante $j$ en la semana $t$ es tomado del par de cuentas $(X,Y) = (X_{it},Y_{jt})$, para $i\neq j = 1, ...,J$ y $t=1,...,n$ donde $n$ es el número de semanas disponibles en el conjunto de datos. La primera cuenta $X_{it}$ es el número no negativo de goles anotados por el equipo local $i$ y la segunda cuenta $Y_{jt}$ es el número de goles anotados por el equipo visitante $j$, en la semana $t$. Cada par de cuentas $(X,Y)$ se genera de una distribución Poisson bivariada con la siguiente función de masa de probabilidad:
  
@@ -53,8 +61,8 @@ y el coeficiente de correlación entre $X$ y $Y$ está dado por:
 
 La diferencia entre las cuentas de $X$ y $Y$ determinan si el partido es ganado, perdido o empatado para el equipo en casa. La variable $X-Y$ tiene una distribución de probabilidad discreta conocida como: Skellman \cite{skellam1946frequency}. Una propiedad curiosa de la distribución Skellman $X-Y$ es la invarianza de $\gamma$ cuando $(X,Y) \sim BP(\lambda_x,\lambda_y,\gamma)$.
 
-\subsection{Verificando el modelo}
-\label{subsec:verification}
+\subsubsection{Verificando el modelo}
+\label{subsubsec:verification}
 
 El modelo descrito es puesto a prueba en el artículo de Koopman y Lit (2013) \cite{koopman2013dynamic}, donde para la liga inglesa Premier toma una muestra de la temporada 2003/03 a 2009/10 y su pronóstico logra mejorar la precisión del modelo de Maher \cite{maher1982modelling} que ya se había discutido. Esta implicación reafirma que los ajustes aplicados como la dependencia entre las cuentas obtenidas por cada equipo, así como los coeficientes variables en función del tiempo describen de mejor manera el fenómeno y presentan mejor pronósticos que los anteriores.
 
@@ -64,8 +72,8 @@ La primera propuesta, suponiendo que la ganancia del bookie es del $7\/$, implic
 
 Ejemplificando, si se toma $\tau = 0.40$ y se toman 50 apuestas en dos temporadas y el retorno se espera justo un poco menos de $0.5$ en promedio. Cuando se juega con una unidad para cada 50 apuestas, se espera recibir 75 unidades del bookie de regreso, es decir 25 unidades de ganancia, un $50\%$ de retorno en promedio. Como el retorno esperado negativo no da un intervalo de confianza del $90\%$ no se esperan pérdidas con una estrategia de apuestas para $\tau = 0.4$.
 
-\section{Reserva un poco para después}
-\label{sec:reserva}
+\subsection{Estrategias de apuestas}
+\label{subsec:estrategias}
 
 En esta sección se muestra que los estudios propuestos por Vancura \cite{vancura2000finding} sugieren el uso de un sistema de reservas en la estrategia de apuestas. Al garantizar una cantidad de dinero disponible para las siguientes jornadas, se permite al usuario seguir apostando durante todas las jornadas garantizando su oportunidad de generar ganancias o recuperar pérdidas. También se describe el criterio de Kelly \cite{kelly1956new} y su importancia como guía en la optimización del valor esperado de un conjunto de apuestas independientes a través del tiempo.
 	
@@ -79,7 +87,7 @@ Sea $T_k = 1$, si se gana el $k$-ésimo lanzamiento y $T_k = -1$ si se pierde. E
 La intuición sugiere que como el juego tiene un valor esperado positivo ya que $p - q > 0$, entonces para maximizar $E(X_n)$ se quisiera maximizar $E(B_k)$ en cada lanzamiento, además para maximizar la ganancia esperada se debería apostar todo el dinero en cada lanzamiento. Sin embargo, la probabilidad de perderlo todo es equivalente a $1 - p^n$ y como $p < 1$, $\lim_n[1 - p^n] = 1$ es decir, la ruina es segura. Por lo que, la intrépida decisión de apostar para maximizar la ganancia esperada es indeseable.
 
 De la misma manera, si se juega para minimizar la probabilidad de llegar a la ruina debe de recordarse que la fórmula de la ruina del jugador muestra que se minimiza la ruina jugando la cantidad mínima posible en cada apuesta, .lo que a su vez minimiza la ganancia esperada. Al fin y al cabo ya se sabe como termina esta estrategia, por lo que la apuesta tímida no es la respuesta.
-\subsection{Optimización asintótica, el criterio de Kelly}
+\subsubsection{Optimización asintótica, el criterio de Kelly}
 El criterio de Kelly \cite{kelly1956new} propone una estrategia de optimización asintótica para este problema. Supóngase que se apuesta la cantidad $B_i = fX_i-1$, con $0 \leqslant f \leqslant 1$. Sean $S$ y $F$ la cantidad de éxitos y fallos (respectivamente), entonces se tiene que en $n$ lanzamientos el capitán del jugador sería el siguiente:
 \[X_n = X_0(1+f)^S(1-f)^F\] con $S + F = n$ y $0<f<1$, $p(X_n \leqslant 0) = 0 $. 
 Ahora también, considérese que el jugador está arruinado cuando la cantidad de dinero después de la apuesta $n$ del jugador es menor un entero positivo pequeño, i.e. $X_n < \varepsilon$.
@@ -143,8 +151,8 @@ Ahora, si se resuelve numéricamente la ecuación $g(f) = 0.53\log(1+f)+0.47\log
 En cuanto a la tasa de crecimiento, se tienen que $g(f*)= 0.001801$ por lo que después de $n$ apuestas exitosas, su capital crecerá $0.001801n$ veces más dinero que con el que comenzó. De aquí se puede calcular el tiempo esperado de doblar la cantidad de dinero del capital, se tiene que $0.001801n=\log2$. Es decir que después de $n=385$ ensayos se estará doblando la cuenta del jugador.
 % paragraph ejemplificando (end)
 
-\subsection{Aplicando Kelly a las apuestas de futbol} % (fold)
-\label{subsection:aplicando_kelly_a_las_apuestas_de_futbol}
+\subsubsection{Aplicando Kelly a las apuestas de futbol} % (fold)
+\label{subsubsection:aplicando_kelly_a_las_apuestas_de_futbol}
 
 El criterio de Kelly se puede extender a las apuestas de futbol. Retómese la situación original, pero ahora considerando que el jugador puede ganar $b$ pesos por cada peso invertido en la apuesta. Además, considérese que el jugador seleccionará sólo apuestas favorables, es decir que sólo apostará cuando la probabilidad de ganar $p>0$ sea ventajosa, i.e. $pb - q > 0$.
 De la misma manera se maximiza la siguiente función\footnote{Esta optimización y la fórmula, que a la fecha es tan usada por todos los sitios de apuestas, tuvo su aparición en  Thorp \cite{thorp1969optimal}, aquí mismo se puede encontrar su demostración formal}:

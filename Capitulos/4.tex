@@ -12,7 +12,7 @@ Egobets.com proporciona al cliente los servicios de asesoría de apuestas person
 
 \section{Diseño y arquitectura}
 \label{sec:design}
-Egobets.com es un sistema con arquitectura cliente servidor montado sobre una máquina virtual con sistema operativo Linux en la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño Modelo Vista Controlador junto con su respectiva representación gráfica de base de datos.
+Egobets.com es un sistema con arquitectura cliente-servidor montado sobre una máquina virtual con sistema operativo Ubuntu Linux en la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño \textit{Modelo Vista Controlador} junto con su respectiva representación gráfica de base de datos.
 \subsection{Ventajas de correr Egobets en la nube}
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -30,12 +30,11 @@ Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutié
 
 	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
 
-
 	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
 
 	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
 
-	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza, ni tampoco por la actualización de sistemas operativos o instalación de parches de seguridad, ya que es obligación del proveedor del servicio realizar este tipo de actualizaciones. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos a que el servidor se auto-escale.
+	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos a que la infraestructura se auto-escale.
 
 Es por estas razones que Egobets funciona tan bien en el paradigma del computo en la nube.
 
@@ -45,22 +44,23 @@ Es por estas razones que Egobets funciona tan bien en el paradigma del computo e
 
 Este acrónimo representa un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que es una de las configuraciones de servidoes más populares en el mundo.} LNNP viene de:
 \begin{itemize}
-	\item \textbf{L}inux, el sistema operativo.
+	\item \textbf{L}inux, el kernel del sistema operativo.
 	\item \textbf{N}ginx, el servidor Web.
 	\item \textbf{N}oSQL, la Base de datos.
 	\item \textbf{P}HP, el lenguaje de programación.
 \end{itemize}
 
-Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado corre bajo la ``Licencia Pública General de GNU'', esta licencia de uso permite a los programadores que utilizan este software, ser capaces de ver el código fuente y en muchos casos les permiten modificarlo y compartirlo \cite{lozano2008software}.
+Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado están disponibles bajo licencias de código abierto, las cuales otorgan a los programadores que utilizan este software, la capacidad de ver el código fuente y de ser necesario modificarlo y compartirlo libremente \cite{lozano2008software}.
 
-La máquina virtual de AWS corre Ubuntu LTS 12.04, una versión del sistema operativo creado por Linux Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
+La máquina virtual de AWS tiene instalado Ubuntu LTS 12.04, que corre el kernel creado por Linux Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
 		\begin{itemize}
- 			\item El costo de licencia es gratuito y su uso no tiene algún otro costo monetario.
+ 			\item El costo de licencia es nulo y su uso no tiene algún otro costo monetario.
  			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
- 			\item Tener las aplicaciones en sus últimas versiones, bien configuradas y aplicar los parches de manera inteligente, garantizan que el servidor se encuentre seguro y sea funcional.
+ 			\item Tener las aplicaciones en versiones recientes y probadas, bien configuradas y aplicar los parches de manera inteligente, contribuyen a que el servidor se encuentre seguro y sea funcional.
+ 			\item Cuenta con una comunidad de programadores y usuarios que continuamente mejoran el sistema.
  		\end{itemize}
-		
-Encima del sistema operativo, se tiene \textbf{Nginx}. Un servidor Web de alto performance creado por Igor Sysoev para el sitio \emph{www.rambler.ru}, el segundo sitio más grande de Rusia \cite{reese2008nginx}. Nginx es capaz de servir más peticiones por segundo y con menos recursos que sus competidores, gracias a su arquitectura. Grosso modo, consiste en un proceso maestro que delega a sus procesos \emph{trabajadores} toda al carga de trabajo. Cada trabajador maneja varias solicitudes de manera asíncrona utilizando una funcionalidad especial del kernel de Linux\footnote{Se puede leer más al respecto de como funciona internamente Nginx en Zhu \cite{zhu2010nginx}}. Esto permite a Nginx, manejar un gran número de solicitudes simultáneas  con muy poca sobrecarga.
+
+Encima del sistema operativo, se tiene \textbf{Nginx}: un servidor web de alto performance creado por Igor Sysoev para el sitio \emph{www.rambler.ru}, el segundo sitio más grande de Rusia \cite{reese2008nginx}. Nginx es capaz de servir más peticiones por segundo con menos recursos que las alternativas, gracias a su arquitectura. Grosso modo, consiste en un proceso maestro que delega a sus procesos \emph{trabajadores} toda la carga de trabajo. Cada trabajador maneja varias solicitudes de manera asíncrona utilizando funcionalidades especiales, en caso de Egobets, del kernel de Linux\footnote{Se puede leer más al respecto de como funciona internamente Nginx en Zhu \cite{zhu2010nginx}}. Esto permite a Nginx, manejar un gran número de solicitudes simultáneas con muy poca sobrecarga.
 
 A un lado, se tiene la base de datos No-SQL. A \textbf{MongoDB}, derivado de la palabra \emph{humongous}, Membrey \cite{membrey2010definitive} le describe como una nueva especie de base de datos carente de conceptos de tablas, esquemas, SQL, o renglones. No tiene transacciones, joins, llaves externas, o cualquier otra de las características que suelen causar dolores de cabeza matutinos. En pocas palabras, MongoDB es una base de datos orientada a documentos, optimizada para ser veloz, escalable y fácil de integrar con cualquier lenguaje.
 
@@ -95,9 +95,9 @@ El portal público de Egobets.com está desarrollado en una de las arquitecturas
 	     \caption{Representación UML de las colecciones de la base de datos de Egobets}\label{Fig:db-egobets}
 	   \end{minipage}
 	\end{figure}
-	
-CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código. 
-	
+
+CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código.
+
 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
 	\begin{itemize}
 		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
@@ -107,7 +107,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estándares convenidos en internet.
 
 	\end{itemize}
-	
+
 
 	Por la naturaleza de la arquitectura MVC es necesario conocer la definición de la estructura de datos para después poder describir en mayor detalle los elementos del sistema. Ahora, hay que recordar que Egobets no utiliza una base de datos relacional por lo que se presenta un diagrama de clases para representar las colecciones que se tienen en la base de datos de Mongo DB.
 	\textbf{Definición de la base de datos}
@@ -122,23 +122,23 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\item Resultado. Aquí se guarda la cantidad de dinero que obtiene o pierde un usuario en cada jornada.
 	\end{itemize}
 	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
-	
-	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartado se describirán  los componentes de Egobets en estas tres dimensiones.
-	
 
-		 \subsection{Modelos} 
-		
+	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartado se describirán  los componentes de Egobets en estas tres dimensiones.
+
+
+		 \subsection{Modelos}
+
 		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
 		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
-		
+
 		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más fundamental es el escribir operaciones ``ABCD''. Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
-		
+
 		En concreto, para el portal público de Egobets las siguientes son las funciones utilizadas en los modelos:
 		\begin{itemize}
 			\item \emph{Usuarios}
 				\begin{itemize}
 					\item Agregar - A través del modelo, se permite crear un nuevo \emph{usuario} de la plataforma.
-					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario. 
+					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario.
 					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene en Facebook \cite{facebookDocuWeb} en el sistema y las casas de apuestas a las que está suscrito en Egobets.
 				\end{itemize}
 			\item \emph{Resultados}
@@ -161,26 +161,26 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 					\item Desplegar - Se muestran todos los \emph{partidos} registrados en el sistema y se pueden filtrar por: el equipo que juega en ellos, el identificador del partido o la liga a la que pertenecen. También este modelo permite obtener las estrellas de cada partido, estas estrellas denotan la confiabilidad que tiene la predicción del resultado de ese partido.
 				\end{itemize}
 		\end{itemize}
-	
+
 		\subsection{Vistas}
-		
+
 		\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/vistas/}}
-		
+
 		Las vistas reflejan el estado del modelo y corresponden a las interfaces que se le presentan al usuario para el manejo de la información. Por lo general, pueden existir múltiples vistas sobre un mismo modelo, por ejemplo puede existir una vista que despliegue un listado de  partidos por liga y al mismo tiempo existir una vista que muestre una gráfica con la cantidad de goles anotados por los equipos locales a través del tiempo. Estas vistas utilizan los mismos modelos, pero la información que despliega es completamente distinta y tiene fines diferentes.
-		
+
 		También una vista puede implementar varios modelos, es decir, mostrar información compleja compuesta por varios elementos de la base de datos. Un ejemplo sería una vista que presente los datos de un partido junto con las estadísticas generales de cada equipo y una gráfica representativa de la cantidad de dinero gastada por los usuarios en las distintas apuestas del partido.
-		
+
 		Las vistas que se tienen en el sistema se pueden enumerar de la siguiente manera:
 		\begin{itemize}
 			\item \emph{\textbf{Vistas relativas al perfil del usuario}}
-			
+
 			\begin{figure}[!htb]\centering
 			   \begin {minipage}{0.7\textwidth}
 			     \includegraphics[width=\linewidth]{encuesta}
 			     \caption{La encuesta define el perfil de riesgo del usuario}\label{Fig:encuesta}
 			   \end{minipage}
 			\end{figure}
-			
+
 			En este conjunto de vistas se le permite al usuario gestionar toda la información que tiene que ver con su perfil. Se tienen desde las pantallas para crear una cuenta, hasta las pantallas para editar la encuesta que define las recomendaciones que el usuario recibe.
 			A continuación se enlistan estas vistas:
 			\begin{itemize}
@@ -191,39 +191,39 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\item Mis Amigos. A través de esta pantalla se pueden ingresar los correos electrónicos de otras personas que tienen cuenta en Egobets para después comparar resultados de sus ganancias.
 				\item Encuesta. Como ya se mencionó el riesgo del usuario depende de esta pantalla. El usuario puede ajustarla cada vez que guste cambiar su estrategia de apuesta. Ver imagen~\ref{Fig:encuesta}
 
-				
-			\end{itemize}
-			
-			
-			\item \emph{\textbf{Vistas Estáticas}}
-			
 
-			
+			\end{itemize}
+
+
+			\item \emph{\textbf{Vistas Estáticas}}
+
+
+
 			Estas vistas no necesitan ser actualizadas casi nunca, es decir, su contenido es estático. Las páginas estáticas son:
 			\begin{itemize}
 				\item FAQ. Preguntas frecuentes que ayudan al usuario a comprender más a fondo el sistema (Ver imagen~\ref{Fig:faq}).
-				
+
 				\begin{figure}[!htb]\centering
 				   \begin {minipage}{0.75\textwidth}
 				     \includegraphics[width=\linewidth]{faq}
 				     \caption{La encuesta define el perfil de riesgo del usuario}\label{Fig:faq}
 				   \end{minipage}
 				\end{figure}
-				
+
 				\item Home Page. La página que recibe a todos los que ingresan al sitio y presenta una bienvenida a los posibles clientes junto con una explicación de lo que es Egobets.com. Además de que contiene el aviso legal.
 				\item Términos y condiciones. Presenta el contrato de uso al que se comprometen los clientes al utilizar el sistema.
 			\end{itemize}
-			
+
 
 			\item \emph{\textbf{Vistas relativas a la operación del sistema}}
-			
+
 
 			En estas vistas se presenta la información de todas las ligas, equipos, partidos y las recomendaciones de apuestas.
-			
+
 			\begin{itemize}
-				
+
 				\item Tablero. La recomendación de apuestas de esta jornada es mostrada al usuario. Se le indica al usuario la cantidad de dinero en porcentaje a apostar en cada una de las apuestas recomendadas y los mejores momios para ese partido por casa de apuestas (Ver figura~\ref{fig:dashboard}).
-				
+
 				\begin{figure}[!htb]\centering
 				   \begin {minipage}{0.9\textwidth}
 				     \includegraphics[width=\linewidth]{dashboard}
@@ -231,36 +231,36 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				   \end{minipage}
 				\end{figure}
 				\item Mis Equipos. Una tabla con los equipos preferidos del usuario junto con sus variables de ataque y de defensa.
-				\item Tabla de posiciones de la liga. Muestra los nombres de los equipos de la liga seleccionada, variables de ataque y defensa calculadas por el sistema  y el cambio en la tabla de posiciones que han tenido. Se permite al usuario agregar a sus favoritos cualquier equipo para tener un acceso directo a ellos.  
+				\item Tabla de posiciones de la liga. Muestra los nombres de los equipos de la liga seleccionada, variables de ataque y defensa calculadas por el sistema  y el cambio en la tabla de posiciones que han tenido. Se permite al usuario agregar a sus favoritos cualquier equipo para tener un acceso directo a ellos.
 				\item Detalle del Equipo. Se presenta el nombre del equipo, su posición en la liga y las estadísticas de ataque y defensa cuando es local o visitante. También se muestran el listado de los partidos próximos que tiene el equipo.
 				\item Partidos de la jornada. Consiste en una tabla con los partidos próximos ordenados por fecha del juego. La tabla incluye los equipos participantes, quien es el favorito, el marcador esperado por el sistema y la fecha del juego.
-				\item Detalle del partido. Se tienen los equipos que participan, el resultado más probable (junto con su confiabilidad en estrellas), el marcador esperado, la posesión del balón esperada y las estadísticas de ataque y defensa. Estas estadísticas se muestran divididas en las tres categorías. Medio centro, delanteros y definición, para el ataque. Y medio centro, defensas y portero, para la defensa. Cada una de estas variables despliega al ser presionada un histograma con la magnitud esperada de esa variable durante los noventa minutos del partido en intervalos de quince minutos. (Ver imagen~\ref{Fig:partido}). 
+				\item Detalle del partido. Se tienen los equipos que participan, el resultado más probable (junto con su confiabilidad en estrellas), el marcador esperado, la posesión del balón esperada y las estadísticas de ataque y defensa. Estas estadísticas se muestran divididas en las tres categorías. Medio centro, delanteros y definición, para el ataque. Y medio centro, defensas y portero, para la defensa. Cada una de estas variables despliega al ser presionada un histograma con la magnitud esperada de esa variable durante los noventa minutos del partido en intervalos de quince minutos. (Ver imagen~\ref{Fig:partido}).
 				\begin{figure}[!htb]\centering
 				   \begin {minipage}{0.8\textwidth}
 				     \includegraphics[width=\linewidth]{partido}
 				     \caption{Partido con recomendación y estadísticas de los equipos}\label{Fig:partido}
 				   \end{minipage}
 				\end{figure}
-				
+
 				\item Partidos anteriores. Finalmente esta tabla muestra un comparativo de todos los partidos predichos y su resultado real. Se remarcan los aciertos del sistema y puede ser filtrada por liga.
-				
+
 			\end{itemize}
-			
+
 		\end{itemize}
-		
-		
+
+
 		Todas la vistas descritas en los párrafos anteriores consisten en archivos HTML5\footnote{HTML viene de HyperText Markup Language, este lenguaje de marcado llegó a la versión 5 utilizada hoy en día el 24 de Octubre del 2014 en el consorcio de la World Wide Web (Básicamente el consorcio de Internet). Para más información leer What is HTML5 de MacLauhlin \cite{mclaughlin2011html5}.} creados dinámicamente en función del código PHP de las vistas. Cada una de estas pantallas cuentan con un archivo CSS\footnote{Cascade Style Sheet, } que aplica el estilo y el diseño al lenguaje de marcado HTML. A su vez, se utiliza Javascript para las animaciones, validaciones y cambios en las propiedades tanto del CSS como del HTML; un ejemplo claro del uso de Javascript es la animación de los gráficos de las estadísticas de los equipos.
-		
+
 		\subsection{Controladores}
 		Corresponden a la manipulación de la información a través de sus diversas presentaciones, ofrecen opciones para cambiar el estado del modelo, son los encargados de consultar los modelos y proveer a las vistas los datos dinámicos a mostrar. Básicamente, los controladores implementan el comportamiento o el control de la lógica del sistema, especificando cuándo y como el sistema cambia de estado. Este comportamiento requiere la interacción de múltiples modelos y vistas.
 		A continuación se muestra un listado de los controladores del sistema de Egobets junto con las funciones específicas que puede realizar cada uno de ellos.:
 		\begin{itemize}
-			\item \textbf{Usuario.} 
+			\item \textbf{Usuario.}
 			\begin{itemize}
 				\item Restablecer/crear/cambiar un password de una cuenta de usuario.
 				\item Calcular el perfil de riesgo del cliente realizando y procesando los resultados de la encuesta.
 			\end{itemize}
-			\item \textbf{Perfil.} Despliega la información completa del perfil de un usuario, 
+			\item \textbf{Perfil.} Despliega la información completa del perfil de un usuario,
 			\begin{itemize}
 				\item Desplegar la información completa del perfil de un usuario junto con los botones necesarios para editarla.
 				\item Agregar/quitar una cuenta de Facebook \cite{facebookDocuWeb} al perfil.
@@ -319,9 +319,9 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 			\begin{itemize}
 				\item Agregar/Borrar equipos de los favoritos del usuario.
 			\end{itemize}
-			
+
 		\end{itemize}
-	
+
 Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama auth(); la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
 Todas las funciones listadas en este capítulo conforman en su totalidad el sistema del portal público de egobets.com. Las funciones descritas en el capítulo 3 se ponen a disposición del usuario a través de las interfaces ya definidas y le proporcionan la recomendación de apuestas acorde a su perfil de riesgo. De igual manera, el usuario puede actualizar todos los datos necesarios de su perfil para generar recomendaciones más acorde a sus preferencias.
@@ -620,7 +620,7 @@ Todas las funciones listadas en este capítulo conforman en su totalidad el sist
 %
 % \subsection{Sistema de recopilación de información y estadísticas de los partidos}
 % \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/recopilador/}}
-% 
+%
 %
 % \subsubsection{Tecnologías destacadas}
 %
@@ -643,7 +643,7 @@ Todas las funciones listadas en este capítulo conforman en su totalidad el sist
 % 			\item Las bases de datos MySQL son relacionales. La información se guarda en tablas separadas en vez de poner todo junto en un solo lugar. Las estructuras de base de datos están organizadas en archivos físicos optimizados para la velcidad. El modelo lógico con objetos como bases de datos, tablas, vistas, tuplas y columnas ofrece un ambiente de programación flexible. Y MySQL se asegura de que se respeten los tipos de relaciones entre tablas como puede ser uno a uno, uno a varios, únicas, u opcionales. Una base de datos bien diseñada nunca permitirá información incosistente, duplicada, huerfana, fuera de fecha o perdida.
 % 			\item Corre bajo la licencia Pública General de GNU. Por lo que se puede modificar y ser utilizado por cualquiera.
 % 		\end{itemize}
-% 				\item PHP: 
+% 				\item PHP:
 %
 %
 % 	\item Code Igniter. Es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como

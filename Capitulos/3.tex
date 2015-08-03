@@ -5,14 +5,14 @@
 
 % En este capítulo se presentan, sin entrar al detalle técnico, los resultados comprobables de las teorías que proporcionan las probabilidades de los resultados de los partidos y las predicciones de sus resultados. De igual manera se destaca la importancia de un sistema de reservas para optimizar las tasas de crecimiento de la cantidad de dinero dedicada a las apuestas. Finalmente se retoman estos conceptos y se detalla el algoritmo que utiliza Egobets para la generación de las recomendaciones de apuestas.
 
-En este capítulo se detallan las variables y los pasos que tiene el método utilizado por el sistema de Egobets para proveer a sus usuarios de una asesoría de apuestas personalizada. En la primera parte del capítulo, a modo de introducción, se discutirá si es posible modelar de manera matemática un partido de futbol con la finalidad de predecir su resultado. Además, en esta misma sección se explica como el afamado criterio de Kelly introduce la noción de un sistema de reservas y busca optimizar la ganancia esperada en función de restringir la fracción de dinero a invertir en cada partido.
+En este capítulo se detallan las variables y los pasos que sigue el método utilizado por el sistema de Egobets para proveer a sus usuarios de una asesoría de apuestas personalizada. En la primera parte del capítulo, a modo de introducción a este sistema, se exhibe un popular modelo matemático para un partido de futbol y las propiedades que lo vuelven intuitivo. Además, en esta misma sección se explica como el afamado criterio de Kelly introduce la noción de un sistema de reservas y busca optimizar la ganancia esperada en función de restringir la fracción de dinero a invertir en cada partido y por cada jornada. Estos dos conceptos favorecen el entendimiento de las apuestas recomendadas por la plataforma desarrollada.
 
-\section{Antecendetes y evidencia a favor}
+\section{Introducción al sistema}
 \label{sec:evidencia}
 
-Esta tesis no busca predecir los resultados de los partidos de futbol, sin embargo es importante mostrar que esto se puede lograr y que más de algún autor ha encontrado maneras teóricas eficientes de hacerlo. De igual manera, se explica (sin entrar a detalle) uno de los modelos más utilizados en este ámbito: la Poisson bivariada. Esto ayuda al lector a comprender cuales son las variables que parecen afectar más los resultados y le permite tener una mejor noción de lo que puede ser una buena apuesta.
+En esta tesis no se busca predecir resultados de partidos de futbol, sin embargo mostrar que esto se puede lograr y que puede tener resultados favorables resulta muy ilustrativo. De igual manera, se explica (sin entrar a detalle) uno de los modelos más utilizados en este ámbito: la Poisson bivariada. Esto ayuda al lector a comprender cuales son las variables que parecen afectar más los resultados y le permite tener una mejor noción de lo que puede ser una buena apuesta.
 
-Después de exhibir el modelo, se presentan dos ejemplos concretos de estrategias de apuestas: la estrategia simple (e intuitiva) y la estrategia de Kelly. En particular, Kelly le da al problema un paradigma financiero y abre el camino a buscar apuestas que no arriesguen todo el capital del jugador. Esta idea será retomada en la siguiente sección para el sistema de reservas.
+Después de exhibir el modelo, se presentan los resultados de una estrategia simple de apuesta aplicada este modelo y se explora el criterio de Kelly para presentar una estrategia de apuestas más robusta. En particular, Kelly le da al problema un paradigma de inversión fraccionada por jornada. Esta idea será retomada en la siguiente sección para el sistema de reservas.
 
 \subsection{Modelar un partido de futbol}
 \label{subsec:modelo}
@@ -48,7 +48,7 @@ Koopman y Lit (2013) \cite{koopman2013dynamic} proponen el siguiente modelado de
 		\item $Y_{jt}$ corresponde al número de goles anotados por el equipo visitante $j$ en esa misma semana $t$.
 	\end{itemize}
 		
-		Para $i\neq j = 1, ...,J$ y $t=1,...,n$, con $n$ la cantida de semanas con partidos jugados (es decir que tienen datos).
+		Para $i\neq j = 1, ...,J$ y $t=1,...,n$, con $n$ la cantidad de semanas con partidos jugados (es decir que tienen datos).
 \end{itemize}
 
 \paragraph{Distribución Poisson Bivariada} % (fold)

@@ -1,4 +1,4 @@
-\chapter{Sistema de Egobets.com}
+\chapter{Plataforma de recomendaciones}
 \label{chap:software}
 \graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/diagramas/}}
 
@@ -42,7 +42,7 @@ Es por estas razones que Egobets funciona tan bien en el paradigma del computo e
 
 \subsection{Servidor LNNP}
 
-Este acrónimo representa un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que es una de las configuraciones de servidoes más populares en el mundo.} LNNP viene de:
+Este acrónimo representa un sistema de infraestructura de internet\footnote{LNNP viene a retomar el acrónimo LAMP (Linux, Apache, MySQL y PHP) que es una de las configuraciones de servidores más populares en el mundo.} LNNP viene de:
 \begin{itemize}
 	\item \textbf{L}inux, el kernel del sistema operativo.
 	\item \textbf{N}ginx, el servidor Web.
@@ -124,7 +124,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		 \subsection{Modelos}
 
 		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
-		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, gracias a que PHP no es un lenguaje orientado a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, miles de sus funciones principales no pertenecen a ningún objeto, ni se permite ``castear'' objetos de una clase a otra.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
+		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, recordando que PHP no es un lenguaje cuyos paradigma (inicial) se orientara objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, muchas de sus funciones principales no pertenecen a ningún objeto.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
 
 		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más fundamental es el escribir operaciones ``ABCD''. Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
 

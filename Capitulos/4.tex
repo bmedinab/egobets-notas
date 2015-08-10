@@ -12,7 +12,7 @@ Egobets.com proporciona al cliente los servicios de asesoría de apuestas person
 
 \section{Diseño y arquitectura}
 \label{sec:design}
-Egobets.com es un sistema con arquitectura cliente-servidor montado sobre una máquina virtual con sistema operativo Ubuntu Linux en la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el computo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño \textit{Modelo Vista Controlador} junto con su respectiva representación gráfica de base de datos.
+Egobets.com es un sistema con arquitectura cliente-servidor montado sobre una máquina virtual con sistema operativo Ubuntu Linux en la nube de ``Amazon Web Services (AWS)''. En esta sección se presentan los diagramas que describen la arquitectura del sistema, se muestran las ventajas de utilizar el cómputo en la nube, se presentan las tecnologías más relevantes involucradas en el sistema y también se expone el patrón de diseño \textit{Modelo Vista Controlador} junto con su respectiva representación gráfica de base de datos.
 \subsection{Ventajas de correr Egobets en la nube}
 \begin{figure}[!htb]\centering
    \begin {minipage}{1\textwidth}
@@ -30,13 +30,13 @@ Del artículo ``Cómputo en Nube: Ventajas y Desventajas'' de Martínez y Gutié
 
 	\item \textbf{Disponibilidad.} El proveedor está obligado a garantizar que el servicio siempre esté disponible para el cliente. En este sentido, la virtualización juega un papel fundamental, ya que el proveedor puede hacer uso de esta tecnología para diseñar una infraestructura redundante que le permita ofrecer un servicio constante de acuerdo a las especificaciones del cliente. A manera anecdótica, en Egobets se tuvo un problema con uno de los discos duros de un servidor, bastó con crear una nueva máquina virtual de la imagen que ya se poseía y clonar el código necesario, en menos de cinco minutos el servicio estaba de vuelta en línea.
 
-	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets, jamas se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
+	\item \textbf{Abstracción de la parte técnica.} Como se mencionó al hablar de costos, el cómputo en la nube permite al cliente la posibilidad de olvidarse de la implementación, configuración y mantenimiento de equipos; transfiriendo esta responsabilidad al proveedor del servicio. En Egobets jamás se ha tenido que realizar ningún tipo de mantenimiento a ningún equipo de hardware de los servicios en la nube.
 
 	\item \textbf{Acceso desde cualquier punto geográfico.} El uso de las aplicaciones diseñadas sobre el paradigma del cómputo en la nube puede ser accesible desde cualquier equipo de cómputo en el mundo que esté conectado a Internet. El acceso normalmente se hace desde un navegador web, lo que permite a la aplicación ser utilizada no únicamente desde una computadora de escritorio o una computadora portátil, sino que va más allá, permitiendo al usuario hacer uso de la aplicación incluso desde dispositivos móviles como smartphones. El sistema montado en Egobets.com, por ejemplo, no tiene ninguna restricción hacia ningún país del mundo.
 
 	\item \textbf{Escalabilidad.} El cliente no tiene que preocuparse por actualizar el equipo de cómputo sobre el que se está corriendo la aplicación que utiliza. Además, éstas son transparentes para el cliente, por lo que la aplicación debe de continuar disponible para el usuario en todo momento aún cuando se esté realizando el proceso de actualización del lado del proveedor. Las actualizaciones y nuevas funcionalidades son instaladas prácticamente de manera inmediata. Si se quisiera ampliar el poder de cómputo de los servidores de Egobets.com, bastaría con realizar un par de clicks y esperar unos minutos a que la infraestructura se auto-escale.
 
-Es por estas razones que Egobets funciona tan bien en el paradigma del computo en la nube.
+Es por estas razones que Egobets funciona tan bien en el paradigma del cómputo en la nube.
 
 \end{itemize}
 
@@ -50,9 +50,9 @@ Este acrónimo representa un sistema de infraestructura de internet\footnote{LNN
 	\item \textbf{P}HP, el lenguaje de programación.
 \end{itemize}
 
-Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado están disponibles bajo licencias de código abierto, las cuales otorgan a los programadores que utilizan este software, la capacidad de ver el código fuente y de ser necesario modificarlo y compartirlo libremente \cite{lozano2008software}.
+Una de las principales ventajas de utilizar esta configuración es que la mayoría del software utilizado están disponibles bajo licencias de código abierto, las cuales otorgan a los programadores que utilizan este software la capacidad de ver el código fuente y, de ser necesario, modificarlo y compartirlo libremente \cite{lozano2008software}.
 
-La máquina virtual de AWS tiene instalado Ubuntu LTS 12.04, que corre el kernel creado por Linux Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
+La máquina virtual de AWS tiene instalado Ubuntu LTS 12.04, que corre el kernel creado por Linus Torvalds, \textbf{Linux} \cite{torvalds2001just}. Algunas de las ventajas de usar Linux son:
 		\begin{itemize}
  			\item El costo de licencia es nulo y su uso no tiene algún otro costo monetario.
  			\item Hay miles de aplicaciones libres para hacer más robusto el servidor.
@@ -91,7 +91,7 @@ El portal público de Egobets.com está desarrollado en una de las arquitecturas
 	   \end{minipage}
 	\end{figure}
 
-CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo en le programación, robustece tu sistema y permite al programador alcanzar un grado mayor de sofisticación en su código.
+CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo de programación, robustece cualquier sistema y permite al programador alcanzar un grado mayor de sofisticación en su código.
 
 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
 	\begin{itemize}
@@ -116,7 +116,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\item Casa. En esta colección se almacenan los datos de las casas de apuestas de las cuales se recuperan sus momios para hacer los cálculos de las asesorías de apuestas.
 		\item Resultado. Aquí se guarda la cantidad de dinero que obtiene o pierde un usuario en cada jornada.
 	\end{itemize}
-	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
+	Como se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
 
 	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartado se describirán  los componentes de Egobets en estas tres dimensiones.
 
@@ -317,7 +317,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 
 		\end{itemize}
 
-Todas estas funciones realizadas por los controles, definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama auth(); la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
+% Todas estas funciones realizadas por los controles definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama auth(); la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
 Todas las funciones listadas en este capítulo conforman en su totalidad el sistema del portal público de egobets.com. Las funciones descritas en el capítulo 3 se ponen a disposición del usuario a través de las interfaces ya definidas y le proporcionan la recomendación de apuestas acorde a su perfil de riesgo. De igual manera, el usuario puede actualizar todos los datos necesarios de su perfil para generar recomendaciones más acorde a sus preferencias.
 

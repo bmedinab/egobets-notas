@@ -62,18 +62,18 @@ La máquina virtual de AWS tiene instalado Ubuntu LTS 12.04, que corre el kernel
 
 Encima del sistema operativo, se tiene \textbf{Nginx}: un servidor web de alto performance creado por Igor Sysoev para el sitio \emph{www.rambler.ru}, el segundo sitio más grande de Rusia \cite{reese2008nginx}. Nginx es capaz de servir más peticiones por segundo con menos recursos que las alternativas, gracias a su arquitectura. Grosso modo, consiste en un proceso maestro que delega a sus procesos \emph{trabajadores} toda la carga de trabajo. Cada trabajador maneja varias solicitudes de manera asíncrona utilizando funcionalidades especiales, en caso de Egobets, del kernel de Linux\footnote{Se puede leer más al respecto de como funciona internamente Nginx en Zhu \cite{zhu2010nginx}}. Esto permite a Nginx, manejar un gran número de solicitudes simultáneas con muy poca sobrecarga.
 
-A un lado, se tiene la base de datos de tipo No-SQL. \textbf{MongoDB}, derivado de la palabra \emph{humongous}, Membrey \cite{membrey2010definitive} le describe como una nueva especie de base de datos carente de conceptos de tablas, esquemas, SQL, o renglones. No tiene transacciones, joins, llaves externas, o cualquier otra de las características que suelen causar dolores de cabeza matutinos. En pocas palabras, MongoDB es una base de datos orientada a documentos, optimizada para ser veloz, escalable y fácil de integrar con cualquier lenguaje.
+Adicionalmente, se cuenta con una base de datos de tipo No-SQL. \textbf{MongoDB}, derivado de la palabra \emph{humongous}, Membrey \cite{membrey2010definitive} le describe como una nueva especie de base de datos carente de conceptos de tablas, esquemas, SQL, o renglones. No tiene transacciones, joins, llaves externas, o cualquier otra de las características que suelen causar dolores de cabeza matutinos. En pocas palabras, MongoDB es una base de datos orientada a documentos, optimizada para ser veloz, escalable y fácil de integrar con cualquier lenguaje.
 
 Finalmente el lenguaje en el que está programado el portal es \textbf{PHP}, cuyo acrónimo recursivo significa: \emph{PHP Hypertext Preprocessor}. Según su página web \cite{phpWeb}: ``es un lenguaje de scripting, el cual puede ser embebido dentro de páginas HTML. Gran parte de su sintaxis fue tomada de C, Java y Perl (...)''. El objetivo del lenguaje es permitir a desarrolladores Web escribir páginas generadas dinámicamente con agilidad.
 PHP está enfocado principalmente a la programación de scripts del lado del servidor, por lo que se puede hacer cualquier cosa como recopilar datos de formularios, generar páginas con contenidos dinámicos, o enviar y recibir cookies. Aunque PHP puede hacer mucho más.
 				 Ventajas:
 	\begin{itemize}
 		\item Es uno de los lenguajes con mayor adopción para desarrollo web \cite{tiobeIndex}.
-		\item El mecanismo de integración entre el servidor web y PHP corre sobre la mayoría de Servidores web, incluyendo Apache, IIS, lighthttpd, nginx y muchos otros.
-		\item Cuenta con librerías de conexión a casi cualquier Base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
-		\item PHP también cuenta con soporte en la librería estándar para comunicarse con otros servicios usando protocolos tales como LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
+		\item El mecanismo de integración entre el servidor web y PHP corre sobre la mayoría de servidores web, incluyendo: Apache, IIS, lighthttpd, nginx y muchos otros.
+		\item Cuenta con librerías de conexión a casi cualquier base de datos como: MySQL, SQLite, PostgreSQL, Mongo, Mssql, IBM DB2, entre muchas otras.
+		\item PHP también cuenta con soporte en la librería estándar para comunicarse con otros servicios usando protocolos tales como: LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (en Windows) y muchos otros.
 		\item Existen muchas otras extensiones interesantes aportadas por la comunidad, las cuales están organizadas alfabéticamente y por categoría.
-		\item Corre bajo la licencia Pública General de GNU. Por lo que se puede ser modificado y ser utilizado por cualquiera.'
+		\item Corre bajo la licencia Pública General de GNU. Por lo que se puede ser modificado y ser utilizado por cualquiera.
 	\end{itemize}
 
 Encima de PHP se utiliza una tecnología llamada CodeIgniter que tiene la propiedad de utilizar el patrón de diseño MVC. Este patrón de diseño separa la lógica del código en categorías y con esto facilita su desarrollo y mantenimiento. En el siguiente apartado se detalla más esta arquitectura.

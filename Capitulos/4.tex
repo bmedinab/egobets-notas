@@ -96,25 +96,23 @@ El portal público de Egobets.com está desarrollado en una de las arquitecturas
 	   \end{minipage}
 	\end{figure}
 
-CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP que ahorra tiempo de programación, robustece cualquier sistema y permite al programador alcanzar un grado mayor de sofisticación en su código.
+CodeIgniter es un framework\footnote{Es una estructura de software compuesta de componentes personalizables e intercambiables para el desarrollo de una aplicación. En otras palabras, un framework se puede considerar como una aplicación genérica incompleta y configurable a la que se le puede añadir las últimas piezas para construir una aplicación concreta \cite{upton2007codeigniter}.} de PHP, que ahorra tiempo en la programación, haciendo mas robusto el sistema y permite al programador alcanzar un grado mayor de sofisticación en su código.
 
 	De su página Web \cite{codeigniterWeb} se pueden destacar las siguientes propiedades:
 	\begin{itemize}
 		\item Tamaño pequeño. CodeIgniter 2.2 tiene una descarga 2.2MB, incluyendo la guía del usuario.
-		\item Documentación clara. La guía que se incluye cuenta con guía y tutoriales para empezar a trabajar de manera muy práctica.
-		\item Compatibilidad con casi cualquier servicio de alojamiento. Sólo necesita PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluido MySQL.
-
+		\item Documentación clara. La documentación del framework cuenta con guías y tutoriales para empezar a trabajar de manera muy práctica.
+		\item Compatibilidad con casi cualquier servicio de alojamiento. Sólo se necesita contar con PHP 5.1.6 y tiene soporte con las bases de datos más comunes incluido MySQL.
 		\item Casi no necesita configuración. Todas las variables y opciones de configuración vienen predefinidas a los estándares convenidos en internet.
 
 	\end{itemize}
 
 
-	Por la naturaleza de la arquitectura MVC es necesario conocer la definición de la estructura de datos para después poder describir en mayor detalle los elementos del sistema. Ahora, hay que recordar que Egobets no utiliza una base de datos relacional por lo que se presenta un diagrama de clases para representar las colecciones que se tienen en la base de datos de Mongo DB.
-	
-	
+	Por la naturaleza de la arquitectura MVC es necesario conocer la definición de la estructura de datos para después poder describir en mayor detalle los elementos del sistema. Ahora, hay que recordar que Egobets no utiliza una base de datos relacional por lo que se presenta un diagrama de clases para representar las colecciones que se tienen en la base de datos de MongoDB. En términos de MongoDB, una \emph{colección} se refiere al conjunto de documentos, y equivalente al concepto de \emph{tabla} en un sistema de Base de datos Relacional \cite{mongoDBGlossary}.
+
 	\subsection{Definición de la base de datos}
-	
-	
+
+
 	La base de datos cuenta con seis colecciones principales (Véase la figura~\ref{Fig:db-egobets}):
 
 	\begin{itemize}
@@ -125,15 +123,17 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\item Casa. En esta colección se almacenan los datos de las casas de apuestas de las cuales se recuperan sus momios para hacer los cálculos de las asesorías de apuestas.
 		\item Resultado. Aquí se guarda la cantidad de dinero que obtiene o pierde un usuario en cada jornada.
 	\end{itemize}
-	Como se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que tiene MongoDB permiten objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
 
-	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesantes de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartado se describirán  los componentes de Egobets en estas tres dimensiones.
+	Cómo se puede observar, hay conexiones entre algunas clases. Esto se debe a que las colecciones que implementa MongoDB permiten almacenar objetos complejos, de tal manera que un objeto puede contener un arreglo de otros objetos, así como referencias a otras colecciones. Para ver un ejemplo de los datos almacenados en la base de datos véase el Apéndice \ref{chap:dbs}.
+
+
+	Con base en la estructura de datos definida, retómese el patrón de diseño MVC, la propiedad más interesante de CodeIgniter. Este patrón fue descrito por el noruego Trygve Reenskaug en 1979, y facilita la descripción del sistema de Egobets de una manera más organizada \cite{upton2007codeigniter} \cite{alfredo2005ingenieria}. En los siguientes apartados se describirán los componentes de Egobets en éstas tres dimensiones.
 
 
 		 \subsection{Modelos}
 
-		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básico definidos, reflejan las colecciones de la base de datos y a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
-		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, recordando que PHP no es un lenguaje cuyos paradigma (inicial) se orientara objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, muchas de sus funciones principales no pertenecen a ningún objeto.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
+		La información representa el dominio del problema y la base de datos se abstrae como un conjunto de objetos sobre los cuales recaen todas la acciones. En el modelo, los objetos básicos definidos reflejan las colecciones de la base de datos y, a través del conector de base de datos, el modelo modifica los documentos en la base de datos conforme sea requerido.
+		En particular, ya se dijo que los datos del sistema de Egobets son los definidos en la figura~\ref{Fig:db-egobets} y la definición de los objetos se pueden ver en el Apéndice~\ref{chap:dbs}. Ahora, recordando que PHP no es un lenguaje cuyo paradigma (inicial) se uno de orientación a objetos\footnote{PHP es un lenguaje que soporta objetos, y en particular PHP5 integra más este paradigma, pero no es un lenguaje orientado a objetos. Por ejemplo, muchas de sus funciones principales no pertenecen a ningún objeto.}, los datos que tiene definidos en el modelo son completamente dependientes de la estructura de la base de datos, entonces los objetos utilizados por los modelos son exactamente los mismos definidos en la BD y extraídos con las consultas.
 
 		Como lo menciona Upton en su libro \cite{upton2007codeigniter}, la parte más fundamental es el escribir operaciones ``ABCD''. Es necesario poder Agregar, Borrar, Cambiar y Desplegar la información de las colecciones de la bases de datos. Estas funciones, aunque conceptualmente fáciles de entender, son bastante complejas y escribirlas puede consumir mucho tiempo; sin embargo, son la base de un modelo bien definido, fácil de mantener y reutilizable.
 
@@ -143,7 +143,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\begin{itemize}
 					\item Agregar - A través del modelo, se permite crear un nuevo \emph{usuario} de la plataforma.
 					\item Cambiar - Se pueden cambiar los detalles del perfil de un \emph{usuario}, así como las casas de apuestas a las que está suscrito, también es posible actualizar las jornadas ya pagadas del usuario.
-					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene en Facebook \cite{facebookDocuWeb} en el sistema y las casas de apuestas a las que está suscrito en Egobets.
+					\item Desplegar - Se pueden obtener todos los datos de un usuario en función de su identificador o buscar algún texto en su perfil. También se pueden mostrar los amigos que tiene en Facebook \cite{facebookDocuWeb} que también tengan una cuenta en el sistema y las casas de apuestas a las que está suscrito en Egobets.
 				\end{itemize}
 			\item \emph{Resultados}
 			\begin{itemize}
@@ -158,7 +158,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 				\end{itemize}
 			\item \emph{Equipos}
 				\begin{itemize}
-					\item Desplegar - El modelo  de \emph{Equipos} despliega todos los \emph{equipos} registrados en el sistema y estos pueden ser filtrados directamente por:  nombre, identificador o liga a la que pertenecen. También se despliegan los equipos favoritos por cliente.
+					\item Desplegar - El modelo  de \emph{Equipos} despliega todos los \emph{equipos} registrados en el sistema y estos pueden ser filtrados directamente por: nombre, identificador o liga a la que pertenecen. También se despliegan los equipos favoritos por \emph{usuario}.
 				\end{itemize}
 			\item \emph{Partidos}
 				\begin{itemize}
@@ -170,10 +170,10 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 
 		\graphicspath{{/Users/brunomedina/Dropbox/Tesis-Egobets/egobets-notas/resources/vistas/}}
 
-		Las vistas reflejan el estado del modelo y corresponden a las interfaces que se le presentan al usuario para el manejo de la información. Por lo general, pueden existir múltiples vistas sobre un mismo modelo, por ejemplo puede existir una vista que despliegue un listado de  partidos por liga y al mismo tiempo existir una vista que muestre una gráfica con la cantidad de goles anotados por los equipos locales a través del tiempo. Estas vistas utilizan los mismos modelos, pero la información que despliega es completamente distinta y tiene fines diferentes.
 
-		También una vista puede implementar varios modelos, es decir, mostrar información compleja compuesta por varios elementos de la base de datos. Un ejemplo sería una vista que presente los datos de un partido junto con las estadísticas generales de cada equipo y una gráfica representativa de la cantidad de dinero gastada por los usuarios en las distintas apuestas del partido.
+		Las vistas reflejan el estado del modelo, segun le sea indicado por el controlador, además de permitirle a quien opere el sistema introducir información al mismo. Por lo general, las vistas despliegan la información que el Controlador indique, y ésta puede provenir de distintos Modelos, por ejemplo puede existir una vista que despliegue un listado de partidos por liga y al mismo tiempo existir una vista que muestre una gráfica con la cantidad de goles anotados por los equipos locales a través del tiempo. Estas vistas utilizan los mismos modelos, pero la información que despliegan es completamente distinta y tiene fines diferentes.
 
+		También una vista puede hacer uso de múltiples modelos, es decir, mostrar información compleja compuesta por varios elementos de la base de datos. Un ejemplo sería una vista que presente los datos de un partido junto con las estadísticas generales de cada equipo y una gráfica representativa de la cantidad de dinero gastada por los usuarios en las distintas apuestas del partido.
 		Las vistas que se tienen en el sistema se pueden enumerar de la siguiente manera:
 		\begin{itemize}
 			\item \emph{\textbf{Vistas relativas al perfil del usuario}}
@@ -253,11 +253,11 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 		\end{itemize}
 
 
-		Todas la vistas descritas en los párrafos anteriores consisten en archivos HTML5\footnote{HTML viene de HyperText Markup Language, este lenguaje de marcado llegó a la versión 5 utilizada hoy en día el 24 de Octubre del 2014 en el consorcio de la World Wide Web (Básicamente el consorcio de Internet). Para más información leer What is HTML5 de MacLauhlin \cite{mclaughlin2011html5}.} creados dinámicamente en función del código PHP de las vistas. Cada una de estas pantallas cuentan con un archivo CSS\footnote{Cascade Style Sheet, } que aplica el estilo y el diseño al lenguaje de marcado HTML. A su vez, se utiliza Javascript para las animaciones, validaciones y cambios en las propiedades tanto del CSS como del HTML; un ejemplo claro del uso de Javascript es la animación de los gráficos de las estadísticas de los equipos.
+		Todas la vistas descritas en los párrafos anteriores consisten en archivos HTML5\footnote{HTML viene de HyperText Markup Language, este lenguaje de marcado llegó a la versión 5 utilizada hoy en día el 24 de Octubre del 2014 en el consorcio de la World Wide Web (Básicamente el consorcio de Internet). Para más información leer What is HTML5 de MacLauhlin \cite{mclaughlin2011html5}.} creados dinámicamente en función del código PHP de las vistas. Cada una de estas pantallas son estiladas a través de archivos CSS\footnote{Cascade Style Sheet, } que aplican el estilo y el diseño al lenguaje de marcado HTML. A su vez, se utiliza Javascript para complementar las interfaces con lógica del lado del cliente, por ejemplo, llevando a cabo validaciones de la información introducida por el usuario antes de ser enviadas al servidor, generando gráficos de las estadísticas de los equipos, o realizando el inicio de sesión con Facebook \cite{facebookDocuWeb}.
 
 		\subsection{Controladores}
-		Corresponden a la manipulación de la información a través de sus diversas presentaciones, ofrecen opciones para cambiar el estado del modelo, son los encargados de consultar los modelos y proveer a las vistas los datos dinámicos a mostrar. Básicamente, los controladores implementan el comportamiento o el control de la lógica del sistema, especificando cuándo y como el sistema cambia de estado. Este comportamiento requiere la interacción de múltiples modelos y vistas.
-		A continuación se muestra un listado de los controladores del sistema de Egobets junto con las funciones específicas que puede realizar cada uno de ellos.:
+		Corresponden a la manipulación de la información a través de sus diversas presentaciones, ofrecen opciones para cambiar el estado de los modelos; son los encargados de consultar los mismos y proveer a las vistas los datos dinámicos a mostrar. Básicamente, los controladores implementan el comportamiento o el control de la lógica del sistema, especificando cuándo y como el sistema cambia de estado. Este comportamiento requiere la interacción de múltiples modelos y vistas.
+		A continuación se muestra un listado de los controladores del sistema de Egobets junto con las funciones específicas que puede realizar cada uno de ellos:
 		\begin{itemize}
 			\item \textbf{Usuario.}
 			\begin{itemize}
@@ -328,7 +328,7 @@ CodeIgniter es un framework\footnote{Es una estructura de software compuesta de 
 
 % Todas estas funciones realizadas por los controles definen por completo el sistema de Egobets. Es importante mencionar una función extra que se llama auth(); la cual corre en los constructores de cada uno de los controladores para asegurar que un usuario malintencionado no pueda realizar acciones a nombre de otro. Es decir, que si un usuario cuenta con una combinación válida de nombre de usuario y contraseña, el sistema, por ejemplo, no le permita obtener las ganancias que ha obtenido su peor enemigo en el sistema. De no contar con estas validaciones, se podría construir una llamada HTTP de tal manera que se pudiera obtener esta información.
 
-Todas las funciones listadas en este capítulo conforman en su totalidad el sistema del portal público de egobets.com. Las funciones descritas en el capítulo 3 se ponen a disposición del usuario a través de las interfaces ya definidas y le proporcionan la recomendación de apuestas acorde a su perfil de riesgo. De igual manera, el usuario puede actualizar todos los datos necesarios de su perfil para generar recomendaciones más acorde a sus preferencias.
+Todas las funciones listadas en este capítulo conforman en su totalidad el sistema del portal público de Egobets.com. Las funciones descritas en el capítulo 3 se ponen a disposición del usuario a través de las interfaces ya definidas y le proporcionan la recomendación de apuestas acorde a su perfil de riesgo. De igual manera, el usuario puede actualizar todos los datos necesarios de su perfil para generar recomendaciones más acorde a sus preferencias.
 
 % En la siguiente sección de este documento, se retoma la función más interesante\footnote{Se considera más interesante una función que muestra recomendaciones de apuestas, que una función que permite al usuario cambiar el idioma del portal. El objetivo de esta tesis es el de mostrar una manera programática de obtener recomendaciones que permitan al usuario apostar de manera estratégica con el fin de obtener ganancias, no el de proveer documentación para la replicación de este sistema a través de ingeniería de software.} del sistema y se explica a mayor detalle su funcionamiento.
 
